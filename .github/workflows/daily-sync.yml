@@ -1,0 +1,44 @@
+name: Synchronisation Scène Rose (4× / jour)
+
+on:
+  schedule:
+    # 4 synchronisations automatiques par jour (UTC -> heure de Toulouse hiver / été)
+    - cron: '0 5 * * *'   # 06h00 (hiver) / 07h00 (été) — programme du jour & purge
+    - cron: '30 10 * * *' # 11h30 (hiver) / 12h30 (été) — après les ouvertures billetteries (10h/11h)
+    - cron: '30 16 * * *' # 17h30 (hiver) / 18h30 (été) — avant les concerts du soir (derniers Complets)
+    - cron: '0 20 * * *'  # 21h00 (hiver) / 22h00 (été) — soirées club & lendemain
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-toulouse-concerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Synchroniser les 15 salles toulousaines (dates & statuts Complet/Dispo)
+        run: npm run sync
+
+      - name: Publier les données mises à jour si modifiées
+        run: |
+          git config user.name "scene-rose-bot"
+          git config user.email "bot@scene-rose.local"
+          git add public/data/concerts.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(sync): mise à jour auto des concerts & statuts ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          else
+            echo "Aucun changement détecté sur ce créneau."
+          fi
