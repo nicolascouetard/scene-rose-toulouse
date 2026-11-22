@@ -1,4 +1,3 @@
-/api/* /api/:splat 404
 /data/* /data/:splat 200
 /posters/* /posters/:splat 200
 /icons/* /icons/:splat 200

@@ -119,11 +119,11 @@ export function ConcertDetailSheet({
   return (
     <>
       <div
-        className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 backdrop-blur-sm animate-fade-in"
+        className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       >
         <div
-          className="relative w-full max-w-[440px] max-h-[92dvh] rounded-t-3xl bg-[#131117] border-t border-x border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
+          className="relative w-full max-w-[440px] md:max-w-xl max-h-[92dvh] md:max-h-[88dvh] rounded-t-3xl md:rounded-3xl bg-[#131117] border-t border-x md:border border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Drag handle */}
@@ -178,7 +178,7 @@ export function ConcertDetailSheet({
             <div className="px-5 pt-3">
               {/* Genres */}
               <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
-                <span className="px-2.5 py-0.5 rounded-full bg-[#E85D4A]/18 border border-[#E85D4A]/35 text-[11px] font-semibold text-[#F69587]">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#C85A6E]/18 border border-[#C85A6E]/35 text-[11px] font-semibold text-[#F2A9B6]">
                   {concert.category}
                 </span>
                 {concert.genres.map((genre) => (
@@ -208,12 +208,12 @@ export function ConcertDetailSheet({
                   onClick={() => onToggleFavorite(concert.id)}
                   className={`flex items-center justify-center gap-1.5 py-2.5 rounded-xl border text-xs font-semibold active:scale-95 transition-all ${
                     isFavorite
-                      ? 'bg-[#E85D4A]/20 border-[#E85D4A]/50 text-[#F79A8C]'
+                      ? 'bg-[#C85A6E]/20 border-[#C85A6E]/50 text-[#F2A9B6]'
                       : 'bg-white/[0.05] border-white/10 text-[#EAE3DB]'
                   }`}
                 >
                   <Heart
-                    className={`w-4 h-4 ${isFavorite ? 'fill-[#E85D4A] text-[#E85D4A]' : ''}`}
+                    className={`w-4 h-4 ${isFavorite ? 'fill-[#C85A6E] text-[#C85A6E]' : ''}`}
                   />
                   {isFavorite ? 'Enregistré' : 'Favori'}
                 </button>
@@ -241,7 +241,7 @@ export function ConcertDetailSheet({
               <div className="mt-3.5 rounded-2xl bg-[#1A1720] border border-white/[0.08] p-3">
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-[11px] uppercase tracking-wider text-[#9E968F] font-semibold flex items-center gap-1.5">
-                    <Headphones className="w-3.5 h-3.5 text-[#E85D4A]" />
+                    <Headphones className="w-3.5 h-3.5 text-[#C85A6E]" />
                     Écouter « {artistQuery} »
                   </span>
                 </div>
@@ -280,7 +280,7 @@ export function ConcertDetailSheet({
               <div className="mt-4 rounded-2xl bg-[#1A1720] border border-white/[0.08] divide-y divide-white/[0.06]">
                 <div className="p-3.5 flex items-start gap-3">
                   <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
-                    <Calendar className="w-4 h-4 text-[#E85D4A]" />
+                    <Calendar className="w-4 h-4 text-[#C85A6E]" />
                   </div>
                   <div>
                     <div className="text-[11px] uppercase tracking-wider text-[#8E8680] font-semibold">
@@ -302,7 +302,7 @@ export function ConcertDetailSheet({
                 {concert.price && (
                   <div className="p-3.5 flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-white/[0.06] flex items-center justify-center shrink-0">
-                      <Ticket className="w-4 h-4 text-[#E85D4A]" />
+                      <Ticket className="w-4 h-4 text-[#C85A6E]" />
                     </div>
                     <div>
                       <div className="text-[11px] uppercase tracking-wider text-[#8E8680] font-semibold">
@@ -330,7 +330,7 @@ export function ConcertDetailSheet({
                           onClose();
                           onSelectVenue(venue.id);
                         }}
-                        className="text-[11px] font-semibold text-[#E85D4A] hover:underline"
+                        className="text-[11px] font-semibold text-[#C85A6E] hover:underline"
                       >
                         Tous ses concerts
                       </button>
@@ -343,13 +343,13 @@ export function ConcertDetailSheet({
                     </p>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/[0.07] text-[11px] font-medium text-[#E3DBD2]">
-                        <TrainFront className="w-3 h-3 text-[#E85D4A]" />
+                        <TrainFront className="w-3 h-3 text-[#C85A6E]" />
                         {venue.transit}
                       </span>
                       <button
                         type="button"
                         onClick={() => setShowRoutePicker(true)}
-                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-[#E85D4A]/15 hover:bg-[#E85D4A]/25 border border-[#E85D4A]/35 text-[11px] font-semibold text-[#F69587] active:scale-95 transition-all"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-[#C85A6E]/15 hover:bg-[#C85A6E]/25 border border-[#C85A6E]/35 text-[11px] font-semibold text-[#F2A9B6] active:scale-95 transition-all"
                       >
                         <Navigation className="w-3 h-3" />
                         Itinéraire (Maps · Plans · Waze)
@@ -367,7 +367,7 @@ export function ConcertDetailSheet({
               href={concert.venueEventUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 px-5 rounded-2xl bg-[#E85D4A] hover:bg-[#F06B59] active:scale-[0.98] transition-all text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#E85D4A]/25"
+              className="w-full py-3.5 px-5 rounded-2xl bg-[#C85A6E] hover:bg-[#DA7083] active:scale-[0.98] transition-all text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#C85A6E]/25"
             >
               <span>Aller sur le site · {venue.shortName}</span>
               <ExternalLink className="w-4 h-4" />

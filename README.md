@@ -20,5 +20,3 @@ npm run dev
 1. Pousser le dossier sur un dépôt GitHub.
 2. Importer le dépôt sur **Cloudflare Pages** (`npm run build`, dossier `dist`, avec `public/_headers` et `public/_redirects` prêts) ou **Vercel** (`vercel.json` déjà configuré).
 3. Dans les réglages GitHub du dépôt (*Settings → Actions → General → Workflow permissions*), activer **Read and write permissions** : 4 fois par jour, GitHub Actions rafraîchit `public/data/concerts.json` et le site se redéploie automatiquement sans aucune coupure.
-# scene-rose-toulouse
-# scene-rose-toulouse

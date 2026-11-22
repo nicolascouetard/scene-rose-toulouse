@@ -161,7 +161,7 @@ export function ToulouseMapView({
   const vbY = Math.max(0, Math.min(460 - vbH, (zoom === 1 ? 230 : centerPt.y) - vbH / 2));
 
   return (
-    <div className="px-4 pt-3 pb-6 space-y-3">
+    <div className="px-4 md:px-6 pt-3 pb-6 space-y-3">
       {/* Header + Period toggle */}
       <div className="flex items-center justify-between gap-2">
         <div>
@@ -186,7 +186,7 @@ export function ToulouseMapView({
               onClick={() => setMapPeriod(opt.id)}
               className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-colors ${
                 mapPeriod === opt.id
-                  ? 'bg-[#E85D4A] text-white'
+                  ? 'bg-[#C85A6E] text-white'
                   : 'text-[#9E968F] hover:text-white'
               }`}
             >
@@ -196,8 +196,10 @@ export function ToulouseMapView({
         </div>
       </div>
 
+      {/* Responsive 2-column layout on desktop: Map left, Venue selector + card right */}
+      <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-12 md:gap-5 md:items-start">
       {/* Interactive Dark Vector Map of Toulouse */}
-      <div className="relative rounded-2xl overflow-hidden bg-[#121017] border border-white/[0.1] shadow-xl">
+      <div className="md:col-span-7 relative rounded-2xl overflow-hidden bg-[#121017] border border-white/[0.1] shadow-xl">
         {/* Map controls */}
         <div className="absolute top-2.5 right-2.5 z-10 flex flex-col gap-1.5">
           <button
@@ -221,7 +223,7 @@ export function ToulouseMapView({
               type="button"
               aria-label="Réinitialiser la vue"
               onClick={() => setZoom(1)}
-              className="w-8 h-8 rounded-xl bg-[#18151E]/90 backdrop-blur border border-white/15 flex items-center justify-center text-[#E85D4A] active:scale-95"
+              className="w-8 h-8 rounded-xl bg-[#18151E]/90 backdrop-blur border border-white/15 flex items-center justify-center text-[#C85A6E] active:scale-95"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
@@ -238,7 +240,7 @@ export function ToulouseMapView({
               : 'bg-[#18151E]/60 border-white/10 text-[#8E8680]'
           }`}
         >
-          <TrainFront className="w-3 h-3 text-[#E85D4A]" />
+          <TrainFront className="w-3 h-3 text-[#C85A6E]" />
           Métro / Tram
         </button>
 
@@ -246,7 +248,7 @@ export function ToulouseMapView({
         {showTransit && (
           <div className="absolute bottom-2.5 left-2.5 z-10 px-2.5 py-1 rounded-lg bg-[#0E0D10]/85 backdrop-blur border border-white/10 flex items-center gap-2.5 text-[9.5px] font-semibold text-[#CFC7BE]">
             <span className="inline-flex items-center gap-1">
-              <span className="w-2.5 h-0.5 rounded bg-[#E85D4A]" /> A
+              <span className="w-2.5 h-0.5 rounded bg-[#E53935]" /> A
             </span>
             <span className="inline-flex items-center gap-1">
               <span className="w-2.5 h-0.5 rounded bg-[#F59E0B]" /> B
@@ -274,7 +276,7 @@ export function ToulouseMapView({
               />
             </pattern>
             <radialGradient id="cityGlow" cx="52%" cy="46%" r="48%">
-              <stop offset="0%" stopColor="#E85D4A" stopOpacity="0.14" />
+              <stop offset="0%" stopColor="#C85A6E" stopOpacity="0.14" />
               <stop offset="100%" stopColor="#0E0D10" stopOpacity="0" />
             </radialGradient>
           </defs>
@@ -330,7 +332,7 @@ export function ToulouseMapView({
               <polyline
                 points={METRO_A_PATH}
                 fill="none"
-                stroke="#E85D4A"
+                stroke="#E53935"
                 strokeWidth="2.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -450,8 +452,10 @@ export function ToulouseMapView({
         </svg>
       </div>
 
+      {/* Right column on desktop: Quick venue switcher + Selected venue card */}
+      <div className="md:col-span-5 space-y-3">
       {/* Quick venue switcher strip */}
-      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+      <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar">
         {venues.map((v) => {
           const active = v.id === selectedVenue.id;
           const count = (concertsByVenue[v.id] || []).length;
@@ -491,7 +495,7 @@ export function ToulouseMapView({
               </h3>
             </div>
             <p className="mt-1 text-[11.5px] text-[#A9A097] flex items-center gap-1.5">
-              <MapPin className="w-3 h-3 text-[#E85D4A] shrink-0" />
+              <MapPin className="w-3 h-3 text-[#C85A6E] shrink-0" />
               <span className="truncate">{selectedVenue.district}</span>
               <span>·</span>
               <span className="text-[#DDD5CC] shrink-0">{selectedVenue.transit}</span>
@@ -544,7 +548,7 @@ export function ToulouseMapView({
           <button
             type="button"
             onClick={() => onFilterByVenue(selectedVenue.id)}
-            className="py-2 px-2 rounded-xl bg-[#E85D4A] hover:bg-[#F06B59] text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-95 transition-transform"
+            className="py-2 px-2 rounded-xl bg-[#C85A6E] hover:bg-[#DA7083] text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-95 transition-transform"
           >
             <span>Agenda</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -555,7 +559,7 @@ export function ToulouseMapView({
             onClick={() => setRouteVenue(selectedVenue)}
             className="py-2 px-2 rounded-xl bg-white/[0.07] hover:bg-white/[0.12] text-[#F5EFE9] text-[11px] font-semibold flex items-center justify-center gap-1 active:scale-95 transition-transform"
           >
-            <Navigation className="w-3.5 h-3.5 text-[#E85D4A]" />
+            <Navigation className="w-3.5 h-3.5 text-[#C85A6E]" />
             <span>Itinéraire</span>
           </button>
 
@@ -566,9 +570,11 @@ export function ToulouseMapView({
             className="py-2 px-2 rounded-xl bg-white/[0.07] hover:bg-white/[0.12] text-[#F5EFE9] text-[11px] font-semibold flex items-center justify-center gap-1 active:scale-95 transition-transform"
           >
             <span>Site</span>
-            <ExternalLink className="w-3 h-3 text-[#E85D4A]" />
+            <ExternalLink className="w-3 h-3 text-[#C85A6E]" />
           </a>
         </div>
+      </div>
+      </div>
       </div>
 
       {/* Route Picker Sheet (Google Maps · Apple Plans · Waze) */}

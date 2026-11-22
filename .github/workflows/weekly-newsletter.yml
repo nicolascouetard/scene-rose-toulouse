@@ -1,0 +1,34 @@
+name: Alerte hebdomadaire Scène Rose (Brevo)
+
+on:
+  schedule:
+    # Chaque jeudi à 11:00 UTC (12h00 heure de Toulouse en hiver / 13h00 en été)
+    - cron: '0 11 * * 4'
+  workflow_dispatch:
+
+jobs:
+  send-weekly-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Envoyer l'alerte hebdomadaire via Brevo (si configuré)
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID: ${{ secrets.BREVO_LIST_ID }}
+          NEWSLETTER_SENDER_EMAIL: ${{ secrets.NEWSLETTER_SENDER_EMAIL }}
+          NEWSLETTER_SENDER_NAME: 'Scène Rose · Toulouse'
+          SITE_URL: ${{ vars.SITE_URL || 'https://scene-rose.pages.dev' }}
+        run: |
+          if [ -z "$BREVO_API_KEY" ] || [ -z "$BREVO_LIST_ID" ] || [ -z "$NEWSLETTER_SENDER_EMAIL" ]; then
+            echo "ℹ️ Secrets Brevo non encore configurés : génération de l'aperçu uniquement (aucun mail envoyé)."
+            node scripts/weekly-newsletter.mjs --preview
+          else
+            node scripts/weekly-newsletter.mjs --send
+          fi

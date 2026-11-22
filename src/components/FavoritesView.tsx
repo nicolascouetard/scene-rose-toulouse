@@ -30,7 +30,7 @@ export function FavoritesView({
     return (
       <div className="px-6 py-16 text-center flex flex-col items-center">
         <div className="w-16 h-16 rounded-2xl bg-[#19161E] border border-white/10 flex items-center justify-center mb-4">
-          <Heart className="w-7 h-7 text-[#E85D4A]" />
+          <Heart className="w-7 h-7 text-[#C85A6E]" />
         </div>
         <h2 className="font-display text-lg font-bold text-white">
           Aucun concert enregistré
@@ -41,7 +41,7 @@ export function FavoritesView({
         <button
           type="button"
           onClick={onGoExplore}
-          className="mt-5 px-5 py-2.5 rounded-xl bg-[#E85D4A] hover:bg-[#F06B59] text-white text-sm font-semibold active:scale-95 transition-transform inline-flex items-center gap-2"
+          className="mt-5 px-5 py-2.5 rounded-xl bg-[#C85A6E] hover:bg-[#DA7083] text-white text-sm font-semibold active:scale-95 transition-transform inline-flex items-center gap-2"
         >
           <Music2 className="w-4 h-4" />
           Explorer les concerts
@@ -51,7 +51,7 @@ export function FavoritesView({
   }
 
   return (
-    <div className="px-4 pt-3 pb-6 space-y-3.5">
+    <div className="px-4 md:px-6 pt-3 pb-6 space-y-3.5">
       {/* Header + Share selection button */}
       <div className="flex items-start justify-between gap-2">
         <div>
@@ -66,7 +66,7 @@ export function FavoritesView({
         <button
           type="button"
           onClick={onShareSelection}
-          className="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#E85D4A]/18 hover:bg-[#E85D4A]/28 border border-[#E85D4A]/40 text-xs font-bold text-[#F69587] active:scale-95 transition-all"
+          className="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#C85A6E]/18 hover:bg-[#C85A6E]/28 border border-[#C85A6E]/40 text-xs font-bold text-[#F2A9B6] active:scale-95 transition-all"
         >
           <Share2 className="w-3.5 h-3.5" />
           Partager
@@ -112,7 +112,7 @@ export function FavoritesView({
       )}
 
       {/* Saved concert cards */}
-      <div className="space-y-2.5">
+      <div className="space-y-2.5 md:space-y-0 md:grid md:grid-cols-2 md:gap-3">
         {saved.map((concert) => (
           <ConcertCard
             key={concert.id}

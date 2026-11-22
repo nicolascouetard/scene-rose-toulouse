@@ -29,7 +29,7 @@ export function VenuesView({
   onSelectConcert,
 }: VenuesViewProps) {
   return (
-    <div className="px-4 pt-3 pb-6 space-y-3.5">
+    <div className="px-4 md:px-6 pt-3 pb-6 space-y-3.5">
       <div className="flex items-end justify-between gap-2">
         <div>
           <h2 className="font-display text-lg font-extrabold text-white">
@@ -66,7 +66,7 @@ export function VenuesView({
         </span>
       </button>
 
-      <div className="space-y-3">
+      <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
         {venues.map((venue) => {
           const venueConcerts = concerts.filter((c) => c.venueId === venue.id);
           const soldOutCount = venueConcerts.filter((c) => c.status === 'sold-out').length;
@@ -110,11 +110,11 @@ export function VenuesView({
                 {/* Metadata pills */}
                 <div className="mt-2.5 flex flex-wrap gap-1.5 text-[11px] text-[#BFB6AD]">
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/[0.05]">
-                    <MapPin className="w-3 h-3 text-[#E85D4A]" />
+                    <MapPin className="w-3 h-3 text-[#C85A6E]" />
                     {venue.district}
                   </span>
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/[0.05]">
-                    <TrainFront className="w-3 h-3 text-[#E85D4A]" />
+                    <TrainFront className="w-3 h-3 text-[#C85A6E]" />
                     {venue.transit}
                   </span>
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/[0.05]">
@@ -170,7 +170,7 @@ export function VenuesView({
                     href={venue.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2 px-3 rounded-xl bg-[#E85D4A]/15 hover:bg-[#E85D4A]/25 border border-[#E85D4A]/35 active:scale-[0.98] transition-all text-xs font-semibold text-[#F69587] flex items-center justify-center gap-1.5"
+                    className="py-2 px-3 rounded-xl bg-[#C85A6E]/15 hover:bg-[#C85A6E]/25 border border-[#C85A6E]/35 active:scale-[0.98] transition-all text-xs font-semibold text-[#F2A9B6] flex items-center justify-center gap-1.5"
                   >
                     <span>Site officiel</span>
                     <ExternalLink className="w-3.5 h-3.5" />

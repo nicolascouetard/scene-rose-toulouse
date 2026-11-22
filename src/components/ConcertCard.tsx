@@ -104,7 +104,7 @@ export function ConcertCard({
             >
               <Heart
                 className={`w-3.5 h-3.5 ${
-                  isFavorite ? 'fill-[#E85D4A] text-[#E85D4A]' : 'text-white/90'
+                  isFavorite ? 'fill-[#C85A6E] text-[#C85A6E]' : 'text-white/90'
                 }`}
               />
             </button>
@@ -145,7 +145,7 @@ export function ConcertCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#E85D4A] hover:text-[#F48A7B]"
+              className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C85A6E] hover:text-[#EE9EAB]"
             >
               Site
               <ExternalLink className="w-3 h-3" />
@@ -235,7 +235,7 @@ export function ConcertCard({
               <Heart
                 className={`w-4 h-4 transition-colors ${
                   isFavorite
-                    ? 'fill-[#E85D4A] text-[#E85D4A]'
+                    ? 'fill-[#C85A6E] text-[#C85A6E]'
                     : 'text-[#77706A] hover:text-white'
                 }`}
               />
@@ -243,7 +243,7 @@ export function ConcertCard({
           </div>
 
           {showDateBadge && (
-            <div className="mt-0.5 text-[11px] font-semibold text-[#E85D4A]">
+            <div className="mt-0.5 text-[11px] font-semibold text-[#C85A6E]">
               {formatShortDate(concert.date)}
             </div>
           )}
@@ -286,7 +286,7 @@ export function ConcertCard({
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#E85D4A]/14 hover:bg-[#E85D4A]/25 border border-[#E85D4A]/30 text-[11px] font-semibold text-[#F59082] hover:text-white shrink-0 transition-colors"
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#C85A6E]/14 hover:bg-[#C85A6E]/25 border border-[#C85A6E]/30 text-[11px] font-semibold text-[#F2A9B6] hover:text-white shrink-0 transition-colors"
           >
             Site salle
             <ExternalLink className="w-3 h-3" />

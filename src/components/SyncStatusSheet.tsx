@@ -48,15 +48,15 @@ export function SyncStatusSheet({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-[440px] max-h-[88dvh] bg-[#121016] border-t border-x border-white/[0.12] rounded-t-[28px] overflow-hidden flex flex-col animate-sheet-up"
+        className="relative w-full max-w-[440px] md:max-w-xl max-h-[88dvh] bg-[#121016] border-t border-x md:border border-white/[0.12] rounded-t-[28px] md:rounded-3xl overflow-hidden flex flex-col animate-sheet-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drag handle */}
-        <div className="flex items-center justify-center pt-2.5 pb-1">
+        <div className="flex md:hidden items-center justify-center pt-2.5 pb-1">
           <div className="w-10 h-1 rounded-full bg-white/20" />
         </div>
 
@@ -73,7 +73,7 @@ export function SyncStatusSheet({
               Synchronisation des salles
             </h2>
             <p className="text-xs text-[#9E968F] mt-0.5 flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-[#E85D4A]" />
+              <Clock className="w-3.5 h-3.5 text-[#C85A6E]" />
               {syncMeta
                 ? `Dernière vérif. : ${formatSyncTime(syncMeta.lastSyncedAt)}`
                 : 'Prêt à synchroniser en direct'}
@@ -107,7 +107,7 @@ export function SyncStatusSheet({
               type="button"
               onClick={onSyncNow}
               disabled={isSyncing}
-              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#E85D4A] to-[#D94652] hover:brightness-110 disabled:opacity-60 active:scale-[0.98] transition-all text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#E85D4A]/25"
+              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#C85A6E] to-[#A84258] hover:brightness-110 disabled:opacity-60 active:scale-[0.98] transition-all text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#C85A6E]/25"
             >
               <RefreshCw className={`w-4 h-4 ${isSyncing ? 'animate-spin' : ''}`} />
               <span>
@@ -186,7 +186,7 @@ export function SyncStatusSheet({
             <div className="space-y-2">
               <div className="flex items-center justify-between text-xs">
                 <span className="font-bold text-white flex items-center gap-1.5">
-                  <Ticket className="w-3.5 h-3.5 text-[#E85D4A]" />
+                  <Ticket className="w-3.5 h-3.5 text-[#C85A6E]" />
                   État par salle ({syncMeta.syncedVenuesOk}/{syncMeta.totalVenues} en direct)
                 </span>
                 <span className="text-[11px] text-[#8E867F]">
@@ -245,7 +245,7 @@ export function SyncStatusSheet({
           <div className="rounded-2xl bg-[#191620] border border-white/[0.08] p-3.5 space-y-2.5">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 text-xs font-bold text-white">
-                <Smartphone className="w-4 h-4 text-[#E85D4A]" />
+                <Smartphone className="w-4 h-4 text-[#C85A6E]" />
                 <span>Application mobile (PWA)</span>
               </div>
               {isOffline ? (
@@ -270,7 +270,7 @@ export function SyncStatusSheet({
                 onClick={onInstallPwa}
                 className="w-full py-2.5 px-3 rounded-xl bg-white/[0.1] hover:bg-white/[0.16] border border-white/15 text-xs font-bold text-white flex items-center justify-center gap-2 active:scale-95 transition-all"
               >
-                <Download className="w-4 h-4 text-[#E85D4A]" />
+                <Download className="w-4 h-4 text-[#C85A6E]" />
                 Installer Scène Rose sur l’écran d’accueil
               </button>
             ) : (
@@ -286,11 +286,11 @@ export function SyncStatusSheet({
           <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3 text-[11px] text-[#9E968F] space-y-1">
             <p className="font-semibold text-[#DDD5CC]">Automatisation configurée</p>
             <p>
-              • Serveur / Cron : <code className="text-[#F69587]">npm run sync</code> &{' '}
-              <code className="text-[#F69587]">npm run sync:daemon</code>
+              • Serveur / Cron : <code className="text-[#F2A9B6]">npm run sync</code> &{' '}
+              <code className="text-[#F2A9B6]">npm run sync:daemon</code>
             </p>
             <p>
-              • GitHub Actions : <code className="text-[#F69587]">.github/workflows/daily-sync.yml</code> (4× / jour)
+              • GitHub Actions : <code className="text-[#F2A9B6]">.github/workflows/daily-sync.yml</code> (4× / jour)
             </p>
           </div>
         </div>

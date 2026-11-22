@@ -127,15 +127,15 @@ export function RoutePickerSheet({ venue, onClose }: RoutePickerSheetProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[70] flex items-end justify-center bg-black/75 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[70] flex items-end md:items-center justify-center md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-[440px] bg-[#141218] rounded-t-3xl border-t border-x border-white/12 shadow-2xl overflow-hidden animate-slide-up"
+        className="w-full max-w-[440px] md:max-w-md bg-[#141218] rounded-t-3xl md:rounded-3xl border-t border-x md:border border-white/12 shadow-2xl overflow-hidden animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drag handle */}
-        <div className="flex justify-center pt-2.5 pb-1">
+        <div className="flex md:hidden justify-center pt-2.5 pb-1">
           <div className="w-10 h-1 rounded-full bg-white/20" />
         </div>
 
@@ -143,13 +143,13 @@ export function RoutePickerSheet({ venue, onClose }: RoutePickerSheetProps) {
         <div className="px-4 pt-1 pb-3 border-b border-white/[0.08] flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <Navigation className="w-4 h-4 text-[#E85D4A] shrink-0" />
+              <Navigation className="w-4 h-4 text-[#C85A6E] shrink-0" />
               <h3 className="font-display text-base font-bold text-white truncate">
                 Itinéraire · {venue.shortName}
               </h3>
             </div>
             <p className="mt-1 text-xs text-[#A9A097] flex items-center gap-1.5 truncate">
-              <MapPin className="w-3 h-3 text-[#E85D4A] shrink-0" />
+              <MapPin className="w-3 h-3 text-[#C85A6E] shrink-0" />
               <span className="truncate">{venue.address}</span>
             </p>
             <p className="mt-0.5 text-[11px] text-[#CFC7BE] flex items-center gap-1.5">
@@ -184,12 +184,12 @@ export function RoutePickerSheet({ venue, onClose }: RoutePickerSheetProps) {
                     onClick={() => handleModeChange(item.id)}
                     className={`py-2.5 px-1.5 rounded-xl border flex flex-col items-center gap-1 text-[11px] font-semibold transition-all active:scale-95 ${
                       active
-                        ? 'bg-[#E85D4A]/20 border-[#E85D4A]/65 text-white shadow-sm shadow-[#E85D4A]/15'
+                        ? 'bg-[#C85A6E]/20 border-[#C85A6E]/65 text-white shadow-sm shadow-[#C85A6E]/15'
                         : 'bg-white/[0.04] border-white/[0.08] text-[#B3ABA2]'
                     }`}
                   >
                     <Icon
-                      className={`w-4 h-4 ${active ? 'text-[#F69587]' : 'text-[#8E8680]'}`}
+                      className={`w-4 h-4 ${active ? 'text-[#F2A9B6]' : 'text-[#8E8680]'}`}
                     />
                     <span>{item.label}</span>
                   </button>

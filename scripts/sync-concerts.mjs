@@ -280,7 +280,23 @@ async function fetchText(url, options = {}, timeoutMs = 15000) {
     headers: { ...FETCH_HEADERS, ...(options.headers || {}) },
     signal: AbortSignal.timeout(timeoutMs),
   });
-  const text = await res.text();
+  const contentType = (res.headers.get('content-type') || '').toLowerCase();
+  const buf = await res.arrayBuffer();
+  const charsetMatch = contentType.match(/charset=([a-z0-9_-]+)/i);
+  const declaredCharset = charsetMatch ? charsetMatch[1].toLowerCase() : '';
+
+  let text;
+  if (/iso-8859-1|latin1|windows-1252|cp1252/.test(declaredCharset)) {
+    text = new TextDecoder('windows-1252').decode(buf);
+  } else {
+    text = new TextDecoder('utf-8').decode(buf);
+    if (
+      text.includes('\uFFFD') &&
+      /charset=["']?(iso-8859-1|windows-1252|latin1)/i.test(text.slice(0, 1500))
+    ) {
+      text = new TextDecoder('windows-1252').decode(buf);
+    }
+  }
   return { ok: res.ok, status: res.status, text };
 }
 
@@ -638,24 +654,28 @@ async function scrapeLeRex(todayIso) {
     if (!date || date < todayIso) return;
     const time = parseFrenchTime(cardText, '19h30');
 
+    const $artist = $card.find('.artiste').first().clone();
+    const stylesText = $artist.find('.styles_list').text().replace(/[()]/g, '').trim();
+    $artist.find('.styles_list').remove();
     const titleRaw =
-      $card.find('h2, h3, .titre, .title, strong').first().text().trim() ||
-      cardText.split(/\d{2}[hH]\d{2}/)[1]?.split('(')[0]?.trim() ||
+      $artist.text().trim() ||
+      $card.find('h2, h3, .titre, .title').first().text().trim() ||
       '';
     const title = titleRaw.replace(/\s+/g, ' ').trim();
     if (!title || title.length < 2) return;
 
     const status = detectStatusFromCardText(cardText, cardHtml);
-    const genreMatch = cardText.match(/\(([^)]{2,60})\)/);
-    const genres = genreMatch
-      ? genreMatch[1]
-          .split(/[|,/-]+/)
+    const rawGenreStr = stylesText || (cardText.match(/\(([^)]{2,60})\)/)?.[1] || '');
+    const genres = rawGenreStr
+      ? rawGenreStr
+          .split(/[|,/]+/)
           .map((g) => g.trim())
-          .filter((g) => g.length > 1)
+          .filter((g) => g.length > 1 && !/frais|loc|inclus/i.test(g))
           .slice(0, 3)
       : ['Concert'];
 
-    const priceMatch = cardText.match(/\d+(?:[.,]\d+)?\s*€/);
+    const tarifsText = $card.find('.tarifs').text().replace(/\s+/g, ' ').trim();
+    const priceMatch = (tarifsText || cardText).match(/\d+(?:[.,]\d+)?\s*€/);
 
     const prettyTitle =
       title === title.toUpperCase() && title.length > 4

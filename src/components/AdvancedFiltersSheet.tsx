@@ -24,7 +24,7 @@ interface AdvancedFiltersSheetProps {
 }
 
 const TRANSIT_OPTIONS: { id: TransitLine; label: string; color: string }[] = [
-  { id: 'M-A', label: 'Métro A', color: '#E85D4A' },
+  { id: 'M-A', label: 'Métro A', color: '#E53935' },
   { id: 'M-B', label: 'Métro B', color: '#F59E0B' },
   { id: 'T1', label: 'Tram T1', color: '#06B6D4' },
   { id: 'Bus', label: 'Bus / Linéo', color: '#A855F7' },
@@ -61,14 +61,14 @@ export function AdvancedFiltersSheet({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-[440px] max-h-[88dvh] bg-[#121016] border-t border-x border-white/[0.12] rounded-t-[28px] overflow-hidden flex flex-col animate-sheet-up"
+        className="relative w-full max-w-[440px] md:max-w-xl max-h-[88dvh] bg-[#121016] border-t border-x md:border border-white/[0.12] rounded-t-[28px] md:rounded-3xl overflow-hidden flex flex-col animate-sheet-up"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-center pt-2.5 pb-1">
+        <div className="flex md:hidden items-center justify-center pt-2.5 pb-1">
           <div className="w-10 h-1 rounded-full bg-white/20" />
         </div>
 
@@ -107,7 +107,7 @@ export function AdvancedFiltersSheet({
           {/* Format: Concerts vs Nuits Club */}
           <div>
             <label className="text-[11px] font-bold uppercase tracking-wider text-[#9E968F] flex items-center gap-1.5 mb-2">
-              <Music className="w-3.5 h-3.5 text-[#E85D4A]" />
+              <Music className="w-3.5 h-3.5 text-[#C85A6E]" />
               Format de sortie
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -125,7 +125,7 @@ export function AdvancedFiltersSheet({
                     onClick={() => onChangeFormat(opt.id)}
                     className={`py-2.5 px-2 rounded-xl text-xs font-semibold border transition-all flex items-center justify-center gap-1.5 active:scale-95 ${
                       active
-                        ? 'bg-[#E85D4A] border-[#E85D4A] text-white shadow-sm shadow-[#E85D4A]/30'
+                        ? 'bg-[#C85A6E] border-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
                         : 'bg-[#191620] border-white/[0.08] text-[#CFC7BE]'
                     }`}
                   >
@@ -140,7 +140,7 @@ export function AdvancedFiltersSheet({
           {/* Budget */}
           <div>
             <label className="text-[11px] font-bold uppercase tracking-wider text-[#9E968F] flex items-center gap-1.5 mb-2">
-              <Ticket className="w-3.5 h-3.5 text-[#E85D4A]" />
+              <Ticket className="w-3.5 h-3.5 text-[#C85A6E]" />
               Budget (tarif indicatif)
             </label>
             <div className="grid grid-cols-4 gap-1.5">
@@ -199,7 +199,7 @@ export function AdvancedFiltersSheet({
           {/* Métro / Tram */}
           <div>
             <label className="text-[11px] font-bold uppercase tracking-wider text-[#9E968F] flex items-center gap-1.5 mb-2">
-              <TrainFront className="w-3.5 h-3.5 text-[#E85D4A]" />
+              <TrainFront className="w-3.5 h-3.5 text-[#C85A6E]" />
               Accès Tisséo (Métro / Tram)
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -223,7 +223,7 @@ export function AdvancedFiltersSheet({
                       />
                       {t.label}
                     </span>
-                    {active && <Check className="w-3.5 h-3.5 text-[#E85D4A]" />}
+                    {active && <Check className="w-3.5 h-3.5 text-[#C85A6E]" />}
                   </button>
                 );
               })}
@@ -249,7 +249,7 @@ export function AdvancedFiltersSheet({
                     onClick={() => onToggleVenue(v.id)}
                     className={`p-2.5 rounded-xl border text-left transition-all active:scale-[0.98] ${
                       active
-                        ? 'bg-[#E85D4A]/15 border-[#E85D4A]/50 text-white'
+                        ? 'bg-[#C85A6E]/15 border-[#C85A6E]/50 text-white'
                         : 'bg-[#191620] border-white/[0.07] text-[#CFC7BE]'
                     }`}
                   >
@@ -264,7 +264,7 @@ export function AdvancedFiltersSheet({
                         </span>
                       </div>
                       {active ? (
-                        <Check className="w-3.5 h-3.5 text-[#E85D4A] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#C85A6E] shrink-0" />
                       ) : (
                         <span className="text-[10px] text-[#857D77] shrink-0">{count}</span>
                       )}
@@ -284,7 +284,7 @@ export function AdvancedFiltersSheet({
           <button
             type="button"
             onClick={onClose}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-[#E85D4A] to-[#D94652] hover:brightness-110 active:scale-[0.99] transition-all text-white text-sm font-bold shadow-lg shadow-[#E85D4A]/25"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-[#C85A6E] to-[#A84258] hover:brightness-110 active:scale-[0.99] transition-all text-white text-sm font-bold shadow-lg shadow-[#C85A6E]/25"
           >
             Afficher {resultCount} concert{resultCount > 1 ? 's' : ''}
           </button>

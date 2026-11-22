@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
+  Bell,
   Building2,
   Calendar,
   ExternalLink,
@@ -43,6 +44,7 @@ import {
 import { FeaturedCarousel } from './components/FeaturedCarousel';
 import { ConcertCard } from './components/ConcertCard';
 import { ConcertDetailSheet } from './components/ConcertDetailSheet';
+import { NewsletterSheet } from './components/NewsletterSheet';
 import { VenuesView } from './components/VenuesView';
 import { FavoritesView } from './components/FavoritesView';
 import { SyncStatusSheet } from './components/SyncStatusSheet';
@@ -108,6 +110,8 @@ export function App() {
   const [onlyNew, setOnlyNew] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [selectedConcert, setSelectedConcert] = useState<Concert | null>(null);
+  const [newsletterOpen, setNewsletterOpen] = useState(false);
+  const [newsletterTab, setNewsletterTab] = useState<'subscribe' | 'privacy'>('subscribe');
   const [toast, setToast] = useState<string | null>(null);
 
   const [favorites, setFavorites] = useState<string[]>(() => {
@@ -143,6 +147,20 @@ export function App() {
     window.addEventListener('offline', onOffline);
     window.addEventListener('beforeinstallprompt', onBeforeInstall);
     window.addEventListener('appinstalled', onInstalled);
+
+    // Détection retour de confirmation Double Opt-In Brevo (?subscribed=1)
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('subscribed') === '1') {
+        setToast('Inscription à l’alerte hebdo confirmée !');
+        params.delete('subscribed');
+        const nextUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
+        window.history.replaceState({}, '', nextUrl);
+      }
+    } catch {
+      // ignore
+    }
+
     return () => {
       window.removeEventListener('online', onOnline);
       window.removeEventListener('offline', onOffline);
@@ -461,8 +479,8 @@ export function App() {
 
   return (
     <div className="min-h-dvh w-full flex justify-center bg-[#09080B]">
-      {/* Mobile-first app shell */}
-      <div className="relative w-full max-w-[440px] min-h-dvh bg-[#0E0D10] sm:border-x sm:border-white/[0.08] sm:shadow-[0_0_80px_rgba(0,0,0,0.75)] flex flex-col">
+      {/* Responsive app shell: mobile-first (<=440px) & wide editorial desktop (md/lg) */}
+      <div className="relative w-full max-w-[440px] md:max-w-5xl lg:max-w-6xl min-h-dvh bg-[#0E0D10] sm:border-x sm:border-white/[0.08] sm:shadow-[0_0_80px_rgba(0,0,0,0.75)] flex flex-col">
         {/* Offline Banner */}
         {isOffline && (
           <div className="bg-amber-500/20 border-b border-amber-400/30 px-4 py-1.5 flex items-center justify-center gap-2 text-[11px] font-semibold text-amber-200">
@@ -473,16 +491,16 @@ export function App() {
 
         {/* Sticky Top Header */}
         <header className="sticky top-0 z-30 bg-[#0E0D10]/92 backdrop-blur-xl border-b border-white/[0.07]">
-          <div className="px-4 pt-3.5 pb-2.5 flex items-center justify-between gap-2">
+          <div className="px-4 md:px-6 pt-3.5 pb-2.5 flex items-center justify-between gap-3">
             <button
               type="button"
               onClick={() => {
                 setActiveTab('agenda');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="flex items-center gap-2.5 text-left"
+              className="flex items-center gap-2.5 text-left shrink-0"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#E85D4A] to-[#B93829] flex items-center justify-center shadow-md shadow-[#E85D4A]/25">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C85A6E] to-[#943A4D] flex items-center justify-center shadow-md shadow-[#C85A6E]/25">
                 <Radio className="w-4.5 h-4.5 text-white" />
               </div>
               <div>
@@ -490,16 +508,99 @@ export function App() {
                   <h1 className="font-display text-[17px] font-extrabold tracking-tight text-white leading-none">
                     SCÈNE ROSE
                   </h1>
-                  <span className="px-1.5 py-0.5 rounded bg-[#E85D4A]/18 text-[9.5px] font-bold uppercase tracking-wider text-[#F48A7B]">
+                  <span className="px-1.5 py-0.5 rounded bg-[#C85A6E]/18 text-[9.5px] font-bold uppercase tracking-wider text-[#EE9EAB]">
                     31
                   </span>
                 </div>
                 <p className="text-[11px] text-[#9E968F] mt-0.5 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-[#E85D4A]" />
+                  <MapPin className="w-3 h-3 text-[#C85A6E]" />
                   Toulouse · {venues.length} salles · {concerts.length} concerts
                 </p>
               </div>
             </button>
+
+            {/* Desktop Top Navigation (hidden on mobile where bottom nav is shown) */}
+            <nav
+              aria-label="Navigation principale ordinateur"
+              className="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-[#16141B] border border-white/[0.08]"
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('agenda');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  activeTab === 'agenda'
+                    ? 'bg-[#C85A6E] text-white shadow-sm'
+                    : 'text-[#A9A097] hover:text-white'
+                }`}
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Concerts</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('map');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  activeTab === 'map'
+                    ? 'bg-[#C85A6E] text-white shadow-sm'
+                    : 'text-[#A9A097] hover:text-white'
+                }`}
+              >
+                <MapIcon className="w-3.5 h-3.5" />
+                <span>Carte</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('venues');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  activeTab === 'venues'
+                    ? 'bg-[#C85A6E] text-white shadow-sm'
+                    : 'text-[#A9A097] hover:text-white'
+                }`}
+              >
+                <Building2 className="w-3.5 h-3.5" />
+                <span>Salles ({venues.length})</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('favorites');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  activeTab === 'favorites'
+                    ? 'bg-[#C85A6E] text-white shadow-sm'
+                    : 'text-[#A9A097] hover:text-white'
+                }`}
+              >
+                <Heart className="w-3.5 h-3.5" />
+                <span>Favoris</span>
+                {favorites.length > 0 && (
+                  <span
+                    className={`min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
+                      favoriteAlertsCount > 0
+                        ? 'bg-amber-500 text-[#130F09]'
+                        : activeTab === 'favorites'
+                          ? 'bg-white/25 text-white'
+                          : 'bg-[#C85A6E] text-white'
+                    }`}
+                  >
+                    {favorites.length}
+                  </span>
+                )}
+              </button>
+            </nav>
 
             <div className="flex items-center gap-1.5">
               <button
@@ -518,6 +619,19 @@ export function App() {
                 <span className="hidden xs:inline">Sync</span>
               </button>
 
+              {/* Alerte email hebdo */}
+              <button
+                type="button"
+                onClick={() => {
+                  setNewsletterTab('subscribe');
+                  setNewsletterOpen(true);
+                }}
+                aria-label="S'inscrire à l'alerte hebdomadaire par email"
+                className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#18151D] hover:bg-[#221E28] border border-white/[0.08] text-[#F5EFE9] active:scale-95 transition-all"
+              >
+                <Bell className="w-3.5 h-3.5 text-[#C85A6E]" />
+              </button>
+
               {activeTab === 'agenda' && (
                 <div className="flex items-center p-0.5 rounded-xl bg-[#18151D] border border-white/[0.08]">
                   <button
@@ -526,7 +640,7 @@ export function App() {
                     onClick={() => setViewMode('list')}
                     className={`p-1.5 rounded-lg transition-colors ${
                       viewMode === 'list'
-                        ? 'bg-[#E85D4A] text-white'
+                        ? 'bg-[#C85A6E] text-white'
                         : 'text-[#8E8680] hover:text-white'
                     }`}
                   >
@@ -538,7 +652,7 @@ export function App() {
                     onClick={() => setViewMode('grid')}
                     className={`p-1.5 rounded-lg transition-colors ${
                       viewMode === 'grid'
-                        ? 'bg-[#E85D4A] text-white'
+                        ? 'bg-[#C85A6E] text-white'
                         : 'text-[#8E8680] hover:text-white'
                     }`}
                   >
@@ -561,7 +675,7 @@ export function App() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Artiste, genre, salle..."
-                    className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-[#18151D] border border-white/[0.08] focus:border-[#E85D4A]/60 focus:outline-none text-[13px] text-white placeholder:text-[#78706A] transition-colors"
+                    className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-[#18151D] border border-white/[0.08] focus:border-[#C85A6E]/60 focus:outline-none text-[13px] text-white placeholder:text-[#78706A] transition-colors"
                   />
                   {search && (
                     <button
@@ -580,14 +694,14 @@ export function App() {
                   onClick={() => setFiltersOpen(true)}
                   className={`relative shrink-0 h-[42px] px-3 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 ${
                     advancedFilterCount > 0
-                      ? 'bg-[#E85D4A]/20 border-[#E85D4A]/50 text-[#F69587]'
+                      ? 'bg-[#C85A6E]/20 border-[#C85A6E]/50 text-[#F2A9B6]'
                       : 'bg-[#18151D] border-white/[0.08] text-[#D2CAC2]'
                   }`}
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5" />
                   <span>Filtres</span>
                   {advancedFilterCount > 0 && (
-                    <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-[#E85D4A] text-[10px] font-bold text-white flex items-center justify-center">
+                    <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-[#C85A6E] text-[10px] font-bold text-white flex items-center justify-center">
                       {advancedFilterCount}
                     </span>
                   )}
@@ -643,14 +757,14 @@ export function App() {
                         onClick={() => setSelectedMonth(active ? null : m.ym)}
                         className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all active:scale-95 flex items-center gap-1.5 ${
                           active
-                            ? 'bg-[#E85D4A]/25 border border-[#E85D4A]/60 text-[#F7A396]'
+                            ? 'bg-[#C85A6E]/25 border border-[#C85A6E]/60 text-[#F4B4BF]'
                             : 'bg-white/[0.03] border border-white/[0.06] text-[#9E968F] hover:text-white'
                         }`}
                       >
                         <span>{m.label}</span>
                         <span
                           className={`text-[10px] ${
-                            active ? 'text-[#F7A396]' : 'text-[#6F6862]'
+                            active ? 'text-[#F4B4BF]' : 'text-[#6F6862]'
                           }`}
                         >
                           {m.count}
@@ -668,7 +782,7 @@ export function App() {
                   onClick={() => setSelectedCategory('all')}
                   className={`shrink-0 px-3 py-1.5 rounded-xl text-[11.5px] font-semibold transition-all active:scale-95 ${
                     selectedCategory === 'all'
-                      ? 'bg-[#E85D4A] text-white shadow-sm shadow-[#E85D4A]/30'
+                      ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
                       : 'bg-white/[0.04] text-[#AEA69D] border border-white/[0.06] hover:text-white'
                   }`}
                 >
@@ -683,7 +797,7 @@ export function App() {
                       onClick={() => setSelectedCategory(active ? 'all' : cat)}
                       className={`shrink-0 px-3 py-1.5 rounded-xl text-[11.5px] font-semibold transition-all active:scale-95 ${
                         active
-                          ? 'bg-[#E85D4A] text-white shadow-sm shadow-[#E85D4A]/30'
+                          ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
                           : 'bg-white/[0.04] text-[#AEA69D] border border-white/[0.06] hover:text-white'
                       }`}
                     >
@@ -696,7 +810,7 @@ export function App() {
               {/* Active Venues Banner (supports multi-venue) */}
               {selectedVenuesObjects.length > 0 && (
                 <div className="px-4 pt-0.5">
-                  <div className="px-3 py-2 rounded-xl bg-[#1A1721] border border-[#E85D4A]/35 flex items-center justify-between gap-2">
+                  <div className="px-3 py-2 rounded-xl bg-[#1A1721] border border-[#C85A6E]/35 flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 min-w-0">
                       <span
                         className="w-2.5 h-2.5 rounded-full shrink-0"
@@ -716,7 +830,7 @@ export function App() {
                           href={selectedVenuesObjects[0].websiteUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#F48A7B]"
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#EE9EAB]"
                         >
                           Site
                           <ExternalLink className="w-3 h-3" />
@@ -739,15 +853,15 @@ export function App() {
         </header>
 
         {/* Main Scrollable Area */}
-        <main className="flex-1 pb-24">
+        <main className="flex-1 pb-24 md:pb-12">
           {activeTab === 'agenda' && (
             <>
               {/* Shared friend selection banner (?selection=...) */}
               {sharedSelectionIds.length > 0 && (
-                <div className="mx-4 mt-3 p-3.5 rounded-2xl bg-gradient-to-r from-[#E85D4A]/20 to-violet-500/15 border border-[#E85D4A]/40 space-y-2.5">
+                <div className="mx-4 mt-3 p-3.5 rounded-2xl bg-gradient-to-r from-[#C85A6E]/20 to-violet-500/15 border border-[#C85A6E]/40 space-y-2.5">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <UserCheck className="w-4 h-4 text-[#F69587] shrink-0" />
+                      <UserCheck className="w-4 h-4 text-[#F2A9B6] shrink-0" />
                       <div>
                         <p className="text-xs font-bold text-white">
                           Sélection partagée par un ami ({filteredConcerts.length})
@@ -769,7 +883,7 @@ export function App() {
                   <button
                     type="button"
                     onClick={importSharedSelection}
-                    className="w-full py-2 rounded-xl bg-[#E85D4A] hover:bg-[#F06B59] text-white text-xs font-bold active:scale-[0.98] transition-all"
+                    className="w-full py-2 rounded-xl bg-[#C85A6E] hover:bg-[#DA7083] text-white text-xs font-bold active:scale-[0.98] transition-all"
                   >
                     Tout ajouter à mes favoris
                   </button>
@@ -801,7 +915,7 @@ export function App() {
                   <button
                     type="button"
                     onClick={resetFilters}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#E85D4A] hover:text-[#F48A7B]"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#C85A6E] hover:text-[#EE9EAB]"
                   >
                     <RotateCcw className="w-3 h-3" />
                     Réinitialiser
@@ -821,7 +935,7 @@ export function App() {
                   <button
                     type="button"
                     onClick={resetFilters}
-                    className="mt-4 px-4 py-2 rounded-xl bg-[#E85D4A] text-white text-xs font-semibold"
+                    className="mt-4 px-4 py-2 rounded-xl bg-[#C85A6E] text-white text-xs font-semibold"
                   >
                     Voir tous les concerts
                   </button>
@@ -832,13 +946,13 @@ export function App() {
                     const header = formatDayHeader(group.date);
                     return (
                       <section key={group.date}>
-                        <div className="px-4 py-1.5 flex items-center justify-between">
+                        <div className="px-4 md:px-6 py-1.5 flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <h2 className="font-display text-sm font-bold text-[#F7F4EF] capitalize">
                               {header.primary}
                             </h2>
                             {header.tag && (
-                              <span className="px-2 py-0.5 rounded-full bg-[#E85D4A]/20 border border-[#E85D4A]/35 text-[10px] font-bold uppercase tracking-wider text-[#F69587]">
+                              <span className="px-2 py-0.5 rounded-full bg-[#C85A6E]/20 border border-[#C85A6E]/35 text-[10px] font-bold uppercase tracking-wider text-[#F2A9B6]">
                                 {header.tag}
                               </span>
                             )}
@@ -851,8 +965,8 @@ export function App() {
                         <div
                           className={
                             viewMode === 'grid'
-                              ? 'px-4 mt-1.5 grid grid-cols-2 gap-2.5'
-                              : 'px-4 mt-1.5 space-y-2.5'
+                              ? 'px-4 md:px-6 mt-1.5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 md:gap-3.5'
+                              : 'px-4 md:px-6 mt-1.5 space-y-2.5 md:space-y-0 md:grid md:grid-cols-2 md:gap-3'
                           }
                         >
                           {group.concerts.map((concert) => (
@@ -873,8 +987,33 @@ export function App() {
                 </div>
               )}
 
+              {/* Minimalist Weekly Email Alert Card */}
+              <section className="mt-8 px-4 md:px-6 max-w-2xl mx-auto">
+                <div className="rounded-2xl bg-[#16141B] border border-white/[0.09] p-4 flex items-center justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-white">
+                      <Bell className="w-3.5 h-3.5 text-[#C85A6E] shrink-0" />
+                      <span>Alerte nouvelles sorties</span>
+                    </div>
+                    <p className="mt-0.5 text-[11px] text-[#9E968F] leading-snug">
+                      1 mail épuré par semaine · zéro spam · désinscription en 1 clic
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setNewsletterTab('subscribe');
+                      setNewsletterOpen(true);
+                    }}
+                    className="shrink-0 px-3 py-2 rounded-xl bg-[#C85A6E] hover:bg-[#DA7083] text-white text-[11.5px] font-bold active:scale-95 transition-all"
+                  >
+                    M’alerter
+                  </button>
+                </div>
+              </section>
+
               {/* Subtle attribution footer */}
-              <footer className="mt-10 px-5 text-center text-[11px] text-[#766E68] space-y-1">
+              <footer className="mt-6 px-5 text-center text-[11px] text-[#766E68] space-y-1.5">
                 <p>
                   Programmation agrégée depuis les sites officiels de {venues.length} salles de
                   Toulouse et sa métropole.
@@ -883,6 +1022,18 @@ export function App() {
                   {syncMeta
                     ? `Synchronisé en direct (${formatSyncTime(syncMeta.lastSyncedAt)}) · Auto-sync 4×/jour.`
                     : 'Synchronisation automatique 4×/jour · Horaires & tarifs indicatifs.'}
+                </p>
+                <p className="pt-0.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setNewsletterTab('privacy');
+                      setNewsletterOpen(true);
+                    }}
+                    className="text-[#9E968F] hover:text-white underline underline-offset-2"
+                  >
+                    Confidentialité & RGPD
+                  </button>
                 </p>
               </footer>
             </>
@@ -922,10 +1073,10 @@ export function App() {
           )}
         </main>
 
-        {/* Bottom Navigation Bar (4 tabs: Concerts, Carte, Salles, Favoris) */}
+        {/* Bottom Navigation Bar (Mobile only; desktop uses sticky top nav) */}
         <nav
           aria-label="Navigation principale"
-          className="fixed bottom-0 left-1/2 -translate-x-1/2 z-40 w-full max-w-[440px] bg-[#121016]/95 backdrop-blur-xl border-t border-white/[0.09] pb-[env(safe-area-inset-bottom)]"
+          className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-40 w-full max-w-[440px] bg-[#121016]/95 backdrop-blur-xl border-t border-white/[0.09] pb-[env(safe-area-inset-bottom)]"
         >
           <div className="grid grid-cols-4 h-16">
             <button
@@ -935,7 +1086,7 @@ export function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`flex flex-col items-center justify-center gap-1 transition-colors ${
-                activeTab === 'agenda' ? 'text-[#E85D4A]' : 'text-[#8E8680]'
+                activeTab === 'agenda' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
               <Calendar className="w-5 h-5" />
@@ -949,7 +1100,7 @@ export function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`flex flex-col items-center justify-center gap-1 transition-colors ${
-                activeTab === 'map' ? 'text-[#E85D4A]' : 'text-[#8E8680]'
+                activeTab === 'map' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
               <MapIcon className="w-5 h-5" />
@@ -963,7 +1114,7 @@ export function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`flex flex-col items-center justify-center gap-1 transition-colors ${
-                activeTab === 'venues' ? 'text-[#E85D4A]' : 'text-[#8E8680]'
+                activeTab === 'venues' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
               <Building2 className="w-5 h-5" />
@@ -977,19 +1128,19 @@ export function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className={`relative flex flex-col items-center justify-center gap-1 transition-colors ${
-                activeTab === 'favorites' ? 'text-[#E85D4A]' : 'text-[#8E8680]'
+                activeTab === 'favorites' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
               <div className="relative">
                 <Heart
                   className={`w-5 h-5 ${
-                    activeTab === 'favorites' ? 'fill-[#E85D4A]/20' : ''
+                    activeTab === 'favorites' ? 'fill-[#C85A6E]/20' : ''
                   }`}
                 />
                 {favorites.length > 0 && (
                   <span
                     className={`absolute -top-1.5 -right-2.5 min-w-[16px] h-4 px-1 rounded-full text-[10px] font-bold text-white flex items-center justify-center ${
-                      favoriteAlertsCount > 0 ? 'bg-amber-500 text-[#130F09]' : 'bg-[#E85D4A]'
+                      favoriteAlertsCount > 0 ? 'bg-amber-500 text-[#130F09]' : 'bg-[#C85A6E]'
                     }`}
                   >
                     {favorites.length}
@@ -1045,6 +1196,13 @@ export function App() {
           onInstallPwa={handleInstallPwa}
           onSyncNow={triggerLiveSync}
           onClose={() => setSyncSheetOpen(false)}
+        />
+
+        {/* Weekly Newsletter & RGPD Privacy Bottom Sheet */}
+        <NewsletterSheet
+          open={newsletterOpen}
+          initialTab={newsletterTab}
+          onClose={() => setNewsletterOpen(false)}
         />
 
         {/* Toast notification */}

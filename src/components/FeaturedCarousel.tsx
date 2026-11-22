@@ -23,7 +23,7 @@ export function FeaturedCarousel({
     <section className="pt-3 pb-2">
       <div className="flex items-center justify-between px-4 mb-2.5">
         <div className="flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-[#E85D4A]" />
+          <Sparkles className="w-3.5 h-3.5 text-[#C85A6E]" />
           <h2 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-[#EAE4DC]">
             À ne pas manquer
           </h2>
@@ -71,7 +71,7 @@ export function FeaturedCarousel({
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-[11px] font-semibold text-white">
                   <span
                     className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: venue?.accentColor || '#E85D4A' }}
+                    style={{ backgroundColor: venue?.accentColor || '#C85A6E' }}
                   />
                   {formatShortDate(concert.date)} · {concert.time}
                 </span>
@@ -87,7 +87,7 @@ export function FeaturedCarousel({
                 >
                   <Heart
                     className={`w-4 h-4 transition-colors ${
-                      isFav ? 'fill-[#E85D4A] text-[#E85D4A]' : 'text-white/90'
+                      isFav ? 'fill-[#C85A6E] text-[#C85A6E]' : 'text-white/90'
                     }`}
                   />
                 </button>
@@ -115,7 +115,7 @@ export function FeaturedCarousel({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1 shrink-0 text-[#F48A7B] hover:text-white font-semibold"
+                    className="inline-flex items-center gap-1 shrink-0 text-[#EE9EAB] hover:text-white font-semibold"
                   >
                     Salle
                     <ExternalLink className="w-3 h-3" />

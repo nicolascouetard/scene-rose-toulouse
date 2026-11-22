@@ -113,12 +113,17 @@ export interface Concert {
   isClubNight?: boolean;
 }
 
-export const TODAY_ISO = new Intl.DateTimeFormat('en-CA', {
-  timeZone: 'Europe/Paris',
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-}).format(new Date());
+export function getTodayParisIso(now: Date = new Date()): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Paris',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(now);
+}
+
+export const TODAY_ISO = getTodayParisIso();
+
 export const GENRE_CATEGORIES: GenreCategory[] = [
   'Rock & Metal',
   'Électro & Club',
@@ -140,7 +145,7 @@ export const VENUES: Venue[] = [
     capacity: '1 500 places',
     vibe: 'Salle mythique rock, rap, metal & nuits électro',
     websiteUrl: 'https://lebikini.com/programmation',
-    accentColor: '#E85D4A',
+    accentColor: '#C85A6E',
   },
   {
     id: 'zenith-toulouse',
