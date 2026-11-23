@@ -1232,7 +1232,7 @@ export function App() {
               className="inline-flex items-center gap-1.5 text-[#AFA8A0] hover:text-[#F2A9B6] transition-colors font-medium"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-[#C85A6E]" />
-              À propos & Confidentialité (RGPD)
+              À propos · Contact & suggestions · RGPD
             </button>
           </footer>
         </main>

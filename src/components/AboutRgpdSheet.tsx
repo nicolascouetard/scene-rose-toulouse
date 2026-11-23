@@ -1,5 +1,17 @@
-import { useEffect } from 'react';
-import { X, ShieldCheck, Music2, RefreshCw, Mail, Heart } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import {
+  Check,
+  Copy,
+  Heart,
+  Mail,
+  MessageSquarePlus,
+  Music2,
+  RefreshCw,
+  ShieldCheck,
+  X,
+} from 'lucide-react';
+
+const CONTACT_EMAIL = 'scenerose.toulouse@gmail.com';
 
 interface AboutRgpdSheetProps {
   open: boolean;
@@ -18,6 +30,8 @@ export function AboutRgpdSheet({
   onClose,
   onOpenNewsletter,
 }: AboutRgpdSheetProps) {
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -32,6 +46,16 @@ export function AboutRgpdSheet({
   }, [open, onClose]);
 
   if (!open) return null;
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setCopiedEmail(true);
+      window.setTimeout(() => setCopiedEmail(false), 2000);
+    } catch {
+      // ignore
+    }
+  };
 
   return (
     <div
@@ -53,7 +77,7 @@ export function AboutRgpdSheet({
             </div>
             <div>
               <h2 className="font-display text-[17px] font-bold text-[#F7F4EF]">
-                À propos & Confidentialité
+                À propos, Contact & RGPD
               </h2>
               <p className="text-[11px] text-[#9A938B]">Scène Rose · Toulouse & Occitanie</p>
             </div>
@@ -94,6 +118,45 @@ export function AboutRgpdSheet({
             </p>
           </div>
 
+          {/* Contact / Error report / Suggestions */}
+          <div className="p-3.5 rounded-2xl bg-[#C85A6E]/[0.07] border border-[#C85A6E]/25 space-y-2.5">
+            <div className="flex items-center gap-2 text-[#F7F4EF] font-semibold text-[13px]">
+              <MessageSquarePlus className="w-4 h-4 text-[#F2A9B6]" />
+              Signaler une erreur ou soumettre une suggestion
+            </div>
+            <p className="text-[#BDB6AE] text-[12px]">
+              Une date manquante, un horaire modifié, une salle toulousaine ou une idée à proposer ? Écris-nous
+              directement :
+            </p>
+            <div className="flex items-center gap-2">
+              <a
+                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Scène Rose — Signalement ou suggestion')}`}
+                className="flex-1 min-w-0 py-2 px-3 rounded-xl bg-[#C85A6E] hover:bg-[#DA7083] text-white font-semibold text-[12px] flex items-center justify-center gap-1.5 transition-colors truncate"
+              >
+                <Mail className="w-3.5 h-3.5 shrink-0" />
+                <span className="truncate">{CONTACT_EMAIL}</span>
+              </a>
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                title="Copier l'adresse e-mail"
+                className="shrink-0 py-2 px-2.5 rounded-xl bg-white/[0.07] hover:bg-white/[0.13] border border-white/10 text-[#E5DFD8] text-[11.5px] font-semibold inline-flex items-center gap-1 transition-colors"
+              >
+                {copiedEmail ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    Copié
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    Copier
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
           <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.07] space-y-1.5">
             <div className="flex items-center gap-2 text-[#F7F4EF] font-semibold text-[13px]">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
@@ -108,10 +171,10 @@ export function AboutRgpdSheet({
                 en local dans votre navigateur.
               </li>
               <li>
-                Si vous vous abonnez à l’<strong className="text-[#F7F4EF]">alerte hebdomadaire</strong> (jeudi midi),
-                votre adresse e-mail est enregistrée avec consentement explicite (Double Opt-In) chez{' '}
-                <strong className="text-[#F7F4EF]">Brevo (serveurs UE)</strong>, jamais revendue, avec désinscription
-                en 1 clic en bas de chaque e-mail.
+                Si vous vous abonnez à l’<strong className="text-[#F7F4EF]">alerte hebdomadaire</strong> (jeudi midi)
+                ou aux <strong className="text-[#F7F4EF]">rappels favoris</strong>, votre e-mail est hébergé chez{' '}
+                <strong className="text-[#F7F4EF]">Brevo (serveurs UE)</strong>, jamais revendu, avec désinscription en
+                1 clic.
               </li>
             </ul>
           </div>
