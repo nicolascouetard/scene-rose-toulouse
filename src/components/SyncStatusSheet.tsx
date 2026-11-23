@@ -117,7 +117,7 @@ export function SyncStatusSheet({
               </span>
             </button>
             <p className="text-[11px] text-[#8E867F] leading-snug">
-              Synchronisation automatique des 15 salles 4 fois par jour à 06h, 11h30, 17h30 et 21h (statuts{' '}
+              Synchronisation automatique des 17 salles 4 fois par jour à 06h, 11h30, 17h30 et 21h (statuts{' '}
               <span className="text-[#CFC7BE] font-medium">Complets</span>,{' '}
               <span className="text-[#CFC7BE] font-medium">Dernières places</span>,{' '}
               <span className="text-[#CFC7BE] font-medium">Annulés</span> & nouvelles dates). Ce bouton recharge immédiatement les données les plus fraîches.

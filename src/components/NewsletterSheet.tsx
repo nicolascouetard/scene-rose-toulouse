@@ -30,6 +30,15 @@ export function NewsletterSheet({
       setTab(initialTab);
       setStatus('idle');
       setFeedback('');
+      try {
+        const saved =
+          localStorage.getItem('scene_rose_remembered_email_v1') ||
+          localStorage.getItem('scene_rose_fav_alert_email_v1') ||
+          '';
+        if (saved && !email) setEmail(saved);
+      } catch {
+        // ignore
+      }
     }
   }, [open, initialTab]);
 
@@ -81,6 +90,11 @@ export function NewsletterSheet({
       setFeedback(
         data.message || 'Inscription enregistrée ! Vérifie ta boîte mail pour confirmer.'
       );
+      try {
+        localStorage.setItem('scene_rose_remembered_email_v1', cleaned);
+      } catch {
+        // ignore
+      }
       setEmail('');
       setConsent(false);
     } catch (err) {
@@ -149,7 +163,7 @@ export function NewsletterSheet({
                   <span>Dans ton mail du jeudi midi :</span>
                 </div>
                 <ul className="text-xs text-[#B8B0A7] space-y-1 pl-4 list-disc">
-                  <li>Les nouvelles dates annoncées sur les 15 salles toulousaines</li>
+                  <li>Les nouvelles dates annoncées sur les 17 salles toulousaines</li>
                   <li>Les concerts immanquables du week-end à venir</li>
                   <li>Les alertes « Dernières places » avant complet</li>
                 </ul>

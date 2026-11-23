@@ -3,14 +3,12 @@ import {
   Calendar,
   CalendarPlus,
   Clock,
-  Disc3,
   ExternalLink,
   Headphones,
   Heart,
   MapPin,
   Maximize2,
   Navigation,
-  PlayCircle,
   Share2,
   Ticket,
   TrainFront,
@@ -19,6 +17,7 @@ import {
 import type { Concert, Venue } from '../data/toulouseData';
 import { cleanArtistQuery, downloadConcertIcs, formatFullDate } from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
+import { StreamingLinksRow } from './StreamingLinksRow';
 
 interface ConcertDetailSheetProps {
   concert: Concert | null;
@@ -66,18 +65,19 @@ export function ConcertDetailSheet({
   if (!concert || !venue) return null;
 
   const artistQuery = cleanArtistQuery(concert.title);
-  const spotifyUrl = `https://open.spotify.com/search/${encodeURIComponent(artistQuery)}`;
-  const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(`${artistQuery} live music`)}`;
-  const deezerUrl = `https://www.deezer.com/search/${encodeURIComponent(artistQuery)}`;
 
   const handleShare = async () => {
+    const deepUrl = new URL(window.location.href);
+    deepUrl.search = '';
+    deepUrl.searchParams.set('concert', concert.id);
+    const shareUrl = deepUrl.toString();
     const shareText = `${concert.title} au ${venue.name} le ${formatFullDate(concert.date)} à ${concert.time}`;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: concert.title,
+          title: `${concert.title} · Scène Rose`,
           text: shareText,
-          url: concert.venueEventUrl,
+          url: shareUrl,
         });
         return;
       } catch {
@@ -85,8 +85,8 @@ export function ConcertDetailSheet({
       }
     }
     try {
-      await navigator.clipboard.writeText(`${shareText} — ${concert.venueEventUrl}`);
-      onNotify('Lien du concert copié !');
+      await navigator.clipboard.writeText(shareUrl);
+      onNotify('Lien direct du concert copié !');
     } catch {
       onNotify('Lien prêt à être partagé');
     }
@@ -237,7 +237,7 @@ export function ConcertDetailSheet({
                 </button>
               </div>
 
-              {/* Écoute rapide de l'artiste (Spotify / YouTube / Deezer) */}
+              {/* Écoute rapide de l'artiste (Spotify / Apple Music / Deezer / Qobuz / YouTube) */}
               <div className="mt-3.5 rounded-2xl bg-[#1A1720] border border-white/[0.08] p-3">
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-[11px] uppercase tracking-wider text-[#9E968F] font-semibold flex items-center gap-1.5">
@@ -245,35 +245,7 @@ export function ConcertDetailSheet({
                     Écouter « {artistQuery} »
                   </span>
                 </div>
-                <div className="grid grid-cols-3 gap-2">
-                  <a
-                    href={spotifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2 px-2 rounded-xl bg-[#1DB954]/15 hover:bg-[#1DB954]/25 border border-[#1DB954]/35 text-[11.5px] font-semibold text-[#6EE7A0] flex items-center justify-center gap-1.5 active:scale-95 transition-all"
-                  >
-                    <Disc3 className="w-3.5 h-3.5" />
-                    Spotify
-                  </a>
-                  <a
-                    href={youtubeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2 px-2 rounded-xl bg-[#FF0000]/15 hover:bg-[#FF0000]/25 border border-[#FF0000]/30 text-[11.5px] font-semibold text-[#FCA5A5] flex items-center justify-center gap-1.5 active:scale-95 transition-all"
-                  >
-                    <PlayCircle className="w-3.5 h-3.5" />
-                    YouTube
-                  </a>
-                  <a
-                    href={deezerUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2 px-2 rounded-xl bg-[#A238FF]/15 hover:bg-[#A238FF]/25 border border-[#A238FF]/35 text-[11.5px] font-semibold text-[#D8B4FE] flex items-center justify-center gap-1.5 active:scale-95 transition-all"
-                  >
-                    <Headphones className="w-3.5 h-3.5" />
-                    Deezer
-                  </a>
-                </div>
+                <StreamingLinksRow artistName={concert.title} />
               </div>
 
               {/* Practical details box */}

@@ -17,8 +17,19 @@ export type TravelMode = 'transit' | 'bicycling' | 'walking' | 'driving';
 
 const STORAGE_KEY = 'scene_rose_travel_mode_v1';
 
+export interface RouteDestination {
+  id: string;
+  name: string;
+  shortName: string;
+  address: string;
+  transit: string;
+  lat?: number;
+  lng?: number;
+}
+
 interface RoutePickerSheetProps {
-  venue: Venue | null;
+  venue?: Venue | null;
+  destination?: RouteDestination | null;
   onClose: () => void;
 }
 
@@ -69,23 +80,28 @@ function getInitialMode(): TravelMode {
   return 'transit';
 }
 
-export function RoutePickerSheet({ venue, onClose }: RoutePickerSheetProps) {
+export function RoutePickerSheet({ venue, destination, onClose }: RoutePickerSheetProps) {
   const [mode, setMode] = useState<TravelMode>(getInitialMode);
   const [copied, setCopied] = useState(false);
 
+  const target: RouteDestination | null = destination || venue || null;
+
   useEffect(() => {
-    if (!venue) return;
+    if (!target) return;
     setCopied(false);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [venue, onClose]);
+  }, [target, onClose]);
 
-  if (!venue) return null;
+  if (!target) return null;
 
-  const geo = VENUE_GEO[venue.id];
+  const geo =
+    typeof target.lat === 'number' && typeof target.lng === 'number'
+      ? { lat: target.lat, lng: target.lng }
+      : VENUE_GEO[target.id];
   const activeMode = TRAVEL_MODES.find((m) => m.id === mode) || TRAVEL_MODES[0];
 
   const handleModeChange = (nextMode: TravelMode) => {
@@ -99,23 +115,23 @@ export function RoutePickerSheet({ venue, onClose }: RoutePickerSheetProps) {
 
   const destinationParam = geo
     ? `${geo.lat},${geo.lng}`
-    : encodeURIComponent(`${venue.name} ${venue.address}`);
+    : encodeURIComponent(`${target.name} ${target.address}`);
 
   // 1. Google Maps (Universal link — opens native app on iOS/Android with exact travelmode)
   const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationParam}&travelmode=${activeMode.googleMode}`;
 
   // 2. Apple Plans (Universal link — opens Apple Maps on iPhone/iPad/Mac with exact dirflg)
   const appleMapsUrl = geo
-    ? `https://maps.apple.com/?daddr=${geo.lat},${geo.lng}&q=${encodeURIComponent(venue.name)}&dirflg=${activeMode.appleDirFlg}`
-    : `https://maps.apple.com/?daddr=${encodeURIComponent(`${venue.name}, ${venue.address}`)}&dirflg=${activeMode.appleDirFlg}`;
+    ? `https://maps.apple.com/?daddr=${geo.lat},${geo.lng}&q=${encodeURIComponent(target.name)}&dirflg=${activeMode.appleDirFlg}`
+    : `https://maps.apple.com/?daddr=${encodeURIComponent(`${target.name}, ${target.address}`)}&dirflg=${activeMode.appleDirFlg}`;
 
   // 3. Waze (Universal link — opens Waze turn-by-turn driving navigation)
   const wazeUrl = geo
     ? `https://waze.com/ul?ll=${geo.lat},${geo.lng}&navigate=yes`
-    : `https://waze.com/ul?q=${encodeURIComponent(`${venue.name}, ${venue.address}`)}&navigate=yes`;
+    : `https://waze.com/ul?q=${encodeURIComponent(`${target.name}, ${target.address}`)}&navigate=yes`;
 
   const handleCopyAddress = async () => {
-    const fullAddress = `${venue.name}, ${venue.address}`;
+    const fullAddress = `${target.name}, ${target.address}`;
     try {
       await navigator.clipboard.writeText(fullAddress);
       setCopied(true);
@@ -145,16 +161,16 @@ export function RoutePickerSheet({ venue, onClose }: RoutePickerSheetProps) {
             <div className="flex items-center gap-2">
               <Navigation className="w-4 h-4 text-[#C85A6E] shrink-0" />
               <h3 className="font-display text-base font-bold text-white truncate">
-                Itinéraire · {venue.shortName}
+                Itinéraire · {target.shortName}
               </h3>
             </div>
             <p className="mt-1 text-xs text-[#A9A097] flex items-center gap-1.5 truncate">
               <MapPin className="w-3 h-3 text-[#C85A6E] shrink-0" />
-              <span className="truncate">{venue.address}</span>
+              <span className="truncate">{target.address}</span>
             </p>
             <p className="mt-0.5 text-[11px] text-[#CFC7BE] flex items-center gap-1.5">
               <TrainFront className="w-3 h-3 text-sky-400 shrink-0" />
-              <span>{venue.transit}</span>
+              <span>{target.transit}</span>
             </p>
           </div>
           <button

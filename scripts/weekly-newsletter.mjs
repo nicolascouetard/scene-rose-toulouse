@@ -165,7 +165,7 @@ export function buildWeeklyEmail(data, now = new Date()) {
           .slice(0, 3)
           .map((c) => c.title)
           .join(', ')} et les sorties de la semaine à Toulouse.`
-      : `Agenda concert de la semaine sur 15 salles toulousaines.`;
+      : `Agenda concert de la semaine sur ${data.venues.length} salles toulousaines et les festivals d’Occitanie.`;
 
   const htmlContent = `<!DOCTYPE html>
 <html lang="fr">
@@ -269,12 +269,35 @@ export function buildWeeklyEmail(data, now = new Date()) {
               : ''
           }
 
+          <!-- Section 4: Encart Festivals d'Occitanie -->
+          <tr>
+            <td style="padding:14px 28px 6px 28px;">
+              <div style="padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#18151C 0%,#261820 100%);border:1px solid #3A232D;">
+                <div style="font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.1px;color:#F2A9B6;">
+                  Festivals d’Occitanie · Agenda évolutif
+                </div>
+                <div style="margin-top:5px;font-size:15px;font-weight:800;color:#FFFFFF;">
+                  Rose Festival, Rio Loco, Pause Guitare, Les Déferlantes, Carcassonne…
+                </div>
+                <div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:#D6CEC7;">
+                  Retrouve les 16 grands festivals de Toulouse & d’Occitanie, leurs programmations et les liens d’écoute artistes dans l’onglet dédié.
+                </div>
+                <div style="margin-top:11px;">
+                  <a href="${SITE_URL}/?tab=festivals"
+                     style="display:inline-block;padding:8px 14px;border-radius:10px;background:${ACCENT};color:#FFFFFF;font-size:12px;font-weight:700;text-decoration:none;">
+                    Explorer les festivals d’Occitanie →
+                  </a>
+                </div>
+              </div>
+            </td>
+          </tr>
+
           <!-- CTA -->
           <tr>
-            <td style="padding:22px 28px 28px 28px;text-align:center;">
+            <td style="padding:18px 28px 28px 28px;text-align:center;">
               <a href="${SITE_URL}/"
                  style="display:inline-block;padding:13px 24px;border-radius:14px;background:#141218;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">
-                Ouvrir l’agenda complet (${activeConcerts.length} concerts) →
+                Ouvrir l’agenda complet (${activeConcerts.length} concerts · ${data.venues.length} salles) →
               </a>
             </td>
           </tr>

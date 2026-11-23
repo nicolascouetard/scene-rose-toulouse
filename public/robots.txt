@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://scene-rose.pages.dev/sitemap.xml

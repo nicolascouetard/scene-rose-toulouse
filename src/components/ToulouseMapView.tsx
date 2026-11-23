@@ -22,12 +22,12 @@ interface ToulouseMapViewProps {
 
 type MapPeriod = 'today' | 'week' | 'all';
 
-// Geographic bounding box covering Blagnac -> Balma and Ramonville -> Borderouge
+// Geographic bounding box covering Blagnac -> Balma and Ramonville -> Borderouge / Arena
 const BOUNDS = {
   minLng: 1.372,
   maxLng: 1.502,
   minLat: 43.538,
-  maxLat: 43.652,
+  maxLat: 43.662,
 };
 
 function project(lat: number, lng: number) {
@@ -263,7 +263,7 @@ export function ToulouseMapView({
           viewBox={`${vbX} ${vbY} ${vbW} ${vbH}`}
           className="w-full h-[360px] select-none transition-all duration-300"
           role="img"
-          aria-label="Carte interactive des 15 salles de concerts de Toulouse"
+          aria-label="Carte interactive des 17 salles de concerts de Toulouse"
         >
           {/* Subtle grid */}
           <defs>

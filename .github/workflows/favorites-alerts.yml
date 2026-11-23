@@ -1,0 +1,33 @@
+name: Alertes Favoris J-7 & Dernières places (Brevo)
+
+on:
+  schedule:
+    # Chaque jour à 11:00 UTC (12h00 heure de Toulouse en hiver / 13h00 en été, après la synchro de 11h30)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  send-favorites-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Vérifier et envoyer les rappels J-7 & Dernières places via Brevo
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          NEWSLETTER_SENDER_EMAIL: ${{ secrets.NEWSLETTER_SENDER_EMAIL }}
+          NEWSLETTER_SENDER_NAME: 'Scène Rose · Toulouse'
+          SITE_URL: ${{ vars.SITE_URL || 'https://scene-rose.pages.dev' }}
+        run: |
+          if [ -z "$BREVO_API_KEY" ] || [ -z "$NEWSLETTER_SENDER_EMAIL" ]; then
+            echo "ℹ️ Secrets Brevo non configurés : aperçu uniquement."
+            node scripts/favorites-alerts.mjs --preview
+          else
+            node scripts/favorites-alerts.mjs --send
+          fi

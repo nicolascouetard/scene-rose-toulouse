@@ -154,6 +154,13 @@ export function cleanArtistQuery(title: string): string {
     .trim() || title;
 }
 
+/** Nombre de jours restants avant un concert (>= 0 si aujourd'hui ou futur) */
+export function daysUntilConcert(dateIso: string, todayIso: string): number {
+  const [ya, ma, da] = todayIso.split('-').map(Number);
+  const [yb, mb, db] = dateIso.split('-').map(Number);
+  return Math.round((Date.UTC(yb, mb - 1, db) - Date.UTC(ya, ma - 1, da)) / 86_400_000);
+}
+
 /** Indique si un concert a été fraîchement découvert par la synchro quotidienne (< 72h) */
 export function isRecentlyAdded(concert: Concert): boolean {
   if (!concert.firstSeenAt) return false;
@@ -187,6 +194,16 @@ export function downloadConcertIcs(concert: Concert, venue: Venue) {
     `LOCATION:${escape(`${venue.name}, ${venue.address}`)}`,
     `DESCRIPTION:${escape(`${concert.subtitle ? concert.subtitle + ' — ' : ''}Genres : ${concert.genres.join(', ')}. Infos & billetterie : ${concert.venueEventUrl}`)}`,
     `URL:${concert.venueEventUrl}`,
+    'BEGIN:VALARM',
+    'ACTION:DISPLAY',
+    'TRIGGER:-P7D',
+    `DESCRIPTION:${escape(`Rappel J-7 : ${concert.title} au ${venue.shortName} dans 1 semaine — pense à tes places !`)}`,
+    'END:VALARM',
+    'BEGIN:VALARM',
+    'ACTION:DISPLAY',
+    'TRIGGER:-PT3H',
+    `DESCRIPTION:${escape(`Ce soir à ${concert.time} : ${concert.title} (${venue.shortName})`)}`,
+    'END:VALARM',
     'END:VEVENT',
     'END:VCALENDAR',
   ];

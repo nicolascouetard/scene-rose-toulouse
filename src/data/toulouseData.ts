@@ -33,6 +33,8 @@ export const VENUE_GEO: Record<string, VenueGeo> = {
   'auditorium-saint-pierre': { lat: 43.6041, lng: 1.4357, transitLines: ['M-A', 'M-B'] },
   'salle-nougaro': { lat: 43.6197, lng: 1.4054, transitLines: ['Bus'] },
   odyssud: { lat: 43.6352, lng: 1.3845, transitLines: ['T1'] },
+  'le-labo-des-arts': { lat: 43.6156, lng: 1.4609, transitLines: ['M-A', 'Bus'] },
+  'l-arena': { lat: 43.6511, lng: 1.4206, transitLines: ['M-B', 'Bus'] },
 };
 
 export interface VenueSyncLog {
@@ -314,6 +316,30 @@ export const VENUES: Venue[] = [
     vibe: 'Grande scène culturelle de la métropole : chanson, musiques du monde & récitals',
     websiteUrl: 'https://www.odyssud.com/spectacles/musiques',
     accentColor: '#6366F1',
+  },
+  {
+    id: 'le-labo-des-arts',
+    name: 'Le Labo des Arts',
+    shortName: 'Labo des Arts',
+    district: 'Bonnefoy · Marengo',
+    address: '8-10 Rue Clément, 31500 Toulouse',
+    transit: 'Métro A · Marengo-SNCF / Bus L9',
+    capacity: '250 places',
+    vibe: 'Lieu associatif indépendant dédié au rock indie, garage, psyché, post-punk & folk',
+    websiteUrl: 'https://billetterie.festik.net/lelabodesarts/',
+    accentColor: '#F43F5E',
+  },
+  {
+    id: 'l-arena',
+    name: "L'Arena — Arena Electronic Club",
+    shortName: "L'Arena",
+    district: 'Toulouse Nord · Les Izards / Aucamville',
+    address: '26 Allée des Foulques, 31200 Toulouse',
+    transit: 'Métro B · La Vache / Navette Compans',
+    capacity: '1 500+ places',
+    vibe: 'Club & warehouse électro XXL : techno, hardcore, hardstyle, uptempo & nuits rave',
+    websiteUrl: 'https://shotgun.live/fr/venues/arena',
+    accentColor: '#22D3EE',
   },
 ];
 

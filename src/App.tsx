@@ -13,8 +13,10 @@ import {
   RefreshCw,
   RotateCcw,
   Search,
+  ShieldCheck,
   SlidersHorizontal,
   Sparkles,
+  Tent,
   UserCheck,
   WifiOff,
   X,
@@ -22,6 +24,7 @@ import {
 import {
   CONCERTS as BUNDLED_CONCERTS,
   GENRE_CATEGORIES,
+  TODAY_ISO,
   VENUE_GEO,
   VENUES as BUNDLED_VENUES,
   type Concert,
@@ -31,6 +34,12 @@ import {
   type Venue,
 } from './data/toulouseData';
 import {
+  FESTIVALS as BUNDLED_FESTIVALS,
+  rollFestivalToActiveEdition,
+  type Festival,
+} from './data/festivalsData';
+import {
+  daysUntilConcert,
   formatDayHeader,
   formatMonthChip,
   formatSyncTime,
@@ -50,8 +59,11 @@ import { FavoritesView } from './components/FavoritesView';
 import { SyncStatusSheet } from './components/SyncStatusSheet';
 import { AdvancedFiltersSheet } from './components/AdvancedFiltersSheet';
 import { ToulouseMapView } from './components/ToulouseMapView';
+import { FestivalsView } from './components/FestivalsView';
+import { FestivalDetailSheet } from './components/FestivalDetailSheet';
+import { AboutRgpdSheet } from './components/AboutRgpdSheet';
 
-type Tab = 'agenda' | 'map' | 'venues' | 'favorites';
+type Tab = 'agenda' | 'festivals' | 'map' | 'venues' | 'favorites';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -67,14 +79,56 @@ const PERIOD_OPTIONS: { id: PeriodFilter; label: string }[] = [
 ];
 
 const FAVORITES_KEY = 'scene_rose_toulouse_favorites_v1';
+const FESTIVAL_FAVORITES_KEY = 'scene_rose_occitanie_festivals_v1';
+const FAV_ALERT_EMAIL_KEY = 'scene_rose_fav_alert_email_v1';
 
 export function App() {
   const [venues, setVenues] = useState<Venue[]>(BUNDLED_VENUES);
   const [concerts, setConcerts] = useState<Concert[]>(BUNDLED_CONCERTS);
+  const [selectedFestival, setSelectedFestival] = useState<Festival | null>(null);
+  const [favoriteFestivals, setFavoriteFestivals] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem(FESTIVAL_FAVORITES_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [favAlertEmail, setFavAlertEmail] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem(FAV_ALERT_EMAIL_KEY) || null;
+    } catch {
+      return null;
+    }
+  });
+
+  const handleSaveFavAlertEmail = (email: string | null) => {
+    setFavAlertEmail(email);
+    try {
+      if (email) localStorage.setItem(FAV_ALERT_EMAIL_KEY, email);
+      else localStorage.removeItem(FAV_ALERT_EMAIL_KEY);
+    } catch {
+      // ignore
+    }
+  };
+
+  // Festivals automatiquement maintenus à jour d'année en année (2027 -> 2028...)
+  const activeFestivals = useMemo(
+    () => BUNDLED_FESTIVALS.map((f) => rollFestivalToActiveEdition(f, TODAY_ISO)),
+    []
+  );
   const [syncMeta, setSyncMeta] = useState<SyncMeta | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncSheetOpen, setSyncSheetOpen] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [pendingDeepConcertId, setPendingDeepConcertId] = useState<string | null>(() => {
+    try {
+      return new URLSearchParams(window.location.search).get('concert');
+    } catch {
+      return null;
+    }
+  });
 
   // PWA & offline state
   const [isOffline, setIsOffline] = useState<boolean>(
@@ -131,6 +185,14 @@ export function App() {
     }
   }, [favorites]);
 
+  useEffect(() => {
+    try {
+      localStorage.setItem(FESTIVAL_FAVORITES_KEY, JSON.stringify(favoriteFestivals));
+    } catch {
+      // Ignore storage errors
+    }
+  }, [favoriteFestivals]);
+
   // Listen to online/offline & PWA install prompt
   useEffect(() => {
     const onOnline = () => setIsOffline(false);
@@ -148,12 +210,28 @@ export function App() {
     window.addEventListener('beforeinstallprompt', onBeforeInstall);
     window.addEventListener('appinstalled', onInstalled);
 
-    // Détection retour de confirmation Double Opt-In Brevo (?subscribed=1)
+    // Détection paramètres URL (?subscribed=1, ?tab=festivals|map|venues|favorites, ?festival=id)
     try {
       const params = new URLSearchParams(window.location.search);
+      let mutated = false;
       if (params.get('subscribed') === '1') {
         setToast('Inscription à l’alerte hebdo confirmée !');
         params.delete('subscribed');
+        mutated = true;
+      }
+      const tabParam = params.get('tab');
+      if (tabParam && ['agenda', 'festivals', 'map', 'venues', 'favorites'].includes(tabParam)) {
+        setActiveTab(tabParam as Tab);
+      }
+      const festParam = params.get('festival');
+      if (festParam) {
+        const foundFest = activeFestivals.find((f) => f.id === festParam);
+        if (foundFest) {
+          setActiveTab('festivals');
+          setSelectedFestival(foundFest);
+        }
+      }
+      if (mutated) {
         const nextUrl = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
         window.history.replaceState({}, '', nextUrl);
       }
@@ -168,6 +246,16 @@ export function App() {
       window.removeEventListener('appinstalled', onInstalled);
     };
   }, []);
+
+  // Résolution deep-link ?concert=<id> dès que le catalogue live est hydraté
+  useEffect(() => {
+    if (!pendingDeepConcertId) return;
+    const found = concerts.find((c) => c.id === pendingDeepConcertId);
+    if (found) {
+      setSelectedConcert(found);
+      setPendingDeepConcertId(null);
+    }
+  }, [concerts, pendingDeepConcertId]);
 
   // Hydrate live synced JSON (works with Vite /api/concerts, static /data/concerts.json, and offline SW cache)
   useEffect(() => {
@@ -289,6 +377,14 @@ export function App() {
     setFavorites((prev) => {
       const exists = prev.includes(id);
       showToast(exists ? 'Retiré des favoris' : 'Ajouté aux favoris');
+      return exists ? prev.filter((item) => item !== id) : [...prev, id];
+    });
+  };
+
+  const toggleFavoriteFestival = (id: string) => {
+    setFavoriteFestivals((prev) => {
+      const exists = prev.includes(id);
+      showToast(exists ? 'Festival retiré des favoris' : 'Festival suivi dans tes favoris');
       return exists ? prev.filter((item) => item !== id) : [...prev, id];
     });
   };
@@ -466,12 +562,33 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Check if any saved favorite has a ticketing alert (last-tickets or sold-out)
+  // Check if any saved favorite has a ticketing alert (last-tickets, sold-out, or J-7 upcoming)
   const favoriteAlertsCount = useMemo(() => {
-    return concerts.filter(
-      (c) => favorites.includes(c.id) && (c.status === 'last-tickets' || c.status === 'sold-out')
-    ).length;
+    return concerts.filter((c) => {
+      if (!favorites.includes(c.id)) return false;
+      if (c.status === 'last-tickets' || c.status === 'sold-out') return true;
+      const d = daysUntilConcert(c.date, TODAY_ISO);
+      return d >= 0 && d <= 7;
+    }).length;
   }, [concerts, favorites]);
+
+  // Auto-sync Brevo favorite alerts silently whenever favorites change (if user enabled email reminders)
+  useEffect(() => {
+    if (!favAlertEmail) return;
+    const timer = window.setTimeout(() => {
+      fetch('/api/favorites-alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: favAlertEmail,
+          favoriteIds: favorites,
+          enabled: true,
+          consent: true,
+        }),
+      }).catch(() => {});
+    }, 1200);
+    return () => window.clearTimeout(timer);
+  }, [favorites, favAlertEmail]);
 
   const selectedVenuesObjects = selectedVenueIds
     .map((id) => venueMap[id])
@@ -543,6 +660,22 @@ export function App() {
               <button
                 type="button"
                 onClick={() => {
+                  setActiveTab('festivals');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                  activeTab === 'festivals'
+                    ? 'bg-[#C85A6E] text-white shadow-sm'
+                    : 'text-[#A9A097] hover:text-white'
+                }`}
+              >
+                <Tent className="w-3.5 h-3.5" />
+                <span>Festivals</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
                   setActiveTab('map');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
@@ -586,7 +719,7 @@ export function App() {
               >
                 <Heart className="w-3.5 h-3.5" />
                 <span>Favoris</span>
-                {favorites.length > 0 && (
+                {favorites.length + favoriteFestivals.length > 0 && (
                   <span
                     className={`min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
                       favoriteAlertsCount > 0
@@ -596,7 +729,7 @@ export function App() {
                           : 'bg-[#C85A6E] text-white'
                     }`}
                   >
-                    {favorites.length}
+                    {favorites.length + favoriteFestivals.length}
                   </span>
                 )}
               </button>
@@ -1039,6 +1172,15 @@ export function App() {
             </>
           )}
 
+          {activeTab === 'festivals' && (
+            <FestivalsView
+              festivals={activeFestivals}
+              favoriteIds={favoriteFestivals}
+              onToggleFavorite={toggleFavoriteFestival}
+              onSelectFestival={setSelectedFestival}
+            />
+          )}
+
           {activeTab === 'map' && (
             <ToulouseMapView
               venues={venues}
@@ -1065,12 +1207,34 @@ export function App() {
               concerts={concerts}
               venueMap={venueMap}
               favorites={favorites}
+              festivals={activeFestivals}
+              favoriteFestivals={favoriteFestivals}
+              favAlertEmail={favAlertEmail}
+              onSaveFavAlertEmail={handleSaveFavAlertEmail}
               onToggleFavorite={toggleFavorite}
+              onToggleFavoriteFestival={toggleFavoriteFestival}
               onSelectConcert={setSelectedConcert}
+              onSelectFestival={setSelectedFestival}
               onGoExplore={() => setActiveTab('agenda')}
               onShareSelection={handleShareSelection}
+              onNotify={showToast}
             />
           )}
+
+          {/* Subtle Footer · About & RGPD */}
+          <footer className="mt-10 pt-5 pb-4 px-4 md:px-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#7D766F]">
+            <span>
+              Scène Rose · {venues.length} salles toulousaines & {activeFestivals.length} festivals d’Occitanie
+            </span>
+            <button
+              type="button"
+              onClick={() => setAboutOpen(true)}
+              className="inline-flex items-center gap-1.5 text-[#AFA8A0] hover:text-[#F2A9B6] transition-colors font-medium"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-[#C85A6E]" />
+              À propos & Confidentialité (RGPD)
+            </button>
+          </footer>
         </main>
 
         {/* Bottom Navigation Bar (Mobile only; desktop uses sticky top nav) */}
@@ -1078,7 +1242,7 @@ export function App() {
           aria-label="Navigation principale"
           className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-40 w-full max-w-[440px] bg-[#121016]/95 backdrop-blur-xl border-t border-white/[0.09] pb-[env(safe-area-inset-bottom)]"
         >
-          <div className="grid grid-cols-4 h-16">
+          <div className="grid grid-cols-5 h-16">
             <button
               type="button"
               onClick={() => {
@@ -1089,8 +1253,22 @@ export function App() {
                 activeTab === 'agenda' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
-              <Calendar className="w-5 h-5" />
-              <span className="text-[10.5px] font-semibold">Concerts</span>
+              <Calendar className="w-4.5 h-4.5" />
+              <span className="text-[10px] font-semibold">Concerts</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setActiveTab('festivals');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`flex flex-col items-center justify-center gap-1 transition-colors ${
+                activeTab === 'festivals' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
+              }`}
+            >
+              <Tent className="w-4.5 h-4.5" />
+              <span className="text-[10px] font-semibold">Festivals</span>
             </button>
 
             <button
@@ -1103,8 +1281,8 @@ export function App() {
                 activeTab === 'map' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
-              <MapIcon className="w-5 h-5" />
-              <span className="text-[10.5px] font-semibold">Carte</span>
+              <MapIcon className="w-4.5 h-4.5" />
+              <span className="text-[10px] font-semibold">Carte</span>
             </button>
 
             <button
@@ -1117,8 +1295,8 @@ export function App() {
                 activeTab === 'venues' ? 'text-[#C85A6E]' : 'text-[#8E8680]'
               }`}
             >
-              <Building2 className="w-5 h-5" />
-              <span className="text-[10.5px] font-semibold">Salles ({venues.length})</span>
+              <Building2 className="w-4.5 h-4.5" />
+              <span className="text-[10px] font-semibold">Salles</span>
             </button>
 
             <button
@@ -1133,21 +1311,21 @@ export function App() {
             >
               <div className="relative">
                 <Heart
-                  className={`w-5 h-5 ${
+                  className={`w-4.5 h-4.5 ${
                     activeTab === 'favorites' ? 'fill-[#C85A6E]/20' : ''
                   }`}
                 />
-                {favorites.length > 0 && (
+                {favorites.length + favoriteFestivals.length > 0 && (
                   <span
                     className={`absolute -top-1.5 -right-2.5 min-w-[16px] h-4 px-1 rounded-full text-[10px] font-bold text-white flex items-center justify-center ${
                       favoriteAlertsCount > 0 ? 'bg-amber-500 text-[#130F09]' : 'bg-[#C85A6E]'
                     }`}
                   >
-                    {favorites.length}
+                    {favorites.length + favoriteFestivals.length}
                   </span>
                 )}
               </div>
-              <span className="text-[10.5px] font-semibold">Favoris</span>
+              <span className="text-[10px] font-semibold">Favoris</span>
             </button>
           </div>
         </nav>
@@ -1160,6 +1338,15 @@ export function App() {
           onClose={() => setSelectedConcert(null)}
           onToggleFavorite={toggleFavorite}
           onSelectVenue={handleSelectVenueFromAnywhere}
+          onNotify={showToast}
+        />
+
+        {/* Festival Detail Modal / Bottom Sheet */}
+        <FestivalDetailSheet
+          festival={selectedFestival}
+          isFavorite={selectedFestival ? favoriteFestivals.includes(selectedFestival.id) : false}
+          onClose={() => setSelectedFestival(null)}
+          onToggleFavorite={toggleFavoriteFestival}
           onNotify={showToast}
         />
 
@@ -1203,6 +1390,19 @@ export function App() {
           open={newsletterOpen}
           initialTab={newsletterTab}
           onClose={() => setNewsletterOpen(false)}
+        />
+
+        {/* About & RGPD Privacy Modal */}
+        <AboutRgpdSheet
+          open={aboutOpen}
+          venueCount={venues.length}
+          concertCount={concerts.length}
+          festivalCount={activeFestivals.length}
+          onClose={() => setAboutOpen(false)}
+          onOpenNewsletter={() => {
+            setNewsletterTab('subscribe');
+            setNewsletterOpen(true);
+          }}
         />
 
         {/* Toast notification */}

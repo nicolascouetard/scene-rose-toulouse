@@ -13,4 +13,4 @@
   Cache-Control: public, max-age=604800, immutable
 
 /icons/*
-  Cache-Control: public, max-age=604800, immutable
+  Cache-Control: public, max-age=86400

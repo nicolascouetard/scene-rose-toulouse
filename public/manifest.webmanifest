@@ -1,7 +1,7 @@
 {
   "name": "Scène Rose — Tous les concerts à Toulouse",
   "short_name": "Scène Rose",
-  "description": "Agenda mobile des concerts à Toulouse : 15 salles, 400+ dates, affiches officielles, carte interactive et synchronisation quotidienne.",
+  "description": "Agenda mobile des concerts à Toulouse et festivals d'Occitanie : 17 salles, 400+ dates, affiches officielles, carte interactive et synchronisation quotidienne.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -12,16 +12,28 @@
   "categories": ["music", "entertainment", "lifestyle"],
   "icons": [
     {
-      "src": "/icons/icon-192.png",
+      "src": "/icons/icon-192.png?v=rose2",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/icons/icon-512.png?v=rose2",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192-maskable.png?v=rose2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png?v=rose2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

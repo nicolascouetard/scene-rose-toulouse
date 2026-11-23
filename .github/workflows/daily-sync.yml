@@ -28,7 +28,7 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
 
-      - name: Synchroniser les 15 salles toulousaines (dates & statuts Complet/Dispo)
+      - name: Synchroniser les 17 salles toulousaines (dates & statuts Complet/Dispo)
         run: npm run sync
 
       - name: Publier les données mises à jour si modifiées
@@ -38,6 +38,7 @@ jobs:
           git add public/data/concerts.json
           if ! git diff --cached --quiet; then
             git commit -m "chore(sync): mise à jour auto des concerts & statuts ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git pull --rebase --autostash origin main || true
             git push
           else
             echo "Aucun changement détecté sur ce créneau."

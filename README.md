@@ -1,6 +1,6 @@
 # Scène Rose — Tous les concerts à Toulouse (PWA mobile)
 
-Application web mobile (PWA installable, utilisable hors-ligne) agrégeant les concerts de **15 salles de Toulouse et sa métropole** (*Le Bikini, Zénith, Le Metronum, Interference, Le Rex, La Cabane, Halle aux Grains / ONCT, Opéra National du Capitole, Auditorium Saint-Pierre-des-Cuisines, Péniche Le Cri de la Mouette, Le Taquin, Le Bijou, Salle Nougaro, Odyssud, Casino Barrière*) avec synchronisation automatique quotidienne.
+Application web (PWA installable, mobile & desktop) agrégeant les concerts de **17 salles de Toulouse et sa métropole** (*Le Bikini, Zénith, Le Metronum, Interference, Le Rex, La Cabane, Halle aux Grains / ONCT, Opéra National du Capitole, Auditorium Saint-Pierre-des-Cuisines, Péniche Le Cri de la Mouette, Le Taquin, Le Bijou, Salle Nougaro, Odyssud, Casino Barrière, Le Labo des Arts, L'Arena*) ainsi que les **grands festivals d'Occitanie**, avec synchronisation automatique 4×/jour.
 
 ## Démarrage local
 

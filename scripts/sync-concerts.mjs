@@ -2,7 +2,7 @@
 /**
  * Scène Rose — Moteur de synchronisation quotidienne & découverte exhaustive (2026–2027)
  * --------------------------------------------------------------------------------------
- * Interroge en parallèle les sites & APIs officiels des 15 salles toulousaines pour :
+ * Interroge en parallèle les sites & APIs officiels des 17 salles toulousaines pour :
  *  1. Découvrir et importer automatiquement TOUTES les nouvelles dates publiées (2026–2027)
  *  2. Rafraîchir le statut billetterie de chaque concert (Disponible, Dernières places, Complet, Gratuit)
  *  3. Retirer automatiquement les concerts annulés ou passés (fuseau Europe/Paris)
@@ -773,7 +773,7 @@ async function scrapeOpenAgendaSite(venueId, baseAgendaUrl, maxPages, todayIso, 
   return { ok: okAny, status: lastStatus, events, sourceUrl: baseAgendaUrl };
 }
 
-/** 7. ODYSSUD BLAGNAC — Page Musiques complète */
+/** 7. ODYSSUD BLAGNAC — Page Musiques complète (articles Drupal) */
 async function scrapeOdyssud(todayIso) {
   const url = 'https://www.odyssud.com/spectacles/musiques';
   const r = await fetchText(url);
@@ -784,60 +784,246 @@ async function scrapeOdyssud(todayIso) {
   const events = [];
   const seen = new Set();
 
-  // Ne garder que la section "À Venir" (avant le titre "Passés")
-  const upcomingContainer = $('h2:contains("À Venir")').nextAll().first();
-  const $scope = upcomingContainer.length ? upcomingContainer : $('main');
-
-  $scope.find('a[href*="/spectacles/musiques/"]').each((_, a) => {
-    const href = $(a).attr('href') || '';
+  $('article').each((_, el) => {
+    const $card = $(el);
+    const href = $card.find('a[href*="/spectacles/musiques/"]').first().attr('href') || '';
     if (!href || /scolaire/i.test(href)) return;
     const fullUrl = href.startsWith('http') ? href : `https://www.odyssud.com${href}`;
     if (seen.has(fullUrl)) return;
     seen.add(fullUrl);
 
-    // Remonter jusqu'au conteneur carte contenant l'image et la date
-    let $card = $(a).parent();
-    for (let i = 0; i < 4; i++) {
-      if ($card.find('img[src*="sites/default/files"]').length > 0) break;
-      $card = $card.parent();
-    }
     const cardText = $card.text().replace(/\s+/g, ' ').trim();
-    if (/scolaire/i.test(cardText)) return;
+    if (/scolaire|cr[èe]che|d[èe]s\s+[1-6]\s+ans/i.test(cardText)) return;
 
-    const date = parseFrenchDate(cardText, '2027');
-    if (!date || date < todayIso) return;
+    const rawTitle = $card.find('.field--name-name, h2, h3').first().text().replace(/\s+/g, ' ').trim();
+    const subtitle = $card.find('.field--name-field-sous-titre').first().text().replace(/\s+/g, ' ').trim();
+    const discipline = $card.find('.field--name-discipline-text').first().text().replace(/\s+/g, ' ').trim();
+    const dateText = $card.find('.field--name-dates').first().text().replace(/\s+/g, ' ').trim() || cardText;
+
+    if (!rawTitle || rawTitle.length < 2) return;
 
     const title =
-      $card.find('h2, h3, .field--name-title, [class*="title"]').first().text().replace(/\s+/g, ' ').trim() ||
-      '';
-    if (!title || title.length < 3 || /en savoir/i.test(title)) return;
+      rawTitle === rawTitle.toUpperCase() && rawTitle.length > 3
+        ? rawTitle.toLowerCase().replace(/(^|\s|['’+-])(\p{L})/gu, (_, sep, ch) => sep + ch.toUpperCase())
+        : rawTitle;
 
-    let img =
-      $card
-        .find('img')
-        .map((_, el) => $(el).attr('src') || $(el).attr('data-src') || '')
-        .get()
-        .find((src) => src.includes('/sites/default/files/') && !src.endsWith('.svg')) || '';
-    img = img.replace('/styles/grid_thumbnail_lqip/public/', '/').split('?')[0];
+    const lowerDate = dateText.toLowerCase();
+    const defaultYear = /(novembre|d[ée]cembre)/.test(lowerDate) ? '2026' : '2027';
+    const date = parseFrenchDate(dateText, defaultYear);
+    if (!date || date < todayIso) return;
+
+    const srcsetJpg =
+      $card.find('picture source[type="image/jpeg"]').first().attr('srcset') ||
+      $card.find('img[data-srcset]').first().attr('data-srcset') ||
+      '';
+    let img = srcsetJpg.split(' ')[0] || '';
+    if (!img) {
+      const blurAttr = $card.find('img[data-b-blur]').first().attr('data-b-blur') || '';
+      const blurPath = blurAttr.split('::').pop() || '';
+      if (blurPath.includes('/sites/default/files/')) {
+        img = blurPath.replace('/styles/grid_thumbnail_lqip/public/', '/styles/grid_thumbnail/public/');
+      }
+    }
     const posterUrl = unwrapNextImage(img, 'https://www.odyssud.com');
     if (!posterUrl) return;
 
     const status = detectStatusFromCardText(cardText, $card.html() || '');
+    const genres = discipline
+      ? [discipline.charAt(0).toUpperCase() + discipline.slice(1).toLowerCase(), 'Odyssud']
+      : ['Musiques', 'Odyssud'];
 
     events.push({
       id: `odyssud-${date}-${slugify(title)}`,
       title,
+      subtitle: subtitle || undefined,
       date,
-      time: '20h30',
+      time: parseFrenchTime(cardText, '20h30'),
       venueId: 'odyssud',
-      category: inferCategory([], title, 'odyssud'),
-      genres: ['Musiques', 'Odyssud'],
+      category: inferCategory(genres, `${title} ${subtitle} ${discipline}`, 'odyssud'),
+      genres,
       status,
       poster: posterUrl,
       sourcePosterUrl: posterUrl,
       venueEventUrl: fullUrl,
     });
   });
+
+  return { ok: true, status: r.status, events, sourceUrl: url };
+}
+
+/** 7b. LA CABANE (Halles de la Cartoucherie) — API REST Tribe Events officielle */
+async function scrapeLaCabane(todayIso) {
+  const baseUrl = 'https://halles-cartoucherie.fr/la-cabane/';
+  const events = [];
+  const seen = new Set();
+  let okAny = false;
+  let lastStatus = 200;
+
+  for (let page = 1; page <= 4; page++) {
+    const apiUrl = `https://halles-cartoucherie.fr/wp-json/tribe/events/v1/events?per_page=50&page=${page}&start_date=${todayIso}`;
+    let res;
+    try {
+      res = await fetch(apiUrl, {
+        headers: { ...FETCH_HEADERS, Accept: 'application/json' },
+        signal: AbortSignal.timeout(14000),
+      });
+    } catch {
+      break;
+    }
+    lastStatus = res.status;
+    if (!res.ok) break;
+    okAny = true;
+
+    const data = await res.json();
+    const list = data.events || [];
+    if (list.length === 0) break;
+
+    for (const ev of list) {
+      const venueName = String(ev.venue?.venue || '');
+      if (!/la\s+cabane/i.test(venueName)) continue;
+
+      const rawTitle = decodeHtmlEntities(String(ev.title || '')).trim();
+      if (!rawTitle) continue;
+
+      const startRaw = String(ev.start_date || '');
+      const dateMatch = startRaw.match(/^(\d{4}-\d{2}-\d{2})(?:\s+(\d{2}):(\d{2}))?/);
+      if (!dateMatch) continue;
+      const date = dateMatch[1];
+      if (date < todayIso) continue;
+      const time = dateMatch[2] ? `${dateMatch[2]}h${dateMatch[3]}` : '20h00';
+
+      const eventUrl = ev.url || baseUrl;
+      const key = `${date}|${slugify(rawTitle)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      const descText = decodeHtmlEntities(String(ev.description || '').replace(/<[^>]+>/g, ' '))
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const combined = `${rawTitle} ${descText}`;
+      if (
+        /\b(stand[- ]?up|one[- ]?(man|woman)[- ]?show|humoriste|spectacle d['’]humour|com[ée]die club)\b/i.test(
+          combined
+        ) &&
+        !/\b(concert|musique|rock|rap|electro|techno|dj|chanson|metal|jazz|festival|live)\b/i.test(combined)
+      ) {
+        continue;
+      }
+
+      const title =
+        rawTitle === rawTitle.toUpperCase() && rawTitle.length > 4
+          ? rawTitle.toLowerCase().replace(/(^|\s|['’+-])(\p{L})/gu, (_, sep, ch) => sep + ch.toUpperCase())
+          : rawTitle;
+
+      const posterUrl = ev.image?.url || '';
+      if (!posterUrl) continue;
+
+      const catNames = (ev.categories || []).map((c) => decodeHtmlEntities(String(c.name || ''))).filter(Boolean);
+      const isFree =
+        catNames.some((c) => /gratuit/i.test(c)) || /^0([.,]0+)?\s*€?$/.test(String(ev.cost || '').trim());
+      const rawCost = decodeHtmlEntities(String(ev.cost || '')).trim();
+      const price = isFree
+        ? 'Gratuit'
+        : rawCost
+          ? rawCost.replace(/(\d)€/g, '$1 €')
+          : undefined;
+
+      let status = detectStatusFromCardText(`${rawTitle} ${descText}`);
+      if (isFree && status === 'available') status = 'free';
+
+      const genres = [];
+      if (/electro|techno|house|dj|club/i.test(combined)) genres.push('Électro');
+      else if (/metal|indus|punk|rock/i.test(combined)) genres.push('Rock / Metal');
+      else if (/rap|hip[- ]?hop/i.test(combined)) genres.push('Rap / Hip-Hop');
+      else if (/reggae|dub/i.test(combined)) genres.push('Reggae / Dub');
+      else if (/chanson|pop|folk/i.test(combined)) genres.push('Chanson / Pop');
+      else genres.push('Live');
+
+      events.push({
+        id: `cabane-${date}-${slugify(rawTitle)}`,
+        title,
+        subtitle: descText.slice(0, 110).replace(/\s+\S*$/, '').trim() || undefined,
+        date,
+        time,
+        venueId: 'la-cabane',
+        category: inferCategory(genres, combined, 'la-cabane'),
+        genres,
+        price,
+        status,
+        poster: posterUrl,
+        sourcePosterUrl: posterUrl,
+        venueEventUrl: eventUrl,
+      });
+    }
+
+    if (page >= Number(data.total_pages || 1)) break;
+  }
+
+  return { ok: okAny, status: lastStatus, events, sourceUrl: baseUrl };
+}
+
+/** 7c. LE TAQUIN — JSON embarqué window['wcs_tdata_2'] officiel */
+async function scrapeLeTaquin(todayIso) {
+  const url = 'https://www.le-taquin.fr/site/concerts-a-venir/';
+  const r = await fetchText(url);
+  if (!r.ok) return { ok: false, status: r.status, events: [], sourceUrl: url };
+
+  const match = r.text.match(/window\['wcs_tdata_\d+'\]\s*=\s*(\[[\s\S]*?\]);/);
+  if (!match) return { ok: true, status: r.status, events: [], sourceUrl: url };
+
+  let items = [];
+  try {
+    items = JSON.parse(match[1]);
+  } catch {
+    return { ok: false, status: r.status, events: [], sourceUrl: url };
+  }
+
+  const events = [];
+  const seen = new Set();
+
+  for (const item of items) {
+    if (!item || !item.title || !item.start) continue;
+    const dateMatch = String(item.start).match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})/);
+    if (!dateMatch) continue;
+    const date = dateMatch[1];
+    if (date < todayIso) continue;
+    const time = `${dateMatch[2]}h${dateMatch[3]}`;
+
+    const rawTitle = decodeHtmlEntities(String(item.title)).trim();
+    const genreBracket = rawTitle.match(/\[([^\]]+)\]\s*$/);
+    const extractedGenre = genreBracket ? genreBracket[1].trim() : 'Jazz';
+    const cleanTitle = rawTitle.replace(/\s*\[[^\]]+\]\s*$/, '').trim();
+    if (!cleanTitle) continue;
+
+    const key = `${date}|${slugify(cleanTitle)}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    const excerpt = decodeHtmlEntities(String(item.excerpt || '').replace(/<[^>]+>/g, ' '))
+      .replace(/\s+/g, ' ')
+      .trim();
+    const posterUrl = item.thumbnail || '';
+    if (!posterUrl) continue;
+
+    const genres = [extractedGenre];
+    const status = detectStatusFromCardText(`${rawTitle} ${excerpt}`);
+
+    events.push({
+      id: `taquin-${date}-${slugify(cleanTitle)}`,
+      title: cleanTitle,
+      subtitle: excerpt.slice(0, 110).replace(/\s+\S*$/, '').trim() || undefined,
+      date,
+      time,
+      venueId: 'le-taquin',
+      category: inferCategory(genres, `${cleanTitle} ${extractedGenre} ${excerpt}`, 'le-taquin'),
+      genres,
+      status,
+      poster: posterUrl,
+      sourcePosterUrl: posterUrl,
+      venueEventUrl: item.permalink || url,
+    });
+  }
 
   return { ok: true, status: r.status, events, sourceUrl: url };
 }
@@ -896,7 +1082,114 @@ async function scrapeSalleNougaro(todayIso) {
   return { ok: true, status: r.status, events, sourceUrl: url };
 }
 
-/** Extracteur générique de statuts pour les salles complémentaires (La Cabane, Le Bijou, Le Taquin, Casino, Cri de la Mouette) */
+/** 11. LE LABO DES ARTS — API JSON Festik officielle (découverte automatique complète) */
+async function scrapeLaboDesArts(todayIso) {
+  const apiUrl = 'https://billetterie.festik.net/core/lelabodesarts/query/app/';
+  const publicUrl = 'https://billetterie.festik.net/lelabodesarts/';
+
+  const res = await fetch(apiUrl, {
+    headers: { ...FETCH_HEADERS, Accept: 'application/json' },
+    signal: AbortSignal.timeout(15000),
+  });
+  if (!res.ok) return { ok: false, status: res.status, events: [], sourceUrl: publicUrl };
+
+  const data = await res.json();
+  const events = [];
+
+  for (const prod of Object.values(data.products || {})) {
+    if (!prod || prod.active === false) continue;
+    const rawName = decodeHtmlEntities(String(prod.name || '')).trim();
+    if (!rawName) continue;
+
+    // Retirer le préfixe "Concert " pour un titre d'artiste propre
+    const cleanTitle = rawName.replace(/^concert\s+/i, '').trim() || rawName;
+    const descHtml = `${prod.description || ''} ${prod.description_long || ''}`;
+    const descText = descHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const longBio = decodeHtmlEntities(String(prod.description_long || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+    const priceMatch = descText.match(/(\d+(?:[.,]\d+)?)\s*€/);
+    const cleanSubtitle = (longBio || descText)
+      .slice(0, 115)
+      .replace(/\s+\S*$/, '')
+      .trim();
+    const posterUrl =
+      prod.image?.refresh_url ||
+      prod.image?.url ||
+      prod.image_bigsquare?.refresh_url ||
+      'https://materials.festik.net/images/prod/billetteries/2598/banniere/play.webp';
+    const eventUrl = prod.slug
+      ? `https://billetterie.festik.net/lelabodesarts/product/${prod.slug}/`
+      : publicUrl;
+
+    for (const inst of Object.values(prod.instances || {})) {
+      if (!inst || inst.active === false) continue;
+      const ts = Number(inst.timestamp || 0);
+      let date = '';
+      let time = '20h00';
+
+      if (ts > 0) {
+        const dt = new Date(ts * 1000);
+        date = new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'Europe/Paris',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        }).format(dt);
+        time = new Intl.DateTimeFormat('fr-FR', {
+          timeZone: 'Europe/Paris',
+          hour: '2-digit',
+          minute: '2-digit',
+        })
+          .format(dt)
+          .replace(':', 'h');
+      } else if (inst.full_label) {
+        date = parseFrenchDate(inst.full_label) || '';
+        time = parseFrenchTime(inst.full_label, '20h00');
+      }
+
+      if (!date || date < todayIso) continue;
+
+      const placesLeft = inst.places?.available;
+      let status = detectStatusFromCardText(`${inst.full_label || ''} ${descText}`);
+      if (typeof placesLeft === 'number') {
+        if (placesLeft <= 0) status = 'sold-out';
+        else if (placesLeft <= 20) status = 'last-tickets';
+      }
+
+      const prettyTitle =
+        cleanTitle === cleanTitle.toUpperCase() && cleanTitle.length > 4
+          ? cleanTitle
+              .toLowerCase()
+              .replace(/(^|\s|['’+-])(\p{L})/gu, (_, sep, ch) => sep + ch.toUpperCase())
+          : cleanTitle;
+
+      const genres = ['Rock Indie'];
+      if (/punk|post-punk/i.test(descText)) genres.push('Post-Punk');
+      else if (/psych[ée]|garage/i.test(descText)) genres.push('Psyché / Garage');
+      else if (/electro|synth|industrial|dark/i.test(descText)) genres.push('Électro / Dark');
+      else if (/folk|blues/i.test(descText)) genres.push('Folk / Blues');
+
+      events.push({
+        id: `labo-${date}-${slugify(cleanTitle)}`,
+        title: prettyTitle,
+        subtitle: cleanSubtitle || undefined,
+        date,
+        time,
+        venueId: 'le-labo-des-arts',
+        category: inferCategory(genres, `${cleanTitle} ${descText}`, 'le-labo-des-arts'),
+        genres,
+        price: priceMatch ? `Dès ${priceMatch[1]} €` : undefined,
+        status,
+        poster: posterUrl,
+        sourcePosterUrl: posterUrl,
+        venueEventUrl: eventUrl,
+      });
+    }
+  }
+
+  return { ok: true, status: res.status, events, sourceUrl: publicUrl };
+}
+
+/** Extracteur générique de statuts pour les salles complémentaires (La Cabane, Le Bijou, Le Taquin, Casino, Cri de la Mouette, L'Arena) */
 const STATUS_ONLY_SOURCES = {
   'la-cabane': {
     url: 'https://halles-cartoucherie.fr/la-cabane/',
@@ -920,6 +1213,11 @@ const STATUS_ONLY_SOURCES = {
   },
   'le-cri-de-la-mouette': {
     url: 'https://shotgun.live/fr/venues/le-cri-de-la-mouette',
+    cardSelector: 'a[href*="/fr/events/"]',
+    linkSelector: 'a[href*="/fr/events/"]',
+  },
+  'l-arena': {
+    url: 'https://shotgun.live/fr/venues/arena',
     cardSelector: 'a[href*="/fr/events/"]',
     linkSelector: 'a[href*="/fr/events/"]',
   },
@@ -1110,6 +1408,9 @@ export async function syncConcerts({ quiet = false } = {}) {
       ),
     odyssud: () => scrapeOdyssud(todayIso),
     'salle-nougaro': () => scrapeSalleNougaro(todayIso),
+    'le-labo-des-arts': () => scrapeLaboDesArts(todayIso),
+    'la-cabane': () => scrapeLaCabane(todayIso),
+    'le-taquin': () => scrapeLeTaquin(todayIso),
   };
 
   // 3. Exécuter tous les scrapers en parallèle
