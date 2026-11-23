@@ -201,104 +201,7 @@
       "sourcePosterUrl": "https://img.openagenda.com/main/f25595b154514378b8c8d1667e342617.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/peter-grimes/",
       "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
-    },
-    {
-      "id": "odyssud-natalie-dessay",
-      "title": "Natalie Dessay chante Michel Legrand",
-      "subtitle": "« Legrand Enchanteur » · Saison Odyssud (hors les murs Halle aux Grains)",
-      "date": "2026-11-22",
-      "time": "17h00",
-      "venueId": "odyssud",
-      "category": "Pop & Chanson",
-      "genres": [
-        "Chanson",
-        "Jazz Symphonique",
-        "Lyrique"
-      ],
-      "status": "available",
-      "poster": "/posters/odyssud-natalie-dessay.jpg",
-      "sourcePosterUrl": "https://www.odyssud.com/sites/default/files/2026-06/natalie_dessay_-_simon_fowler_24.05_0.jpg",
-      "venueEventUrl": "https://www.odyssud.com/spectacles/musiques/legrand-enchanteur-tout-public",
-      "featured": true
-    },
-    {
-      "id": "cabane-chloe-ivan-smagghe",
-      "title": "Chloé b2b Ivan Smagghe",
-      "subtitle": "After Now · Set étendu électro & indie dance",
-      "date": "2026-11-22",
-      "time": "18h00",
-      "venueId": "la-cabane",
-      "category": "Électro & Club",
-      "genres": [
-        "Électro",
-        "Techno",
-        "Indie Dance"
-      ],
-      "status": "available",
-      "poster": "/posters/cabane-chloe-ivan-smagghe.jpg",
-      "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/07/20261122_155718_AFTER_NOW_-_CHLO_B2B_IVAN_SMAGGHE-8T2HC0-980x980.png",
-      "venueEventUrl": "https://halles-cartoucherie.fr/event/chloe-b2b-ivan-smagghe/",
-      "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
-    },
-    {
-      "id": "bikini-snatch-gayguette",
-      "title": "La Snatch Gayguette #3",
-      "subtitle": "Soirée électro queer au Bikini (+18 ans)",
-      "date": "2026-11-22",
-      "time": "18h00",
-      "venueId": "le-bikini",
-      "category": "Électro & Club",
-      "genres": [
-        "Électro",
-        "Soirée Queer"
-      ],
-      "price": "10 € sur place",
-      "status": "available",
-      "poster": "/posters/bikini-snatch-gayguette.jpg",
-      "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/06ea00e8abe5503c3c4b0e76372c9c75d369896e-1320x900.jpg?w=800&q=80",
-      "venueEventUrl": "https://lebikini.com/2026/11/22/la-snatch-gayguette-3",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
-    },
-    {
-      "id": "metronum-minitel",
-      "title": "MINITEL! — Les plus grands tubes de Téléphone",
-      "subtitle": "Hommage rock français dans la Music Box",
-      "date": "2026-11-22",
-      "time": "19h00",
-      "venueId": "le-metronum",
-      "category": "Rock & Metal",
-      "genres": [
-        "Rock",
-        "Tribute"
-      ],
-      "price": "Dès 36 €",
-      "status": "available",
-      "poster": "/posters/metronum-minitel.jpg",
-      "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/Banniere-site-4-1024x683.png",
-      "venueEventUrl": "https://lemetronum.fr/evenement/minitel/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
-    },
-    {
-      "id": "rex-spike-gimme-gimmes",
-      "title": "Spike and the Gimme Gimmes",
-      "subtitle": "Le supergroupe punk rock américain en live au Rex",
-      "date": "2026-11-22",
-      "time": "19h30",
-      "venueId": "le-rex",
-      "category": "Rock & Metal",
-      "genres": [
-        "Punk",
-        "Rock"
-      ],
-      "price": "28 €",
-      "status": "available",
-      "poster": "/posters/rex-spike-gimme-gimmes.jpg",
-      "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1495.jpg?c=7777-9",
-      "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/spike-and-the-gimme-gimmes/",
-      "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-benjamin-biolay-1",
@@ -317,7 +220,7 @@
       "poster": "/posters/bikini-benjamin-biolay-1.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/d5715f166981a56df13e5a1fe99abbde8c07d060-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/23/benjamin-biolay",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "stpierre-zygel-piano",
@@ -337,7 +240,7 @@
       "poster": "/posters/stpierre-zygel-piano.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/4a378bbfe4624691a29c5ca4e5e4271a.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/atelier-dimprovisation-8641549/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-benjamin-biolay-2",
@@ -356,7 +259,7 @@
       "poster": "/posters/bikini-benjamin-biolay-2.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/d5715f166981a56df13e5a1fe99abbde8c07d060-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/24/benjamin-biolay",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "casino-garou",
@@ -393,7 +296,7 @@
       "poster": "/posters/metronum-flow-cineconcert.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/oscar-al-software-libre-pelicula-animada-flow-1-1024x538.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/cine-concert-flow-avec-lenny-marsouin/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-11-25-concert-tot",
@@ -411,7 +314,7 @@
       "poster": "https://img.openagenda.com/main/85cebb9261834ac7bc4491fa0a67f684.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/85cebb9261834ac7bc4491fa0a67f684.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-2969174/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -430,7 +333,7 @@
       "poster": "/posters/bikini-marillion.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/65b06fc029013a101593eeef5f16e420d523d28a-1920x1080.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/25/marillion",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-kartage",
@@ -449,7 +352,7 @@
       "poster": "/posters/rex-kartage.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1583.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/release-party-kartage-inv-cold-blossom-et-underground-therapy/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "opera-king-arthur",
@@ -469,7 +372,7 @@
       "poster": "/posters/opera-king-arthur.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/0d1473954d3d427e921d5c45b28d1723.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/king-arthur-376416/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2026-11-25-seance-scolaire-cine-concert-flow-avec-lenny-mar",
@@ -486,7 +389,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Banniere-site-2-1.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Banniere-site-2-1.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/seance-scolaire-cine-concert-flow-avec-lenny-marsouin/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -524,7 +427,7 @@
       "poster": "/posters/opera-sandrine-piau.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/0336a24db05a4b099aeb9d6645dd7387.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/sandrine-piau-and-daviid-kadouch/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-11-26-concert-tot",
@@ -542,7 +445,7 @@
       "poster": "https://img.openagenda.com/main/6a99fad56b094e29929c2309244ffcd1.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/6a99fad56b094e29929c2309244ffcd1.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-3539404/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -561,7 +464,7 @@
       "poster": "/posters/bikini-stranglers.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/1403a97f7192dd951b514984bc65ab74c057bfba-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/26/the-stranglers",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-colours-in-the-street",
@@ -580,7 +483,7 @@
       "poster": "/posters/rex-colours-in-the-street.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1436.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/colours-in-the-street/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-far-mani-sun",
@@ -598,7 +501,7 @@
       "poster": "/posters/metronum-far-mani-sun.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/SITE-WEB-2-1024x420.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/far-mani-sun-yung-yude/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-zygel-canal-du-midi",
@@ -616,7 +519,7 @@
       "poster": "/posters/halle-zygel.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/aab2c1a725244d2e9e65b66331c35f4a.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/jean-francois-zygel-met-en-musique-le-canal-du-midi-4354691/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-madame-va-danser-5",
@@ -656,7 +559,7 @@
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2023/06/7.-Florent-Marchet.png",
       "venueEventUrl": "https://sallenougaro.com/spectacle/florent-marchet/",
       "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-django-festival",
@@ -715,7 +618,7 @@
       "poster": "/posters/bikini-kicking-fri.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/c7ad58e1bb6462a5c980d2e5eff05b97e89a789d-1321x901.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/27/20-years-kicking-svinkels-poesie-zero-krav-boca",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cabane-girls-dont-cry",
@@ -735,7 +638,7 @@
       "poster": "/posters/cabane-girls-dont-cry.jpg",
       "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/09/Hip-Hop-Talents-1-980x980.jpg",
       "venueEventUrl": "https://halles-cartoucherie.fr/event/girls-dont-cry-festival-3/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-imperial-triumphant",
@@ -754,7 +657,7 @@
       "poster": "/posters/rex-imperial-triumphant.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1452.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/imperial-triumphant-et-knoll/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "stpierre-groupe-scalpel",
@@ -792,7 +695,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/324_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/rounhaa-sublime-tour",
       "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-emma",
@@ -810,7 +713,7 @@
       "poster": "/posters/metronum-emma.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/04/COSMO_EMMA_500X500-2.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/emma/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bijou-buridane",
@@ -829,7 +732,7 @@
       "poster": "/posters/bijou-buridane.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_aab9cdc61f40468987c7b42cf96cdf75~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/b25c34_aab9cdc61f40468987c7b42cf96cdf75~mv2.jpg",
       "venueEventUrl": "https://www.le-bijou.net/events/buridane",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-retro-fever",
@@ -869,7 +772,7 @@
       "venueEventUrl": "https://lebikini.com/2026/11/27/bikini-house-party-bellaire",
       "featured": true,
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-sublime-club",
@@ -889,7 +792,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/326_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/sublime-club",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-plein-phare-schleife",
@@ -909,7 +812,7 @@
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1605.png?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/plein-phare-pres-schleife-w-meize-kaaz-shranz-hard-tech-/",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-tioneb-sofolk",
@@ -947,7 +850,7 @@
       "poster": "/posters/halle-cheveux-dor.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/0d970dd4ce154971bfa94295bb3b2291.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/les-cheveux-dor-the-lodger/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-20-years-kicking-sat",
@@ -966,7 +869,7 @@
       "poster": "/posters/bikini-kicking-sat.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/18638b0403b807885c710936e2c3b0408a2e39f2-1321x901.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/28/20-years-kicking-les-sheriff-not-scientists-burning-heads",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-dinaa",
@@ -985,7 +888,7 @@
       "poster": "/posters/rex-dinaa.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1486.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/dinaa/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-ibeyi",
@@ -1005,7 +908,7 @@
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/05/78e0ba81-b858-4f84-8c58-021988db9fd3-0-scaled-e1779965564330-825x1024.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/ibeyi/",
       "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-luther",
@@ -1023,7 +926,7 @@
       "poster": "/posters/interference-luther.jpg",
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/325_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/luther-sublime-tour",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "stpierre-orchestre-symphonique-1",
@@ -1042,7 +945,7 @@
       "poster": "/posters/stpierre-orchestre-symphonique-1.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/65387858261f40ffa1574c190118badb.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-9791931/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-girls-on-rave",
@@ -1063,7 +966,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/0f3cf9f18dcdc0d9cbb0dd1126f4f1770719a5be-1320x900.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/28/girls-on-rave-xxl",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-thunder-nov28",
@@ -1083,7 +986,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/435_tile_450x450.jpg?v=2",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/thunder-kx-chr-nname-blurred-movement-wanton",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-la-ptite-koa",
@@ -1103,7 +1006,7 @@
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1604.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/la-p-tite-koa-w-uzi-spatiosselet-tseu-nifourmi-ratagaz/",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-organisation-secrete",
@@ -1142,7 +1045,7 @@
       "poster": "/posters/stpierre-orchestre-symphonique-2.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/67d61a81b80749fcbb2bd44f4f41fa87.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-8826492/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-accept",
@@ -1160,7 +1063,7 @@
       "poster": "/posters/bikini-accept.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/3d9b17a9cda9f026fe9a998892d4df1f8aa40236-1920x1080.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/29/accept-50th-anniversary-tour-dynazty-tailgunner",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cabane-shaarghot",
@@ -1179,7 +1082,7 @@
       "poster": "/posters/cabane-shaarghot.jpg",
       "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/04/Hip-Hop-Talents-980x980.jpg",
       "venueEventUrl": "https://halles-cartoucherie.fr/event/shaarghot/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-bisou-full-dub",
@@ -1198,7 +1101,7 @@
       "poster": "/posters/rex-bisou-full-dub.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1584.jpeg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/bisou-full-dub/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-eluveitie",
@@ -1217,7 +1120,7 @@
       "poster": "/posters/interference-eluveitie.jpg",
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/279_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/eluveitie-pain-wolfheart",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-david-hallyday",
@@ -1235,7 +1138,7 @@
       "poster": "/posters/zenith-david-hallyday.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6932fa43b5780871259205.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/DAVID%20HALLYDAY-21535",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2026-12-01-evolution-d-un-groupe-de-rock-emergent-avec-gabb",
@@ -1252,7 +1155,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/11/Banniere-site-5.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/Banniere-site-5.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/evolution-dun-groupe-de-rock-emergent-avec-gabbie-burns-madam/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -1273,7 +1176,7 @@
       "poster": "/posters/bikini-kadavar.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/e3d9bf319cf4d53f44e5c755139887f51e5d0a3e-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/02/kadavar-scott-hepple-and-the-sun-band",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-rosa-crux",
@@ -1293,7 +1196,7 @@
       "poster": "/posters/rex-rosa-crux.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1541.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/rosa-crux-malefino-gaouta/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-disiz",
@@ -1313,7 +1216,7 @@
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6acf77dfcca2c046072455.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/DISIZ-22075",
       "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-vincent-sauve-magic-malik",
@@ -1349,7 +1252,7 @@
       "poster": "https://img.openagenda.com/main/087acc2072f5417097fa0d26c5f8dcb8.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/087acc2072f5417097fa0d26c5f8dcb8.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-6077831/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -1368,7 +1271,7 @@
       "poster": "/posters/bikini-sniper.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/091b68195f3e583016e868fe1173d158547e8b31-4117x6175.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/03/sniper",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-soen-tribulation",
@@ -1387,7 +1290,7 @@
       "poster": "/posters/rex-soen.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1496.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/soen-tribulation/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2026-12-03-mami-watta-theatre-des-mazades",
@@ -1405,7 +1308,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/edd00d7fa231dcc095f5525741694cb0d4a7a26e-453x640.jpg?rect=0,0,453,309&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2026/12/03/mami-watta-theatre-des-mazades",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -1425,7 +1328,7 @@
       "poster": "/posters/metronum-alma-rechtman.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/Alma-Rechtman-Augusta-1024x683.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/alma-rechtman-augusta/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-lets-swing-again",
@@ -1444,7 +1347,7 @@
       "poster": "/posters/halle-lets-swing.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/b412d95ba4ea49ac82f81c62b02d0fa5.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/lets-swing-again-8806982/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-saez",
@@ -1463,7 +1366,7 @@
       "poster": "/posters/zenith-saez.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/693be2cde0553567700035.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Saez-21890",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bijou-claudine-lebegue",
@@ -1481,7 +1384,7 @@
       "poster": "/posters/bijou-claudine-lebegue.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_2bf37bf79bb941fa9c22460fd2cd1596~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/b25c34_2bf37bf79bb941fa9c22460fd2cd1596~mv2.jpg",
       "venueEventUrl": "https://www.le-bijou.net/events/claudine-lebegue-pierrot-de-la-rue-ketanou",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-jeudis-loky",
@@ -1519,7 +1422,7 @@
       "poster": "/posters/zenith-claudio-capeo.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6744c3d568574890878096.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/CLAUDIO%20CAPEO-20699",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-sarab",
@@ -1538,7 +1441,7 @@
       "poster": "/posters/metronum-sarab.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/07/Sarab-PRINT_5948_20X30-%C2%A9Sylvain-Gripoix-1024x683.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/sarab/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-mentissa",
@@ -1558,7 +1461,7 @@
       "poster": "/posters/interference-mentissa.jpg",
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/249_tile_450x450.jpg?v=2",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/mentissa",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bijou-karpatt",
@@ -1578,7 +1481,7 @@
       "poster": "/posters/bijou-karpatt.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_12db08cc6d9540e69a9e99c70113c216~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/b25c34_12db08cc6d9540e69a9e99c70113c216~mv2.jpg",
       "venueEventUrl": "https://www.le-bijou.net/events/karpatt-3",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-rave-on-creeds",
@@ -1598,7 +1501,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/a2fee0f8310cf91c386af11bf7635600f5d9a5d2-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/04/rave-on-creeds-gonzi-barbara-lago-alexa-rose",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-pact",
@@ -1617,7 +1520,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/364_tile_450x450.jpg?v=4",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/pact",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-banger-2",
@@ -1638,7 +1541,7 @@
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1606.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/banger-2-w-area-one-moustakore-hu-bee/",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "stpierre-harpissima",
@@ -1659,7 +1562,7 @@
       "poster": "/posters/stpierre-harpissima.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/6884438e32a14951935a21834e2f79ca.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/harpissima-2026-week-end-dexcellence-dedie-a-la-harpe/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-ben-plg",
@@ -1677,7 +1580,7 @@
       "poster": "/posters/bikini-ben-plg.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/2f675ea66d2a823b87dad3fc03db53b524c20184-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/05/ben-plg",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cabane-java-mcanuff",
@@ -1697,7 +1600,7 @@
       "poster": "/posters/cabane-java-mcanuff.jpg",
       "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/03/18-980x980.jpg",
       "venueEventUrl": "https://halles-cartoucherie.fr/event/java-mcanuff/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-changeline",
@@ -1717,7 +1620,7 @@
       "poster": "/posters/rex-changeline.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1526.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/changeline/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-martin-dupont",
@@ -1736,7 +1639,7 @@
       "poster": "/posters/metronum-martin-dupont.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/f83857664-1-1024x683.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/martin-dupont-estetica-noir-august-angst/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "opera-noel-a-naples",
@@ -1756,7 +1659,7 @@
       "poster": "/posters/opera-noel-a-naples.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/126053374f08442ea53f49a84394e368.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/noel-a-naples/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-slim-paul",
@@ -1795,7 +1698,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/5896615d1452bb012ceb2ce06bcddeb3a99e1db1-1398x786.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/05/2much-2nd-birthday-afem-syko-dj-football-justin-jay-paralich-zorza",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-thunder-dec05",
@@ -1814,7 +1717,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/463_tile_450x450.jpg?v=4",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/thunder-el-desperado-rouge-blaame-more",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-turbulence",
@@ -1834,7 +1737,7 @@
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1589.png?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/turbulence-w-rekkt-juria-k-ssy/",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-pixel-techno",
@@ -1871,7 +1774,7 @@
       "poster": "https://img.openagenda.com/main/b27526879d22475ab37f32a3785ce0c3.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/b27526879d22475ab37f32a3785ce0c3.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/harpissima-2026/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -1890,7 +1793,7 @@
       "poster": "/posters/halle-noel-britten.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/57d2c7a1ea6a42748a42fa1d33dfeea3.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/noel-avec-britten-2716898/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2026-12-06-wyld-le-bikini-super-loto-de-noel",
@@ -1908,7 +1811,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/3dcef3a4d9c74be589c1e857c7f038f9da1aa88b-1230x900.png?rect=0,31,1230,839&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2026/12/06/wyld-le-bikini-super-loto-de-noel",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -1928,7 +1831,7 @@
       "poster": "/posters/cabane-giedre.jpg",
       "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/07/21-980x980.jpg",
       "venueEventUrl": "https://halles-cartoucherie.fr/event/giedre/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-07-concert",
@@ -1946,7 +1849,7 @@
       "poster": "https://img.openagenda.com/main/11ff599639db40da971ee584175be71d.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/11ff599639db40da971ee584175be71d.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-2220498/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -1966,7 +1869,7 @@
       "poster": "/posters/bikini-axel-bauer.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/c78319cee07943b5e664c9ca14c4ea811f26f28b-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/08/axel-bauer",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "casino-laurent-voulzy",
@@ -1985,7 +1888,7 @@
       "poster": "/posters/casino-laurent-voulzy.jpg",
       "sourcePosterUrl": "https://a.storyblok.com/f/287000/2560x1440/a3556ea59f/laurent-voulzy-en-concert-paysage.jpg/m/800x1200/filters:format(webp):quality(80)",
       "venueEventUrl": "https://www.casinosbarriere.com/toulouse/spectacle/laurent-voulzy",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-09-concert-tot",
@@ -2003,7 +1906,7 @@
       "poster": "https://img.openagenda.com/main/a07034f827ec458c92190be122a072f6.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/a07034f827ec458c92190be122a072f6.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-5427578/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2022,7 +1925,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/2df0a7a181718f114a8bfc4e69abcb6684a87cfc-900x550.jpg?rect=47,0,806,550&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2026/12/09/noam-sinseau",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2042,7 +1945,7 @@
       "poster": "/posters/metronum-foolbazard.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/20261209-METRONOME-VIGNETTE-1024x576.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/foolbazard-grife-holyfish/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-10-concert",
@@ -2060,7 +1963,7 @@
       "poster": "https://img.openagenda.com/main/f3adb905bf224df5b09020882b1913b8.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/f3adb905bf224df5b09020882b1913b8.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-7602954/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2079,7 +1982,7 @@
       "poster": "/posters/bikini-camille.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/bfa1e0e6eb1bfdbd0c8c8c9760efcc39cc0fcb6f-4608x2592.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/10/camille",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-princess-og",
@@ -2097,7 +2000,7 @@
       "poster": "/posters/metronum-princess-og.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Banniere-site-1-1024x683.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/princess-og-mel-mauve/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-minasi-tsujii",
@@ -2115,7 +2018,7 @@
       "poster": "/posters/halle-minasi-tsujii.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/c69a2ff576ee47448e4d1ac87c781d7c.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/riccardo-minasi-nobuyuki-tsujii-4011205/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "stpierre-concert-gala",
@@ -2133,7 +2036,7 @@
       "poster": "/posters/stpierre-concert-gala.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/d858ac7b230f46b8becf75bbda388b3b.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-9635764/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "price": "Gratuit"
     },
     {
@@ -2154,7 +2057,7 @@
       "poster": "/posters/bijou-serge-lopez.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_b8f046e1fe0a49a3b743c4e1e7eb40c4~mv2.png/v1/fill/w_600,h_600,al_c,q_85/b25c34_b8f046e1fe0a49a3b743c4e1e7eb40c4~mv2.png",
       "venueEventUrl": "https://www.le-bijou.net/events/elsa-serge-lopez",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-osff",
@@ -2213,7 +2116,7 @@
       "poster": "/posters/bikini-fatals-picards.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/7926a9c661955309abb9581e6dc0772594ab1ac5-1920x1080.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/11/les-fatals-picards",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-esthesis",
@@ -2232,7 +2135,7 @@
       "poster": "/posters/rex-esthesis.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1508.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/esthesis-solventis/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-dire-straits",
@@ -2250,7 +2153,7 @@
       "poster": "/posters/zenith-dire-straits.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69403440855ae904585139.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/THE%20DIRE%20STRAITS%20EXPERIENCE-21905",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-onda-mix",
@@ -2270,7 +2173,7 @@
       "poster": "/posters/metronum-onda-mix.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/05/Banniere-site-1024x683.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/applause-show-avec-artem-mabrada-lorkestra/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "stpierre-professeurs-libertes",
@@ -2307,7 +2210,7 @@
       "poster": "/posters/bijou-archimede.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_e74b9d7b44454646814f217ae7e14a03~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/b25c34_e74b9d7b44454646814f217ae7e14a03~mv2.jpg",
       "venueEventUrl": "https://www.le-bijou.net/events/archimede-3",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-jetlag",
@@ -2327,7 +2230,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/457_tile_450x450.jpg?v=5",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/jetlag-movimiento",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2026-12-11-fearz-sickmode-kenai-schlot-stv-micella",
@@ -2347,7 +2250,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/e1e9a24c75e1f58c5b4e192f764e875688e44107-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2026/12/11/fearz-karnage",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2368,7 +2271,7 @@
       "poster": "/posters/bikini-echos-merveilles.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/ba1a737153ea2452d1765945fadc05e3a118d48f-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/12/echos-and-merveilles-festival-soiree-solidaire",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-12-concert",
@@ -2386,7 +2289,7 @@
       "poster": "https://img.openagenda.com/main/fff643bcfc4d4a3da26f0518b380f034.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/fff643bcfc4d4a3da26f0518b380f034.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-7761849/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2404,7 +2307,7 @@
       "poster": "https://img.openagenda.com/main/e58041a5120d4d16b75d664a361a05ef.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/e58041a5120d4d16b75d664a361a05ef.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/happy-hour-avec-le-violon-6869851/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2425,7 +2328,7 @@
       "poster": "/posters/rex-theo-juice.jpg",
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1530.jpg?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/theo-juice-et-the-sexy-music-live-band/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-psykup",
@@ -2444,7 +2347,7 @@
       "poster": "/posters/metronum-psykup.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/03/PSYKUP-TOURNEE-STORY-e1774884422480-990x1024.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/psykup/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cabane-henrik-schwarz",
@@ -2463,7 +2366,7 @@
       "poster": "/posters/cabane-henrik-schwarz.jpg",
       "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/07/FS-HENRIK-SQUARE-980x980.png",
       "venueEventUrl": "https://halles-cartoucherie.fr/event/henrik-schwarz-live-2/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bijou-fils-de-ta-mere",
@@ -2482,7 +2385,7 @@
       "poster": "/posters/bijou-fils-de-ta-mere.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_ff366cb4e2a141a182448223ed1700d8~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/b25c34_ff366cb4e2a141a182448223ed1700d8~mv2.jpg",
       "venueEventUrl": "https://www.le-bijou.net/events/les-fils-de-ta-mere-12",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-critical-sound",
@@ -2502,7 +2405,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/4aa9583c623f01b5ad6e06c41cad57da193ba082-1320x900.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/12/critical-sound-kasra-waeys-gino-fade-black-visla",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-thunder-dec12",
@@ -2522,7 +2425,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/440_tile_450x450.jpg?v=2",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/amnexia-onlynumbers-william-luck-flymeon-mosmoz-predacid",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-shelter-disco",
@@ -2542,7 +2445,7 @@
       "sourcePosterUrl": "https://www.lerextoulouse.com/media/data/spectacles/images/slider-1608.png?c=7777-9",
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/the-shelter-disco-w-sam-ruffilo-toy-tonic-gabby-e-darta/",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-bowod-hard-bounce",
@@ -2580,7 +2483,7 @@
       "poster": "https://img.openagenda.com/main/8756dbe9769a472c96ddd6ff4b416492.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/8756dbe9769a472c96ddd6ff4b416492.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-de-noel-2686541/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2599,7 +2502,7 @@
       "poster": "https://img.openagenda.com/main/5fbd424b7ad44c89adba9ca40a29fb11.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/5fbd424b7ad44c89adba9ca40a29fb11.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-7129875/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2619,7 +2522,7 @@
       "poster": "/posters/zenith-florent-pagny.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69aee62e7ddbc478134685.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/FLORENT%20PAGNY-21023",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-15-concert",
@@ -2637,7 +2540,7 @@
       "poster": "https://img.openagenda.com/main/01c5c1ad875b44ab908e0feee8cf805e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/01c5c1ad875b44ab908e0feee8cf805e.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-304864/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2658,7 +2561,7 @@
       "poster": "/posters/metronum-open-mic.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/00-GROUPE-2-1024x683.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/apero-concert-open-mic-du-metronum/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-feu-chatterton",
@@ -2678,7 +2581,7 @@
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/68baa4e8c7ce9435752237.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/FEU!%20CHATTERTON-21341",
       "featured": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-alkhena",
@@ -2715,7 +2618,7 @@
       "poster": "https://img.openagenda.com/main/50fbecf304fc4a359b66c0445adbb901.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/50fbecf304fc4a359b66c0445adbb901.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-scolaire-lensemble-de-cuivres/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2736,7 +2639,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/f27f28a3b0a1b3b974666e89097caca1720bc1ef-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2026/12/17/soiree-2000-vs-2010",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2755,7 +2658,7 @@
       "poster": "/posters/halle-hannigan-chamayou.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/466a15f4ef1f422d8db4cac0f068419c.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/barbara-hannigan-bertrand-chamayou-9702167/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-17-concert",
@@ -2773,7 +2676,7 @@
       "poster": "https://img.openagenda.com/main/4c0e01fc75614b7ab49c7fc54f0f7455.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/4c0e01fc75614b7ab49c7fc54f0f7455.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-4208361/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2791,7 +2694,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/246_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/amandine-lourdel-renversee",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2811,7 +2714,7 @@
       "poster": "/posters/bijou-leila-huissoud.jpg",
       "sourcePosterUrl": "https://static.wixstatic.com/media/b25c34_0ff7775d07c64f9196974f455e7218be~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/b25c34_0ff7775d07c64f9196974f455e7218be~mv2.jpg",
       "venueEventUrl": "https://www.le-bijou.net/events/leila-huissoud-je-suis-venue-te-dire-que-je-men-fous",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-lo-trio",
@@ -2868,7 +2771,7 @@
       "poster": "/posters/bikini-la-rvfleuze.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/5996ed2fc8881ee258277125d996e93256b0cba8-1320x900.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/18/la-rvfleuze",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2026-12-18-concert-de-noel",
@@ -2886,7 +2789,7 @@
       "poster": "https://img.openagenda.com/main/e1602500ab5f4cb195a5bdcdc76f8b96.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/e1602500ab5f4cb195a5bdcdc76f8b96.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-417461/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -2906,7 +2809,7 @@
       "poster": "/posters/metronum-tnt-acdc.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/06/Banniere-site-39-e1782134651946-1024x528.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/tnt-ac-dc-tribute-band/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "taquin-hancock-en-stock",
@@ -2945,7 +2848,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/e19a78723c5101b56d7ebb1a3bdf9e867407cb6e-4404x3000.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/18/la-qlub-l-zwo-promis3-belladonna-sohier",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "cri-saturnales-assalm",
@@ -2984,7 +2887,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/466_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/plein-phare-inv-reinier-zonneveld-4h-live",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3003,7 +2906,7 @@
       "poster": "/posters/cabane-andhim.jpg",
       "sourcePosterUrl": "https://halles-cartoucherie.fr/wp-content/uploads/2026/07/20261219_155651_AFTER_NOW_-_ANDHIM-zKv08x-980x980.png",
       "venueEventUrl": "https://halles-cartoucherie.fr/event/andhim/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-christmas-rave",
@@ -3024,7 +2927,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/b7ba71f72d9f81430a92820d936653a433f4b4a3-7680x4320.png?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/19/christmas-rave-x-ritmo-fatale-kendal-vel-europe",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-2026-12-19-23-59-lekkerfaces-rooler-dimitri-k-feat-mc-robs-",
@@ -3042,7 +2945,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/465_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/23-59-lekkerfaces-rooler-dimitri-k-feat-mc-robs-more",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3081,7 +2984,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/454_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/jingle-rave-moontrip-x-interference",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3100,7 +3003,7 @@
       "poster": "/posters/zenith-harry-potter.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6957d826e1cd7531321141.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/HARRY%20POTTER%20ET%20LE%20PRINCE%20DE%20SANG-M%C3%8AL%C3%89%20EN%20CIN%C3%89-CONCERT-21223",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-kpop-forever",
@@ -3118,7 +3021,7 @@
       "poster": "/posters/zenith-kpop-forever.jpg",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/693947f3d31f8362002093.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/K-POP%20FOREVER-21993",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-nouvel-an",
@@ -3137,7 +3040,7 @@
       "poster": "/posters/halle-nouvel-an.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/67da02a419f249ecbc04061523d833ef.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/concerts-du-nouvel-an-9303127/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-2026-12-31-new-year-2027-w-friends",
@@ -3154,7 +3057,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/467_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/new-year-2027-w-friends",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3177,7 +3080,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/9b2da14d8de7ac19fa1f6c280bab356829db6c36-1320x900.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/12/31/reveillon-44-ans-de-musique-au-bikini",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-2027-01-05-one-night-of-queen",
@@ -3194,7 +3097,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6b002125d4dd2060490091.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6b002125d4dd2060490091.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/ONE%20NIGHT%20OF%20QUEEN-21494",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3215,7 +3118,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/a1a73c9118fd86bf37f0bac8dab0422aade489ae-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/08/toulouse-massive-2027",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3234,7 +3137,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/462_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/uprising-badland",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3253,7 +3156,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/732467fb26c9ed1868740816c870864b18a36edc-1920x1050.png?rect=191,0,1539,1050&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/09/jersey",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3271,7 +3174,7 @@
       "poster": "https://img.openagenda.com/main/e957d293382d4dd0ad1f386c1d6d8ff6.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/e957d293382d4dd0ad1f386c1d6d8ff6.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/maria-de-buenos-aires-3453099/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3292,7 +3195,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/89f26e5bcf2ac6cc8f52e41a10aeb4533d188e41-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/09/return-davyboi-antonym-felinae-revex",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3309,7 +3212,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Banniere-site.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Banniere-site.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/sovajon-priliick-et-ask0/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3327,7 +3230,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/287_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/lalou-2",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3346,7 +3249,7 @@
       "poster": "https://img.openagenda.com/main/d20cc3940cf64b718526e366d1b30af3.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/d20cc3940cf64b718526e366d1b30af3.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-7590301/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3367,7 +3270,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/6f1e35f5e27b7280a45fe88ed93bebde2270f14a-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/14/la-rue-ketanou",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3387,7 +3290,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/juste-shani/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-2027-01-14-adam-hickox-antoine-tamestit",
@@ -3404,7 +3307,7 @@
       "poster": "https://img.openagenda.com/main/32ed6de0a3c94c0c969c2de57e0e352e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/32ed6de0a3c94c0c969c2de57e0e352e.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/adam-hickox-antoine-tamestit-5968038/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3425,7 +3328,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/b744110350827a3bee10f203e1ec9bd85a2f61cc-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/15/vertiges-2-pass-vendredi-furax-barbarossa-alpha-steppa-dj-hype-10vers-big-ass-cat-shahzen-ax-les-thermes",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3444,7 +3347,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/5a607af515dc00cd8f937ffac0e0c00bdb6a7c43-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/15/anetha-ring-noord-alexa-rose",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3463,7 +3366,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/599ae7f0fd9d461117f4009171dec769fe0cbf87-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/16/zaoui",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3483,7 +3386,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/3b2ddaf46d84175851467cdb0a1abb6a9e8e0e7c-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/16/vertiges-2-pass-samedi-cassie-raptor-durdenhauer-b2b-eshka-mezigue-b2b-mad-rey-rebequita-figue-b2b-dj-vafanculo-tunnel-ax-les-thermes",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3502,7 +3405,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/469_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/23-59-klofama-all-night-long",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3521,7 +3424,7 @@
       "poster": "https://img.openagenda.com/main/cc3bf5a2680d4987b1fa0100bc8170c2.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/cc3bf5a2680d4987b1fa0100bc8170c2.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-7220821/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3540,7 +3443,7 @@
       "poster": "https://img.openagenda.com/main/674403e07b7a4ec5a15c3a5c1d55fb6a.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/674403e07b7a4ec5a15c3a5c1d55fb6a.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-113860/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3557,7 +3460,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2025/10/05-10-14-Metronum-Photo-B.AIACH-5-1-scaled.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2025/10/05-10-14-Metronum-Photo-B.AIACH-5-1-scaled.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/visite-du-metronum-5/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3576,7 +3479,7 @@
       "poster": "https://img.openagenda.com/main/50da6d2e78494246a517048d9382faa9.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/50da6d2e78494246a517048d9382faa9.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-tot-1824717/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3594,7 +3497,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ac8a919c5182043507479.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ac8a919c5182043507479.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/DE%20MICHEL%20A%20FRANCE-21585",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3612,7 +3515,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6932b3885ba26684331779.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6932b3885ba26684331779.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/GRAND%20CORPS%20MALADE-20809",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3631,7 +3534,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/77498665c2a31ef083d7ab86b506477cfa88c4fe-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/22/izia",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3652,7 +3555,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/spicy-box-mooan-exis-/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-01-22-rhapsody-of-fire-serious-black-supports",
@@ -3668,7 +3571,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Sans-titre.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Sans-titre.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/rhapsody-of-fire-serious-black-supports/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3686,7 +3589,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/41e01fd2ef4d878ca677a0c2bfd7db13a44ea659-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/22/karnage-x-wolf-city-hysta-akira-drokz-kronos-bianka-emberline",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3706,7 +3609,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/abca9dd91361919cd7c5a2383c6784e323f4e3ad-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/23/marguerite",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3728,7 +3631,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/marta-ultragama/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-01-23-aloise-sauvage",
@@ -3744,7 +3647,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/09/Banniere-site-4.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/Banniere-site-4.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/aloise-sauvage/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3762,7 +3665,7 @@
       "poster": "https://img.openagenda.com/main/b0576d7a1d5b46fbbeceeaed908e9581.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/b0576d7a1d5b46fbbeceeaed908e9581.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/portrait-dorchestre/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3780,7 +3683,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/253_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/orden-ogan-special-guest",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3799,7 +3702,7 @@
       "poster": "https://img.openagenda.com/main/3b5d9e30c1664e68b2af58719ba22f66.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/3b5d9e30c1664e68b2af58719ba22f66.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-scolaire-cordes-et-soufflet-un-vent-de-folie/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3819,7 +3722,7 @@
       "poster": "/posters/opera-asmik-grigorian.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/f88a636f2deb48a6b458baad8fff0170.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/asmik-grigorian-grandes-heroines-dopera/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "auditorium-2027-01-25-concert-de-professeurs",
@@ -3837,7 +3740,7 @@
       "poster": "https://img.openagenda.com/main/4aa55c46763f4ab5bd72735bca504eb0.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/4aa55c46763f4ab5bd72735bca504eb0.base.image.jpg",
       "venueEventUrl": "https://conservatoire.toulouse.fr/concert-de-professeurs-2824478/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3857,7 +3760,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/electric-pyramid/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-01-26-resolve",
@@ -3873,7 +3776,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/04/RESOLVE-STORY-e1776863757859.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/04/RESOLVE-STORY-e1776863757859.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/resolve/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3892,7 +3795,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/6890014f3eadf6e9c1f1fe1780267ced0582f21b-1080x737.jpg?w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/27/thylacine",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3910,7 +3813,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/448_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/zed-yun-pavarotti",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3928,7 +3831,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6afefb588a338085364930.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6afefb588a338085364930.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/SO%20FLOYD-21413",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3946,7 +3849,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/6d53753c2a08362b7d8eff1d59d87f8a4343e40a-1080x737.jpg?w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/28/thylacine",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3965,7 +3868,7 @@
       "poster": "https://img.openagenda.com/main/1458d0ae13784918bcfcb0200aa151a0.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/1458d0ae13784918bcfcb0200aa151a0.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/lohengrin-7115969/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -3984,7 +3887,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/d412bbcb5c0ed448e63a3d72f5e68f72851569c4-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/29/kid-francescoli",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4004,7 +3907,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/tonique-et-man/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-01-29-ladaniva",
@@ -4020,7 +3923,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/04/lada-photo-e1776257551476.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/04/lada-photo-e1776257551476.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/ladaniva/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4038,7 +3941,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aa2830c49c45581107269.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aa2830c49c45581107269.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Electric%20Callboy-21694",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4057,7 +3960,7 @@
       "poster": "https://img.openagenda.com/main/46b64c27ab2141acba660a4124c5d37e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/46b64c27ab2141acba660a4124c5d37e.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/stabat-mater-4950879/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4076,7 +3979,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/0818112db36adc3d63eb8e57df2be84ebb6a867b-1920x1080.png?rect=169,0,1583,1080&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/01/30/adele-castillon",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4094,7 +3997,7 @@
       "poster": "https://img.openagenda.com/main/7ff3df5d3c1144068021a0b43e7eb54f.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/7ff3df5d3c1144068021a0b43e7eb54f.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/ryan-bancroft-clara-jumi-kang-9986948/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4113,7 +4016,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/460_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/koalition-xxl",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4131,7 +4034,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/68ef6f7aaad00495401497.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/68ef6f7aaad00495401497.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/CHRISTOPHE%20MAE-20692",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4150,7 +4053,7 @@
       "poster": "https://img.openagenda.com/main/0a265cb3cfb14c6980b02e6e4be36774.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/0a265cb3cfb14c6980b02e6e4be36774.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/nadine-sierra-chante-mozart-and-donizetti/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4171,7 +4074,7 @@
       "poster": "/posters/nougaro-yvan-cujious-winsberg.jpg",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/Yvan-Cujious.png",
       "venueEventUrl": "https://sallenougaro.com/programmation/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "odyssud-abd-al-malik",
@@ -4207,7 +4110,7 @@
       "poster": "https://img.openagenda.com/main/d2ac28e7ef87441d8ace071591da12c7.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/d2ac28e7ef87441d8ace071591da12c7.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/laureats-du-concours-de-gordes/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4226,7 +4129,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/5d5cda22b7115d39b1721462e5b1f1f757f9cb39-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/04/feldup-and-the-showerheads",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4243,7 +4146,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Ruthee_Presse-2-scaled.jpeg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Ruthee_Presse-2-scaled.jpeg",
       "venueEventUrl": "https://lemetronum.fr/evenement/ruthee/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4261,7 +4164,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/688cda4c01133095591248.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/688cda4c01133095591248.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/FOREVER-21440",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4281,7 +4184,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/1280e58bbbd955ab6bdb791160d730fd82733d36-4000x2250.png?rect=358,0,3298,2250&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/05/pierre-de-maere",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4298,7 +4201,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/11/toutpuissanttropicalorchestrascene.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/toutpuissanttropicalorchestrascene.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/cuba-hoy-terres-de-rencontres-30eme-edition-du-festival/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4316,7 +4219,7 @@
       "poster": "https://img.openagenda.com/main/94054741242b469f8754100f4d45fa1c.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/94054741242b469f8754100f4d45fa1c.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/happy-hour-avec-la-flute-709757/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4333,7 +4236,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/09/1O1A0035-scaled.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/1O1A0035-scaled.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/myla/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4352,7 +4255,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/451_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/ohlala-winter-festival-2027",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4373,7 +4276,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/the-black-dahlia-murder/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-02-10-jazzy-bazz",
@@ -4391,7 +4294,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/1185a921a9336c31b09bae00dce9a89926f1063f-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/10/jazzy-bazz",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4412,7 +4315,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/e19308bea6127c8bec9c793733eb432658329939-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/11/ugly-kid-joe",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4434,7 +4337,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/shred-fest-obscura-et-pestilence-et-cryptic-shift-et-thus-et-dvrk/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-02-12-nto",
@@ -4452,7 +4355,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/a8f1185c416f0292a8b5d9cda65067d002cebb03-1919x1005.jpg?rect=224,0,1473,1005&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/12/nto",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4471,7 +4374,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/7c5374decf308e30f5588bb72d78e9846b7b90fa-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/13/acid-arab",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4491,7 +4394,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/revnoir/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-2027-02-13-tarmo-peltokoski-mao-fujita",
@@ -4508,7 +4411,7 @@
       "poster": "https://img.openagenda.com/main/64aa939f8dc5494ea694ddeea6eaca72.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/64aa939f8dc5494ea694ddeea6eaca72.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/tarmo-peltokoski-mao-fujita-6472610/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4526,7 +4429,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/697a3efabc092198369417.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/697a3efabc092198369417.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/%20LES%20MUSIQUES%20DE%20JOHN%20WILLIAMS%20ET%20HANS%20ZIMMER%20EN%20CONCERT%20SYMPHONIQUE-21994",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4547,7 +4450,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/jared-james-nichols/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-02-17-ino-casablanca",
@@ -4565,7 +4468,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/bcab5dbdb35c185920a6bff56f4053a2d91603bb-1350x900.png?rect=16,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/17/ino-casablanca",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4582,7 +4485,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/AKOU_5-bandeau-scaled.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/AKOU_5-bandeau-scaled.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/akou-release-party/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4601,7 +4504,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/bcab5dbdb35c185920a6bff56f4053a2d91603bb-1350x900.png?rect=16,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/18/ino-casablanca",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4621,7 +4524,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/3eb16a9f54b306a46322eefaca66ad48552725ae-572x572.png?rect=0,91,572,390&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/19/kemmler",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4643,7 +4546,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/eloiz/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-02-19-worakls-presente-overture-worakls-ekaterina-shel",
@@ -4661,7 +4564,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/a78eb5655d9cb649bea5e86519292000b901e096-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/19/worakls-presente-ouverture-ekaterina-shelehova-antonin-winter",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4680,7 +4583,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/464_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/iii-chrome-toulouse",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4699,7 +4602,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/6adbc4afd3a5b6d32210f49703d341740a012fd9-1920x1080.png?rect=169,0,1583,1080&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/20/aupinard",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4716,7 +4619,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Vert-et-Orange-Anniversaire-Celebration-169-Video.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Vert-et-Orange-Anniversaire-Celebration-169-Video.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/in-loving-memory-86-crew-evil-conduct/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4734,7 +4637,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6af596f087e98443892246.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6af596f087e98443892246.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/KEEN%27V-21718",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4754,7 +4657,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/697e2cfa21985ae40e5720ad41eeafc01eb2fc93-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/20/lb-aka-labat-curated-tour-olympe4000-b2b-thelma",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4774,7 +4677,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/isia/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-2027-02-23-veronic-dicaire",
@@ -4791,7 +4694,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6936e9011688e714618993.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6936e9011688e714618993.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/VERONIC%20DICAIRE-21513",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4810,7 +4713,7 @@
       "poster": "/posters/nougaro-yves-jamait.jpg",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/Yves-Jamait.png",
       "venueEventUrl": "https://sallenougaro.com/programmation/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-2027-02-24-noe-presznow",
@@ -4829,7 +4732,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/noe-presznow/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-2027-02-24-celtic-legends",
@@ -4846,7 +4749,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a99327f8e613493981025.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a99327f8e613493981025.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/CELTIC%20LEGENDS-21447",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4866,7 +4769,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/paolo-/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-2027-02-25-josep-pons-marie-pierre-langlamet",
@@ -4883,7 +4786,7 @@
       "poster": "https://img.openagenda.com/main/79f947319e5a48a59b622b02943b27e4.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/79f947319e5a48a59b622b02943b27e4.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/josep-pons-marie-pierre-langlamet-137690/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4904,7 +4807,7 @@
       "poster": "/posters/nougaro-alani.jpg",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/ALA.NI_.png",
       "venueEventUrl": "https://sallenougaro.com/programmation/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-02-26-eihwar-witches-vikings",
@@ -4922,7 +4825,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/c04ee9fbe1cbb04733184dfade6453af8bac0794-1920x1080.png?rect=169,0,1583,1080&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/26/eihwar",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4940,7 +4843,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Kid-Wise-PRESS-1--scaled.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Kid-Wise-PRESS-1--scaled.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/kid-wise/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4958,7 +4861,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aa956eebfdaf078496652.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aa956eebfdaf078496652.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/HOSHI-21528",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4979,7 +4882,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/62e71f9673c8a675f02789bcf28ca474b6c53432-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/26/koalition-acid-edition-amygalda-dica-gea-laton-raver-yes-didier-sinay",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -4998,7 +4901,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/456_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/vladimir-cauchemar",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5019,7 +4922,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/ad117b6fa50ad6ba9ec0d97a874fc23fbae36de3-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/27/cult-of-luna-bruit-youth-code",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5056,7 +4959,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/86dfa11e20c37ac889266e95299f7d3877de254d-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/02/28/tribute-to-naaman",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5074,7 +4977,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/455_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/la-musique-de-hans-zimmer",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5092,7 +4995,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a4e05892c2cf465291492.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a4e05892c2cf465291492.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/500%20voix%20pour%20Johnny-21384",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5111,7 +5014,7 @@
       "poster": "https://img.openagenda.com/main/ec0129ed811d4de39ec061e830b7b175.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/ec0129ed811d4de39ec061e830b7b175.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/le-barbier-de-seville-3209054/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5131,7 +5034,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/6c6672f3cfe29b0d28fd80627c64893a859040fa-2434x1660.png?rect=1,0,2433,1660&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/03/mathilde",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5150,7 +5053,7 @@
       "poster": "https://img.openagenda.com/main/2ad4b1051ee948f492680431d43cec9e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/2ad4b1051ee948f492680431d43cec9e.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/les-dames-du-choeur-du-capitole/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5169,7 +5072,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/ab8bf5502b83cd8be44a68fa0a2614a0b621a0ae-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/04/sam-sauvage",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5187,7 +5090,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69d90e21323b2642801466.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69d90e21323b2642801466.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/MAGIC%20SYSTEM-21899",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5206,7 +5109,7 @@
       "poster": "https://img.openagenda.com/main/495e8751ec2b4a3cab8883669bbf1e58.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/495e8751ec2b4a3cab8883669bbf1e58.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/elisabeth-leonskaja-et-le-quatuor-danel-reviennent/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5226,7 +5129,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/018c1f22bacd3a1f9cdc4595426bd7f70b858f8b-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/05/jahneration",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5243,7 +5146,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/09/Banniere-site-8.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/Banniere-site-8.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/typhee/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5261,7 +5164,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/409_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/les-wriggles",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5279,7 +5182,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6936acb4d939c133338966.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6936acb4d939c133338966.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/L2B-21445",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5298,7 +5201,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/bb6e55735ac9dbed761900cda8a6c862423ba884-1080x1350.png?rect=0,107,1080,737&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/05/billx",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5317,7 +5220,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/46ca9ad85286c62786491f5cca7278d373a12904-2421x1517.png?rect=100,0,2223,1517&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/06/loic-nottet",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5335,7 +5238,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/83ae5f8787b5b1a8c8ee769f037546e5b9430f58-854x1280.jpg?rect=0,349,854,583&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/06/guillaume-meurice-salle-horizon-pyrenees",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5355,7 +5258,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/chapelier-fou/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-2027-03-07-bazar-circus",
@@ -5372,7 +5275,7 @@
       "poster": "https://img.openagenda.com/main/d6623d0de6b541aba68f3ab1a79132db.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/d6623d0de6b541aba68f3ab1a79132db.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/bazar-circus-7981890/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5390,7 +5293,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/2da8c9cf6205a2f6d38989c2bd8535cc7a1fe28c-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/07/royal-blood",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5410,7 +5313,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/mol-et-guest/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "rex-2027-03-09-felhur-x-andro",
@@ -5431,7 +5334,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/felhur-x-andro/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-03-10-teddybear",
@@ -5449,7 +5352,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/ff0a21a029f131e00730473a510866cbbb6212cc-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/10/teddybear",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5467,7 +5370,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/320_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/medine",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5485,7 +5388,7 @@
       "poster": "https://sallenougaro.com/wp-content/uploads/2026/06/Sarah-McCoy.png",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/Sarah-McCoy.png",
       "venueEventUrl": "https://sallenougaro.com/spectacle/sarah-mccoy-2/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5506,7 +5409,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/k-maro/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "interference-2027-03-11-mpl",
@@ -5523,7 +5426,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/446_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/mpl",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5541,7 +5444,7 @@
       "poster": "https://img.openagenda.com/main/1f09c4d80f2f4c6caa683dc980c3d169.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/1f09c4d80f2f4c6caa683dc980c3d169.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/riccardo-bisatti-guido-santanna-5290589/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5561,7 +5464,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/lescop/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-03-13-madam",
@@ -5579,7 +5482,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/90f194f608a90e1463ce876c9d7cebd264a984ec-3337x2399.jpg?rect=0,62,3337,2277&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/13/madam",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5600,7 +5503,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/michel-hubert/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "zenith-2027-03-13-deluxe",
@@ -5617,7 +5520,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69286e1d2cb61365237862.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69286e1d2cb61365237862.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/DELUXE-21769",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5635,7 +5538,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/410_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/danyl",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5653,7 +5556,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6943cc66560ad591444330.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6943cc66560ad591444330.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/MARINE-22095",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5671,7 +5574,7 @@
       "poster": "https://sallenougaro.com/wp-content/uploads/2026/06/Renaud-Garcia-Fons.png",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/Renaud-Garcia-Fons.png",
       "venueEventUrl": "https://sallenougaro.com/spectacle/renaud-garcia-fons/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5690,7 +5593,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/f51e0798b5ba90380683b7d06786957c7031d7a4-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/17/makala",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5708,7 +5611,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/452_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/h-jeunecrack",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5726,7 +5629,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/76a56988c91a4adf2b6a5309007f6bdbff4fb396-1920x1080.png?rect=169,0,1583,1080&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/18/skip-the-use",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5744,7 +5647,7 @@
       "poster": "https://img.openagenda.com/main/1c509f36b9b3486abde310a4310f35ea.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/1c509f36b9b3486abde310a4310f35ea.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/tarmo-peltokoski-jan-vogler-1961193/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5762,7 +5665,7 @@
       "poster": "https://sallenougaro.com/wp-content/uploads/2026/06/17.-David-Walters.png",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/17.-David-Walters.png",
       "venueEventUrl": "https://sallenougaro.com/spectacle/david-walters/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5782,7 +5685,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/9e6a9b5ee8a0957d2c41b548e9980f4c89bbdc73-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/19/vacra",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5803,7 +5706,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/houle-can-bardd-galibot/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-03-19-general-elektriks",
@@ -5819,7 +5722,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/09/cTheo-Miege-1-1-scaled.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/cTheo-Miege-1-1-scaled.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/general-elektriks/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5839,7 +5742,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/d7ce09991bd046a71fdf36ae2c95c6069e45801f-1920x1080.png?rect=169,0,1583,1080&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/20/current93",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5857,7 +5760,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/459_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/neg-marrons",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5875,7 +5778,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a3cfc310473c001281348.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a3cfc310473c001281348.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/NINHO-21680",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5895,7 +5798,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/59b8b44bbb210824965437f7cffd78ce6d5fc291-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/22/die-arzte",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5913,7 +5816,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a9ec0d10a5c3409761925.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a9ec0d10a5c3409761925.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/CLAIR%20OBSCUR:%20EXPEDITION%2033-22522",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5934,7 +5837,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/786920cb77c77eaa486e814d58596554739f4248-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/24/sinclair",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5954,7 +5857,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/dea-matrona/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-03-25-eva",
@@ -5973,7 +5876,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/8772a8a5accb12e95d18b39216c0f7b149131716-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/25/eva",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -5991,7 +5894,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6908c91a664fc077629048.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6908c91a664fc077629048.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/IBRAHIM%20MAALOUF-21256",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6010,7 +5913,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/2d3f7a3aef387710cd37004ed179975fee895656-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/26/isaac-delusion",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6030,7 +5933,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/wamen/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-2027-03-26-il-etait-une-fois-michel-legrand",
@@ -6047,7 +5950,7 @@
       "poster": "https://img.openagenda.com/main/4bbdcdbcf76f4c588e3965f953158cca.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/4bbdcdbcf76f4c588e3965f953158cca.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/il-etait-une-fois-michel-legrand-6587832/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6067,7 +5970,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/81cb8478cc6330e50965109df96cd10902b33f6e-8256x5504.jpg?rect=95,0,8067,5504&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/27/jeanne-added",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6084,7 +5987,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/10/Sans-titre-1.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/10/Sans-titre-1.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/uuhai-acyl/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6102,7 +6005,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/344_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/thea-interference",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6120,7 +6023,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a9931400e4e6923414608.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a9931400e4e6923414608.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/PATRICK%20FIORI-21159",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6139,7 +6042,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/399c8d5956bd4a32a7325c13e7962a2a914ed647-1046x1046.png?rect=0,0,1046,714&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/29/hooverphonic",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6159,7 +6062,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/f6d0f0f150f7cf4165cd8e8941da3275041defb0-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/03/31/rodrigo-y-gabriela",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6177,7 +6080,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aea0481090b6027521285.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aea0481090b6027521285.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/SDM-21918",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6195,7 +6098,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69e5f82b19f42643933910.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69e5f82b19f42643933910.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/KeBlack-22301",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6216,7 +6119,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/cd8e67b9de3dd1aa5f5507939fe9a8bf5ccc1cb4-1920x1080.png?rect=169,0,1583,1080&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/02/keziah-jones",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6236,7 +6139,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/lushe/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-04-02-rover",
@@ -6252,7 +6155,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/09/Banniere-site-5.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/09/Banniere-site-5.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/rover/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6270,7 +6173,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/458_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/niro",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6288,7 +6191,7 @@
       "poster": "https://img.openagenda.com/main/46637e3491784d89b352021c3495194b.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/46637e3491784d89b352021c3495194b.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/tugan-sokhiev-sol-gabetta-1229295/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6306,7 +6209,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/411_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/snarky-puppy",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6326,7 +6229,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/f06462b10d7bac634060680e5e4eb09f0e378603-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/07/peter-hook-and-the-light-a-joy-division-celebration",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6344,7 +6247,7 @@
       "poster": "https://img.openagenda.com/main/96a78c6f933346cfbe8a4048c72ede3e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/96a78c6f933346cfbe8a4048c72ede3e.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/kazuki-yamada-9933314/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6366,7 +6269,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/komodor-et-witchorious/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "metronum-2027-04-10-p-l-l",
@@ -6382,7 +6285,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/11/Banniere-site-1.png",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/Banniere-site-1.png",
       "venueEventUrl": "https://lemetronum.fr/evenement/p-l-l/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6400,7 +6303,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/442_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/me-gustas-tu",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6418,7 +6321,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a219c8fc7043073113294.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a219c8fc7043073113294.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Sabaton-21818",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6437,7 +6340,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/86c28a175ceac0798bc639c2b9c786c904a9086e-1080x1080.png?rect=130,0,885,604&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/13/lou-sonata-3-concert-dessine",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6455,7 +6358,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/468_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/french79",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6475,7 +6378,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/999a28f93443a7d092b308b423259652e5f4f332-1320x900.jpg?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/17/assassin",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6493,7 +6396,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/461_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/independent-music-live-2027-bold-fp-youthstar-miscellaneous",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6511,7 +6414,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69f9cdffcb791274835521.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69f9cdffcb791274835521.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Nadau-22341",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6532,7 +6435,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/rakoun-guest/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "halle-2027-04-18-messe-en-si-mineur",
@@ -6549,7 +6452,7 @@
       "poster": "https://img.openagenda.com/main/29052637c79743da83d06013a6a796ab.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/29052637c79743da83d06013a6a796ab.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/messe-en-si-mineur-1464484/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6568,7 +6471,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/360c35bcf650a4e4745514759ab4a6bcb6d69620-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/21/jain",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6586,7 +6489,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a310ef236b86377177098.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a310ef236b86377177098.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/ELECTRO%20SYMPHONY%20-%20Orchestra%20Dance%20Party-22629",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6604,7 +6507,7 @@
       "poster": "https://sallenougaro.com/wp-content/uploads/2026/06/Kolinga.png",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/Kolinga.png",
       "venueEventUrl": "https://sallenougaro.com/spectacle/kolinga/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6622,7 +6525,7 @@
       "poster": "https://img.openagenda.com/main/3f30c3e1066c4399819b54a0b9162d77.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/3f30c3e1066c4399819b54a0b9162d77.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/constantin-trinks-thibaut-garcia-7949585/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6641,7 +6544,7 @@
       "poster": "https://img.openagenda.com/main/17ca0570449a4a8c9b8eabc508601d2b.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/17ca0570449a4a8c9b8eabc508601d2b.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/le-roi-arthus/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6659,7 +6562,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69ca37fff1ea8575961990.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69ca37fff1ea8575961990.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/HUBERT%20FELIX%20THIEFAINE-22040",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6678,7 +6581,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/15627414a3fdb5828d3a803548cc017d8b5fc949-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/27/dominique-a",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6699,7 +6602,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/60d0efce6dc8eedd8745cead62dc051296248acd-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/28/patrice",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6718,7 +6621,7 @@
       "poster": "https://img.openagenda.com/main/1b3c2c13e50c43e29e326c483d6dcb5d.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/1b3c2c13e50c43e29e326c483d6dcb5d.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/rachel-willis-sorensen/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6736,7 +6639,7 @@
       "poster": "https://sallenougaro.com/wp-content/uploads/2026/06/Thomas-fersen.png",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2026/06/Thomas-fersen.png",
       "venueEventUrl": "https://sallenougaro.com/spectacle/thomas-fersen/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6755,7 +6658,7 @@
       "poster": "https://img.openagenda.com/main/517390dfd3dc4e0193adff69bd35e34e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/517390dfd3dc4e0193adff69bd35e34e.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/jean-francois-lapointe/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6774,7 +6677,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/5147a431c9f5118067f4b03098a3cb82e7f2b5f7-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/04/29/la-yegros",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6792,7 +6695,7 @@
       "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/412_tile_450x450.jpg",
       "venueEventUrl": "https://www.interference-toulouse.fr/event/tete",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6810,7 +6713,7 @@
       "poster": "https://img.openagenda.com/main/c7fc7e2552864d04be4113d110f87e70.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/c7fc7e2552864d04be4113d110f87e70.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/jean-francois-zygel-le-pouvoir-de-la-musique-8027612/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6828,7 +6731,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a045505584dc881353762.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a045505584dc881353762.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/TAYC-21657",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6845,7 +6748,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2025/10/05-10-14-Metronum-Photo-B.AIACH-5-1-scaled.jpg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2025/10/05-10-14-Metronum-Photo-B.AIACH-5-1-scaled.jpg",
       "venueEventUrl": "https://lemetronum.fr/evenement/visite-du-metronum-6/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6864,7 +6767,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/eae582a8fac7c6057c1a55cf63342f44addfd732-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/05/13/vitalic",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6882,7 +6785,7 @@
       "poster": "https://img.openagenda.com/main/87913d7b290240b08288ff6ded7c7219.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/87913d7b290240b08288ff6ded7c7219.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/markus-poschner-roman-borisov-4184165/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6903,7 +6806,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/ebdcbb2142bc7120c70cdd61345a547a02a68dd3-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/05/15/sergent-garcia",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6921,7 +6824,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6abb7cfd2f8d1182803373.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6abb7cfd2f8d1182803373.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/PLK-20672",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6941,7 +6844,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/ddeecde569d96274d3e2a836777df84237368c6f-8256x5504.jpg?rect=95,0,8067,5504&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/05/17/the-cat-empire",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6958,7 +6861,7 @@
       "poster": "https://lemetronum.fr/wp-content/uploads/2026/11/telechargement-2.jpeg",
       "sourcePosterUrl": "https://lemetronum.fr/wp-content/uploads/2026/11/telechargement-2.jpeg",
       "venueEventUrl": "https://lemetronum.fr/evenement/argentique-etienne-manchon/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6977,7 +6880,7 @@
       "poster": "https://img.openagenda.com/main/118e1b81b8c74a11932cb5db6cc0161b.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/118e1b81b8c74a11932cb5db6cc0161b.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/adrien-mathonat-and-marie-andree-bouchard-lesieur/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -6995,7 +6898,7 @@
       "poster": "https://img.openagenda.com/main/48d77061a17c42478d9ffbdb84d196af.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/48d77061a17c42478d9ffbdb84d196af.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/tarmo-peltokoski-senja-rummukainen-4726456/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7015,7 +6918,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/b367f9ee388c684290de7e8b38f5707bc63c4196-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/05/22/paul-personne-and-jeremy-filsonne",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7036,7 +6939,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/56ebe02d2a451ab6624ca764c72bfa0519f1ce1b-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/05/24/noga-erez",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7054,7 +6957,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69ca328e5be26116942432.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69ca328e5be26116942432.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/SUZANE-22161",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7073,7 +6976,7 @@
       "poster": "https://img.openagenda.com/main/3d05432907d24329832532535fe05085.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/3d05432907d24329832532535fe05085.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/le-couronnement-de-poppee-5342051/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7091,7 +6994,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6736241931e62958911067.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6736241931e62958911067.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/BLACK%20LEGENDS-20806",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7109,7 +7012,7 @@
       "poster": "https://sallenougaro.com/wp-content/uploads/2025/06/2-©Julien-Mignot-scaled.jpg",
       "sourcePosterUrl": "https://sallenougaro.com/wp-content/uploads/2025/06/2-©Julien-Mignot-scaled.jpg",
       "venueEventUrl": "https://sallenougaro.com/spectacle/natascha-rogers/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7127,7 +7030,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aaa62b0ec361461436249.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aaa62b0ec361461436249.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/BERNARD%20LAVILLIERS-21204",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7145,7 +7048,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ab29d782c233114921904.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ab29d782c233114921904.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/BALAVOINE,%20MA%20BATAILLE-22520",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7163,7 +7066,7 @@
       "poster": "https://img.openagenda.com/main/8ca10c97b9b84438ac9780f0d610b176.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/8ca10c97b9b84438ac9780f0d610b176.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/frank-beermann-adam-laloum-7298788/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7182,7 +7085,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/956cdd30b0c830f4758e78021332ecac8dd0a609-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/06/05/clinton-fearon",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7200,7 +7103,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ac4b7e7086d5896242538.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ac4b7e7086d5896242538.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/STAR%20ACADEMY-21747",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7219,7 +7122,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/7324eb6a891a158a99d89d1010918705392e2c67-8577x5724.jpg?rect=95,0,8389,5724&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/06/08/king-gizzard-and-the-lizard-wizard",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7237,7 +7140,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6adb6baa55712208735896.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6adb6baa55712208735896.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Fontaines%20D.C.-22771",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7256,7 +7159,7 @@
       "poster": "https://img.openagenda.com/main/766773ccd74c4bb09986b0042ecc2f9a.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/766773ccd74c4bb09986b0042ecc2f9a.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/cyrille-dubois-broadway-rhapsody/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7274,7 +7177,7 @@
       "poster": "https://img.openagenda.com/main/374452279adf46c499e2a174ad36768d.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/374452279adf46c499e2a174ad36768d.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/hannu-lintu/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7293,7 +7196,7 @@
       "poster": "https://img.openagenda.com/main/b0ccf496064849afb3cfd819ef6cd66e.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/b0ccf496064849afb3cfd819ef6cd66e.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/rose-naggar-tremblay-5719140/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7311,7 +7214,7 @@
       "poster": "https://img.openagenda.com/main/3d76dc44b74c4e1e95dd665f629459da.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/3d76dc44b74c4e1e95dd665f629459da.base.image.jpg",
       "venueEventUrl": "https://onct.toulouse.fr/les-aventures-doctave-et-melo-le-chant-du-volcan-1291498/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7330,7 +7233,7 @@
       "poster": "https://img.openagenda.com/main/521e549210bb455f9858caa1814e45fa.base.image.jpg",
       "sourcePosterUrl": "https://img.openagenda.com/main/521e549210bb455f9858caa1814e45fa.base.image.jpg",
       "venueEventUrl": "https://opera.toulouse.fr/medea-2353809/",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7348,7 +7251,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/f56521e30ec6c8ce200c875a1bfaebc72dbcf2ee-2048x2048.jpg?rect=0,326,2048,1397&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/08/10/skillet",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7366,7 +7269,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/67dd6e7c2cf41532201345.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/67dd6e7c2cf41532201345.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/JULIEN%20CLERC-20864",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7385,7 +7288,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/030c9aa4b64572c0496e6d76a61b56ddb97d05de-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/09/20/archive",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7404,7 +7307,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/030c9aa4b64572c0496e6d76a61b56ddb97d05de-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/09/21/archive",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7422,7 +7325,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/68b6f1a6507cb654351113.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/68b6f1a6507cb654351113.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/GENERATION%20CELINE-20437",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7443,7 +7346,7 @@
       "venueEventUrl": "https://www.lerextoulouse.com/fr/programmation/camel-power-club/",
       "isClubNight": false,
       "firstSeenAt": "2026-11-22T20:56:18.262Z",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z"
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z"
     },
     {
       "id": "bikini-2027-10-02-dimension-bonus-salut-c-est-cool-roland-cristal-",
@@ -7461,7 +7364,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/2bdcbc769ae4048d4e699deb4a10c18c7866af57-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/10/02/dimension-bonus-roland-cristal",
       "isClubNight": true,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7479,7 +7382,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a1554f6e041f176431231.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a1554f6e041f176431231.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/VIANNEY-22260",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7497,7 +7400,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69bc2b870193e760955351.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69bc2b870193e760955351.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/I%20GOTTA%20FEELING%20:%20LA%20TOURNEE-22433",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7515,7 +7418,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ab53e01d8158426474567.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ab53e01d8158426474567.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/ZAZIE-22364",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7533,7 +7436,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a95368b9432d261875638.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a95368b9432d261875638.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/ANGELE-22418",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7551,7 +7454,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aff08409699d746070859.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aff08409699d746070859.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/FOREVER%2090%27S-22600",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7569,7 +7472,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a04544fc9da2696777212.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a04544fc9da2696777212.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/CHRISTOPHE%20WILLEM-22198",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7587,7 +7490,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a0dc6e60bb51048208014.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a0dc6e60bb51048208014.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/GLORIOUS-21966",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7605,7 +7508,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ad21569374a2731181950.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ad21569374a2731181950.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/DISNEY%20EN%20CONCERT-22895",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7623,7 +7526,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a32c151e1749154968017.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a32c151e1749154968017.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/JENIFER-22482",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7641,7 +7544,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a1eb7bdeeabf180603024.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a1eb7bdeeabf180603024.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/GAEL%20FAYE-22093",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7661,7 +7564,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/77498665c2a31ef083d7ab86b506477cfa88c4fe-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/11/25/izia",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7679,7 +7582,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ab390f3e8e11687628180.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ab390f3e8e11687628180.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/JOK%27AIR-22234",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7697,7 +7600,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ad8bcd22239b432854779.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ad8bcd22239b432854779.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/CHARLOTTE%20CARDIN-22766",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7715,7 +7618,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ae8653de3dba021867635.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ae8653de3dba021867635.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/POMME-21935",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7733,7 +7636,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6abe3def0eb86207980637.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6abe3def0eb86207980637.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Eddy%20de%20Pretto-22315",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7752,7 +7655,7 @@
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/652d7d165bbf3457e92e5eefa51094e2996dd17b-1320x900.png?rect=1,0,1319,900&w=768&h=524&q=70&dpr=2",
       "venueEventUrl": "https://lebikini.com/2027/12/08/bruce-dickinson",
       "isClubNight": false,
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7770,7 +7673,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6afb26cd454d2210699729.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6afb26cd454d2210699729.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/BOUSS-22892",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7788,7 +7691,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69aaf7af2be76398486534.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69aaf7af2be76398486534.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/GIMS-21848",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7806,7 +7709,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ac8c39ed882e998385582.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ac8c39ed882e998385582.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Dalida-22080",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7824,7 +7727,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ae9ef17d0c91432701236.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ae9ef17d0c91432701236.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/MC%20SOLAAR-22441",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7842,7 +7745,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aec58586d53d662955980.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6aec58586d53d662955980.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/IL%20%C3%89TAIT%20UNE%20FOIS...%20ENNIO%20MORRICONE%20%26%20NINO%20ROTA-22878",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7860,7 +7763,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a4caaa0e50f5616800639.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6a4caaa0e50f5616800639.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Johnny%20Symphonique%20Tour-22297",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7878,7 +7781,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69c64d2524ca8535683680.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69c64d2524ca8535683680.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/ERA-22363",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7896,7 +7799,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69b297a5c0f63915602743.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69b297a5c0f63915602743.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/THE%20WORLD%20OF%20QUEEN%20-21766",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7914,7 +7817,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ad1edb12e394865839081.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6ad1edb12e394865839081.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/ADELE%20CASTILLON-22804",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7932,7 +7835,7 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69cd1f75509eb881243883.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/69cd1f75509eb881243883.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/GOLDMEN-22323",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
@@ -7950,24 +7853,24 @@
       "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6af30923412b7614993958.png",
       "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6af30923412b7614993958.png",
       "venueEventUrl": "https://zenith-toulousemetropole.com/shows/Vitaa%20%26%20Slimane%20-%20VERSUS%20TOUR%20II-22505",
-      "statusVerifiedAt": "2026-11-22T20:56:37.451Z",
+      "statusVerifiedAt": "2026-11-23T00:41:07.612Z",
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     }
   ],
   "syncMeta": {
-    "lastSyncedAt": "2026-11-22T20:56:37.451Z",
+    "lastSyncedAt": "2026-11-23T00:41:07.612Z",
     "scheduleLabel": "4× / jour (06h · 11h30 · 17h30 · 21h)",
-    "nextScheduledSync": "Demain à 06h00 (Europe/Paris)",
-    "durationMs": 5078,
+    "nextScheduledSync": "Aujourd'hui à 06h00 (Europe/Paris)",
+    "durationMs": 7003,
     "totalVenues": 15,
     "syncedVenuesOk": 14,
-    "totalConcerts": 412,
-    "availableCount": 356,
+    "totalConcerts": 407,
+    "availableCount": 351,
     "soldOutCount": 21,
     "lastTicketsCount": 7,
     "freeCount": 28,
     "addedCount": 0,
-    "removedPastCount": 0,
+    "removedPastCount": 5,
     "removedCancelledCount": 0,
     "horizonDate": "2028-09-21",
     "changes": [],
@@ -7977,15 +7880,15 @@
         "venueName": "Le Bikini",
         "sourceUrl": "https://lebikini.com/programmation/-/-/2027-12",
         "ok": true,
-        "checkedCount": 101,
+        "checkedCount": 100,
         "soldOutCount": 19,
         "lastTicketsCount": 7,
         "freeCount": 1,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 975,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
-        "note": "103 dates vérifiées en direct (agenda complet)"
+        "latencyMs": 978,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
+        "note": "102 dates vérifiées en direct (agenda complet)"
       },
       {
         "venueId": "zenith-toulouse",
@@ -7998,8 +7901,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 3233,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 3440,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "73 dates vérifiées en direct (agenda complet)"
       },
       {
@@ -8007,15 +7910,15 @@
         "venueName": "Le Metronum",
         "sourceUrl": "https://lemetronum.fr/evenements/",
         "ok": true,
-        "checkedCount": 35,
+        "checkedCount": 34,
         "soldOutCount": 0,
         "lastTicketsCount": 0,
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 1284,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
-        "note": "35 dates vérifiées en direct (agenda complet)"
+        "latencyMs": 1840,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
+        "note": "34 dates vérifiées en direct (agenda complet)"
       },
       {
         "venueId": "interference",
@@ -8028,8 +7931,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 2851,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 3504,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "38 dates vérifiées en direct (agenda complet)"
       },
       {
@@ -8037,30 +7940,30 @@
         "venueName": "Le Rex",
         "sourceUrl": "https://www.lerextoulouse.com/fr/programmation/",
         "ok": true,
-        "checkedCount": 42,
+        "checkedCount": 41,
         "soldOutCount": 0,
         "lastTicketsCount": 0,
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 1061,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
-        "note": "44 dates vérifiées en direct (agenda complet)"
+        "latencyMs": 981,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
+        "note": "43 dates vérifiées en direct (agenda complet)"
       },
       {
         "venueId": "la-cabane",
         "venueName": "La Cabane",
         "sourceUrl": "https://halles-cartoucherie.fr/la-cabane/",
         "ok": true,
-        "checkedCount": 7,
+        "checkedCount": 6,
         "soldOutCount": 0,
         "lastTicketsCount": 0,
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 1439,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
-        "note": "7/7 dates vérifiées en direct"
+        "latencyMs": 1421,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
+        "note": "6/6 dates vérifiées en direct"
       },
       {
         "venueId": "halle-aux-grains",
@@ -8073,8 +7976,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 5017,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 3965,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "29 dates vérifiées en direct (agenda complet)"
       },
       {
@@ -8088,8 +7991,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 2069,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 2511,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "Page joignable (HTTP 200) — statuts synchronisés"
       },
       {
@@ -8103,8 +8006,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 1251,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 711,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "7/7 dates vérifiées en direct"
       },
       {
@@ -8118,8 +8021,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 2193,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 2854,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "1/2 dates vérifiées en direct"
       },
       {
@@ -8133,8 +8036,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 251,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 1000,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "Rate-limit plateforme (statuts vérifiés conservés)"
       },
       {
@@ -8148,8 +8051,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 4080,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 3206,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "20 dates vérifiées en direct (agenda complet)"
       },
       {
@@ -8163,8 +8066,8 @@
         "freeCount": 27,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 1924,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 6949,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "25 dates vérifiées en direct (agenda complet)"
       },
       {
@@ -8178,8 +8081,8 @@
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 2989,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 3840,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "10 dates vérifiées en direct (agenda complet)"
       },
       {
@@ -8187,14 +8090,14 @@
         "venueName": "Odyssud",
         "sourceUrl": "https://www.odyssud.com/spectacles/musiques",
         "ok": true,
-        "checkedCount": 3,
+        "checkedCount": 2,
         "soldOutCount": 0,
         "lastTicketsCount": 0,
         "freeCount": 0,
         "statusChanges": 0,
         "addedCount": 0,
-        "latencyMs": 1680,
-        "checkedAt": "2026-11-22T20:56:37.451Z",
+        "latencyMs": 2184,
+        "checkedAt": "2026-11-23T00:41:07.612Z",
         "note": "0 dates vérifiées en direct (agenda complet)"
       }
     ]
