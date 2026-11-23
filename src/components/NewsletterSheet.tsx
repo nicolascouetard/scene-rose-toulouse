@@ -79,7 +79,7 @@ export function NewsletterSheet({
       const contentType = res.headers.get('content-type') || '';
       if (!contentType.includes('application/json')) {
         throw new Error(
-          'L’inscription sera active dès que Brevo sera branché sur Cloudflare Pages (clé API).'
+          'Service momentanément indisponible, réessaie dans quelques instants.'
         );
       }
       const data = await res.json();

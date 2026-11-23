@@ -344,8 +344,8 @@ export function FestivalDetailSheet({
                     </div>
                     <p className="text-[11px] text-[#A9A097] mt-0.5">
                       {festival.datesConfirmed
-                        ? 'Dates officielles confirmées · bascule auto vers l’édition suivante après le festival.'
-                        : `Estimation basée sur l’édition ${festival.previousEdition.year} — mise à jour dès l’annonce officielle.`}
+                        ? 'Dates officielles confirmées.'
+                        : `Période estimée d’après l’édition ${festival.previousEdition.year} — mise à jour dès l’annonce officielle.`}
                     </p>
                   </div>
                 </div>

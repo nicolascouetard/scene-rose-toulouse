@@ -113,8 +113,8 @@ export function AboutRgpdSheet({
             </div>
             <p className="text-[#AFA8A0]">
               Les dates, affiches, tarifs et statuts (disponible, dernières places, complet) proviennent directement des
-              sites et billetteries officiels des salles et festivals, synchronisés 4 fois par jour. Chaque bouton de
-              réservation vous renvoie vers la billetterie officielle.
+              sites et billetteries officiels des salles et festivals, mis à jour 4 fois par jour. Chaque bouton de
+              réservation te renvoie vers la billetterie officielle.
             </p>
           </div>
 
@@ -167,12 +167,12 @@ export function AboutRgpdSheet({
                 <strong className="text-[#F7F4EF]">Aucun traceur publicitaire</strong> ni cookie tiers de pistage.
               </li>
               <li>
-                Vos <strong className="text-[#F7F4EF]">concerts & festivals favoris</strong> sont stockés uniquement
-                en local dans votre navigateur.
+                Tes <strong className="text-[#F7F4EF]">concerts & festivals favoris</strong> sont stockés uniquement
+                en local dans ton navigateur.
               </li>
               <li>
-                Si vous vous abonnez à l’<strong className="text-[#F7F4EF]">alerte hebdomadaire</strong> (jeudi midi)
-                ou aux <strong className="text-[#F7F4EF]">rappels favoris</strong>, votre e-mail est hébergé chez{' '}
+                Si tu t’abonnes à l’<strong className="text-[#F7F4EF]">alerte hebdomadaire</strong> (jeudi midi)
+                ou aux <strong className="text-[#F7F4EF]">rappels favoris</strong>, ton e-mail est hébergé chez{' '}
                 <strong className="text-[#F7F4EF]">Brevo (serveurs UE)</strong>, jamais revendu, avec désinscription en
                 1 clic.
               </li>

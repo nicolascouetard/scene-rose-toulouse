@@ -91,8 +91,12 @@ export function FestivalsView({
       .sort((a, b) => a.startDate.localeCompare(b.startDate));
   }, [festivals, search, zone, genre]);
 
-  const withLineupCount = useMemo(
-    () => festivals.filter((f) => f.lineup.length > 0).length,
+  const { toulouseCount, nearCount, withLineupCount } = useMemo(
+    () => ({
+      toulouseCount: festivals.filter((f) => f.zone === 'toulouse').length,
+      nearCount: festivals.filter((f) => f.driveMinutes <= 90).length,
+      withLineupCount: festivals.filter((f) => f.lineup.length > 0).length,
+    }),
     [festivals]
   );
 
@@ -100,19 +104,9 @@ export function FestivalsView({
     <div className="px-4 md:px-6 pt-3 pb-6 space-y-4">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
-        <div>
-          <div className="flex items-center gap-2">
-            <h2 className="font-display text-lg md:text-xl font-extrabold text-white">
-              Festivals · Toulouse & Occitanie
-            </h2>
-            <span className="px-2 py-0.5 rounded-full bg-[#C85A6E]/20 border border-[#C85A6E]/40 text-[10.5px] font-bold text-[#F2A9B6]">
-              Évolutif 2027 → 2028+
-            </span>
-          </div>
-          <p className="text-xs text-[#9E968F] mt-0.5">
-            {festivals.length} grands rendez-vous en Occitanie · écoute directe des artistes du line-up (Spotify, Apple Music, Deezer, Qobuz, YouTube)
-          </p>
-        </div>
+        <h2 className="font-display text-lg md:text-xl font-extrabold text-white">
+          Festivals en Occitanie
+        </h2>
       </div>
 
       {/* Search + Filters */}
@@ -142,8 +136,8 @@ export function FestivalsView({
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
           {[
             { id: 'all' as const, label: `Toute l’Occitanie (${festivals.length})` },
-            { id: 'toulouse' as const, label: 'Toulouse (31)' },
-            { id: 'near' as const, label: '≤ 1h30 de Toulouse' },
+            { id: 'toulouse' as const, label: `Toulouse (${toulouseCount})` },
+            { id: 'near' as const, label: `≤ 1h30 de Toulouse (${nearCount})` },
             {
               id: 'with-lineup' as const,
               label: `Line-up annoncé (${withLineupCount})`,

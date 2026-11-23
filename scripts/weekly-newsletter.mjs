@@ -280,7 +280,7 @@ export function buildWeeklyEmail(data, now = new Date()) {
                   Rose Festival, Rio Loco, Pause Guitare, Les Déferlantes, Carcassonne…
                 </div>
                 <div style="margin-top:5px;font-size:12.5px;line-height:1.5;color:#D6CEC7;">
-                  Retrouve les 16 grands festivals de Toulouse & d’Occitanie, leurs programmations et les liens d’écoute artistes dans l’onglet dédié.
+                  Retrouve les 18 grands festivals de Toulouse & d’Occitanie (Rose Festival, Poney Club, La Kermesse, Rio Loco…), leurs programmations et les liens d’écoute artistes dans l’onglet dédié.
                 </div>
                 <div style="margin-top:11px;">
                   <a href="${SITE_URL}/?tab=festivals"

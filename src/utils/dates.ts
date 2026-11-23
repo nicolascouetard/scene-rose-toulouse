@@ -141,17 +141,109 @@ export function formatMonthChip(ym: string): string {
   return y === '2026' ? cap : `${cap} ${y.slice(2)}`;
 }
 
-/** Nettoie le titre d'un concert pour la recherche d'artiste sur Spotify / YouTube / Deezer */
-export function cleanArtistQuery(title: string): string {
-  return title
+const GENERIC_EVENT_RE =
+  /\b(soir[ée]e\b|va\s+danser|techno\s+party|house\s+party|boat\s+party|dance\s+party|jam\s*session|\bjam\s*#?\d*|open\s*mic|karaok[ée]|blind\s*test|drag\s+after|after\s*show|r[ée]veillon|2000\s*vs\s*2010|forever\s+90|ann[ée]es\s*(80|90|2000)|cin[ée]-concert|orchestre\s+symphonique|concert\s+de\s+gala|concert\s+du\s+nouvel|symphonique\s+tour|electro\s+symphony|tribute|hommage|sublime\s+club|koalition\s+xxl|winter\s+festival|f[êe]te\s+ses\s+\d+\s+ans|terres\s+de\s+rencontres|s[ée]ance\s+scolaire|gayguette|bal\s+swing|sc[èe]ne\s+ouverte|girls\s+don['’]t\s+cry\s+festival|echos\s*&\s*merveilles|madame\s+arthur)\b/i;
+
+const GENERIC_TOKEN_RE =
+  /^(dj\s*set|guests?|more|and\s+more|\+?\s*guests?|collectif|festival|concert|soir[ée]e|sp[ée]cial|all\s+night(\s+long)?|live|toulouse|interference|le\s+bikini|l['’]arena|ax-les-thermes)$/i;
+
+/**
+ * Extrait TOUS les noms d'artistes écoutables d'un titre de concert / line-up club.
+ * Retourne `[]` pour les soirées thématiques sans artiste identifiable (ex: "Madame Va Danser").
+ */
+export function extractListenArtists(title: string): string[] {
+  const raw = title.trim();
+  if (!raw) return [];
+
+  const lineupPrefixMatch = raw.match(
+    /^.+?(?:\bw\/|\binv\.|\binvite\b|\bpres\.|\bpr[ée]sente\b|\bfeat\.?|\bavec\b)\s+(.+)$/i
+  );
+  let candidate = '';
+  let isExplicitLineup = false;
+
+  if (lineupPrefixMatch) {
+    candidate = lineupPrefixMatch[1];
+    isExplicitLineup = true;
+  } else if (raw.includes(':')) {
+    const [left, right] = raw.split(/:\s+/, 2);
+    const leftLooksLikeEvent =
+      /^(?:23:59|thunder|pact|fearz|critical\s+sound|la\s+qlub|saturnales|return|vertiges|karnage|the\s+lost\s+island|koalition|badlands|iii\.|toulouse\s+massive|2much|rave\s+on|girls\s+on\s+rave|bikini\s+house|christmas\s+rave|jingle\s+rave|jetlag|r[ée]veillon|cin[ée]-concert|toulouse\s+django|l['’]organisation)/i.test(
+        left.trim()
+      ) || /\b(party|rave|festival|edition|[ée]dition|birthday|xxl|club|soir[ée]e|nuit)\b/i.test(left);
+
+    if (leftLooksLikeEvent && right) {
+      if (
+        /\b(boat\s+party|reggaeton|perreo|ans\s+de\s+musique|dj\s+set|guests|moontrip\s*x\s*interference|hitchcock|flow\s+avec)\b/i.test(
+          right
+        )
+      ) {
+        return [];
+      }
+      candidate = right;
+      isExplicitLineup = true;
+    } else {
+      candidate = left;
+    }
+  } else {
+    candidate = raw;
+  }
+
+  if (!isExplicitLineup && GENERIC_EVENT_RE.test(raw) && candidate === raw) {
+    return [];
+  }
+
+  // Retirer lieu final ("@ Ax-Les-Thermes"), parenthèses et mention "All Night Long / 4H Live / Release Party"
+  const stripped = candidate
+    .replace(/\s+@\s+.*$/, '')
     .replace(/\([^)]*\)/g, ' ')
     .replace(/\[[^\]]*\]/g, ' ')
-    .replace(/\s+[+×&/]\s+.*$/i, '')
-    .replace(/\s+[—–-]\s+.*$/, '')
-    .replace(/^(les\s+jeudis\s+du\s+cri|le\s+cri|cri\s+toute\s+la\s+nuit|plein\s+phare|thunder\s*x\s*interference|saturnales)\s*(inv\.?|presents|:)\s*/i, '')
-    .replace(/:\s+.*$/, '')
-    .replace(/\s+/g, ' ')
-    .trim() || title;
+    .replace(/\s+[—–-]\s+(?:all\s+night.*|release\s+party.*|tourn[ée]e.*|tour.*|live.*|en\s+concert.*)$/i, '')
+    .replace(/\s+(?:all\s+night(?:\s+long)?|4h\s+live|dj\s*set|release\s+party)\b/gi, '')
+    .trim();
+
+  // Découpage intelligent multi-artistes :
+  // - toujours sur "+", ",", " b2b ", " vs ", " feat. ", " / "
+  // - sur " & " ou " x " uniquement si c'est un line-up explicite ou déjà multi-artistes (préserve "Bigflo & Oli", "Earth, Wind & Fire"...)
+  const hasStrongSep = /(?:\s+\+\s+|,\s+|\s+b2b\s+|\s+vs\.?\s+|\s+feat\.?\s+)/i.test(stripped);
+  const splitRe =
+    isExplicitLineup || hasStrongSep
+      ? /(?:\s*\+\s*|,\s*|\s+b2b\s+|\s+vs\.?\s+|\s+feat\.?\s+|\s+&\s+|\s+x\s+)/i
+      : /(?:\s*\+\s*|\s+b2b\s+|\s+vs\.?\s+|\s+feat\.?\s+)/i;
+
+  const parts = stripped.split(splitRe);
+  const artists: string[] = [];
+  const seen = new Set<string>();
+
+  for (const part of parts) {
+    const clean = part
+      .replace(/\s+[—–-]\s+.*$/, '')
+      .replace(/\.{2,}$/, '')
+      .replace(/^["«“]|["»”]$/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    if (!clean || clean.length < 2) continue;
+    if (GENERIC_EVENT_RE.test(clean) || GENERIC_TOKEN_RE.test(clean)) continue;
+    if (/^\d+\s*(ans|h|€)$/i.test(clean)) continue;
+
+    const key = clean.toLowerCase();
+    if (!seen.has(key)) {
+      seen.add(key);
+      artists.push(clean);
+    }
+  }
+
+  return artists.slice(0, 12);
+}
+
+/** Extrait le premier artiste écoutable (rétro-compatibilité) */
+export function extractListenArtist(title: string): string | null {
+  return extractListenArtists(title)[0] || null;
+}
+
+/** Nettoie le titre d'un concert pour la recherche d'artiste (alias rétro-compatible) */
+export function cleanArtistQuery(title: string): string {
+  return extractListenArtists(title)[0] || title;
 }
 
 /** Nombre de jours restants avant un concert (>= 0 si aujourd'hui ou futur) */

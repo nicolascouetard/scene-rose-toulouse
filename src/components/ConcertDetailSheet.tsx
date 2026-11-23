@@ -15,7 +15,7 @@ import {
   X,
 } from 'lucide-react';
 import type { Concert, Venue } from '../data/toulouseData';
-import { cleanArtistQuery, downloadConcertIcs, formatFullDate } from '../utils/dates';
+import { downloadConcertIcs, extractListenArtists, formatFullDate } from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
 import { StreamingLinksRow } from './StreamingLinksRow';
 
@@ -40,6 +40,11 @@ export function ConcertDetailSheet({
 }: ConcertDetailSheetProps) {
   const [zoomPoster, setZoomPoster] = useState(false);
   const [showRoutePicker, setShowRoutePicker] = useState(false);
+  const [selectedArtistIdx, setSelectedArtistIdx] = useState(0);
+
+  useEffect(() => {
+    setSelectedArtistIdx(0);
+  }, [concert?.id]);
 
   useEffect(() => {
     if (!concert) {
@@ -64,7 +69,8 @@ export function ConcertDetailSheet({
 
   if (!concert || !venue) return null;
 
-  const artistQuery = cleanArtistQuery(concert.title);
+  const listenArtists = extractListenArtists(concert.title);
+  const activeArtist = listenArtists[selectedArtistIdx] || listenArtists[0] || null;
 
   const handleShare = async () => {
     const deepUrl = new URL(window.location.href);
@@ -237,16 +243,43 @@ export function ConcertDetailSheet({
                 </button>
               </div>
 
-              {/* Écoute rapide de l'artiste (Spotify / Apple Music / Deezer / Qobuz / YouTube) */}
-              <div className="mt-3.5 rounded-2xl bg-[#1A1720] border border-white/[0.08] p-3">
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-[11px] uppercase tracking-wider text-[#9E968F] font-semibold flex items-center gap-1.5">
-                    <Headphones className="w-3.5 h-3.5 text-[#C85A6E]" />
-                    Écouter « {artistQuery} »
-                  </span>
+              {/* Écoute rapide du ou des artistes au line-up (masqué automatiquement pour les soirées thématiques) */}
+              {activeArtist && (
+                <div className="mt-3.5 rounded-2xl bg-[#1A1720] border border-white/[0.08] p-3">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-[11px] uppercase tracking-wider text-[#9E968F] font-semibold flex items-center gap-1.5">
+                      <Headphones className="w-3.5 h-3.5 text-[#C85A6E]" />
+                      {listenArtists.length > 1
+                        ? `Écouter le line-up (${listenArtists.length} artistes)`
+                        : `Écouter « ${activeArtist} »`}
+                    </span>
+                  </div>
+
+                  {listenArtists.length > 1 && (
+                    <div className="flex flex-wrap gap-1.5 mb-2.5">
+                      {listenArtists.map((artist, idx) => {
+                        const isSelected = idx === selectedArtistIdx;
+                        return (
+                          <button
+                            key={artist}
+                            type="button"
+                            onClick={() => setSelectedArtistIdx(idx)}
+                            className={`px-2.5 py-1 rounded-full text-[11.5px] font-semibold transition-all ${
+                              isSelected
+                                ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
+                                : 'bg-white/[0.06] text-[#CFC8C0] hover:bg-white/[0.12] hover:text-white border border-white/[0.08]'
+                            }`}
+                          >
+                            {artist}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  <StreamingLinksRow artistName={activeArtist} />
                 </div>
-                <StreamingLinksRow artistName={concert.title} />
-              </div>
+              )}
 
               {/* Practical details box */}
               <div className="mt-4 rounded-2xl bg-[#1A1720] border border-white/[0.08] divide-y divide-white/[0.06]">

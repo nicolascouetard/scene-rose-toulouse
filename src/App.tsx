@@ -449,6 +449,8 @@ export function App() {
     const isSharedMode = sharedSelectionIds.length > 0;
 
     return concerts.filter((concert) => {
+      // Ne jamais afficher un concert strictement passé (même entre minuit et la synchro de 06h)
+      if ((concert.endDate || concert.date) < TODAY_ISO) return false;
       if (isSharedMode && !sharedSelectionIds.includes(concert.id)) return false;
       if (!matchesPeriod(concert, period)) return false;
       if (selectedCategory !== 'all' && concert.category !== selectedCategory) return false;
@@ -494,11 +496,15 @@ export function App() {
     venueMap,
   ]);
 
+  // Pour les spectacles multi-dates en cours (ex: opéra 22–29 nov.), la date d'affichage est ramenée à aujourd'hui
+  const getEffectiveDate = (c: Concert) =>
+    c.date < TODAY_ISO && c.endDate && c.endDate >= TODAY_ISO ? TODAY_ISO : c.date;
+
   // Available months with counts
   const availableMonths = useMemo(() => {
     const counts = new Map<string, number>();
     for (const c of baseFilteredConcerts) {
-      const ym = c.date.slice(0, 7);
+      const ym = getEffectiveDate(c).slice(0, 7);
       counts.set(ym, (counts.get(ym) || 0) + 1);
     }
     return Array.from(counts.entries())
@@ -508,20 +514,20 @@ export function App() {
 
   const filteredConcerts = useMemo(() => {
     if (!selectedMonth) return baseFilteredConcerts;
-    return baseFilteredConcerts.filter((c) => c.date.startsWith(selectedMonth));
+    return baseFilteredConcerts.filter((c) => getEffectiveDate(c).startsWith(selectedMonth));
   }, [baseFilteredConcerts, selectedMonth]);
 
   const groupedByDate = useMemo(() => {
-    const groups: { date: string; concerts: Concert[] }[] = [];
+    const map = new Map<string, Concert[]>();
     for (const c of filteredConcerts) {
-      const last = groups[groups.length - 1];
-      if (last && last.date === c.date) {
-        last.concerts.push(c);
-      } else {
-        groups.push({ date: c.date, concerts: [c] });
-      }
+      const displayDate = getEffectiveDate(c);
+      const list = map.get(displayDate);
+      if (list) list.push(c);
+      else map.set(displayDate, [c]);
     }
-    return groups;
+    return Array.from(map.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, list]) => ({ date, concerts: list }));
   }, [filteredConcerts]);
 
   // Count how many advanced filters are active for the badge on "Filtres"

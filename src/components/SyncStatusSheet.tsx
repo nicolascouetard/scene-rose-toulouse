@@ -281,18 +281,6 @@ export function SyncStatusSheet({
               </p>
             )}
           </div>
-
-          {/* Automation CLI / Cron hint */}
-          <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3 text-[11px] text-[#9E968F] space-y-1">
-            <p className="font-semibold text-[#DDD5CC]">Automatisation configurée</p>
-            <p>
-              • Serveur / Cron : <code className="text-[#F2A9B6]">npm run sync</code> &{' '}
-              <code className="text-[#F2A9B6]">npm run sync:daemon</code>
-            </p>
-            <p>
-              • GitHub Actions : <code className="text-[#F2A9B6]">.github/workflows/daily-sync.yml</code> (4× / jour)
-            </p>
-          </div>
         </div>
       </div>
     </div>
