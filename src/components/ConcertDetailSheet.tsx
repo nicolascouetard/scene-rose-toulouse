@@ -330,7 +330,7 @@ export function ConcertDetailSheet({
                     </div>
                   )}
 
-                  <StreamingLinksRow artistName={activeArtist} />
+                  <StreamingLinksRow artistName={activeArtist} onNotify={onNotify} />
                 </div>
               )}
 

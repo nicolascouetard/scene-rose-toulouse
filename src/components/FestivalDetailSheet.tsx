@@ -368,7 +368,7 @@ export function FestivalDetailSheet({
                         )}
                       </button>
                     </div>
-                    <StreamingLinksRow artistName={selectedArtist} />
+                    <StreamingLinksRow artistName={selectedArtist} onNotify={onNotify} />
                   </div>
                 )}
               </div>
