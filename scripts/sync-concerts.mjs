@@ -170,31 +170,57 @@ function inferCategory(genres = [], title = '', venueId = '') {
     venueId === 'halle-aux-grains' ||
     venueId === 'auditorium-saint-pierre'
   ) {
-    if (/\bjazz|swing|blues\b/.test(hay)) return 'Jazz & Groove';
-    return 'Classique & Ciné';
+    if (/\bjazz|swing|blues\b/.test(hay)) return 'Jazz & Blues';
+    return 'Classique & Opéra';
   }
-  if (venueId === 'le-taquin') return 'Jazz & Groove';
-  if (venueId === 'le-cri-de-la-mouette') return 'Électro & Club';
+  if (venueId === 'le-taquin') {
+    if (/\b(soul|funk|groove|rnb|afrobeat)\b/.test(hay)) return 'Soul, Funk & R&B';
+    if (/\b(world|latin|cumbia|salsa|flamenco|balkan|oriental)\b/.test(hay)) return 'Musiques du Monde';
+    return 'Jazz & Blues';
+  }
+  if (venueId === 'le-bijou') {
+    if (/\b(jazz|blues|swing|manouche)\b/.test(hay)) return 'Jazz & Blues';
+    if (/\b(world|latin|flamenco|oriental|occitan)\b/.test(hay)) return 'Musiques du Monde';
+    return 'Chanson & Folk';
+  }
+  if (venueId === 'l-arena') return 'Techno & Rave';
 
-  if (/\b(techno|house|electro|drum|bass|trance|hardcore|rave|dubstep|club|dj|hardstyle|acid|ebm|dark wave|synthwave|uk garage|jungle|psytrance|bounce)\b/.test(hay)) {
-    return 'Électro & Club';
+  if (/\b(techno|hard techno|acid|rave|trance|psytrance|hardstyle|uptempo|gabber|drum and bass|drum bass|dnb|dubstep|bass music|hard bounce|bounce|ebm|dark wave|jungle|uk garage)\b/.test(hay)) {
+    return 'Techno & Rave';
   }
-  if (/\b(rap|hip hop|trap|rnb|r n b|drill|boom bap|slam|urbain)\b/.test(hay)) {
+  if (/\b(electro|house|deep house|tech house|disco|synthwave|downtempo|ambient|french touch|electronica|club|dj)\b/.test(hay)) {
+    return venueId === 'le-cri-de-la-mouette' ? 'Techno & Rave' : 'Électro & House';
+  }
+  if (venueId === 'le-cri-de-la-mouette') return 'Techno & Rave';
+
+  if (/\b(metal|heavy|death|black metal|thrash|doom|metalcore|deathcore|prog metal|hard rock|hardcore|screamo|sludge|grindcore|nu metal)\b/.test(hay)) {
+    return 'Metal & Hardcore';
+  }
+  if (/\b(rap|hip hop|trap|drill|boom bap|slam|urbain)\b/.test(hay)) {
     return 'Rap & Hip-Hop';
   }
-  if (/\b(metal|rock|punk|hardcore|grunge|post punk|shoegaze|stoner|doom|thrash|death|black metal|indie rock|garage|alternative|screamo|emo|core)\b/.test(hay)) {
-    return 'Rock & Metal';
+  if (/\b(reggae|dub|ska|dancehall|sound system|ragga)\b/.test(hay)) {
+    return 'Reggae & Dub';
   }
-  if (/\b(jazz|funk|soul|groove|blues|afrobeat|swing|bossa|manouche)\b/.test(hay)) {
-    return 'Jazz & Groove';
+  if (/\b(world|monde|afro|latin|latino|cumbia|salsa|flamenco|oriental|gnawa|balkan|celtique|espagnol|maloya|kora|occitan|traditionnel|tango|fado)\b/.test(hay)) {
+    return 'Musiques du Monde';
   }
-  if (/\b(reggae|dub|ska|world|monde|afro|latin|cumbia|salsa|flamenco|oriental|gnawa|balkan|celtique|espagnol|maloya|kora)\b/.test(hay)) {
-    return 'Reggae & World';
+  if (/\b(soul|funk|groove|rnb|r n b|neo soul|afrobeat|gospel)\b/.test(hay)) {
+    return 'Soul, Funk & R&B';
   }
-  if (/\b(symphonique|classique|opera|baroque|recital|orchestre|cine concert|philharmonique|quatuor|chambre|piano|violon|harpe|choral|lyrique)\b/.test(hay)) {
-    return 'Classique & Ciné';
+  if (/\b(jazz|blues|swing|bossa|manouche|improvisation|big band)\b/.test(hay)) {
+    return 'Jazz & Blues';
   }
-  return 'Pop & Chanson';
+  if (/\b(rock|punk|grunge|post punk|shoegaze|stoner|indie rock|garage|alternative|alternatif|cold wave|new wave|britpop|progressif)\b/.test(hay)) {
+    return 'Rock & Indie';
+  }
+  if (/\b(symphonique|classique|opera|baroque|recital|orchestre|cine concert|philharmonique|quatuor|chambre|piano|violon|harpe|choral|lyrique|conservatoire)\b/.test(hay)) {
+    return 'Classique & Opéra';
+  }
+  if (/\b(chanson|folk|acoustique|auteur|nouvelle scene|guitare voix|country|americana)\b/.test(hay)) {
+    return 'Chanson & Folk';
+  }
+  return 'Pop';
 }
 
 /** Extrait l'URL réelle d'une image Next.js (`/_next/image?url=...`) */

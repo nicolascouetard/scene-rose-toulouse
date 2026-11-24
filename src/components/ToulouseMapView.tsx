@@ -158,11 +158,25 @@ export function ToulouseMapView({
       tapHold: false,
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19,
-    }).addTo(map);
+    // Fond sombre Esri World Dark Gray (0 €, sans clé API, sans filigrane) + noms des rues & quartiers
+    L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+      {
+        attribution: '&copy; Esri, HERE, Garmin, OpenStreetMap',
+        maxNativeZoom: 16,
+        maxZoom: 18,
+      }
+    ).addTo(map);
+
+    L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+      {
+        maxNativeZoom: 16,
+        maxZoom: 18,
+        pane: 'overlayPane',
+        opacity: 0.9,
+      }
+    ).addTo(map);
 
     const transitLayer = L.layerGroup().addTo(map);
     const markersLayer = L.layerGroup().addTo(map);

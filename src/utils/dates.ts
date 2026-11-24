@@ -1,4 +1,4 @@
-import { TODAY_ISO, type Concert, type Venue } from '../data/toulouseData';
+import { TODAY_ISO, type Concert, type GenreCategory, type Venue } from '../data/toulouseData';
 
 export type PeriodFilter = 'all' | 'today' | 'week' | 'weekend' | 'upcoming2027';
 export type BudgetFilter = 'all' | 'free' | 'under15' | 'under25';
@@ -268,6 +268,51 @@ export function matchesSearchQuery(haystack: string, rawQuery: string): boolean 
     if (tok.length >= 4 && compactHaystack.includes(tok)) return true;
     return false;
   });
+}
+
+const GENRE_MATCH_RULES: Record<GenreCategory, RegExp> = {
+  'Rock & Indie':
+    /\b(rock|indie|post punk|punk|garage|grunge|shoegaze|psyche|britpop|pop rock|alternatif|alternative|stoner|progressif|cold wave|new wave|surf)\b/,
+  'Metal & Hardcore':
+    /\b(metal|heavy|death|black metal|thrash|doom|metalcore|deathcore|prog metal|hard rock|hardcore|screamo|sludge|grindcore|nu metal|symphonic metal)\b/,
+  'Électro & House':
+    /\b(electro|house|deep house|tech house|disco|nu disco|synthwave|synthpop|downtempo|ambient|french touch|melodic|electro pop|electronica|minimal|afro house)\b/,
+  'Techno & Rave':
+    /\b(techno|hard techno|acid|rave|trance|psytrance|hardstyle|uptempo|gabber|drum and bass|drum bass|dnb|dubstep|bass music|hard bounce|bounce|ebm|dark wave|jungle|uk garage|club)\b/,
+  'Rap & Hip-Hop':
+    /\b(rap|hip hop|trap|drill|boom bap|slam|cloud rap|old school|urbain|mc|freestyle)\b/,
+  Pop: /\b(pop|indie pop|electro pop|pop rock|variete|k pop|kpop|synthpop|dream pop|hyperpop|chanson pop)\b/,
+  'Chanson & Folk':
+    /\b(chanson|folk|acoustique|nouvelle scene|auteur|compositeur|indie folk|americana|country|ballade|guitare voix|chanson francaise)\b/,
+  'Jazz & Blues':
+    /\b(jazz|blues|swing|manouche|bebop|bossa|improvisation|big band|fusion|nu jazz|jazz rock)\b/,
+  'Soul, Funk & R&B':
+    /\b(soul|funk|groove|rnb|r n b|r b|neo soul|motown|afrobeat|gospel|disco funk)\b/,
+  'Reggae & Dub':
+    /\b(reggae|dub|ska|dancehall|roots|sound system|rocksteady|ragga)\b/,
+  'Musiques du Monde':
+    /\b(world|monde|latino|latin|salsa|cumbia|flamenco|oriental|gnawa|balkan|celtique|afro|maloya|kora|occitan|traditionnel|trad|bresil|tango|fado|espagnol|andalou|raï|rai|rumba)\b/,
+  'Classique & Opéra':
+    /\b(classique|opera|symphonique|lyrique|baroque|recital|orchestre|philharmonique|cine concert|quatuor|chambre|piano|violon|harpe|choral|conservatoire|orgue)\b/,
+};
+
+/**
+ * Vérifie si un concert ou festival correspond à un genre musical sélectionné :
+ * matche soit la catégorie principale, soit les sous-genres / tags associés
+ * (ex: un concert "Pop Rock" apparaît dans Pop ET dans Rock & Indie).
+ */
+export function matchesGenreCategory(
+  item: { category?: string; genres?: string[]; title?: string; subtitle?: string },
+  selectedCategory: GenreCategory | 'all'
+): boolean {
+  if (selectedCategory === 'all') return true;
+  if (item.category === selectedCategory) return true;
+  const tagText = normalizeSearchText(
+    [...(item.genres || []), item.subtitle || ''].join(' ')
+  );
+  const rule = GENRE_MATCH_RULES[selectedCategory];
+  if (rule && tagText && rule.test(tagText)) return true;
+  return false;
 }
 
 /**

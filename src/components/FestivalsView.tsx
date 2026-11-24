@@ -15,7 +15,7 @@ import {
   type Festival,
 } from '../data/festivalsData';
 import { GENRE_CATEGORIES, type GenreCategory } from '../data/toulouseData';
-import { matchesSearchQuery } from '../utils/dates';
+import { matchesGenreCategory, matchesSearchQuery } from '../utils/dates';
 
 interface FestivalsViewProps {
   festivals: Festival[];
@@ -70,7 +70,7 @@ export function FestivalsView({
         if (zone === 'toulouse' && f.zone !== 'toulouse') return false;
         if (zone === 'near' && f.driveMinutes > 90) return false;
         if (zone === 'with-lineup' && f.lineup.length === 0) return false;
-        if (genre !== 'all' && f.category !== genre) return false;
+        if (!matchesGenreCategory({ category: f.category, genres: f.genres, subtitle: f.tagline }, genre)) return false;
 
         if (q) {
           const haystack = [
@@ -174,7 +174,7 @@ export function FestivalsView({
           >
             Tous styles
           </button>
-          {GENRE_CATEGORIES.filter((g) => g !== 'Classique & Ciné').map((g) => {
+          {GENRE_CATEGORIES.filter((g) => g !== 'Classique & Opéra').map((g) => {
             const active = genre === g;
             return (
               <button

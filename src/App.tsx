@@ -48,6 +48,7 @@ import {
   isRecentlyAdded,
   matchesBudget,
   matchesFollowedArtist,
+  matchesGenreCategory,
   matchesPeriod,
   matchesSearchQuery,
   normalizeSearchText,
@@ -581,7 +582,7 @@ export function App() {
       // Ne jamais afficher un concert strictement passé (même entre minuit et la synchro de 06h)
       if ((concert.endDate || concert.date) < TODAY_ISO) return false;
       if (isSharedMode && !sharedSelectionIds.includes(concert.id)) return false;
-      if (selectedCategory !== 'all' && concert.category !== selectedCategory) return false;
+      if (!matchesGenreCategory(concert, selectedCategory)) return false;
       if (selectedVenueIds.length > 0 && !selectedVenueIds.includes(concert.venueId)) return false;
       if (selectedTransit.length > 0) {
         const lines = VENUE_GEO[concert.venueId]?.transitLines || [];

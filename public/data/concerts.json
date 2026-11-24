@@ -214,7 +214,7 @@
       "endDate": "2026-11-29",
       "time": "15h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -233,7 +233,7 @@
       "date": "2026-11-23",
       "time": "19h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -252,7 +252,7 @@
       "date": "2026-11-23",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Jazz & Blues",
       "genres": [
         "Pop",
         "Rock",
@@ -271,7 +271,7 @@
       "date": "2026-11-24",
       "time": "16h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Piano",
         "Improvisation",
@@ -291,7 +291,7 @@
       "date": "2026-11-24",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Jazz & Blues",
       "genres": [
         "Pop",
         "Rock",
@@ -311,7 +311,7 @@
       "endDate": "2026-11-25",
       "time": "20h30",
       "venueId": "casino-barriere",
-      "category": "Pop & Chanson",
+      "category": "Classique & Opéra",
       "genres": [
         "Chanson française",
         "Variété"
@@ -329,7 +329,7 @@
       "date": "2026-11-25",
       "time": "18h30",
       "venueId": "le-metronum",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Ciné-concert",
         "Jeune public"
@@ -346,7 +346,7 @@
       "date": "2026-11-25",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -366,7 +366,7 @@
       "date": "2026-11-25",
       "time": "19h15",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock progressif",
         "Rock"
@@ -384,7 +384,7 @@
       "date": "2026-11-25",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock",
         "Indé"
@@ -404,7 +404,7 @@
       "endDate": "2026-11-26",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Baroque",
         "Opéra",
@@ -422,7 +422,7 @@
       "date": "2026-11-25",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Ciné-concert",
         "Jeune public"
@@ -441,7 +441,7 @@
       "date": "2026-11-25",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz",
         "Bossa-nova"
@@ -460,7 +460,7 @@
       "date": "2026-11-26",
       "time": "12h30",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Récital",
         "Lyrique",
@@ -478,7 +478,7 @@
       "date": "2026-11-26",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -498,7 +498,7 @@
       "date": "2026-11-26",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock",
         "Post-Punk"
@@ -516,7 +516,7 @@
       "date": "2026-11-26",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Pop Rock",
         "Indé"
@@ -553,7 +553,7 @@
       "date": "2026-11-26",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Improvisation"
@@ -571,7 +571,7 @@
       "date": "2026-11-26",
       "time": "20h00",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Électro",
         "Club",
@@ -591,7 +591,7 @@
       "date": "2026-11-26",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Pop"
@@ -611,7 +611,7 @@
       "date": "2026-11-26",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz Manouche",
         "Swing"
@@ -631,7 +631,7 @@
       "date": "2026-11-26",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Dark Techno",
         "Deep Techno",
@@ -651,7 +651,7 @@
       "date": "2026-11-27",
       "time": "18h15",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rap & Hip-Hop",
       "genres": [
         "Punk",
         "Rock",
@@ -672,7 +672,7 @@
       "endDate": "2026-11-28",
       "time": "19h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro",
         "Pop",
@@ -692,7 +692,7 @@
       "date": "2026-11-27",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Black Metal",
         "Expérimental"
@@ -711,7 +711,7 @@
       "date": "2026-11-27",
       "time": "19h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Ciné-concert",
         "Contemporain"
@@ -749,7 +749,7 @@
       "date": "2026-11-27",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Pop"
       ],
@@ -767,7 +767,7 @@
       "date": "2026-11-27",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Folk"
@@ -787,7 +787,7 @@
       "endDate": "2026-11-28",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Disco",
         "Funk"
@@ -805,7 +805,7 @@
       "date": "2026-11-27",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "House",
         "Groove",
@@ -827,7 +827,7 @@
       "date": "2026-11-27",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro",
         "Rap",
@@ -847,7 +847,7 @@
       "date": "2026-11-27",
       "time": "23h55",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Hard Techno",
         "Schranz"
@@ -867,7 +867,7 @@
       "date": "2026-11-27",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Deep Tech",
         "Tech House",
@@ -887,7 +887,7 @@
       "date": "2026-11-28",
       "time": "18h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Ciné-concert",
         "Classique"
@@ -905,7 +905,7 @@
       "date": "2026-11-28",
       "time": "18h15",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Punk Rock",
         "Rock"
@@ -924,7 +924,7 @@
       "date": "2026-11-28",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Pop & Chanson",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Pop Rock",
         "Soul"
@@ -943,7 +943,7 @@
       "date": "2026-11-28",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Reggae & World",
+      "category": "Rap & Hip-Hop",
       "genres": [
         "World",
         "Hip-Hop",
@@ -981,7 +981,7 @@
       "date": "2026-11-28",
       "time": "20h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -1000,7 +1000,7 @@
       "date": "2026-11-28",
       "time": "20h00",
       "venueId": "le-labo-des-arts",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock Indie",
         "Psyché / Garage"
@@ -1020,7 +1020,7 @@
       "date": "2026-11-28",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Disco Funk"
       ],
@@ -1038,7 +1038,7 @@
       "date": "2026-11-28",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Hard Techno",
@@ -1059,7 +1059,7 @@
       "date": "2026-11-28",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Hard Techno",
@@ -1079,7 +1079,7 @@
       "date": "2026-11-28",
       "time": "23h55",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Acid",
         "Tribe"
@@ -1099,7 +1099,7 @@
       "date": "2026-11-28",
       "time": "23h59",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "House",
@@ -1119,7 +1119,7 @@
       "date": "2026-11-29",
       "time": "15h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -1138,7 +1138,7 @@
       "date": "2026-11-29",
       "time": "19h00",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Heavy Metal"
       ],
@@ -1156,7 +1156,7 @@
       "date": "2026-11-29",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Metal Industriel",
         "Rock"
@@ -1175,7 +1175,7 @@
       "date": "2026-11-29",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Reggae & World",
+      "category": "Électro & House",
       "genres": [
         "Dub",
         "Électro"
@@ -1194,7 +1194,7 @@
       "date": "2026-11-30",
       "time": "19h00",
       "venueId": "interference",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Folk Metal",
         "Metal"
@@ -1213,7 +1213,7 @@
       "date": "2026-12-01",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Rock & Indie",
       "genres": [
         "Chanson française",
         "Pop Rock"
@@ -1230,7 +1230,7 @@
       "date": "2026-12-01",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Atelier",
         "Ouvert à tous et toutes"
@@ -1249,7 +1249,7 @@
       "date": "2026-12-02",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock",
         "Stoner",
@@ -1269,7 +1269,7 @@
       "date": "2026-12-02",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Pop",
       "genres": [
         "Dark Ritual",
         "Deathrock",
@@ -1309,7 +1309,7 @@
       "date": "2026-12-02",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz actuel",
         "Improvisation"
@@ -1327,7 +1327,7 @@
       "date": "2026-12-03",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -1365,7 +1365,7 @@
       "date": "2026-12-03",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Metal",
         "Black Metal"
@@ -1383,7 +1383,7 @@
       "date": "2026-12-03",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Humour"
       ],
@@ -1403,7 +1403,7 @@
       "date": "2026-12-03",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Live"
       ],
@@ -1422,7 +1422,7 @@
       "date": "2026-12-03",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Folk",
         "Pop",
@@ -1442,7 +1442,7 @@
       "endDate": "2026-12-04",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Jazz & Blues",
       "genres": [
         "Symphonique",
         "Jazz"
@@ -1460,7 +1460,7 @@
       "date": "2026-12-03",
       "time": "20h30",
       "venueId": "zenith-toulouse",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock",
         "Chanson"
@@ -1479,7 +1479,7 @@
       "date": "2026-12-03",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française"
       ],
@@ -1497,7 +1497,7 @@
       "date": "2026-12-03",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Musique à l'image / Musiques improvisées"
       ],
@@ -1515,7 +1515,7 @@
       "date": "2026-12-03",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Tech House",
@@ -1535,7 +1535,7 @@
       "date": "2026-12-04",
       "time": "11h00",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -1554,7 +1554,7 @@
       "date": "2026-12-04",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Pop"
@@ -1572,7 +1572,7 @@
       "date": "2026-12-04",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Poésie arabe",
         "Post-Punk",
@@ -1591,7 +1591,7 @@
       "date": "2026-12-04",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Variété",
@@ -1612,7 +1612,7 @@
       "endDate": "2026-12-05",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Pop & Chanson",
+      "category": "Jazz & Blues",
       "genres": [
         "Chanson française",
         "Swing"
@@ -1631,7 +1631,7 @@
       "date": "2026-12-04",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Soul/Groove/Hip Hop with Jazzy lines"
       ],
@@ -1649,7 +1649,7 @@
       "date": "2026-12-04",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Rave"
@@ -1669,7 +1669,7 @@
       "date": "2026-12-04",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno Mélodique",
         "Électro"
@@ -1688,7 +1688,7 @@
       "date": "2026-12-04",
       "time": "23h55",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Acid",
         "Neorave",
@@ -1710,7 +1710,7 @@
       "endDate": "2026-12-06",
       "time": "17h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Harpe",
         "Musique de chambre",
@@ -1748,7 +1748,7 @@
       "date": "2026-12-05",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Reggae & World",
+      "category": "Rap & Hip-Hop",
       "genres": [
         "Reggae",
         "Chanson",
@@ -1768,7 +1768,7 @@
       "date": "2026-12-05",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rap & Hip-Hop",
+      "category": "Metal & Hardcore",
       "genres": [
         "Hyperpop",
         "Metal",
@@ -1788,7 +1788,7 @@
       "date": "2026-12-05",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Post-Punk",
         "Synth-Pop"
@@ -1808,7 +1808,7 @@
       "endDate": "2026-12-06",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Choral",
         "Baroque",
@@ -1827,7 +1827,7 @@
       "date": "2026-12-05",
       "time": "20h00",
       "venueId": "le-labo-des-arts",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock Indie",
         "Psyché / Garage"
@@ -1847,7 +1847,7 @@
       "date": "2026-12-05",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Blues",
         "Groove",
@@ -1867,7 +1867,7 @@
       "date": "2026-12-05",
       "time": "22h00",
       "venueId": "l-arena",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Hardcore",
         "Uptempo",
@@ -1888,7 +1888,7 @@
       "date": "2026-12-05",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Trance",
         "Hard Dance"
@@ -1908,7 +1908,7 @@
       "date": "2026-12-05",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Hard Techno"
@@ -1927,7 +1927,7 @@
       "date": "2026-12-05",
       "time": "23h55",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Hard Techno",
         "Techno"
@@ -1947,7 +1947,7 @@
       "date": "2026-12-05",
       "time": "23h59",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Acid Techno"
@@ -1965,7 +1965,7 @@
       "date": "2026-12-06",
       "time": "15h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -1985,7 +1985,7 @@
       "date": "2026-12-06",
       "time": "16h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Symphonique"
@@ -2002,7 +2002,7 @@
       "date": "2026-12-06",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Loto"
       ],
@@ -2022,7 +2022,7 @@
       "date": "2026-12-06",
       "time": "20h00",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Satirique"
@@ -2040,7 +2040,7 @@
       "date": "2026-12-07",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2060,7 +2060,7 @@
       "date": "2026-12-08",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock",
         "Rock français"
@@ -2079,7 +2079,7 @@
       "date": "2026-12-08",
       "time": "20h30",
       "venueId": "casino-barriere",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Pop"
@@ -2097,7 +2097,7 @@
       "date": "2026-12-09",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2116,7 +2116,7 @@
       "date": "2026-12-09",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Humour"
       ],
@@ -2136,7 +2136,7 @@
       "date": "2026-12-09",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Grunge",
         "Punk",
@@ -2155,7 +2155,7 @@
       "date": "2026-12-09",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Multi-styles"
       ],
@@ -2172,7 +2172,7 @@
       "date": "2026-12-10",
       "time": "19h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2192,7 +2192,7 @@
       "date": "2026-12-10",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Variété"
@@ -2210,7 +2210,7 @@
       "date": "2026-12-10",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Bedroom Folk",
         "Pop Soul"
@@ -2228,7 +2228,7 @@
       "date": "2026-12-10",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -2246,7 +2246,7 @@
       "date": "2026-12-10",
       "time": "20h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -2265,7 +2265,7 @@
       "date": "2026-12-10",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Flamenco",
         "World",
@@ -2286,7 +2286,7 @@
       "endDate": "2026-12-12",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Funk",
         "Jazz",
@@ -2306,7 +2306,7 @@
       "date": "2026-12-10",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Acid Techno",
@@ -2326,7 +2326,7 @@
       "date": "2026-12-11",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Chanson",
         "Rock"
@@ -2345,7 +2345,7 @@
       "date": "2026-12-11",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Post-Rock",
         "Progressif"
@@ -2364,7 +2364,7 @@
       "date": "2026-12-11",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Classic Rock",
         "Tribute"
@@ -2382,7 +2382,7 @@
       "date": "2026-12-11",
       "time": "20h45",
       "venueId": "le-metronum",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Baile Funk",
         "Bass",
@@ -2402,7 +2402,7 @@
       "date": "2026-12-11",
       "time": "20h45",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Musique de chambre",
         "Classique"
@@ -2420,7 +2420,7 @@
       "date": "2026-12-11",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Pop Rock",
         "Chanson"
@@ -2439,7 +2439,7 @@
       "date": "2026-12-11",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Funk Jazz Jeux Vidéo"
       ],
@@ -2457,7 +2457,7 @@
       "date": "2026-12-11",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Reggaeton",
         "Cumbia",
@@ -2476,7 +2476,7 @@
       "date": "2026-12-11",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Uptempo",
         "Rawstyle",
@@ -2498,7 +2498,7 @@
       "date": "2026-12-12",
       "time": "17h00",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Celtique",
         "Folk Metal",
@@ -2517,7 +2517,7 @@
       "date": "2026-12-12",
       "time": "18h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2536,7 +2536,7 @@
       "date": "2026-12-12",
       "time": "18h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -2575,7 +2575,7 @@
       "date": "2026-12-12",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Metal alternatif",
         "Rock"
@@ -2594,7 +2594,7 @@
       "date": "2026-12-12",
       "time": "21h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "House",
         "Deep House",
@@ -2614,7 +2614,7 @@
       "date": "2026-12-12",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson festive",
         "Rock"
@@ -2633,7 +2633,7 @@
       "date": "2026-12-12",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Funk Jazz Jeux Vidéo"
       ],
@@ -2651,7 +2651,7 @@
       "date": "2026-12-12",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Drum'n'Bass",
         "Bass"
@@ -2671,7 +2671,7 @@
       "date": "2026-12-12",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Hard Techno",
         "Trance",
@@ -2691,7 +2691,7 @@
       "date": "2026-12-12",
       "time": "23h55",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Disco",
         "House"
@@ -2711,7 +2711,7 @@
       "date": "2026-12-12",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Hard Bounce",
         "Hard Dance",
@@ -2730,7 +2730,7 @@
       "date": "2026-12-13",
       "time": "17h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2749,7 +2749,7 @@
       "date": "2026-12-14",
       "time": "18h15",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2770,7 +2770,7 @@
       "endDate": "2026-12-15",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Variété",
         "Chanson française"
@@ -2787,7 +2787,7 @@
       "date": "2026-12-15",
       "time": "18h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2827,7 +2827,7 @@
       "date": "2026-12-16",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Rock & Indie",
       "genres": [
         "Chanson française",
         "Pop Rock"
@@ -2847,7 +2847,7 @@
       "date": "2026-12-16",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz Rock",
         "Balkans",
@@ -2866,7 +2866,7 @@
       "date": "2026-12-17",
       "time": "14h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2885,7 +2885,7 @@
       "date": "2026-12-17",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Pop",
         "Rock",
@@ -2907,7 +2907,7 @@
       "date": "2026-12-17",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Grand Concert Symphonique",
         "Classique"
@@ -2924,7 +2924,7 @@
       "date": "2026-12-17",
       "time": "20h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -2943,7 +2943,7 @@
       "date": "2026-12-17",
       "time": "20h30",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -2963,7 +2963,7 @@
       "endDate": "2026-12-19",
       "time": "21h00",
       "venueId": "le-bijou",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française"
       ],
@@ -2981,7 +2981,7 @@
       "date": "2026-12-17",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz",
         "Cordes",
@@ -3001,7 +3001,7 @@
       "date": "2026-12-17",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Hard Bounce",
         "Hard Groove",
@@ -3038,7 +3038,7 @@
       "date": "2026-12-18",
       "time": "20h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -3058,7 +3058,7 @@
       "date": "2026-12-18",
       "time": "20h30",
       "venueId": "le-metronum",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Hard Rock",
         "Tribute"
@@ -3078,7 +3078,7 @@
       "endDate": "2026-12-19",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz Funk",
         "Groove"
@@ -3097,7 +3097,7 @@
       "date": "2026-12-18",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Queer"
@@ -3117,7 +3117,7 @@
       "date": "2026-12-18",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "EBM",
         "Dark Wave",
@@ -3137,7 +3137,7 @@
       "date": "2026-12-18",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -3157,7 +3157,7 @@
       "date": "2026-12-19",
       "time": "21h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "House",
         "Électro"
@@ -3176,7 +3176,7 @@
       "date": "2026-12-19",
       "time": "21h00",
       "venueId": "le-taquin",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz Funk"
       ],
@@ -3194,7 +3194,7 @@
       "date": "2026-12-19",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Trance",
@@ -3214,7 +3214,7 @@
       "date": "2026-12-19",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -3234,7 +3234,7 @@
       "date": "2026-12-20",
       "time": "17h30",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -3253,7 +3253,7 @@
       "date": "2026-12-26",
       "time": "23h55",
       "venueId": "le-cri-de-la-mouette",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Deep Techno",
@@ -3272,7 +3272,7 @@
       "date": "2026-12-26",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -3292,7 +3292,7 @@
       "date": "2026-12-28",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Ciné-concert",
         "Symphonique"
@@ -3310,7 +3310,7 @@
       "date": "2026-12-29",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "K-Pop",
         "Pop"
@@ -3329,7 +3329,7 @@
       "endDate": "2027-01-02",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -3346,7 +3346,7 @@
       "date": "2026-12-31",
       "time": "22h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -3365,7 +3365,7 @@
       "date": "2026-12-31",
       "time": "23h00",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Pop",
         "Rock",
@@ -3386,7 +3386,7 @@
       "date": "2027-01-05",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -3405,7 +3405,7 @@
       "date": "2027-01-06",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -3423,7 +3423,7 @@
       "date": "2027-01-08",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Drum'n'bass",
         "Dubstep",
@@ -3444,7 +3444,7 @@
       "date": "2027-01-08",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -3463,7 +3463,7 @@
       "date": "2027-01-09",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro"
       ],
@@ -3482,7 +3482,7 @@
       "date": "2027-01-09",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -3500,7 +3500,7 @@
       "date": "2027-01-09",
       "time": "21h00",
       "venueId": "la-cabane",
-      "category": "Reggae & World",
+      "category": "Reggae & Dub",
       "genres": [
         "Reggae / Dub"
       ],
@@ -3518,7 +3518,7 @@
       "date": "2027-01-09",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Trance",
@@ -3539,7 +3539,7 @@
       "date": "2027-01-13",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -3556,7 +3556,7 @@
       "date": "2027-01-13",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -3574,7 +3574,7 @@
       "date": "2027-01-14",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -3593,7 +3593,7 @@
       "date": "2027-01-14",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Reggae & World",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Musique Tzigane",
@@ -3633,7 +3633,7 @@
       "date": "2027-01-14",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -3651,7 +3651,7 @@
       "date": "2027-01-15",
       "time": "20h28",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro",
         "Dub",
@@ -3672,7 +3672,7 @@
       "date": "2027-01-15",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno"
       ],
@@ -3691,7 +3691,7 @@
       "date": "2027-01-16",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Pop"
       ],
@@ -3710,7 +3710,7 @@
       "date": "2027-01-16",
       "time": "20h28",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro",
         "Hip-Hop"
@@ -3730,7 +3730,7 @@
       "date": "2027-01-16",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -3768,7 +3768,7 @@
       "date": "2027-01-18",
       "time": "20h15",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -3787,7 +3787,7 @@
       "date": "2027-01-19",
       "time": "19h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -3806,7 +3806,7 @@
       "date": "2027-01-20",
       "time": "18h30",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Visite"
       ],
@@ -3823,7 +3823,7 @@
       "date": "2027-01-20",
       "time": "18h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -3842,7 +3842,7 @@
       "date": "2027-01-20",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -3860,7 +3860,7 @@
       "date": "2027-01-21",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -3878,7 +3878,7 @@
       "date": "2027-01-22",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Pop",
         "Rock"
@@ -3897,7 +3897,7 @@
       "date": "2027-01-22",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "punk",
         "techno"
@@ -3918,7 +3918,7 @@
       "date": "2027-01-22",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Rock / Metal"
       ],
@@ -3936,7 +3936,7 @@
       "date": "2027-01-22",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -3953,7 +3953,7 @@
       "date": "2027-01-22",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Metal & Hardcore",
       "genres": [
         "Hardcore"
       ],
@@ -3971,7 +3971,7 @@
       "date": "2027-01-23",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Pop"
@@ -3991,7 +3991,7 @@
       "date": "2027-01-23",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "disco",
         "electro",
@@ -4012,7 +4012,7 @@
       "date": "2027-01-23",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -4029,7 +4029,7 @@
       "date": "2027-01-23",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -4048,7 +4048,7 @@
       "date": "2027-01-23",
       "time": "23h00",
       "venueId": "l-arena",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Gabber",
         "Uptempo",
@@ -4069,7 +4069,7 @@
       "date": "2027-01-24",
       "time": "17h30",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -4087,7 +4087,7 @@
       "date": "2027-01-24",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -4105,7 +4105,7 @@
       "date": "2027-01-25",
       "time": "14h30",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -4125,7 +4125,7 @@
       "date": "2027-01-25",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Récital",
         "Opéra",
@@ -4143,7 +4143,7 @@
       "date": "2027-01-25",
       "time": "20h00",
       "venueId": "auditorium-saint-pierre",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Classique",
         "Conservatoire"
@@ -4162,7 +4162,7 @@
       "date": "2027-01-26",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "rock"
       ],
@@ -4181,7 +4181,7 @@
       "date": "2027-01-26",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -4198,7 +4198,7 @@
       "date": "2027-01-27",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro"
       ],
@@ -4217,7 +4217,7 @@
       "date": "2027-01-27",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -4235,7 +4235,7 @@
       "date": "2027-01-27",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -4253,7 +4253,7 @@
       "date": "2027-01-28",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro"
       ],
@@ -4271,7 +4271,7 @@
       "date": "2027-01-28",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -4290,7 +4290,7 @@
       "date": "2027-01-29",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Synthpop"
       ],
@@ -4309,7 +4309,7 @@
       "date": "2027-01-29",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Pop & Chanson",
+      "category": "Électro & House",
       "genres": [
         "disco"
       ],
@@ -4328,7 +4328,7 @@
       "date": "2027-01-29",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -4345,7 +4345,7 @@
       "date": "2027-01-29",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -4363,7 +4363,7 @@
       "date": "2027-01-29",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -4401,7 +4401,7 @@
       "date": "2027-01-30",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Pop"
@@ -4421,7 +4421,7 @@
       "date": "2027-01-30",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -4439,7 +4439,7 @@
       "date": "2027-01-30",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -4458,7 +4458,7 @@
       "date": "2027-01-30",
       "time": "23h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -4476,7 +4476,7 @@
       "date": "2027-01-30",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -4495,7 +4495,7 @@
       "date": "2027-02-02",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -4513,7 +4513,7 @@
       "date": "2027-02-03",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -4533,7 +4533,7 @@
       "date": "2027-02-03",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Chanson",
         "Jazz",
@@ -4571,7 +4571,7 @@
       "date": "2027-02-04",
       "time": "12h30",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -4590,7 +4590,7 @@
       "date": "2027-02-04",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock"
       ],
@@ -4609,7 +4609,7 @@
       "date": "2027-02-04",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -4626,7 +4626,7 @@
       "date": "2027-02-04",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -4644,7 +4644,7 @@
       "date": "2027-02-05",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Pop"
@@ -4665,7 +4665,7 @@
       "date": "2027-02-05",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Rock / Metal"
       ],
@@ -4683,7 +4683,7 @@
       "date": "2027-02-05",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert-Événement"
       ],
@@ -4700,7 +4700,7 @@
       "date": "2027-02-05",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Gabber",
         "Hardcore",
@@ -4721,7 +4721,7 @@
       "date": "2027-02-06",
       "time": "18h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -4739,7 +4739,7 @@
       "date": "2027-02-06",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -4756,7 +4756,7 @@
       "date": "2027-02-06",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -4775,7 +4775,7 @@
       "date": "2027-02-09",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "death",
         "metal"
@@ -4814,7 +4814,7 @@
       "date": "2027-02-11",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "hard rock",
         "funk",
@@ -4835,7 +4835,7 @@
       "date": "2027-02-11",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "death",
         "metal",
@@ -4857,7 +4857,7 @@
       "date": "2027-02-11",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -4875,7 +4875,7 @@
       "date": "2027-02-12",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro"
       ],
@@ -4894,7 +4894,7 @@
       "date": "2027-02-13",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Electro"
       ],
@@ -4913,7 +4913,7 @@
       "date": "2027-02-13",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "metal"
       ],
@@ -4932,7 +4932,7 @@
       "date": "2027-02-13",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -4950,7 +4950,7 @@
       "date": "2027-02-14",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Concert",
         "Zénith"
@@ -4968,7 +4968,7 @@
       "date": "2027-02-15",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "hard",
         "rock"
@@ -5007,7 +5007,7 @@
       "date": "2027-02-17",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Release Party"
       ],
@@ -5063,7 +5063,7 @@
       "date": "2027-02-19",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "country",
         "folk",
@@ -5084,7 +5084,7 @@
       "date": "2027-02-19",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Electro"
       ],
@@ -5103,7 +5103,7 @@
       "date": "2027-02-19",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -5122,7 +5122,7 @@
       "date": "2027-02-20",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rap & Hip-Hop",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "RnB",
         "Bossa nova"
@@ -5141,7 +5141,7 @@
       "date": "2027-02-20",
       "time": "19h30",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -5158,7 +5158,7 @@
       "date": "2027-02-20",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5176,7 +5176,7 @@
       "date": "2027-02-20",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "House"
@@ -5197,7 +5197,7 @@
       "date": "2027-02-21",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -5215,7 +5215,7 @@
       "date": "2027-02-23",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "pop"
       ],
@@ -5234,7 +5234,7 @@
       "date": "2027-02-23",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5253,7 +5253,7 @@
       "date": "2027-02-23",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française"
       ],
@@ -5270,7 +5270,7 @@
       "date": "2027-02-24",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "rock"
       ],
@@ -5289,7 +5289,7 @@
       "date": "2027-02-24",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5307,7 +5307,7 @@
       "date": "2027-02-25",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "pop"
       ],
@@ -5326,7 +5326,7 @@
       "date": "2027-02-25",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -5345,7 +5345,7 @@
       "date": "2027-02-25",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Jazz & Groove",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Jazz",
         "Soul",
@@ -5364,7 +5364,7 @@
       "date": "2027-02-26",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Folk Nordique"
       ],
@@ -5383,7 +5383,7 @@
       "date": "2027-02-26",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -5401,7 +5401,7 @@
       "date": "2027-02-26",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5419,7 +5419,7 @@
       "date": "2027-02-26",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Acidcore",
         "Acid trance",
@@ -5440,7 +5440,7 @@
       "date": "2027-02-26",
       "time": "23h55",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Techno & Rave",
       "genres": [
         "Techno",
         "Club"
@@ -5459,7 +5459,7 @@
       "date": "2027-02-27",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Post-metal",
         "Post-rock instrumental",
@@ -5481,7 +5481,7 @@
       "date": "2027-02-27",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -5500,7 +5500,7 @@
       "date": "2027-02-27",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Chanson espagnole",
         "World",
@@ -5519,7 +5519,7 @@
       "date": "2027-02-28",
       "time": "17h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -5537,7 +5537,7 @@
       "date": "2027-02-28",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Reggae & World",
+      "category": "Reggae & Dub",
       "genres": [
         "Reggae"
       ],
@@ -5556,7 +5556,7 @@
       "date": "2027-02-28",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -5574,7 +5574,7 @@
       "date": "2027-02-28",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5592,7 +5592,7 @@
       "date": "2027-02-28",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -5611,7 +5611,7 @@
       "date": "2027-03-03",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Pop"
@@ -5631,7 +5631,7 @@
       "date": "2027-03-04",
       "time": "12h30",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -5650,7 +5650,7 @@
       "date": "2027-03-04",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson"
       ],
@@ -5669,7 +5669,7 @@
       "date": "2027-03-04",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5687,7 +5687,7 @@
       "date": "2027-03-04",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -5745,7 +5745,7 @@
       "date": "2027-03-05",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -5762,7 +5762,7 @@
       "date": "2027-03-05",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -5780,7 +5780,7 @@
       "date": "2027-03-05",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -5798,7 +5798,7 @@
       "date": "2027-03-05",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno"
       ],
@@ -5817,7 +5817,7 @@
       "date": "2027-03-06",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Variété française",
         "Chanson"
@@ -5836,7 +5836,7 @@
       "date": "2027-03-06",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Humour"
       ],
@@ -5854,7 +5854,7 @@
       "date": "2027-03-06",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "electro"
       ],
@@ -5873,7 +5873,7 @@
       "date": "2027-03-07",
       "time": "11h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -5892,7 +5892,7 @@
       "date": "2027-03-07",
       "time": "17h00",
       "venueId": "la-cabane",
-      "category": "Classique & Ciné",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -5910,7 +5910,7 @@
       "date": "2027-03-07",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "rock"
       ],
@@ -5928,7 +5928,7 @@
       "date": "2027-03-07",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "metal"
       ],
@@ -5948,7 +5948,7 @@
       "date": "2027-03-07",
       "time": "20h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -5967,7 +5967,7 @@
       "date": "2027-03-08",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Rock / Metal"
       ],
@@ -6006,7 +6006,7 @@
       "date": "2027-03-10",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson française",
         "Pop"
@@ -6025,7 +6025,7 @@
       "date": "2027-03-10",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -6043,7 +6043,7 @@
       "date": "2027-03-10",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Jazz & Groove",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Live"
@@ -6081,7 +6081,7 @@
       "date": "2027-03-11",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -6099,7 +6099,7 @@
       "date": "2027-03-11",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -6117,7 +6117,7 @@
       "date": "2027-03-12",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "rock"
       ],
@@ -6155,7 +6155,7 @@
       "date": "2027-03-13",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock"
       ],
@@ -6174,7 +6174,7 @@
       "date": "2027-03-13",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "electro",
         "techno"
@@ -6195,7 +6195,7 @@
       "date": "2027-03-13",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Live"
       ],
@@ -6213,7 +6213,7 @@
       "date": "2027-03-13",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6232,7 +6232,7 @@
       "date": "2027-03-14",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Rap & Hip-Hop",
+      "category": "Metal & Hardcore",
       "genres": [
         "Rock / Metal"
       ],
@@ -6250,7 +6250,7 @@
       "date": "2027-03-14",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -6268,7 +6268,7 @@
       "date": "2027-03-14",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6286,7 +6286,7 @@
       "date": "2027-03-16",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Jazz & Groove",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Live"
@@ -6324,7 +6324,7 @@
       "date": "2027-03-17",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -6342,7 +6342,7 @@
       "date": "2027-03-17",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -6360,7 +6360,7 @@
       "date": "2027-03-18",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock"
       ],
@@ -6378,7 +6378,7 @@
       "date": "2027-03-18",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -6396,7 +6396,7 @@
       "date": "2027-03-18",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Jazz & Groove",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Live"
@@ -6434,7 +6434,7 @@
       "date": "2027-03-19",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "black",
         "metal"
@@ -6454,7 +6454,7 @@
       "date": "2027-03-19",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -6471,7 +6471,7 @@
       "date": "2027-03-20",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Industrial",
         "Néofolk"
@@ -6491,7 +6491,7 @@
       "date": "2027-03-20",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -6509,7 +6509,7 @@
       "date": "2027-03-20",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6528,7 +6528,7 @@
       "date": "2027-03-21",
       "time": "18h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -6546,7 +6546,7 @@
       "date": "2027-03-22",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Punk",
         "Rock"
@@ -6566,7 +6566,7 @@
       "date": "2027-03-22",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6585,7 +6585,7 @@
       "date": "2027-03-22",
       "time": "20h00",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -6603,7 +6603,7 @@
       "date": "2027-03-24",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Funk",
         "Pop",
@@ -6624,7 +6624,7 @@
       "date": "2027-03-24",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "rock"
       ],
@@ -6643,7 +6643,7 @@
       "date": "2027-03-25",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "pop",
         "r&b"
@@ -6663,7 +6663,7 @@
       "date": "2027-03-25",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6681,7 +6681,7 @@
       "date": "2027-03-26",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Pop"
       ],
@@ -6700,7 +6700,7 @@
       "date": "2027-03-26",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Jazz & Groove",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "soul"
       ],
@@ -6720,7 +6720,7 @@
       "date": "2027-03-26",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Reggae & World",
+      "category": "Reggae & Dub",
       "genres": [
         "Reggae / Dub"
       ],
@@ -6738,7 +6738,7 @@
       "date": "2027-03-26",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -6756,7 +6756,7 @@
       "date": "2027-03-27",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Pop",
         "Rock"
@@ -6777,7 +6777,7 @@
       "date": "2027-03-27",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -6795,7 +6795,7 @@
       "date": "2027-03-27",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -6812,7 +6812,7 @@
       "date": "2027-03-27",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -6830,7 +6830,7 @@
       "date": "2027-03-27",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6848,7 +6848,7 @@
       "date": "2027-03-29",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Trip-hop"
       ],
@@ -6867,7 +6867,7 @@
       "date": "2027-03-31",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Rock instrumental",
         "Métal"
@@ -6888,7 +6888,7 @@
       "date": "2027-03-31",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Live"
       ],
@@ -6906,7 +6906,7 @@
       "date": "2027-03-31",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6924,7 +6924,7 @@
       "date": "2027-04-01",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -6942,7 +6942,7 @@
       "date": "2027-04-02",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Jazz & Groove",
+      "category": "Soul, Funk & R&B",
       "genres": [
         "Blues",
         "Soul",
@@ -6982,7 +6982,7 @@
       "date": "2027-04-02",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -6999,7 +6999,7 @@
       "date": "2027-04-02",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -7017,7 +7017,7 @@
       "date": "2027-04-03",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7036,7 +7036,7 @@
       "date": "2027-04-04",
       "time": "18h00",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -7054,7 +7054,7 @@
       "date": "2027-04-06",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -7072,7 +7072,7 @@
       "date": "2027-04-07",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Post-punk",
         "New-wave"
@@ -7092,7 +7092,7 @@
       "date": "2027-04-08",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7110,7 +7110,7 @@
       "date": "2027-04-09",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "hard",
         "rock",
@@ -7131,7 +7131,7 @@
       "date": "2027-04-10",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -7148,7 +7148,7 @@
       "date": "2027-04-11",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -7166,7 +7166,7 @@
       "date": "2027-04-13",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -7184,7 +7184,7 @@
       "date": "2027-04-13",
       "time": "20h28",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert dessiné"
       ],
@@ -7203,7 +7203,7 @@
       "date": "2027-04-16",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -7241,7 +7241,7 @@
       "date": "2027-04-17",
       "time": "19h30",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -7260,7 +7260,7 @@
       "date": "2027-04-17",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -7278,7 +7278,7 @@
       "date": "2027-04-17",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -7296,7 +7296,7 @@
       "date": "2027-04-18",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "dub",
         "electro"
@@ -7317,7 +7317,7 @@
       "date": "2027-04-18",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -7335,7 +7335,7 @@
       "date": "2027-04-18",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7353,7 +7353,7 @@
       "date": "2027-04-21",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Pop",
         "Electro"
@@ -7391,7 +7391,7 @@
       "date": "2027-04-21",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Concert",
         "Zénith"
@@ -7409,7 +7409,7 @@
       "date": "2027-04-21",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Jazz & Groove",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Live"
@@ -7428,7 +7428,7 @@
       "date": "2027-04-21",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques",
         "Odyssud"
@@ -7465,7 +7465,7 @@
       "date": "2027-04-22",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7502,7 +7502,7 @@
       "date": "2027-04-23",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -7522,7 +7522,7 @@
       "date": "2027-04-24",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Électro"
       ],
@@ -7540,7 +7540,7 @@
       "date": "2027-04-24",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -7559,7 +7559,7 @@
       "date": "2027-04-25",
       "time": "17h00",
       "venueId": "la-cabane",
-      "category": "Reggae & World",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -7577,7 +7577,7 @@
       "date": "2027-04-27",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson"
       ],
@@ -7596,7 +7596,7 @@
       "date": "2027-04-28",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rap & Hip-Hop",
+      "category": "Reggae & Dub",
       "genres": [
         "Reggae",
         "Soul",
@@ -7617,7 +7617,7 @@
       "date": "2027-04-28",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -7636,7 +7636,7 @@
       "date": "2027-04-28",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Live"
@@ -7654,7 +7654,7 @@
       "date": "2027-04-29",
       "time": "12h30",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -7673,7 +7673,7 @@
       "date": "2027-04-29",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Cumbia"
       ],
@@ -7692,7 +7692,7 @@
       "date": "2027-04-29",
       "time": "20h00",
       "venueId": "interference",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert"
       ],
@@ -7710,7 +7710,7 @@
       "date": "2027-04-29",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7728,7 +7728,7 @@
       "date": "2027-04-30",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -7747,7 +7747,7 @@
       "date": "2027-04-30",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Pop & Chanson",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Odyssud"
@@ -7765,7 +7765,7 @@
       "date": "2027-05-05",
       "time": "18h30",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Visite"
       ],
@@ -7783,7 +7783,7 @@
       "date": "2027-05-07",
       "time": "20h00",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -7801,7 +7801,7 @@
       "date": "2027-05-13",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "electro"
       ],
@@ -7820,7 +7820,7 @@
       "date": "2027-05-14",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7838,7 +7838,7 @@
       "date": "2027-05-15",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Reggae & World",
+      "category": "Reggae & Dub",
       "genres": [
         "Salsa",
         "Ragga",
@@ -7859,7 +7859,7 @@
       "date": "2027-05-15",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -7877,7 +7877,7 @@
       "date": "2027-05-17",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Jazz & Groove",
+      "category": "Jazz & Blues",
       "genres": [
         "Jazz",
         "Swing"
@@ -7897,7 +7897,7 @@
       "date": "2027-05-18",
       "time": "20h00",
       "venueId": "le-metronum",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques actuelles"
       ],
@@ -7914,7 +7914,7 @@
       "date": "2027-05-20",
       "time": "12h30",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -7934,7 +7934,7 @@
       "date": "2027-05-20",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Musiques",
         "Odyssud"
@@ -7953,7 +7953,7 @@
       "date": "2027-05-21",
       "time": "19h30",
       "venueId": "la-cabane",
-      "category": "Reggae & World",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson / Pop"
       ],
@@ -7971,7 +7971,7 @@
       "date": "2027-05-21",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -7989,7 +7989,7 @@
       "date": "2027-05-22",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Jazz & Blues",
       "genres": [
         "Blues",
         "Rock"
@@ -8009,7 +8009,7 @@
       "date": "2027-05-24",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "Pop",
         "Electro",
@@ -8030,7 +8030,7 @@
       "date": "2027-05-26",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8048,7 +8048,7 @@
       "date": "2027-05-26",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -8067,7 +8067,7 @@
       "date": "2027-05-27",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8085,7 +8085,7 @@
       "date": "2027-05-27",
       "time": "20h30",
       "venueId": "salle-nougaro",
-      "category": "Reggae & World",
+      "category": "Chanson & Folk",
       "genres": [
         "Chanson",
         "Live"
@@ -8122,7 +8122,7 @@
       "date": "2027-05-29",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8140,7 +8140,7 @@
       "date": "2027-06-01",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8158,7 +8158,7 @@
       "date": "2027-06-04",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -8176,7 +8176,7 @@
       "date": "2027-06-05",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Reggae & World",
+      "category": "Reggae & Dub",
       "genres": [
         "Reggae"
       ],
@@ -8195,7 +8195,7 @@
       "date": "2027-06-06",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8213,7 +8213,7 @@
       "date": "2027-06-08",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock psychédélique"
       ],
@@ -8232,7 +8232,7 @@
       "date": "2027-06-08",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8250,7 +8250,7 @@
       "date": "2027-06-12",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -8269,7 +8269,7 @@
       "date": "2027-06-19",
       "time": "20h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -8287,7 +8287,7 @@
       "date": "2027-06-24",
       "time": "12h30",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -8306,7 +8306,7 @@
       "date": "2027-06-27",
       "time": "11h00",
       "venueId": "halle-aux-grains",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Symphonique",
         "Classique"
@@ -8324,7 +8324,7 @@
       "date": "2027-06-27",
       "time": "20h00",
       "venueId": "opera-capitole",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Opéra",
         "Lyrique",
@@ -8343,7 +8343,7 @@
       "date": "2027-08-10",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock"
       ],
@@ -8361,7 +8361,7 @@
       "date": "2027-09-18",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8379,7 +8379,7 @@
       "date": "2027-09-20",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock"
       ],
@@ -8398,7 +8398,7 @@
       "date": "2027-09-21",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Rock"
       ],
@@ -8417,7 +8417,7 @@
       "date": "2027-09-22",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8435,7 +8435,7 @@
       "date": "2027-09-24",
       "time": "19h30",
       "venueId": "le-rex",
-      "category": "Électro & Club",
+      "category": "Électro & House",
       "genres": [
         "indie",
         "pop"
@@ -8456,7 +8456,7 @@
       "date": "2027-09-24",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert et pyrotechnie",
         "Odyssud"
@@ -8474,7 +8474,7 @@
       "date": "2027-10-02",
       "time": "23h55",
       "venueId": "le-bikini",
-      "category": "Électro & Club",
+      "category": "Techno & Rave",
       "genres": [
         "Techno"
       ],
@@ -8493,7 +8493,7 @@
       "date": "2027-10-07",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8512,7 +8512,7 @@
       "date": "2027-10-07",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Musiques",
         "Odyssud"
@@ -8530,7 +8530,7 @@
       "date": "2027-10-10",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8549,7 +8549,7 @@
       "date": "2027-10-15",
       "time": "20h30",
       "venueId": "odyssud",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Musique du monde",
         "Odyssud"
@@ -8567,7 +8567,7 @@
       "date": "2027-10-16",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8585,7 +8585,7 @@
       "date": "2027-10-19",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8603,7 +8603,7 @@
       "date": "2027-10-24",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8621,7 +8621,7 @@
       "date": "2027-11-03",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8639,7 +8639,7 @@
       "date": "2027-11-07",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8657,7 +8657,7 @@
       "date": "2027-11-07",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8675,7 +8675,7 @@
       "date": "2027-11-14",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8693,7 +8693,7 @@
       "date": "2027-11-18",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8730,7 +8730,7 @@
       "date": "2027-11-25",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Rock & Indie",
       "genres": [
         "Pop",
         "Rock"
@@ -8750,7 +8750,7 @@
       "date": "2027-11-27",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8768,7 +8768,7 @@
       "date": "2027-11-30",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8786,7 +8786,7 @@
       "date": "2027-12-01",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8804,7 +8804,7 @@
       "date": "2027-12-02",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8822,7 +8822,7 @@
       "date": "2027-12-08",
       "time": "19h30",
       "venueId": "le-bikini",
-      "category": "Rock & Metal",
+      "category": "Metal & Hardcore",
       "genres": [
         "Heavy Metal"
       ],
@@ -8841,7 +8841,7 @@
       "date": "2027-12-12",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8859,7 +8859,7 @@
       "date": "2027-12-14",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8877,7 +8877,7 @@
       "date": "2028-01-15",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8895,7 +8895,7 @@
       "date": "2028-01-26",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8913,7 +8913,7 @@
       "date": "2028-02-02",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8931,7 +8931,7 @@
       "date": "2028-02-26",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Classique & Ciné",
+      "category": "Classique & Opéra",
       "genres": [
         "Concert",
         "Zénith"
@@ -8949,7 +8949,7 @@
       "date": "2028-02-29",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -8967,7 +8967,7 @@
       "date": "2028-03-11",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Reggae & World",
+      "category": "Musiques du Monde",
       "genres": [
         "Concert",
         "Zénith"
@@ -8985,7 +8985,7 @@
       "date": "2028-03-28",
       "time": "17h00",
       "venueId": "la-cabane",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Live"
       ],
@@ -9003,7 +9003,7 @@
       "date": "2028-04-14",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -9021,7 +9021,7 @@
       "date": "2028-05-13",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
@@ -9039,7 +9039,7 @@
       "date": "2028-09-21",
       "time": "20h00",
       "venueId": "zenith-toulouse",
-      "category": "Pop & Chanson",
+      "category": "Pop",
       "genres": [
         "Concert",
         "Zénith"
