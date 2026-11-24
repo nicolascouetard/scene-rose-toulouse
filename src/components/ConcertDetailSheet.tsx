@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import {
+  BellPlus,
   Calendar,
   CalendarPlus,
+  Check,
   Clock,
   ExternalLink,
   Headphones,
@@ -15,7 +17,13 @@ import {
   X,
 } from 'lucide-react';
 import type { Concert, Venue } from '../data/toulouseData';
-import { downloadConcertIcs, extractListenArtists, formatFullDate } from '../utils/dates';
+import { useSwipeDownToClose } from '../hooks/useSwipeDownToClose';
+import {
+  downloadConcertIcs,
+  extractListenArtists,
+  formatFullDate,
+  normalizeSearchText,
+} from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
 import { StreamingLinksRow } from './StreamingLinksRow';
 
@@ -23,8 +31,10 @@ interface ConcertDetailSheetProps {
   concert: Concert | null;
   venue: Venue | null;
   isFavorite: boolean;
+  favoriteArtists: string[];
   onClose: () => void;
   onToggleFavorite: (id: string) => void;
+  onToggleFavoriteArtist: (artistName: string) => void;
   onSelectVenue: (venueId: string) => void;
   onNotify: (msg: string) => void;
 }
@@ -33,14 +43,19 @@ export function ConcertDetailSheet({
   concert,
   venue,
   isFavorite,
+  favoriteArtists,
   onClose,
   onToggleFavorite,
+  onToggleFavoriteArtist,
   onSelectVenue,
   onNotify,
 }: ConcertDetailSheetProps) {
   const [zoomPoster, setZoomPoster] = useState(false);
   const [showRoutePicker, setShowRoutePicker] = useState(false);
   const [selectedArtistIdx, setSelectedArtistIdx] = useState(0);
+  const { scrollRef, sheetStyle, backdropOpacity, handlers } = useSwipeDownToClose({
+    onClose,
+  });
 
   useEffect(() => {
     setSelectedArtistIdx(0);
@@ -71,6 +86,12 @@ export function ConcertDetailSheet({
 
   const listenArtists = extractListenArtists(concert.title);
   const activeArtist = listenArtists[selectedArtistIdx] || listenArtists[0] || null;
+  const isFollowingActiveArtist = Boolean(
+    activeArtist &&
+      favoriteArtists.some(
+        (a) => normalizeSearchText(a) === normalizeSearchText(activeArtist)
+      )
+  );
 
   const handleShare = async () => {
     const deepUrl = new URL(window.location.href);
@@ -126,27 +147,35 @@ export function ConcertDetailSheet({
     <>
       <div
         className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
+        style={{ opacity: backdropOpacity }}
         onClick={onClose}
       >
         <div
           className="relative w-full max-w-[440px] md:max-w-xl max-h-[92dvh] md:max-h-[88dvh] rounded-t-3xl md:rounded-3xl bg-[#131117] border-t border-x md:border border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
+          style={sheetStyle}
           onClick={(e) => e.stopPropagation()}
+          {...handlers}
         >
-          {/* Drag handle */}
-          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 w-10 h-1 rounded-full bg-white/35" />
+          {/* Swipe-down handle zone (mobile) */}
+          <div
+            data-swipe-handle="true"
+            className="absolute top-0 inset-x-0 h-11 z-20 flex items-start justify-center pt-2.5 md:pointer-events-none"
+          >
+            <div className="w-11 h-1.5 rounded-full bg-white/40 shadow" />
+          </div>
 
           {/* Close button */}
           <button
             type="button"
             onClick={onClose}
             aria-label="Fermer"
-            className="absolute top-3.5 right-3.5 z-20 w-9 h-9 rounded-full bg-black/65 backdrop-blur-md border border-white/15 flex items-center justify-center text-white active:scale-90 transition-transform"
+            className="absolute top-3.5 right-3.5 z-30 w-9 h-9 rounded-full bg-black/65 backdrop-blur-md border border-white/15 flex items-center justify-center text-white active:scale-90 transition-transform"
           >
             <X className="w-4.5 h-4.5" />
           </button>
 
           {/* Scrollable content */}
-          <div className="overflow-y-auto no-scrollbar pb-28">
+          <div ref={scrollRef} className="overflow-y-auto no-scrollbar pb-28">
             {/* Hero Poster */}
             <div className="relative w-full aspect-[16/11] bg-[#1C1922] overflow-hidden">
               <img
@@ -243,16 +272,40 @@ export function ConcertDetailSheet({
                 </button>
               </div>
 
-              {/* Écoute rapide du ou des artistes au line-up (masqué automatiquement pour les soirées thématiques) */}
+              {/* Écoute rapide du ou des artistes au line-up + Suivre l'artiste */}
               {activeArtist && (
                 <div className="mt-3.5 rounded-2xl bg-[#1A1720] border border-white/[0.08] p-3">
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[11px] uppercase tracking-wider text-[#9E968F] font-semibold flex items-center gap-1.5">
-                      <Headphones className="w-3.5 h-3.5 text-[#C85A6E]" />
-                      {listenArtists.length > 1
-                        ? `Écouter le line-up (${listenArtists.length} artistes)`
-                        : `Écouter « ${activeArtist} »`}
+                    <span className="text-[11px] uppercase tracking-wider text-[#9E968F] font-semibold flex items-center gap-1.5 min-w-0 truncate">
+                      <Headphones className="w-3.5 h-3.5 text-[#C85A6E] shrink-0" />
+                      <span className="truncate">
+                        {listenArtists.length > 1
+                          ? `Line-up (${listenArtists.length} artistes)`
+                          : `Écouter « ${activeArtist} »`}
+                      </span>
                     </span>
+
+                    <button
+                      type="button"
+                      onClick={() => onToggleFavoriteArtist(activeArtist)}
+                      className={`shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold border transition-all active:scale-95 ${
+                        isFollowingActiveArtist
+                          ? 'bg-[#C85A6E]/22 border-[#C85A6E]/55 text-[#F2A9B6]'
+                          : 'bg-white/[0.06] hover:bg-white/[0.12] border-white/12 text-[#EAE3DB]'
+                      }`}
+                    >
+                      {isFollowingActiveArtist ? (
+                        <>
+                          <Check className="w-3 h-3" />
+                          Suivi
+                        </>
+                      ) : (
+                        <>
+                          <BellPlus className="w-3 h-3 text-[#C85A6E]" />
+                          Suivre
+                        </>
+                      )}
+                    </button>
                   </div>
 
                   {listenArtists.length > 1 && (

@@ -1,5 +1,5 @@
 // Scène Rose — Service Worker PWA (consultation hors-ligne dans le métro toulousain)
-const CACHE_VERSION = 'scene-rose-v5';
+const CACHE_VERSION = 'scene-rose-v6';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 const POSTER_CACHE = `${CACHE_VERSION}-posters`;

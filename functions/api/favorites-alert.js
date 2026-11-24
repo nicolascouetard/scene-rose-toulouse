@@ -7,9 +7,10 @@
  *   - Une alerte prioritaire si un favori passe en "Dernières places"
  *
  * Attributs contact à créer une seule fois dans Brevo -> Contacts -> Paramètres -> Attributs :
- *   - FAVORITE_IDS    (type Texte)
- *   - FAVORITE_ALERTS (type Booléen)
- *   - NOTIFIED_IDS    (type Texte)
+ *   - FAVORITE_IDS     (type Texte)
+ *   - FAVORITE_ARTISTS (type Texte)
+ *   - FAVORITE_ALERTS  (type Booléen)
+ *   - NOTIFIED_IDS     (type Texte)
  *
  * Variables Cloudflare Pages déjà configurées :
  *   - BREVO_API_KEY
@@ -42,6 +43,7 @@ export async function onRequestPost(context) {
   const enabled = payload?.enabled !== false;
   const consent = Boolean(payload?.consent);
   const rawIds = Array.isArray(payload?.favoriteIds) ? payload.favoriteIds : [];
+  const rawArtists = Array.isArray(payload?.favoriteArtists) ? payload.favoriteArtists : [];
 
   if (!EMAIL_REGEX.test(email) || email.length > 180) {
     return jsonResponse({ ok: false, error: 'Adresse e-mail invalide.' }, 400);
@@ -66,8 +68,15 @@ export async function onRequestPost(context) {
     );
   }
 
-  // Nettoyage strict des IDs favoris (max 40 concerts suivis)
+  // Nettoyage strict des IDs favoris (max 40 concerts suivis) & artistes suivis (max 40 artistes)
   const cleanIds = [...new Set(rawIds.map((id) => String(id).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 80)).filter(Boolean))].slice(0, 40);
+  const cleanArtists = [
+    ...new Set(
+      rawArtists
+        .map((name) => String(name || '').replace(/[|\r\n<>]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60))
+        .filter((name) => name.length >= 2)
+    ),
+  ].slice(0, 40);
 
   // Séparation stricte RGPD : on ne l'inscrit PAS à la newsletter du jeudi (BREVO_LIST_ID)
   // S'il est déjà abonné à la newsletter, updateEnabled: true conserve intacte son inscription existante.
@@ -76,6 +85,7 @@ export async function onRequestPost(context) {
     updateEnabled: true,
     attributes: {
       FAVORITE_IDS: enabled ? cleanIds.join(',') : '',
+      FAVORITE_ARTISTS: enabled ? cleanArtists.join('|') : '',
       FAVORITE_ALERTS: enabled,
       CONSENT_FAVORITES_DATE: new Date().toISOString(),
     },
@@ -108,8 +118,9 @@ export async function onRequestPost(context) {
       ok: true,
       enabled,
       syncedCount: cleanIds.length,
+      syncedArtistsCount: cleanArtists.length,
       message: enabled
-        ? `Alertes activées sur ${cleanIds.length} favori${cleanIds.length > 1 ? 's' : ''} (rappel J-7 & Dernières places).`
+        ? `Alertes activées (${cleanIds.length} concert${cleanIds.length > 1 ? 's' : ''} · ${cleanArtists.length} artiste${cleanArtists.length > 1 ? 's' : ''} suivi${cleanArtists.length > 1 ? 's' : ''}).`
         : 'Alertes e-mail sur tes favoris désactivées.',
     });
   } catch {

@@ -15,6 +15,7 @@ import {
   type Festival,
 } from '../data/festivalsData';
 import { GENRE_CATEGORIES, type GenreCategory } from '../data/toulouseData';
+import { matchesSearchQuery } from '../utils/dates';
 
 interface FestivalsViewProps {
   festivals: Festival[];
@@ -63,7 +64,7 @@ export function FestivalsView({
   const [genre, setGenre] = useState<GenreCategory | 'all'>('all');
 
   const filtered = useMemo(() => {
-    const q = search.trim().toLowerCase();
+    const q = search.trim();
     return festivals
       .filter((f) => {
         if (zone === 'toulouse' && f.zone !== 'toulouse') return false;
@@ -78,13 +79,12 @@ export function FestivalsView({
             f.departmentName,
             f.departmentCode,
             f.tagline,
+            f.venueName,
             ...f.genres,
             ...f.lineup.map((a) => a.name),
             ...f.previousEdition.highlights,
-          ]
-            .join(' ')
-            .toLowerCase();
-          if (!haystack.includes(q)) return false;
+          ].join(' ');
+          if (!matchesSearchQuery(haystack, q)) return false;
         }
         return true;
       })
@@ -133,7 +133,7 @@ export function FestivalsView({
         </div>
 
         {/* Zone filter pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar">
           {[
             { id: 'all' as const, label: `Toute l’Occitanie (${festivals.length})` },
             { id: 'toulouse' as const, label: `Toulouse (${toulouseCount})` },
@@ -162,7 +162,7 @@ export function FestivalsView({
         </div>
 
         {/* Genre chips */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar">
           <button
             type="button"
             onClick={() => setGenre('all')}
@@ -206,14 +206,14 @@ export function FestivalsView({
           </p>
         </div>
       ) : (
-        <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
+        <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-5">
           {filtered.map((festival) => {
             const isFav = favoriteIds.includes(festival.id);
             const pill = STATUS_PILL[festival.status];
             const hasLineup = festival.lineup.length > 0;
             const previewArtists = hasLineup
               ? festival.lineup.slice(0, 4).map((a) => a.name)
-              : festival.previousEdition.highlights.slice(0, 4);
+              : festival.previousEdition.highlights.slice(0, 3);
 
             return (
               <article
@@ -221,22 +221,22 @@ export function FestivalsView({
                 onClick={() => onSelectFestival(festival)}
                 className="group cursor-pointer rounded-2xl bg-[#16141A] hover:bg-[#1B1821] border border-white/[0.08] hover:border-white/[0.16] overflow-hidden flex flex-col justify-between transition-all"
               >
-                {/* Top Accent Strip + Header */}
+                {/* Top Accent Strip + Airy Editorial Body */}
                 <div
-                  className="p-4 space-y-2.5"
+                  className="p-5 space-y-3.5"
                   style={{
-                    background: `radial-gradient(280px circle at 95% 0%, ${festival.accentColor}26, transparent 70%)`,
+                    background: `radial-gradient(300px circle at 95% 0%, ${festival.accentColor}24, transparent 70%)`,
                   }}
                 >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex flex-wrap items-center gap-1.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span
-                        className="px-2 py-0.5 rounded-md text-[10.5px] font-bold text-white"
+                        className="px-2.5 py-0.5 rounded-lg text-[11px] font-bold text-white"
                         style={{ backgroundColor: `${festival.accentColor}CC` }}
                       >
                         {festival.editionYear}
                       </span>
-                      <span className={`px-2 py-0.5 rounded-md border text-[10.5px] font-semibold ${pill.cls}`}>
+                      <span className={`px-2.5 py-0.5 rounded-lg border text-[11px] font-semibold ${pill.cls}`}>
                         {pill.label}
                       </span>
                     </div>
@@ -248,7 +248,7 @@ export function FestivalsView({
                         onToggleFavorite(festival.id);
                       }}
                       aria-label={isFav ? 'Ne plus suivre' : 'Suivre ce festival'}
-                      className="w-8 h-8 -mt-1 -mr-1 rounded-full bg-white/[0.05] hover:bg-white/[0.1] flex items-center justify-center shrink-0 transition-colors"
+                      className="w-9 h-9 -mr-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] flex items-center justify-center shrink-0 transition-colors"
                     >
                       <Heart
                         className={`w-4 h-4 ${
@@ -258,59 +258,60 @@ export function FestivalsView({
                     </button>
                   </div>
 
-                  <div>
-                    <h3 className="font-display text-[16px] font-extrabold text-white group-hover:text-[#F2A9B6] transition-colors leading-snug">
+                  {/* Title & Dates */}
+                  <div className="space-y-1.5">
+                    <h3 className="font-display text-[18px] font-extrabold text-white group-hover:text-[#F2A9B6] transition-colors leading-snug tracking-tight">
                       {festival.name}
                     </h3>
-                    <div className="mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] text-[#CFC7BE]">
-                      <span className="inline-flex items-center gap-1 font-semibold text-[#F2A9B6]">
-                        <Calendar className="w-3 h-3" />
-                        {formatFestivalDates(festival)}
-                      </span>
+                    <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#F2A9B6]">
+                      <Calendar className="w-3.5 h-3.5 shrink-0" />
+                      <span>{formatFestivalDates(festival)}</span>
                     </div>
                   </div>
 
                   {/* Location & Distance */}
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#A9A097]">
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-[#C85A6E]" />
-                      {festival.city} ({festival.departmentCode})
+                  <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1 text-xs text-[#B7AFA6]">
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#C85A6E] shrink-0" />
+                      <span>
+                        {festival.city} ({festival.departmentCode})
+                      </span>
                     </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Car className="w-3 h-3 text-[#9E968F]" />
-                      {festival.distanceFromToulouse}
+                    <span className="inline-flex items-center gap-1.5 text-[#9E968F]">
+                      <Car className="w-3.5 h-3.5 shrink-0" />
+                      <span>{festival.distanceFromToulouse}</span>
                     </span>
                   </div>
 
-                  {/* Line-up or 2026 DNA preview */}
-                  <div className="pt-1.5 border-t border-white/[0.07]">
-                    <div className="flex items-center justify-between text-[10.5px] font-semibold mb-1.5">
-                      <span className="flex items-center gap-1 text-[#DDD5CC]">
+                  {/* Line-up or previous edition preview */}
+                  <div className="pt-3 border-t border-white/[0.07] space-y-2">
+                    <div className="flex items-center justify-between text-xs font-semibold">
+                      <span className="flex items-center gap-1.5 text-[#DDD5CC]">
                         {hasLineup ? (
                           <>
-                            <Sparkles className="w-3 h-3 text-[#F2A9B6]" />
+                            <Sparkles className="w-3.5 h-3.5 text-[#F2A9B6]" />
                             Line-up {festival.editionYear}
                           </>
                         ) : (
                           <>
-                            <Headphones className="w-3 h-3 text-[#9E968F]" />
-                            Vu en {festival.previousEdition.year} (à écouter)
+                            <Headphones className="w-3.5 h-3.5 text-[#9E968F]" />
+                            Vu en {festival.previousEdition.year}
                           </>
                         )}
                       </span>
-                      <span className="text-[#F2A9B6]">Écouter →</span>
+                      <span className="text-[#F2A9B6] text-[11.5px]">Voir & écouter →</span>
                     </div>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1.5">
                       {previewArtists.map((artist) => (
                         <span
                           key={artist}
-                          className="px-2 py-0.5 rounded-md bg-white/[0.06] text-[10.5px] font-medium text-[#EAE3DB]"
+                          className="px-2.5 py-1 rounded-lg bg-white/[0.06] text-xs font-medium text-[#EAE3DB]"
                         >
                           {artist}
                         </span>
                       ))}
                       {hasLineup && festival.lineup.length > 4 && (
-                        <span className="px-2 py-0.5 rounded-md bg-[#C85A6E]/15 text-[10.5px] font-bold text-[#F2A9B6]">
+                        <span className="px-2.5 py-1 rounded-lg bg-[#C85A6E]/15 text-xs font-bold text-[#F2A9B6]">
                           +{festival.lineup.length - 4}
                         </span>
                       )}
@@ -319,12 +320,12 @@ export function FestivalsView({
                 </div>
 
                 {/* Card Footer */}
-                <div className="px-4 py-2.5 bg-white/[0.025] border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+                <div className="px-5 py-3 bg-white/[0.025] border-t border-white/[0.06] flex items-center justify-between gap-3 text-xs">
                   <span className="text-[#A9A097] truncate">
                     {festival.genres.slice(0, 3).join(' · ')}
                   </span>
                   {festival.price && (
-                    <span className="shrink-0 font-bold text-white ml-2">
+                    <span className="shrink-0 font-bold text-white">
                       {festival.price}
                     </span>
                   )}

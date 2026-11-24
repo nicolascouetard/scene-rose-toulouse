@@ -236,6 +236,54 @@ export function extractListenArtists(title: string): string[] {
   return artists.slice(0, 12);
 }
 
+/**
+ * Normalise une chaîne pour la recherche globale :
+ * - Supprime les accents (Zénith -> zenith, Métronum -> metronum, Café -> cafe)
+ * - Remplace apostrophes, tirets et ponctuation par des espaces (Saint-Pierre -> saint pierre)
+ * - Passe en minuscules et compacte les espaces
+ */
+export function normalizeSearchText(str: string): string {
+  return String(str || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/['’`\-_./,&:+()]+/g, ' ')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Vérifie si TOUS les mots de la requête sont présents dans le texte cible
+ * (insensible aux accents, à la casse, aux tirets et aux apostrophes :
+ * ex. "zenith", "larena", "bikini rock", "saint pierre").
+ */
+export function matchesSearchQuery(haystack: string, rawQuery: string): boolean {
+  const normQuery = normalizeSearchText(rawQuery);
+  if (!normQuery) return true;
+  const normHaystack = normalizeSearchText(haystack);
+  const compactHaystack = normHaystack.replace(/\s+/g, '');
+  const tokens = normQuery.split(' ').filter(Boolean);
+  return tokens.every((tok) => {
+    if (normHaystack.includes(tok)) return true;
+    if (tok.length >= 4 && compactHaystack.includes(tok)) return true;
+    return false;
+  });
+}
+
+/**
+ * Vérifie si un titre de concert (ou un line-up) correspond à un artiste suivi.
+ * Utilise des frontières de mots après normalisation sans accents pour éviter les faux positifs
+ * (ex. "Air" ne matche pas "Clair", mais "Florent Pagny" matche "Florent Pagny — Tournée").
+ */
+export function matchesFollowedArtist(text: string, artistName: string): boolean {
+  const normArtist = normalizeSearchText(artistName);
+  if (!normArtist || normArtist.length < 2) return false;
+  const normText = normalizeSearchText(text);
+  if (!normText) return false;
+  const escaped = normArtist.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?:^|\\s)${escaped}(?:$|\\s)`).test(normText);
+}
+
 /** Extrait le premier artiste écoutable (rétro-compatibilité) */
 export function extractListenArtist(title: string): string | null {
   return extractListenArtists(title)[0] || null;

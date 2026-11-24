@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import {
+  BellPlus,
   Calendar,
   CalendarPlus,
   Car,
+  Check,
   ExternalLink,
   Headphones,
   Heart,
@@ -20,14 +22,18 @@ import {
   formatFestivalDates,
   type Festival,
 } from '../data/festivalsData';
+import { useSwipeDownToClose } from '../hooks/useSwipeDownToClose';
+import { normalizeSearchText } from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
 import { StreamingLinksRow } from './StreamingLinksRow';
 
 interface FestivalDetailSheetProps {
   festival: Festival | null;
   isFavorite: boolean;
+  favoriteArtists: string[];
   onClose: () => void;
   onToggleFavorite: (id: string) => void;
+  onToggleFavoriteArtist: (artistName: string) => void;
   onNotify: (msg: string) => void;
 }
 
@@ -61,12 +67,17 @@ const STATUS_BADGE: Record<Festival['status'], { label: string; cls: string }> =
 export function FestivalDetailSheet({
   festival,
   isFavorite,
+  favoriteArtists,
   onClose,
   onToggleFavorite,
+  onToggleFavoriteArtist,
   onNotify,
 }: FestivalDetailSheetProps) {
   const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
   const [showRoutePicker, setShowRoutePicker] = useState(false);
+  const { scrollRef, sheetStyle, backdropOpacity, handlers } = useSwipeDownToClose({
+    onClose,
+  });
 
   useEffect(() => {
     if (!festival) {
@@ -97,6 +108,12 @@ export function FestivalDetailSheet({
 
   const badge = STATUS_BADGE[festival.status];
   const hasConfirmedLineup = festival.lineup.length > 0;
+  const isFollowingSelectedArtist = Boolean(
+    selectedArtist &&
+      favoriteArtists.some(
+        (a) => normalizeSearchText(a) === normalizeSearchText(selectedArtist)
+      )
+  );
 
   const handleShare = async () => {
     const deepUrl = new URL(window.location.href);
@@ -133,19 +150,25 @@ export function FestivalDetailSheet({
     <>
       <div
         className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
+        style={{ opacity: backdropOpacity }}
         onClick={onClose}
       >
         <div
           className="relative w-full max-w-[440px] md:max-w-xl max-h-[92dvh] md:max-h-[88dvh] rounded-t-3xl md:rounded-3xl bg-[#131117] border-t border-x md:border border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
+          style={sheetStyle}
           onClick={(e) => e.stopPropagation()}
+          {...handlers}
         >
-          {/* Drag handle (mobile only) */}
-          <div className="md:hidden flex justify-center pt-2.5 pb-1">
-            <div className="w-10 h-1 rounded-full bg-white/20" />
+          {/* Swipe-down handle zone (mobile only) */}
+          <div
+            data-swipe-handle="true"
+            className="md:hidden flex justify-center pt-2.5 pb-1.5"
+          >
+            <div className="w-11 h-1.5 rounded-full bg-white/30" />
           </div>
 
           {/* Scrollable Body */}
-          <div className="overflow-y-auto no-scrollbar pb-24">
+          <div ref={scrollRef} className="overflow-y-auto no-scrollbar pb-24">
             {/* Editorial Festival Header Banner */}
             <div
               className="relative px-5 pt-5 pb-5 border-b border-white/[0.08]"
@@ -316,13 +339,34 @@ export function FestivalDetailSheet({
                       })}
                 </div>
 
-                {/* Instant 1-tap Spotify / Apple Music / Deezer / Qobuz / YouTube Bar */}
+                {/* Instant 1-tap Spotify / Apple Music / Deezer / Qobuz / YouTube Bar + Suivre l'artiste */}
                 {selectedArtist && (
-                  <div className="pt-2 border-t border-white/[0.08] space-y-2">
-                    <div className="flex items-center justify-between gap-2 text-[11px]">
-                      <span className="text-[#A9A097]">
+                  <div className="pt-2.5 border-t border-white/[0.08] space-y-2.5">
+                    <div className="flex items-center justify-between gap-2 text-xs">
+                      <span className="text-[#A9A097] truncate">
                         Écouter <strong className="text-white">{selectedArtist}</strong> :
                       </span>
+                      <button
+                        type="button"
+                        onClick={() => onToggleFavoriteArtist(selectedArtist)}
+                        className={`shrink-0 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold border transition-all active:scale-95 ${
+                          isFollowingSelectedArtist
+                            ? 'bg-[#C85A6E]/22 border-[#C85A6E]/55 text-[#F2A9B6]'
+                            : 'bg-white/[0.06] hover:bg-white/[0.12] border-white/12 text-[#EAE3DB]'
+                        }`}
+                      >
+                        {isFollowingSelectedArtist ? (
+                          <>
+                            <Check className="w-3 h-3" />
+                            Suivi
+                          </>
+                        ) : (
+                          <>
+                            <BellPlus className="w-3 h-3 text-[#C85A6E]" />
+                            Suivre l’artiste
+                          </>
+                        )}
+                      </button>
                     </div>
                     <StreamingLinksRow artistName={selectedArtist} />
                   </div>

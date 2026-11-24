@@ -52,6 +52,25 @@ function escapeHtml(str = '') {
     .replace(/"/g, '&quot;');
 }
 
+function normalizeMatchText(str = '') {
+  return String(str)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/['’`\-_./,&:+()]+/g, ' ')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function matchesFollowedArtist(text, artistName) {
+  const normArtist = normalizeMatchText(artistName);
+  if (!normArtist || normArtist.length < 2) return false;
+  const normText = normalizeMatchText(text);
+  if (!normText) return false;
+  const escaped = normArtist.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?:^|\\s)${escaped}(?:$|\\s)`).test(normText);
+}
+
 function formatDateFr(iso) {
   const [y, m, d] = iso.split('-').map(Number);
   const dt = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
@@ -63,14 +82,20 @@ function formatDateFr(iso) {
   }).format(dt);
 }
 
-function buildAlertEmailHtml({ lastTicketsItems, weekBeforeItems, venueMap }) {
-  const renderCard = (concert, kind) => {
+function buildAlertEmailHtml({ artistMatchItems = [], lastTicketsItems = [], weekBeforeItems = [], venueMap }) {
+  const renderCard = (concert, kind, matchedArtist = '') => {
     const venue = venueMap[concert.venueId];
     const venueName = venue ? venue.name : concert.venueId;
-    const isUrgent = kind === 'last';
-    const badgeBg = isUrgent ? '#FEF3C7' : '#FCE7F3';
-    const badgeColor = isUrgent ? '#92400E' : '#943A4D';
-    const badgeLabel = isUrgent ? 'Dernières places' : 'Dans 7 jours · Rappel J-7';
+    const badgeBg =
+      kind === 'artist' ? '#FDE8EC' : kind === 'last' ? '#FEF3C7' : '#FCE7F3';
+    const badgeColor =
+      kind === 'artist' ? '#943A4D' : kind === 'last' ? '#92400E' : '#943A4D';
+    const badgeLabel =
+      kind === 'artist'
+        ? `Nouveau concert · Artiste suivi (${matchedArtist})`
+        : kind === 'last'
+          ? 'Dernières places'
+          : 'Dans 7 jours · Rappel J-7';
     const deepUrl = `${SITE_URL}/?concert=${encodeURIComponent(concert.id)}`;
     const ticketUrl = concert.venueEventUrl || deepUrl;
     const price = concert.price ? ` · ${escapeHtml(concert.price)}` : '';
@@ -80,7 +105,7 @@ function buildAlertEmailHtml({ lastTicketsItems, weekBeforeItems, venueMap }) {
         <td style="padding:12px 0;border-bottom:1px solid #EFECE8;">
           <div style="margin-bottom:5px;">
             <span style="display:inline-block;padding:3px 9px;border-radius:99px;background:${badgeBg};color:${badgeColor};font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.4px;">
-              ${badgeLabel}
+              ${escapeHtml(badgeLabel)}
             </span>
           </div>
           <div style="font-size:16px;font-weight:800;color:#18151C;line-height:1.3;">
@@ -105,15 +130,23 @@ function buildAlertEmailHtml({ lastTicketsItems, weekBeforeItems, venueMap }) {
     `;
   };
 
-  const totalAlerts = lastTicketsItems.length + weekBeforeItems.length;
-  const firstTitle = (lastTicketsItems[0] || weekBeforeItems[0])?.title || 'Ton concert favori';
+  const totalAlerts = artistMatchItems.length + lastTicketsItems.length + weekBeforeItems.length;
+  const firstArtistMatch = artistMatchItems[0];
+  const firstTitle =
+    firstArtistMatch?.concert?.title ||
+    (lastTicketsItems[0] || weekBeforeItems[0])?.title ||
+    'Ton concert favori';
 
   const subject =
-    lastTicketsItems.length > 0 && weekBeforeItems.length === 0
-      ? `Scène Rose · Dernières places pour ${firstTitle} !`
-      : weekBeforeItems.length > 0 && lastTicketsItems.length === 0
-        ? `Scène Rose · J-7 avant ${firstTitle} à Toulouse`
-        : `Scène Rose · ${totalAlerts} alertes sur tes concerts favoris`;
+    artistMatchItems.length > 0 && lastTicketsItems.length === 0 && weekBeforeItems.length === 0
+      ? artistMatchItems.length === 1
+        ? `Scène Rose · ${firstArtistMatch.artist} annoncé à Toulouse !`
+        : `Scène Rose · ${artistMatchItems.length} nouveaux concerts pour tes artistes suivis !`
+      : lastTicketsItems.length > 0 && weekBeforeItems.length === 0 && artistMatchItems.length === 0
+        ? `Scène Rose · Dernières places pour ${firstTitle} !`
+        : weekBeforeItems.length > 0 && lastTicketsItems.length === 0 && artistMatchItems.length === 0
+          ? `Scène Rose · J-7 avant ${firstTitle} à Toulouse`
+          : `Scène Rose · ${totalAlerts} alertes sur tes favoris & artistes suivis`;
 
   const htmlContent = `<!DOCTYPE html>
 <html lang="fr">
@@ -136,7 +169,7 @@ function buildAlertEmailHtml({ lastTicketsItems, weekBeforeItems, venueMap }) {
                 Tes concerts à ne pas rater
               </div>
               <div style="margin-top:4px;font-size:13px;color:#B8B0A7;">
-                Rappel automatique sur les dates que tu as mises en cœur à Toulouse.
+                Nouveaux concerts de tes artistes suivis & rappels sur tes favoris à Toulouse.
               </div>
             </td>
           </tr>
@@ -144,6 +177,7 @@ function buildAlertEmailHtml({ lastTicketsItems, weekBeforeItems, venueMap }) {
           <tr>
             <td style="padding:20px 28px 16px 28px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                ${artistMatchItems.map(({ concert, artist }) => renderCard(concert, 'artist', artist)).join('')}
                 ${lastTicketsItems.map((c) => renderCard(c, 'last')).join('')}
                 ${weekBeforeItems.map((c) => renderCard(c, 'j7')).join('')}
               </table>
@@ -153,10 +187,10 @@ function buildAlertEmailHtml({ lastTicketsItems, weekBeforeItems, venueMap }) {
           <tr>
             <td style="background-color:#FAF7F4;padding:18px 28px;border-top:1px solid #EFECE8;font-size:11.5px;line-height:1.6;color:#78716C;">
               <p style="margin:0 0 6px 0;">
-                Tu reçois ce rappel car tu as activé les <strong>alertes sur tes favoris Scène Rose</strong> (rappel J-7 & alerte Dernières places).
+                Tu reçois cette alerte car tu as activé le <strong>suivi de tes favoris & artistes sur Scène Rose</strong> (indépendant de la newsletter hebdomadaire).
               </p>
               <p style="margin:0;">
-                Pour modifier ou désactiver ces rappels à tout moment, ouvre l’onglet
+                Pour modifier ou désactiver ces alertes à tout moment, ouvre l’onglet
                 <a href="${SITE_URL}/?tab=favorites" style="color:#18151C;font-weight:700;text-decoration:underline;">Mes favoris</a>
                 sur Scène Rose.
               </p>
@@ -242,9 +276,14 @@ async function main() {
   const todayIso = getTodayParisIso();
 
   if (mode === 'preview') {
-    const sampleLast = (db.concerts || []).filter((c) => c.status === 'last-tickets').slice(0, 1);
-    const sampleWeek = (db.concerts || []).filter((c) => diffDays(todayIso, c.date) >= 5 && diffDays(todayIso, c.date) <= 9).slice(0, 1);
+    const upcoming = (db.concerts || []).filter((c) => diffDays(todayIso, c.date) >= 0);
+    const sampleArtistConcert = upcoming[0];
+    const sampleLast = upcoming.filter((c) => c.status === 'last-tickets').slice(0, 1);
+    const sampleWeek = upcoming.filter((c) => diffDays(todayIso, c.date) >= 5 && diffDays(todayIso, c.date) <= 9).slice(0, 1);
     const { subject, htmlContent } = buildAlertEmailHtml({
+      artistMatchItems: sampleArtistConcert
+        ? [{ artist: sampleArtistConcert.title.split(/\s+[—–-]\s+/)[0], concert: sampleArtistConcert }]
+        : [],
       lastTicketsItems: sampleLast,
       weekBeforeItems: sampleWeek,
       venueMap,
@@ -264,18 +303,24 @@ async function main() {
     return;
   }
 
+  const upcomingConcerts = (db.concerts || []).filter((c) => diffDays(todayIso, c.date) >= 0);
   const contacts = await fetchBrevoContacts(apiKey);
   let sentCount = 0;
 
   for (const contact of contacts) {
     const attrs = contact.attributes || {};
-    if (!attrs.FAVORITE_ALERTS || !attrs.FAVORITE_IDS) continue;
+    if (!attrs.FAVORITE_ALERTS) continue;
 
-    const favIds = String(attrs.FAVORITE_IDS)
+    const favIds = String(attrs.FAVORITE_IDS || '')
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean);
-    if (favIds.length === 0) continue;
+    const favArtists = String(attrs.FAVORITE_ARTISTS || '')
+      .split('|')
+      .map((s) => s.trim())
+      .filter((s) => s.length >= 2);
+
+    if (favIds.length === 0 && favArtists.length === 0) continue;
 
     const notified = new Set(
       String(attrs.NOTIFIED_IDS || '')
@@ -284,10 +329,26 @@ async function main() {
         .filter(Boolean)
     );
 
+    const artistMatchItems = [];
     const lastTicketsItems = [];
     const weekBeforeItems = [];
     const newTokens = [];
+    const matchedConcertIds = new Set();
 
+    // 1. Nouveaux concerts correspondant aux artistes suivis
+    for (const artist of favArtists) {
+      for (const concert of upcomingConcerts) {
+        if (matchedConcertIds.has(concert.id)) continue;
+        if (notified.has(`artist:${concert.id}`)) continue;
+        if (matchesFollowedArtist(concert.title, artist)) {
+          artistMatchItems.push({ artist, concert });
+          matchedConcertIds.add(concert.id);
+          newTokens.push(`artist:${concert.id}`);
+        }
+      }
+    }
+
+    // 2. Rappels J-7 & Dernières places sur les concerts enregistrés en favori
     for (const cid of favIds) {
       const concert = concertMap[cid];
       if (!concert) continue;
@@ -303,9 +364,16 @@ async function main() {
       }
     }
 
-    if (lastTicketsItems.length === 0 && weekBeforeItems.length === 0) continue;
+    if (
+      artistMatchItems.length === 0 &&
+      lastTicketsItems.length === 0 &&
+      weekBeforeItems.length === 0
+    ) {
+      continue;
+    }
 
     const { subject, htmlContent } = buildAlertEmailHtml({
+      artistMatchItems: artistMatchItems.slice(0, 8),
       lastTicketsItems,
       weekBeforeItems,
       venueMap,

@@ -20,8 +20,8 @@ export function FeaturedCarousel({
   if (concerts.length === 0) return null;
 
   return (
-    <section className="pt-3 pb-2">
-      <div className="flex items-center justify-between px-4 mb-2.5">
+    <section className="pt-4 pb-2">
+      <div className="flex items-center justify-between px-4 md:px-6 mb-2.5">
         <div className="flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-[#C85A6E]" />
           <h2 className="font-display text-xs font-bold uppercase tracking-[0.14em] text-[#EAE4DC]">
@@ -31,8 +31,8 @@ export function FeaturedCarousel({
         <span className="text-[11px] text-[#8E8680]">Sélection toulousaine</span>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto no-scrollbar snap-x snap-mandatory px-4 pb-1">
-        {concerts.map((concert) => {
+      <div className="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-3.5 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory px-4 md:px-6 pb-1">
+        {concerts.slice(0, 8).map((concert, idx) => {
           const venue = venueMap[concert.venueId];
           const isFav = favorites.includes(concert.id);
 
@@ -48,7 +48,9 @@ export function FeaturedCarousel({
                   onSelectConcert(concert);
                 }
               }}
-              className="group relative snap-start shrink-0 w-[264px] h-[200px] rounded-2xl overflow-hidden bg-[#17151B] border border-white/10 cursor-pointer active:scale-[0.98] transition-transform"
+              className={`group relative snap-start shrink-0 w-[264px] md:w-auto h-[200px] md:h-[215px] rounded-2xl overflow-hidden bg-[#17151B] border border-white/10 cursor-pointer active:scale-[0.98] transition-transform ${
+                idx >= 4 ? 'md:hidden' : idx === 3 ? 'md:hidden lg:block' : ''
+              }`}
             >
               <img
                 src={concert.poster}

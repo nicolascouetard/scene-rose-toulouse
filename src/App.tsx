@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Bell,
   Building2,
@@ -7,12 +7,14 @@ import {
   Heart,
   LayoutGrid,
   List,
+  Mail,
   Map as MapIcon,
   MapPin,
   Radio,
   RefreshCw,
   RotateCcw,
   Search,
+  Settings,
   ShieldCheck,
   SlidersHorizontal,
   Sparkles,
@@ -45,7 +47,10 @@ import {
   formatSyncTime,
   isRecentlyAdded,
   matchesBudget,
+  matchesFollowedArtist,
   matchesPeriod,
+  matchesSearchQuery,
+  normalizeSearchText,
   type BudgetFilter,
   type EventFormatFilter,
   type PeriodFilter,
@@ -80,6 +85,7 @@ const PERIOD_OPTIONS: { id: PeriodFilter; label: string }[] = [
 
 const FAVORITES_KEY = 'scene_rose_toulouse_favorites_v1';
 const FESTIVAL_FAVORITES_KEY = 'scene_rose_occitanie_festivals_v1';
+const FAVORITE_ARTISTS_KEY = 'scene_rose_favorite_artists_v1';
 const FAV_ALERT_EMAIL_KEY = 'scene_rose_fav_alert_email_v1';
 
 export function App() {
@@ -94,6 +100,18 @@ export function App() {
       return [];
     }
   });
+  const [favoriteArtists, setFavoriteArtists] = useState<string[]>(() => {
+    try {
+      const raw = localStorage.getItem(FAVORITE_ARTISTS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [settingsMenuOpen, setSettingsMenuOpen] = useState(false);
+  const settingsMenuRef = useRef<HTMLDivElement | null>(null);
+  const modalHistoryPushedRef = useRef(false);
+  const closingFromPopstateRef = useRef(false);
   const [favAlertEmail, setFavAlertEmail] = useState<string | null>(() => {
     try {
       return localStorage.getItem(FAV_ALERT_EMAIL_KEY) || null;
@@ -192,6 +210,81 @@ export function App() {
       // Ignore storage errors
     }
   }, [favoriteFestivals]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(FAVORITE_ARTISTS_KEY, JSON.stringify(favoriteArtists));
+    } catch {
+      // Ignore storage errors
+    }
+  }, [favoriteArtists]);
+
+  // Ferme le menu Paramètres (header) au clic extérieur ou Échap
+  useEffect(() => {
+    if (!settingsMenuOpen) return;
+    const onPointerDown = (e: MouseEvent) => {
+      if (
+        settingsMenuRef.current &&
+        !settingsMenuRef.current.contains(e.target as Node)
+      ) {
+        setSettingsMenuOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSettingsMenuOpen(false);
+    };
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [settingsMenuOpen]);
+
+  // Gestion native du bouton Retour (Android / geste bord iOS / navigateur) :
+  // Ferme proprement une fiche ou modale ouverte au lieu de quitter la PWA
+  const isAnyOverlayOpen = Boolean(
+    selectedConcert ||
+      selectedFestival ||
+      filtersOpen ||
+      syncSheetOpen ||
+      newsletterOpen ||
+      aboutOpen
+  );
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (!modalHistoryPushedRef.current) return;
+      modalHistoryPushedRef.current = false;
+      closingFromPopstateRef.current = true;
+      setSelectedConcert(null);
+      setSelectedFestival(null);
+      setFiltersOpen(false);
+      setSyncSheetOpen(false);
+      setNewsletterOpen(false);
+      setAboutOpen(false);
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  useEffect(() => {
+    if (isAnyOverlayOpen) {
+      if (!modalHistoryPushedRef.current) {
+        window.history.pushState({ sceneRoseOverlay: true }, '');
+        modalHistoryPushedRef.current = true;
+      }
+    } else {
+      if (closingFromPopstateRef.current) {
+        closingFromPopstateRef.current = false;
+      } else if (modalHistoryPushedRef.current) {
+        modalHistoryPushedRef.current = false;
+        if (window.history.state?.sceneRoseOverlay) {
+          window.history.back();
+        }
+      }
+    }
+  }, [isAnyOverlayOpen]);
 
   // Listen to online/offline & PWA install prompt
   useEffect(() => {
@@ -389,6 +482,35 @@ export function App() {
     });
   };
 
+  const addFavoriteArtist = (rawName: string) => {
+    const cleaned = rawName.replace(/[|\r\n<>]/g, ' ').replace(/\s+/g, ' ').trim();
+    if (cleaned.length < 2) return;
+    const norm = normalizeSearchText(cleaned);
+    setFavoriteArtists((prev) => {
+      if (prev.some((a) => normalizeSearchText(a) === norm)) {
+        showToast(`Tu suis déjà « ${cleaned} »`);
+        return prev;
+      }
+      showToast(`Artiste suivi : ${cleaned}`);
+      return [cleaned, ...prev].slice(0, 40);
+    });
+  };
+
+  const removeFavoriteArtist = (artistName: string) => {
+    const norm = normalizeSearchText(artistName);
+    setFavoriteArtists((prev) =>
+      prev.filter((a) => normalizeSearchText(a) !== norm)
+    );
+    showToast(`« ${artistName} » retiré de tes artistes suivis`);
+  };
+
+  const toggleFavoriteArtist = (artistName: string) => {
+    const norm = normalizeSearchText(artistName);
+    const exists = favoriteArtists.some((a) => normalizeSearchText(a) === norm);
+    if (exists) removeFavoriteArtist(artistName);
+    else addFavoriteArtist(artistName);
+  };
+
   const handleShareSelection = async () => {
     if (favorites.length === 0) return;
     const url = new URL(window.location.href);
@@ -445,7 +567,7 @@ export function App() {
 
   // Concerts matching everything EXCEPT selectedMonth (used to compute live month pill counts)
   const baseFilteredConcerts = useMemo(() => {
-    const q = search.trim().toLowerCase();
+    const q = search.trim();
     const isSharedMode = sharedSelectionIds.length > 0;
 
     return concerts.filter((concert) => {
@@ -467,17 +589,20 @@ export function App() {
 
       if (q) {
         const venue = venueMap[concert.venueId];
+        const monthLabel = formatMonthChip(concert.date.slice(0, 7));
         const haystack = [
           concert.title,
           concert.subtitle || '',
           concert.category,
           ...concert.genres,
           venue?.name || '',
+          venue?.shortName || '',
           venue?.district || '',
-        ]
-          .join(' ')
-          .toLowerCase();
-        if (!haystack.includes(q)) return false;
+          venue?.address || '',
+          venue?.transit || '',
+          monthLabel,
+        ].join(' ');
+        if (!matchesSearchQuery(haystack, q)) return false;
       }
       return true;
     });
@@ -495,6 +620,17 @@ export function App() {
     onlyNew,
     venueMap,
   ]);
+
+  // Suggestions rapides de salles quand l'utilisateur tape un nom (ex: "zenith" -> Zénith Toulouse Métropole)
+  const matchingVenuesForSearch = useMemo(() => {
+    const q = search.trim();
+    if (q.length < 2) return [];
+    return venues
+      .filter((v) =>
+        matchesSearchQuery(`${v.name} ${v.shortName} ${v.district} ${v.transit}`, q)
+      )
+      .slice(0, 4);
+  }, [venues, search]);
 
   // Pour les spectacles multi-dates en cours (ex: opéra 22–29 nov.), la date d'affichage est ramenée à aujourd'hui
   const getEffectiveDate = (c: Concert) =>
@@ -568,15 +704,47 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Check if any saved favorite has a ticketing alert (last-tickets, sold-out, or J-7 upcoming)
+  // Check if any saved favorite has a ticketing alert OR if a followed artist has upcoming concerts
   const favoriteAlertsCount = useMemo(() => {
-    return concerts.filter((c) => {
-      if (!favorites.includes(c.id)) return false;
-      if (c.status === 'last-tickets' || c.status === 'sold-out') return true;
-      const d = daysUntilConcert(c.date, TODAY_ISO);
-      return d >= 0 && d <= 7;
+    const concertAlerts = concerts.filter((c) => {
+      if ((c.endDate || c.date) < TODAY_ISO) return false;
+      if (favorites.includes(c.id)) {
+        if (c.status === 'last-tickets' || c.status === 'sold-out') return true;
+        const d = daysUntilConcert(c.date, TODAY_ISO);
+        if (d >= 0 && d <= 7) return true;
+      }
+      if (
+        favoriteArtists.length > 0 &&
+        favoriteArtists.some((artist) => matchesFollowedArtist(c.title, artist))
+      ) {
+        return true;
+      }
+      return false;
     }).length;
-  }, [concerts, favorites]);
+    return concertAlerts;
+  }, [concerts, favorites, favoriteArtists]);
+
+  const totalFavoritesBadge =
+    favorites.length + favoriteFestivals.length + favoriteArtists.length;
+
+  // Auto-sync Brevo favorite alerts silently whenever favorites or followed artists change
+  useEffect(() => {
+    if (!favAlertEmail) return;
+    const timer = window.setTimeout(() => {
+      fetch('/api/favorites-alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: favAlertEmail,
+          favoriteIds: favorites,
+          favoriteArtists,
+          enabled: true,
+          consent: true,
+        }),
+      }).catch(() => {});
+    }, 1200);
+    return () => window.clearTimeout(timer);
+  }, [favorites, favoriteArtists, favAlertEmail]);
 
   // Auto-sync Brevo favorite alerts silently whenever favorites change (if user enabled email reminders)
   useEffect(() => {
@@ -602,8 +770,8 @@ export function App() {
 
   return (
     <div className="min-h-dvh w-full flex justify-center bg-[#09080B]">
-      {/* Responsive app shell: mobile-first (<=440px) & wide editorial desktop (md/lg) */}
-      <div className="relative w-full max-w-[440px] md:max-w-5xl lg:max-w-6xl min-h-dvh bg-[#0E0D10] sm:border-x sm:border-white/[0.08] sm:shadow-[0_0_80px_rgba(0,0,0,0.75)] flex flex-col">
+      {/* Responsive app shell: mobile-first (<=440px), tablet/half-screen (sm), wide editorial desktop (md/lg/xl) */}
+      <div className="relative w-full max-w-[440px] sm:max-w-2xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl min-h-dvh bg-[#0E0D10] sm:border-x sm:border-white/[0.08] sm:shadow-[0_0_80px_rgba(0,0,0,0.75)] flex flex-col">
         {/* Offline Banner */}
         {isOffline && (
           <div className="bg-amber-500/20 border-b border-amber-400/30 px-4 py-1.5 flex items-center justify-center gap-2 text-[11px] font-semibold text-amber-200">
@@ -612,9 +780,9 @@ export function App() {
           </div>
         )}
 
-        {/* Sticky Top Header */}
-        <header className="sticky top-0 z-30 bg-[#0E0D10]/92 backdrop-blur-xl border-b border-white/[0.07]">
-          <div className="px-4 md:px-6 pt-3.5 pb-2.5 flex items-center justify-between gap-3">
+        {/* Sticky Top Header (compact navbar only — frees ~160px of vertical breathing room on desktop!) */}
+        <header className="sticky top-0 z-30 bg-[#0E0D10]/94 backdrop-blur-xl border-b border-white/[0.08]">
+          <div className="px-4 md:px-6 py-3 flex items-center justify-between gap-2 lg:gap-4">
             <button
               type="button"
               onClick={() => {
@@ -635,17 +803,20 @@ export function App() {
                     31
                   </span>
                 </div>
-                <p className="text-[11px] text-[#9E968F] mt-0.5 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-[#C85A6E]" />
-                  Toulouse · {venues.length} salles · {concerts.length} concerts
+                <p className="text-[11px] text-[#9E968F] mt-0.5 flex items-center gap-1 whitespace-nowrap">
+                  <MapPin className="w-3 h-3 text-[#C85A6E] shrink-0" />
+                  <span>
+                    Toulouse · {venues.length} salles
+                    <span className="hidden lg:inline"> · {concerts.length} concerts</span>
+                  </span>
                 </p>
               </div>
             </button>
 
-            {/* Desktop Top Navigation (hidden on mobile where bottom nav is shown) */}
+            {/* Desktop Top Navigation (md+: all 5 tabs always visible, crisp & non-wrapping) */}
             <nav
               aria-label="Navigation principale ordinateur"
-              className="hidden md:flex items-center gap-1 p-1 rounded-2xl bg-[#16141B] border border-white/[0.08]"
+              className="hidden md:flex items-center gap-0.5 lg:gap-1 p-1 rounded-2xl bg-[#16141B] border border-white/[0.08] shrink-0"
             >
               <button
                 type="button"
@@ -653,13 +824,13 @@ export function App() {
                   setActiveTab('agenda');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                className={`px-2.5 lg:px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap transition-colors ${
                   activeTab === 'agenda'
                     ? 'bg-[#C85A6E] text-white shadow-sm'
-                    : 'text-[#A9A097] hover:text-white'
+                    : 'text-[#A9A097] hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <Calendar className="w-3.5 h-3.5" />
+                <Calendar className="w-3.5 h-3.5 shrink-0" />
                 <span>Concerts</span>
               </button>
 
@@ -669,13 +840,13 @@ export function App() {
                   setActiveTab('festivals');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                className={`px-2.5 lg:px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap transition-colors ${
                   activeTab === 'festivals'
                     ? 'bg-[#C85A6E] text-white shadow-sm'
-                    : 'text-[#A9A097] hover:text-white'
+                    : 'text-[#A9A097] hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <Tent className="w-3.5 h-3.5" />
+                <Tent className="w-3.5 h-3.5 shrink-0" />
                 <span>Festivals</span>
               </button>
 
@@ -685,13 +856,13 @@ export function App() {
                   setActiveTab('map');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                className={`px-2.5 lg:px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap transition-colors ${
                   activeTab === 'map'
                     ? 'bg-[#C85A6E] text-white shadow-sm'
-                    : 'text-[#A9A097] hover:text-white'
+                    : 'text-[#A9A097] hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <MapIcon className="w-3.5 h-3.5" />
+                <MapIcon className="w-3.5 h-3.5 shrink-0" />
                 <span>Carte</span>
               </button>
 
@@ -701,14 +872,16 @@ export function App() {
                   setActiveTab('venues');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                className={`px-2.5 lg:px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap transition-colors ${
                   activeTab === 'venues'
                     ? 'bg-[#C85A6E] text-white shadow-sm'
-                    : 'text-[#A9A097] hover:text-white'
+                    : 'text-[#A9A097] hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <Building2 className="w-3.5 h-3.5" />
-                <span>Salles ({venues.length})</span>
+                <Building2 className="w-3.5 h-3.5 shrink-0" />
+                <span>
+                  Salles<span className="hidden lg:inline"> ({venues.length})</span>
+                </span>
               </button>
 
               <button
@@ -717,15 +890,15 @@ export function App() {
                   setActiveTab('favorites');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                className={`px-2.5 lg:px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap transition-colors ${
                   activeTab === 'favorites'
                     ? 'bg-[#C85A6E] text-white shadow-sm'
-                    : 'text-[#A9A097] hover:text-white'
+                    : 'text-[#A9A097] hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
-                <Heart className="w-3.5 h-3.5" />
+                <Heart className="w-3.5 h-3.5 shrink-0" />
                 <span>Favoris</span>
-                {favorites.length + favoriteFestivals.length > 0 && (
+                {totalFavoritesBadge > 0 && (
                   <span
                     className={`min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold flex items-center justify-center ${
                       favoriteAlertsCount > 0
@@ -735,13 +908,13 @@ export function App() {
                           : 'bg-[#C85A6E] text-white'
                     }`}
                   >
-                    {favorites.length + favoriteFestivals.length}
+                    {totalFavoritesBadge}
                   </span>
                 )}
               </button>
             </nav>
 
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 shrink-0">
               <button
                 type="button"
                 onClick={() => setSyncSheetOpen(true)}
@@ -755,7 +928,7 @@ export function App() {
                   }`}
                 />
                 <RefreshCw className={`w-3 h-3 text-emerald-300 ${isSyncing ? 'animate-spin' : ''}`} />
-                <span className="hidden xs:inline">Sync</span>
+                <span className="hidden sm:inline">Sync</span>
               </button>
 
               {/* Alerte email hebdo */}
@@ -766,235 +939,358 @@ export function App() {
                   setNewsletterOpen(true);
                 }}
                 aria-label="S'inscrire à l'alerte hebdomadaire par email"
-                className="flex items-center justify-center w-8 h-8 rounded-xl bg-[#18151D] hover:bg-[#221E28] border border-white/[0.08] text-[#F5EFE9] active:scale-95 transition-all"
+                title="Alerte hebdomadaire par e-mail"
+                className="flex items-center justify-center gap-1.5 h-8 px-2 lg:px-3 rounded-xl bg-[#18151D] hover:bg-[#221E28] border border-white/[0.08] text-[11px] font-semibold text-[#F5EFE9] active:scale-95 transition-all"
               >
                 <Bell className="w-3.5 h-3.5 text-[#C85A6E]" />
+                <span className="hidden xl:inline">Alerte mail</span>
               </button>
 
-              {activeTab === 'agenda' && (
-                <div className="flex items-center p-0.5 rounded-xl bg-[#18151D] border border-white/[0.08]">
-                  <button
-                    type="button"
-                    aria-label="Vue liste"
-                    onClick={() => setViewMode('list')}
-                    className={`p-1.5 rounded-lg transition-colors ${
-                      viewMode === 'list'
-                        ? 'bg-[#C85A6E] text-white'
-                        : 'text-[#8E8680] hover:text-white'
-                    }`}
-                  >
-                    <List className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Vue grille affiches"
-                    onClick={() => setViewMode('grid')}
-                    className={`p-1.5 rounded-lg transition-colors ${
-                      viewMode === 'grid'
-                        ? 'bg-[#C85A6E] text-white'
-                        : 'text-[#8E8680] hover:text-white'
-                    }`}
-                  >
-                    <LayoutGrid className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Search & Filters (Agenda tab) */}
-          {activeTab === 'agenda' && (
-            <div className="pb-2.5 space-y-2">
-              {/* Search bar + Advanced Filters button */}
-              <div className="px-4 flex items-center gap-2">
-                <div className="relative flex-1 flex items-center">
-                  <Search className="w-4 h-4 text-[#8E8680] absolute left-3.5 pointer-events-none" />
-                  <input
-                    type="search"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Artiste, genre, salle..."
-                    className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-[#18151D] border border-white/[0.08] focus:border-[#C85A6E]/60 focus:outline-none text-[13px] text-white placeholder:text-[#78706A] transition-colors"
-                  />
-                  {search && (
-                    <button
-                      type="button"
-                      aria-label="Effacer la recherche"
-                      onClick={() => setSearch('')}
-                      className="absolute right-2 p-1 rounded-full text-[#8E8680] hover:text-white"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-
+              {/* Menu Paramètres (Affichage Liste/Affiches, Contact & suggestions, À propos & RGPD) */}
+              <div ref={settingsMenuRef} className="relative">
                 <button
                   type="button"
-                  onClick={() => setFiltersOpen(true)}
-                  className={`relative shrink-0 h-[42px] px-3 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 ${
-                    advancedFilterCount > 0
-                      ? 'bg-[#C85A6E]/20 border-[#C85A6E]/50 text-[#F2A9B6]'
-                      : 'bg-[#18151D] border-white/[0.08] text-[#D2CAC2]'
+                  onClick={() => setSettingsMenuOpen((v) => !v)}
+                  aria-label="Paramètres, affichage et contact"
+                  aria-expanded={settingsMenuOpen}
+                  title="Paramètres, affichage & contact"
+                  className={`flex items-center justify-center w-8 h-8 rounded-xl border transition-all active:scale-95 ${
+                    settingsMenuOpen
+                      ? 'bg-[#C85A6E] border-[#C85A6E] text-white'
+                      : 'bg-[#18151D] hover:bg-[#221E29] border-white/[0.08] text-[#DDD5CC]'
                   }`}
                 >
-                  <SlidersHorizontal className="w-3.5 h-3.5" />
-                  <span>Filtres</span>
-                  {advancedFilterCount > 0 && (
-                    <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-[#C85A6E] text-[10px] font-bold text-white flex items-center justify-center">
-                      {advancedFilterCount}
-                    </span>
-                  )}
+                  <Settings className="w-4 h-4" />
                 </button>
-              </div>
 
-              {/* Period & quick chips */}
-              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar px-4">
-                {PERIOD_OPTIONS.map((opt) => {
-                  const active = period === opt.id;
-                  return (
-                    <button
-                      key={opt.id}
-                      type="button"
-                      onClick={() => {
-                        setPeriod(opt.id);
-                        setSelectedMonth(null);
-                      }}
-                      className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 ${
-                        active
-                          ? 'bg-[#F7F4EF] text-[#110F14]'
-                          : 'bg-[#19161F] text-[#B7AFA6] border border-white/[0.07] hover:text-white'
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  );
-                })}
-
-                <button
-                  type="button"
-                  onClick={() => setOnlyNew((v) => !v)}
-                  className={`shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 ${
-                    onlyNew
-                      ? 'bg-violet-500/25 text-violet-200 border border-violet-400/45'
-                      : 'bg-[#19161F] text-[#B7AFA6] border border-white/[0.07]'
-                  }`}
-                >
-                  <Sparkles className="w-3 h-3" />
-                  Nouveautés
-                </button>
-              </div>
-
-              {/* Dynamic Month Jump Bar */}
-              {availableMonths.length > 1 && (
-                <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar px-4">
-                  {availableMonths.map((m) => {
-                    const active = selectedMonth === m.ym;
-                    return (
-                      <button
-                        key={m.ym}
-                        type="button"
-                        onClick={() => setSelectedMonth(active ? null : m.ym)}
-                        className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all active:scale-95 flex items-center gap-1.5 ${
-                          active
-                            ? 'bg-[#C85A6E]/25 border border-[#C85A6E]/60 text-[#F4B4BF]'
-                            : 'bg-white/[0.03] border border-white/[0.06] text-[#9E968F] hover:text-white'
-                        }`}
-                      >
-                        <span>{m.label}</span>
-                        <span
-                          className={`text-[10px] ${
-                            active ? 'text-[#F4B4BF]' : 'text-[#6F6862]'
+                {settingsMenuOpen && (
+                  <div
+                    role="menu"
+                    className="absolute right-0 mt-2 w-64 rounded-2xl bg-[#18151F] border border-white/12 shadow-2xl shadow-black/75 p-2 z-50 animate-fade-in space-y-1"
+                  >
+                    {/* Affichage Agenda */}
+                    <div className="px-2.5 py-2 rounded-xl bg-white/[0.03]">
+                      <div className="text-[10.5px] font-bold uppercase tracking-wider text-[#9E968F] mb-2">
+                        Affichage des concerts
+                      </div>
+                      <div className="grid grid-cols-2 gap-1.5 p-1 rounded-xl bg-[#0F0D13] border border-white/[0.07]">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setViewMode('list');
+                            setSettingsMenuOpen(false);
+                          }}
+                          className={`py-1.5 px-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors ${
+                            viewMode === 'list'
+                              ? 'bg-[#C85A6E] text-white'
+                              : 'text-[#A9A097] hover:text-white'
                           }`}
                         >
-                          {m.count}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* Genre chips */}
-              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar px-4">
-                <button
-                  type="button"
-                  onClick={() => setSelectedCategory('all')}
-                  className={`shrink-0 px-3 py-1.5 rounded-xl text-[11.5px] font-semibold transition-all active:scale-95 ${
-                    selectedCategory === 'all'
-                      ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
-                      : 'bg-white/[0.04] text-[#AEA69D] border border-white/[0.06] hover:text-white'
-                  }`}
-                >
-                  Tous les genres
-                </button>
-                {GENRE_CATEGORIES.map((cat) => {
-                  const active = selectedCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      type="button"
-                      onClick={() => setSelectedCategory(active ? 'all' : cat)}
-                      className={`shrink-0 px-3 py-1.5 rounded-xl text-[11.5px] font-semibold transition-all active:scale-95 ${
-                        active
-                          ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
-                          : 'bg-white/[0.04] text-[#AEA69D] border border-white/[0.06] hover:text-white'
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Active Venues Banner (supports multi-venue) */}
-              {selectedVenuesObjects.length > 0 && (
-                <div className="px-4 pt-0.5">
-                  <div className="px-3 py-2 rounded-xl bg-[#1A1721] border border-[#C85A6E]/35 flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{ backgroundColor: selectedVenuesObjects[0].accentColor }}
-                      />
-                      <span className="text-xs font-semibold text-white truncate">
-                        {selectedVenuesObjects.length === 1
-                          ? selectedVenuesObjects[0].name
-                          : `${selectedVenuesObjects.length} salles : ${selectedVenuesObjects
-                              .map((v) => v.shortName)
-                              .join(', ')}`}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      {selectedVenuesObjects.length === 1 && (
-                        <a
-                          href={selectedVenuesObjects[0].websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#EE9EAB]"
+                          <List className="w-3.5 h-3.5" />
+                          Liste
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setViewMode('grid');
+                            setSettingsMenuOpen(false);
+                          }}
+                          className={`py-1.5 px-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors ${
+                            viewMode === 'grid'
+                              ? 'bg-[#C85A6E] text-white'
+                              : 'text-[#A9A097] hover:text-white'
+                          }`}
                         >
-                          Site
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => setSelectedVenueIds([])}
-                        aria-label="Retirer le filtre salle"
-                        className="p-1 rounded-md bg-white/10 text-white"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
+                          <LayoutGrid className="w-3.5 h-3.5" />
+                          Affiches
+                        </button>
+                      </div>
                     </div>
+
+                    <div className="h-px bg-white/[0.07] my-1" />
+
+                    {/* Contact & suggestions */}
+                    <a
+                      href="mailto:scenerose.toulouse@gmail.com?subject=Sc%C3%A8ne%20Rose%20%E2%80%94%20Suggestion%20ou%20signalement"
+                      onClick={() => setSettingsMenuOpen(false)}
+                      className="w-full px-3 py-2.5 rounded-xl hover:bg-white/[0.06] text-left flex items-center gap-2.5 transition-colors"
+                    >
+                      <Mail className="w-4 h-4 text-[#C85A6E] shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs font-semibold text-white">
+                          Contact & suggestions
+                        </div>
+                        <div className="text-[10.5px] text-[#9E968F] truncate">
+                          Signaler une erreur ou proposer un lieu
+                        </div>
+                      </div>
+                    </a>
+
+                    {/* Alerte hebdo */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSettingsMenuOpen(false);
+                        setNewsletterTab('subscribe');
+                        setNewsletterOpen(true);
+                      }}
+                      className="w-full px-3 py-2.5 rounded-xl hover:bg-white/[0.06] text-left flex items-center gap-2.5 transition-colors"
+                    >
+                      <Bell className="w-4 h-4 text-[#F2A9B6] shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs font-semibold text-white">
+                          Newsletter du jeudi
+                        </div>
+                        <div className="text-[10.5px] text-[#9E968F] truncate">
+                          Sélection gratuite chaque semaine
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* À propos & RGPD */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSettingsMenuOpen(false);
+                        setAboutOpen(true);
+                      }}
+                      className="w-full px-3 py-2.5 rounded-xl hover:bg-white/[0.06] text-left flex items-center gap-2.5 transition-colors"
+                    >
+                      <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs font-semibold text-white">
+                          À propos & RGPD
+                        </div>
+                        <div className="text-[10.5px] text-[#9E968F] truncate">
+                          Projet indépendant · confidentialité
+                        </div>
+                      </div>
+                    </button>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          )}
+          </div>
         </header>
 
         {/* Main Scrollable Area */}
         <main className="flex-1 pb-24 md:pb-12">
           {activeTab === 'agenda' && (
             <>
+              {/* Search & Filter Toolbar (scrolls cleanly with content; 1-row Search+Period on lg+, wrapping chips on PC) */}
+              <div className="pt-3 pb-3 border-b border-white/[0.06] bg-[#110F15]/60 space-y-2.5">
+                <div className="px-4 md:px-6 flex flex-col lg:flex-row lg:items-center gap-2.5">
+                  <div className="flex items-center gap-2 lg:w-[360px] xl:w-[400px] shrink-0">
+                    <div className="relative flex-1 flex items-center">
+                      <Search className="w-4 h-4 text-[#8E8680] absolute left-3.5 pointer-events-none" />
+                      <input
+                        type="search"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Artiste, genre, salle..."
+                        className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-[#18151D] border border-white/[0.08] focus:border-[#C85A6E]/60 focus:outline-none text-[13px] text-white placeholder:text-[#78706A] transition-colors"
+                      />
+                      {search && (
+                        <button
+                          type="button"
+                          aria-label="Effacer la recherche"
+                          onClick={() => setSearch('')}
+                          className="absolute right-2 p-1 rounded-full text-[#8E8680] hover:text-white"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setFiltersOpen(true)}
+                      className={`relative shrink-0 h-[42px] px-3 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 ${
+                        advancedFilterCount > 0
+                          ? 'bg-[#C85A6E]/20 border-[#C85A6E]/50 text-[#F2A9B6]'
+                          : 'bg-[#18151D] border-white/[0.08] text-[#D2CAC2] hover:border-white/20 hover:text-white'
+                      }`}
+                    >
+                      <SlidersHorizontal className="w-3.5 h-3.5" />
+                      <span>Filtres</span>
+                      {advancedFilterCount > 0 && (
+                        <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-[#C85A6E] text-[10px] font-bold text-white flex items-center justify-center">
+                          {advancedFilterCount}
+                        </span>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Period & quick chips */}
+                  <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar">
+                    {PERIOD_OPTIONS.map((opt) => {
+                      const active = period === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          onClick={() => {
+                            setPeriod(opt.id);
+                            setSelectedMonth(null);
+                          }}
+                          className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 ${
+                            active
+                              ? 'bg-[#F7F4EF] text-[#110F14]'
+                              : 'bg-[#19161F] text-[#B7AFA6] border border-white/[0.07] hover:text-white'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      );
+                    })}
+
+                    <button
+                      type="button"
+                      onClick={() => setOnlyNew((v) => !v)}
+                      className={`shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 ${
+                        onlyNew
+                          ? 'bg-violet-500/25 text-violet-200 border border-violet-400/45'
+                          : 'bg-[#19161F] text-[#B7AFA6] border border-white/[0.07] hover:text-white'
+                      }`}
+                    >
+                      <Sparkles className="w-3 h-3" />
+                      Nouveautés
+                    </button>
+                  </div>
+                </div>
+
+                {/* Suggestions rapides de salles quand la recherche matche une salle (ex: "zenith") */}
+                {matchingVenuesForSearch.length > 0 && (
+                  <div className="px-4 md:px-6 flex flex-wrap items-center gap-1.5">
+                    <span className="text-[11px] text-[#8E8680] font-medium">Salle :</span>
+                    {matchingVenuesForSearch.map((v) => (
+                      <button
+                        key={v.id}
+                        type="button"
+                        onClick={() => {
+                          setSelectedVenueIds([v.id]);
+                          setSearch('');
+                          setSelectedMonth(null);
+                        }}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#1A1721] hover:bg-[#231F2C] border border-[#C85A6E]/35 text-[11px] font-semibold text-white transition-colors"
+                      >
+                        <span
+                          className="w-2 h-2 rounded-full shrink-0"
+                          style={{ backgroundColor: v.accentColor }}
+                        />
+                        <span>{v.name}</span>
+                        <span className="text-[10px] text-[#F2A9B6]">
+                          ({venueCounts[v.id] || 0})
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Dynamic Month Jump Bar */}
+                {availableMonths.length > 1 && (
+                  <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar px-4 md:px-6">
+                    {availableMonths.map((m) => {
+                      const active = selectedMonth === m.ym;
+                      return (
+                        <button
+                          key={m.ym}
+                          type="button"
+                          onClick={() => setSelectedMonth(active ? null : m.ym)}
+                          className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all active:scale-95 flex items-center gap-1.5 ${
+                            active
+                              ? 'bg-[#C85A6E]/25 border border-[#C85A6E]/60 text-[#F4B4BF]'
+                              : 'bg-white/[0.03] border border-white/[0.06] text-[#9E968F] hover:text-white'
+                          }`}
+                        >
+                          <span>{m.label}</span>
+                          <span
+                            className={`text-[10px] ${
+                              active ? 'text-[#F4B4BF]' : 'text-[#6F6862]'
+                            }`}
+                          >
+                            {m.count}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Genre chips */}
+                <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar px-4 md:px-6">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedCategory('all')}
+                    className={`shrink-0 px-3 py-1.5 rounded-xl text-[11.5px] font-semibold transition-all active:scale-95 ${
+                      selectedCategory === 'all'
+                        ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
+                        : 'bg-white/[0.04] text-[#AEA69D] border border-white/[0.06] hover:text-white'
+                    }`}
+                  >
+                    Tous les genres
+                  </button>
+                  {GENRE_CATEGORIES.map((cat) => {
+                    const active = selectedCategory === cat;
+                    return (
+                      <button
+                        key={cat}
+                        type="button"
+                        onClick={() => setSelectedCategory(active ? 'all' : cat)}
+                        className={`shrink-0 px-3 py-1.5 rounded-xl text-[11.5px] font-semibold transition-all active:scale-95 ${
+                          active
+                            ? 'bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
+                            : 'bg-white/[0.04] text-[#AEA69D] border border-white/[0.06] hover:text-white'
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Active Venues Banner (supports multi-venue) */}
+                {selectedVenuesObjects.length > 0 && (
+                  <div className="px-4 md:px-6 pt-0.5">
+                    <div className="px-3 py-2 rounded-xl bg-[#1A1721] border border-[#C85A6E]/35 flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span
+                          className="w-2.5 h-2.5 rounded-full shrink-0"
+                          style={{ backgroundColor: selectedVenuesObjects[0].accentColor }}
+                        />
+                        <span className="text-xs font-semibold text-white truncate">
+                          {selectedVenuesObjects.length === 1
+                            ? selectedVenuesObjects[0].name
+                            : `${selectedVenuesObjects.length} salles : ${selectedVenuesObjects
+                                .map((v) => v.shortName)
+                                .join(', ')}`}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 shrink-0">
+                        {selectedVenuesObjects.length === 1 && (
+                          <a
+                            href={selectedVenuesObjects[0].websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#EE9EAB]"
+                          >
+                            Site
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => setSelectedVenueIds([])}
+                          aria-label="Retirer le filtre salle"
+                          className="p-1 rounded-md bg-white/10 text-white"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
               {/* Shared friend selection banner (?selection=...) */}
               {sharedSelectionIds.length > 0 && (
                 <div className="mx-4 mt-3 p-3.5 rounded-2xl bg-gradient-to-r from-[#C85A6E]/20 to-violet-500/15 border border-[#C85A6E]/40 space-y-2.5">
@@ -1041,7 +1337,7 @@ export function App() {
               )}
 
               {/* Results count & reset bar */}
-              <div className="px-4 pt-3 pb-1 flex items-center justify-between">
+              <div className="px-4 md:px-6 pt-3 pb-1 flex items-center justify-between">
                 <span className="text-xs font-medium text-[#9E968F]">
                   <strong className="text-[#F7F4EF] font-semibold">
                     {filteredConcerts.length}
@@ -1104,8 +1400,8 @@ export function App() {
                         <div
                           className={
                             viewMode === 'grid'
-                              ? 'px-4 md:px-6 mt-1.5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 md:gap-3.5'
-                              : 'px-4 md:px-6 mt-1.5 space-y-2.5 md:space-y-0 md:grid md:grid-cols-2 md:gap-3'
+                              ? 'px-4 md:px-6 mt-1.5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-2.5 md:gap-3.5'
+                              : 'px-4 md:px-6 mt-1.5 space-y-2.5 sm:space-y-0 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-3'
                           }
                         >
                           {group.concerts.map((concert) => (
@@ -1213,14 +1509,26 @@ export function App() {
               concerts={concerts}
               venueMap={venueMap}
               favorites={favorites}
+              favoriteArtists={favoriteArtists}
               festivals={activeFestivals}
               favoriteFestivals={favoriteFestivals}
               favAlertEmail={favAlertEmail}
               onSaveFavAlertEmail={handleSaveFavAlertEmail}
               onToggleFavorite={toggleFavorite}
+              onAddFavoriteArtist={addFavoriteArtist}
+              onRemoveFavoriteArtist={removeFavoriteArtist}
               onToggleFavoriteFestival={toggleFavoriteFestival}
               onSelectConcert={setSelectedConcert}
               onSelectFestival={setSelectedFestival}
+              onSearchArtist={(artistName) => {
+                setSearch(artistName);
+                setPeriod('all');
+                setSelectedMonth(null);
+                setSelectedCategory('all');
+                setSelectedVenueIds([]);
+                setActiveTab('agenda');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               onGoExplore={() => setActiveTab('agenda')}
               onShareSelection={handleShareSelection}
               onNotify={showToast}
@@ -1243,10 +1551,10 @@ export function App() {
           </footer>
         </main>
 
-        {/* Bottom Navigation Bar (Mobile only; desktop uses sticky top nav) */}
+        {/* Bottom Navigation Bar (Mobile / small screens only; md+ uses sticky top nav) */}
         <nav
           aria-label="Navigation principale"
-          className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-40 w-full max-w-[440px] bg-[#121016]/95 backdrop-blur-xl border-t border-white/[0.09] pb-[env(safe-area-inset-bottom)]"
+          className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-40 w-full max-w-[440px] sm:max-w-2xl bg-[#121016]/95 backdrop-blur-xl border-t border-white/[0.09] pb-[env(safe-area-inset-bottom)]"
         >
           <div className="grid grid-cols-5 h-16">
             <button
@@ -1321,13 +1629,13 @@ export function App() {
                     activeTab === 'favorites' ? 'fill-[#C85A6E]/20' : ''
                   }`}
                 />
-                {favorites.length + favoriteFestivals.length > 0 && (
+                {totalFavoritesBadge > 0 && (
                   <span
                     className={`absolute -top-1.5 -right-2.5 min-w-[16px] h-4 px-1 rounded-full text-[10px] font-bold text-white flex items-center justify-center ${
                       favoriteAlertsCount > 0 ? 'bg-amber-500 text-[#130F09]' : 'bg-[#C85A6E]'
                     }`}
                   >
-                    {favorites.length + favoriteFestivals.length}
+                    {totalFavoritesBadge}
                   </span>
                 )}
               </div>
@@ -1341,8 +1649,10 @@ export function App() {
           concert={selectedConcert}
           venue={selectedConcert ? venueMap[selectedConcert.venueId] : null}
           isFavorite={selectedConcert ? favorites.includes(selectedConcert.id) : false}
+          favoriteArtists={favoriteArtists}
           onClose={() => setSelectedConcert(null)}
           onToggleFavorite={toggleFavorite}
+          onToggleFavoriteArtist={toggleFavoriteArtist}
           onSelectVenue={handleSelectVenueFromAnywhere}
           onNotify={showToast}
         />
@@ -1351,8 +1661,10 @@ export function App() {
         <FestivalDetailSheet
           festival={selectedFestival}
           isFavorite={selectedFestival ? favoriteFestivals.includes(selectedFestival.id) : false}
+          favoriteArtists={favoriteArtists}
           onClose={() => setSelectedFestival(null)}
           onToggleFavorite={toggleFavoriteFestival}
+          onToggleFavoriteArtist={toggleFavoriteArtist}
           onNotify={showToast}
         />
 
