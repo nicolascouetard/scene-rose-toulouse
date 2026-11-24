@@ -67,6 +67,10 @@ import { ToulouseMapView } from './components/ToulouseMapView';
 import { FestivalsView } from './components/FestivalsView';
 import { FestivalDetailSheet } from './components/FestivalDetailSheet';
 import { AboutRgpdSheet } from './components/AboutRgpdSheet';
+import {
+  CalendarPickerSheet,
+  type CalendarSelection,
+} from './components/CalendarPickerSheet';
 
 type Tab = 'agenda' | 'festivals' | 'map' | 'venues' | 'favorites';
 
@@ -172,7 +176,8 @@ export function App() {
   const [activeTab, setActiveTab] = useState<Tab>('agenda');
   const [search, setSearch] = useState('');
   const [period, setPeriod] = useState<PeriodFilter>('all');
-  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  const [calendarSelection, setCalendarSelection] = useState<CalendarSelection | null>(null);
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<GenreCategory | 'all'>('all');
   const [selectedVenueIds, setSelectedVenueIds] = useState<string[]>([]);
   const [selectedTransit, setSelectedTransit] = useState<TransitLine[]>([]);
@@ -247,6 +252,7 @@ export function App() {
     selectedConcert ||
       selectedFestival ||
       filtersOpen ||
+      calendarOpen ||
       syncSheetOpen ||
       newsletterOpen ||
       aboutOpen
@@ -260,6 +266,7 @@ export function App() {
       setSelectedConcert(null);
       setSelectedFestival(null);
       setFiltersOpen(false);
+      setCalendarOpen(false);
       setSyncSheetOpen(false);
       setNewsletterOpen(false);
       setAboutOpen(false);
@@ -565,8 +572,8 @@ export function App() {
 
   const featuredConcerts = useMemo(() => concerts.filter((c) => c.featured), [concerts]);
 
-  // Concerts matching everything EXCEPT selectedMonth (used to compute live month pill counts)
-  const baseFilteredConcerts = useMemo(() => {
+  // Concerts filtrés hors date/période (alimente le Calendrier interactif avec les compteurs exacts)
+  const nonDateFilteredConcerts = useMemo(() => {
     const q = search.trim();
     const isSharedMode = sharedSelectionIds.length > 0;
 
@@ -574,7 +581,6 @@ export function App() {
       // Ne jamais afficher un concert strictement passé (même entre minuit et la synchro de 06h)
       if ((concert.endDate || concert.date) < TODAY_ISO) return false;
       if (isSharedMode && !sharedSelectionIds.includes(concert.id)) return false;
-      if (!matchesPeriod(concert, period)) return false;
       if (selectedCategory !== 'all' && concert.category !== selectedCategory) return false;
       if (selectedVenueIds.length > 0 && !selectedVenueIds.includes(concert.venueId)) return false;
       if (selectedTransit.length > 0) {
@@ -610,7 +616,6 @@ export function App() {
     concerts,
     sharedSelectionIds,
     search,
-    period,
     selectedCategory,
     selectedVenueIds,
     selectedTransit,
@@ -636,22 +641,15 @@ export function App() {
   const getEffectiveDate = (c: Concert) =>
     c.date < TODAY_ISO && c.endDate && c.endDate >= TODAY_ISO ? TODAY_ISO : c.date;
 
-  // Available months with counts
-  const availableMonths = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const c of baseFilteredConcerts) {
-      const ym = getEffectiveDate(c).slice(0, 7);
-      counts.set(ym, (counts.get(ym) || 0) + 1);
-    }
-    return Array.from(counts.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([ym, count]) => ({ ym, label: formatMonthChip(ym), count }));
-  }, [baseFilteredConcerts]);
-
   const filteredConcerts = useMemo(() => {
-    if (!selectedMonth) return baseFilteredConcerts;
-    return baseFilteredConcerts.filter((c) => getEffectiveDate(c).startsWith(selectedMonth));
-  }, [baseFilteredConcerts, selectedMonth]);
+    if (calendarSelection) {
+      return nonDateFilteredConcerts.filter((c) => {
+        const d = getEffectiveDate(c);
+        return d >= calendarSelection.startDate && d <= calendarSelection.endDate;
+      });
+    }
+    return nonDateFilteredConcerts.filter((c) => matchesPeriod(c, period));
+  }, [nonDateFilteredConcerts, calendarSelection, period]);
 
   const groupedByDate = useMemo(() => {
     const map = new Map<string, Concert[]>();
@@ -678,7 +676,7 @@ export function App() {
   const hasActiveFilters =
     search.trim() !== '' ||
     period !== 'all' ||
-    selectedMonth !== null ||
+    calendarSelection !== null ||
     selectedCategory !== 'all' ||
     advancedFilterCount > 0 ||
     sharedSelectionIds.length > 0;
@@ -686,7 +684,7 @@ export function App() {
   const resetFilters = () => {
     setSearch('');
     setPeriod('all');
-    setSelectedMonth(null);
+    setCalendarSelection(null);
     setSelectedCategory('all');
     setSelectedVenueIds([]);
     setSelectedTransit([]);
@@ -699,7 +697,7 @@ export function App() {
 
   const handleSelectVenueFromAnywhere = (venueId: string) => {
     setSelectedVenueIds([venueId]);
-    setSelectedMonth(null);
+    setCalendarSelection(null);
     setActiveTab('agenda');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -745,24 +743,6 @@ export function App() {
     }, 1200);
     return () => window.clearTimeout(timer);
   }, [favorites, favoriteArtists, favAlertEmail]);
-
-  // Auto-sync Brevo favorite alerts silently whenever favorites change (if user enabled email reminders)
-  useEffect(() => {
-    if (!favAlertEmail) return;
-    const timer = window.setTimeout(() => {
-      fetch('/api/favorites-alert', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: favAlertEmail,
-          favoriteIds: favorites,
-          enabled: true,
-          consent: true,
-        }),
-      }).catch(() => {});
-    }, 1200);
-    return () => window.clearTimeout(timer);
-  }, [favorites, favAlertEmail]);
 
   const selectedVenuesObjects = selectedVenueIds
     .map((id) => venueMap[id])
@@ -1121,17 +1101,43 @@ export function App() {
                     </button>
                   </div>
 
-                  {/* Period & quick chips */}
+                  {/* Period, Calendar picker & quick chips */}
                   <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar">
+                    {/* Sélecteur Calendrier interactif (jour, plage ou mois) */}
+                    <div className="shrink-0 inline-flex items-center">
+                      <button
+                        type="button"
+                        onClick={() => setCalendarOpen(true)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-all active:scale-95 ${
+                          calendarSelection
+                            ? 'rounded-l-full bg-[#C85A6E] text-white shadow-sm shadow-[#C85A6E]/30'
+                            : 'rounded-full bg-[#19161F] text-[#F2A9B6] border border-[#C85A6E]/35 hover:bg-[#C85A6E]/15 hover:text-white'
+                        }`}
+                      >
+                        <Calendar className="w-3.5 h-3.5 shrink-0" />
+                        <span>{calendarSelection ? calendarSelection.label : 'Calendrier'}</span>
+                      </button>
+                      {calendarSelection && (
+                        <button
+                          type="button"
+                          onClick={() => setCalendarSelection(null)}
+                          aria-label="Effacer la date du calendrier"
+                          className="pl-1 pr-2 py-1.5 rounded-r-full bg-[#B2495D] hover:bg-[#9E3D50] text-white transition-colors"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+
                     {PERIOD_OPTIONS.map((opt) => {
-                      const active = period === opt.id;
+                      const active = period === opt.id && !calendarSelection;
                       return (
                         <button
                           key={opt.id}
                           type="button"
                           onClick={() => {
                             setPeriod(opt.id);
-                            setSelectedMonth(null);
+                            setCalendarSelection(null);
                           }}
                           className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 ${
                             active
@@ -1170,7 +1176,7 @@ export function App() {
                         onClick={() => {
                           setSelectedVenueIds([v.id]);
                           setSearch('');
-                          setSelectedMonth(null);
+                          setCalendarSelection(null);
                         }}
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#1A1721] hover:bg-[#231F2C] border border-[#C85A6E]/35 text-[11px] font-semibold text-white transition-colors"
                       >
@@ -1184,36 +1190,6 @@ export function App() {
                         </span>
                       </button>
                     ))}
-                  </div>
-                )}
-
-                {/* Dynamic Month Jump Bar */}
-                {availableMonths.length > 1 && (
-                  <div className="flex md:flex-wrap items-center gap-1.5 overflow-x-auto md:overflow-visible no-scrollbar px-4 md:px-6">
-                    {availableMonths.map((m) => {
-                      const active = selectedMonth === m.ym;
-                      return (
-                        <button
-                          key={m.ym}
-                          type="button"
-                          onClick={() => setSelectedMonth(active ? null : m.ym)}
-                          className={`shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all active:scale-95 flex items-center gap-1.5 ${
-                            active
-                              ? 'bg-[#C85A6E]/25 border border-[#C85A6E]/60 text-[#F4B4BF]'
-                              : 'bg-white/[0.03] border border-white/[0.06] text-[#9E968F] hover:text-white'
-                          }`}
-                        >
-                          <span>{m.label}</span>
-                          <span
-                            className={`text-[10px] ${
-                              active ? 'text-[#F4B4BF]' : 'text-[#6F6862]'
-                            }`}
-                          >
-                            {m.count}
-                          </span>
-                        </button>
-                      );
-                    })}
                   </div>
                 )}
 
@@ -1343,7 +1319,7 @@ export function App() {
                     {filteredConcerts.length}
                   </strong>{' '}
                   concert{filteredConcerts.length > 1 ? 's' : ''} à venir
-                  {selectedMonth ? ` · ${formatMonthChip(selectedMonth)}` : ''}
+                  {calendarSelection ? ` · ${calendarSelection.label}` : ''}
                 </span>
 
                 {hasActiveFilters && (
@@ -1523,7 +1499,7 @@ export function App() {
               onSearchArtist={(artistName) => {
                 setSearch(artistName);
                 setPeriod('all');
-                setSelectedMonth(null);
+                setCalendarSelection(null);
                 setSelectedCategory('all');
                 setSelectedVenueIds([]);
                 setActiveTab('agenda');
@@ -1666,6 +1642,18 @@ export function App() {
           onToggleFavorite={toggleFavoriteFestival}
           onToggleFavoriteArtist={toggleFavoriteArtist}
           onNotify={showToast}
+        />
+
+        {/* Interactive Calendar Date/Range Picker Sheet */}
+        <CalendarPickerSheet
+          open={calendarOpen}
+          concerts={nonDateFilteredConcerts}
+          selection={calendarSelection}
+          onApply={(next) => {
+            setCalendarSelection(next);
+            if (next) setPeriod('all');
+          }}
+          onClose={() => setCalendarOpen(false)}
         />
 
         {/* Advanced Filters Sheet */}

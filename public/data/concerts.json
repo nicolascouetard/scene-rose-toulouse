@@ -658,7 +658,7 @@
         "Rap"
       ],
       "price": "Dès 26,50 €",
-      "status": "last-tickets",
+      "status": "available",
       "poster": "/posters/bikini-kicking-fri.jpg",
       "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/c7ad58e1bb6462a5c980d2e5eff05b97e89a789d-1321x901.jpg?w=800&q=80",
       "venueEventUrl": "https://lebikini.com/2026/11/27/20-years-kicking-svinkels-poesie-zero-krav-boca",
@@ -4490,27 +4490,6 @@
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
-      "id": "bikini-2027-01-30-2much-presents-dj-schnake-all-night-long",
-      "title": "2much presents DJ Schnake All Night Long",
-      "date": "2027-01-30",
-      "time": "23h55",
-      "venueId": "le-bikini",
-      "category": "Électro & Club",
-      "genres": [
-        "Chipiecore",
-        "Trance",
-        "Hard Style"
-      ],
-      "price": "Dès 12,70€",
-      "status": "available",
-      "poster": "https://cdn.sanity.io/images/rf3cqo3h/production/9e6bbb05097df5f5e1c5e1913dacb76cc75867f1-1398x786.jpg?rect=234,0,1152,786&w=768&h=524&q=70&dpr=2",
-      "sourcePosterUrl": "https://cdn.sanity.io/images/rf3cqo3h/production/9e6bbb05097df5f5e1c5e1913dacb76cc75867f1-1398x786.jpg?rect=234,0,1152,786&w=768&h=524&q=70&dpr=2",
-      "venueEventUrl": "https://lebikini.com/2027/01/30/2much-presents-dj-schnake-all-night-long",
-      "isClubNight": true,
-      "firstSeenAt": "2026-11-24T15:30:31.431Z",
-      "statusVerifiedAt": "2026-11-24T15:30:31.431Z"
-    },
-    {
       "id": "zenith-2027-02-02-christophe-mae",
       "title": "Christophe Mae",
       "date": "2027-02-02",
@@ -7913,24 +7892,6 @@
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
-      "id": "interference-2027-05-17-stratovarius-visions-the-30th-anniversary-tour-2",
-      "title": "Stratovarius – Visions: The 30th Anniversary Tour 2027",
-      "date": "2027-05-17",
-      "time": "19h30",
-      "venueId": "interference",
-      "category": "Pop & Chanson",
-      "genres": [
-        "Concert"
-      ],
-      "status": "available",
-      "poster": "https://static.interference-toulouse.fr/event_covers/472_tile_450x450.jpg",
-      "sourcePosterUrl": "https://static.interference-toulouse.fr/event_covers/472_tile_450x450.jpg",
-      "venueEventUrl": "https://www.interference-toulouse.fr/event/stratovarius-visions-the-30th-anniversary-tour-2027-copie",
-      "isClubNight": false,
-      "firstSeenAt": "2026-11-24T15:30:31.431Z",
-      "statusVerifiedAt": "2026-11-24T15:30:31.431Z"
-    },
-    {
       "id": "metronum-2027-05-18-argentique",
       "title": "Argentique",
       "date": "2027-05-18",
@@ -8965,24 +8926,6 @@
       "firstSeenAt": "2026-11-22T09:42:30.323Z"
     },
     {
-      "id": "zenith-2028-02-11-michael-gregorio-symphonique",
-      "title": "Michael Gregorio - Symphonique",
-      "date": "2028-02-11",
-      "time": "20h00",
-      "venueId": "zenith-toulouse",
-      "category": "Classique & Ciné",
-      "genres": [
-        "Concert",
-        "Zénith"
-      ],
-      "status": "available",
-      "poster": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6b045d9dc8ee4831774992.png",
-      "sourcePosterUrl": "https://zenith-toulousemetropole.com/media/cache/show_poster/media/uploads/show-poster/6b045d9dc8ee4831774992.png",
-      "venueEventUrl": "https://zenith-toulousemetropole.com/shows/MICHAEL%20GREGORIO%20-%20SYMPHONIQUE-21978",
-      "firstSeenAt": "2026-11-24T15:30:31.431Z",
-      "statusVerifiedAt": "2026-11-24T15:30:31.431Z"
-    },
-    {
       "id": "zenith-2028-02-26-johnny-symphonique-tour",
       "title": "Johnny Symphonique Tour",
       "date": "2028-02-26",
@@ -9172,7 +9115,7 @@
         "venueName": "Zénith",
         "sourceUrl": "https://zenith-toulousemetropole.com/program",
         "ok": true,
-        "checkedCount": 72,
+        "checkedCount": 71,
         "soldOutCount": 2,
         "lastTicketsCount": 0,
         "freeCount": 0,
@@ -9187,7 +9130,7 @@
         "venueName": "Le Metronum",
         "sourceUrl": "https://lemetronum.fr/evenements/",
         "ok": true,
-        "checkedCount": 34,
+        "checkedCount": 35,
         "soldOutCount": 0,
         "lastTicketsCount": 0,
         "freeCount": 1,
@@ -9202,7 +9145,7 @@
         "venueName": "Interference",
         "sourceUrl": "https://www.interference-toulouse.fr/programmation",
         "ok": true,
-        "checkedCount": 40,
+        "checkedCount": 38,
         "soldOutCount": 0,
         "lastTicketsCount": 0,
         "freeCount": 0,
