@@ -1,5 +1,6 @@
 import { ExternalLink, Heart, Sparkles } from 'lucide-react';
 import type { Concert, Venue } from '../data/toulouseData';
+import { PosterImage } from './PosterImage';
 import { formatShortDate } from '../utils/dates';
 
 interface FeaturedCarouselProps {
@@ -52,16 +53,12 @@ export function FeaturedCarousel({
                 idx >= 4 ? 'md:hidden' : idx === 3 ? 'md:hidden lg:block' : ''
               }`}
             >
-              <img
-                src={concert.poster}
-                alt={`Affiche ${concert.title}`}
+              <PosterImage
+                concert={concert}
                 loading="eager"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (target.src !== concert.sourcePosterUrl) {
-                    target.src = concert.sourcePosterUrl;
-                  }
-                }}
+                width={264}
+                height={215}
+                sizes="264px"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               />
 

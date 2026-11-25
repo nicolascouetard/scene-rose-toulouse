@@ -15,18 +15,27 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import * as cheerio from 'cheerio';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const DATA_PATH = path.join(PROJECT_ROOT, 'public', 'data', 'concerts.json');
+const POSTER_DIR = path.join(PROJECT_ROOT, 'public', 'posters');
 const LOG_DIR = path.join(PROJECT_ROOT, 'logs');
 const LOG_FILE = path.join(LOG_DIR, 'sync-history.jsonl');
+const POSTER_MAX_EDGE = 800;
+const POSTER_WEBP_QUALITY = 78;
 
 const USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+
+const execFileAsync = promisify(execFile);
 
 const FETCH_HEADERS = {
   'User-Agent': USER_AGENT,
@@ -1249,6 +1258,347 @@ const STATUS_ONLY_SOURCES = {
   },
 };
 
+/**
+ * Sources de secours pour les salles dont la billetterie est protégée par un
+ * mur anti-robot (Shotgun → « Vercel Security Checkpoint », HTTP 429 même avec
+ * un vrai navigateur). On interroge alors un agrégateur public qui publie ses
+ * événements en JSON-LD schema.org, largement accessible.
+ *
+ * JamBase expose un bloc `MusicEvent` par date à venir : date, heure, salle,
+ * artistes. Les champs `offers` (prix/statut) n'y figurent pas.
+ */
+/** Libellé lisible de l'hôte d'une source de secours (jambase.com…). */
+function fallbackHostLabel(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return 'source externe';
+  }
+}
+
+const FALLBACK_SOURCES = {
+  'le-cri-de-la-mouette': {
+    url: 'https://www.jambase.com/venue/peniche-le-cri-de-la-mouette',
+    venueLabel: 'Péniche le Cri de la mouette',
+    // On accepte les artistes listés dans le JSON-LD (name = "Artiste - Ville - Salle - Date")
+  },
+};
+
+
+/**
+ * Récupère une page HTML en privilégiant `curl` (disponible sur Ubuntu et sur les
+ * runners GitHub Actions) car certains sites refusent le client `fetch` de Node
+ * via une empreinte TLS, tout en acceptant une requête curl classique.
+ */
+async function fetchPageViaCurlOrNode(url, timeoutMs = 20000) {
+  try {
+    const { stdout } = await execFileAsync(
+      'curl',
+      [
+        '-sL',
+        '--compressed',
+        '--max-time',
+        String(Math.round(timeoutMs / 1000)),
+        '-A',
+        USER_AGENT,
+        '-H',
+        'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        '-H',
+        'Accept-Language: fr-FR,fr;q=0.9,en;q=0.8',
+        '-w',
+        '\n__HTTP_STATUS__:%{http_code}',
+        url,
+      ],
+      { maxBuffer: 32 * 1024 * 1024, timeout: timeoutMs + 5000 }
+    );
+    const marker = stdout.lastIndexOf('__HTTP_STATUS__:');
+    const status = marker >= 0 ? Number(stdout.slice(marker + 16).trim()) : 200;
+    const body = marker >= 0 ? stdout.slice(0, marker) : stdout;
+    if (status < 200 || status >= 300) {
+      return { ok: false, body: '', note: `Secours HTTP ${status}` };
+    }
+    return { ok: true, body, note: '' };
+  } catch (curlErr) {
+    // Repli : fetch natif (utile si curl est absent de l'environnement)
+    try {
+      const r = await fetchText(url, {}, timeoutMs);
+      if (!r.ok) return { ok: false, body: '', note: `Secours HTTP ${r.status}` };
+      return { ok: true, body: r.text, note: '' };
+    } catch {
+      return { ok: false, body: '', note: `Secours injoignable (${curlErr.code || curlErr.message})` };
+    }
+  }
+}
+
+/** Extrait les blocs JSON-LD schema.org d'une page HTML. */
+function extractJsonLdBlocks(html) {
+  const blocks = [];
+  const re = /<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) blocks.push(m[1]);
+  return blocks;
+}
+
+/** Aplatit un JSON-LD (objet, tableau ou @graph) en liste de nœuds. */
+function flattenJsonLd(raw) {
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return [];
+  }
+  const stack = Array.isArray(parsed) ? [...parsed] : [parsed];
+  const nodes = [];
+  while (stack.length) {
+    const node = stack.pop();
+    if (!node || typeof node !== 'object') continue;
+    if (Array.isArray(node)) {
+      stack.push(...node);
+      continue;
+    }
+    if (Array.isArray(node['@graph'])) stack.push(...node['@graph']);
+    nodes.push(node);
+  }
+  return nodes;
+}
+
+/**
+ * Normalise une URL d'affiche Shotgun en haute résolution.
+ * - retire un éventuel préfixe de proxy d'archive (web.archive.org/…im_/)
+ * - force une largeur confortable (1200 px) et un format moderne
+ * Les affiches vivent sur assets.shotgun.live (Cloudinary), qui n'est PAS
+ * protégé par le défi anti-robot : le rapatriement fonctionne même quand
+ * l'agenda est inaccessible.
+ */
+function normalizeShotgunPosterUrl(url = '') {
+  if (!url) return '';
+  let clean = url.trim();
+  const proxied = clean.match(/im_\/(https?:\/\/.+)$/);
+  if (proxied) clean = proxied[1];
+  if (!/^https?:\/\//i.test(clean)) return '';
+
+  if (/res\.cloudinary\.com\/shotgun|assets\.shotgun\.live/.test(clean)) {
+    clean = clean.replace(
+      /\/(?:c_limit,w_\d+|c_fill,w_\d+)[^/]*\//,
+      '/c_limit,w_1200,fl_lossy,f_auto,q_auto/'
+    );
+  }
+  return clean;
+}
+
+/**
+ * ── Lecteur d'agenda Shotgun (accès opportuniste) ─────────────────────────────
+ * Shotgun protège ses pages par un défi Vercel (« Vercel Security Checkpoint »).
+ * Ce défi n'est PAS permanent : selon l'heure et la charge, une requête passe
+ * (c'est ainsi que deux dates de L'Arena ont pu être enregistrées le 23/11).
+ *
+ * Stratégie : on TENTE à chaque synchronisation, sans jamais en dépendre.
+ *  - si ça passe  → on découvre les dates, les artistes, les prix et les affiches ;
+ *  - si ça échoue → on ne touche à rien, on conserve le catalogue et on le signale.
+ *
+ * Aucun contournement du défi n'est tenté (pas de faux cookies, pas de proxy) :
+ * on se contente de retenter une requête HTTP normale, comme le ferait un visiteur.
+ */
+const SHOTGUN_VENUES = {
+  'l-arena': {
+    // « L'Arena » est parfois remplacé par « Toulouse » dans la carte :
+    // on accepte donc aussi une correspondance dans le titre de l'événement.
+    nameMatch: /arena/i,
+    titleMatch: /\barena\b/i,
+  },
+  'le-cri-de-la-mouette': {
+    nameMatch: /cri\s+de\s+la\s+mouette/i,
+    titleMatch: /\bcri\b/i,
+  },
+};
+
+/** Pages d'agenda ville à essayer, de la plus ciblée à la plus large. */
+function shotgunCandidateUrls(cityPath = 'toulouse') {
+  return [
+    `https://shotgun.live/fr/cities/${cityPath}/dance`,
+    `https://shotgun.live/fr/cities/${cityPath}`,
+    `https://shotgun.live/fr/cities/${cityPath}/concerts`,
+  ];
+}
+
+/**
+ * Extrait les cartes d'événements d'une page d'agenda Shotgun.
+ * La structure observée (janvier 2026) est stable :
+ *   <a href="/fr/events/<slug>">
+ *     <img alt="Titre">
+ *     <p>Titre</p> <span>Prix</span> <div>Salle ou Ville</div>
+ *     <time datetime="…Z">sam. 14 févr.</time> <time>23:00</time>
+ *     <div class="…rounded-full">Genre</div> …
+ */
+function parseShotgunCards(html) {
+  const $ = cheerio.load(html);
+  const cards = [];
+
+  $('a[href*="/events/"]').each((_, el) => {
+    const $a = $(el);
+    const href = $a.attr('href') || '';
+    const slugMatch = href.match(/\/events\/([a-z0-9-]+)/i);
+    if (!slugMatch) return;
+
+    const iso = $a.find('time[datetime]').first().attr('datetime') || '';
+    const utc = new Date(iso);
+    if (Number.isNaN(utc.getTime())) return;
+
+    // Shotgun sérialise en UTC : on repasse en heure de Paris (fuseau de la salle).
+    const parts = new Intl.DateTimeFormat('fr-FR', {
+      timeZone: 'Europe/Paris',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    }).formatToParts(utc);
+    const get = (type) => parts.find((x) => x.type === type)?.value || '';
+    const date = `${get('year')}-${get('month')}-${get('day')}`;
+    const time = `${get('hour')}h${get('minute')}`;
+
+    // Titre : le <p> est le plus fiable, sinon l'attribut alt de l'image.
+    const $img = $a.find('img').first();
+    let title =
+      $a.find('p').first().text().replace(/\s+/g, ' ').trim() ||
+      ($img.attr('alt') || '').replace(/\s+/g, ' ').trim();
+    title = title.replace(/\s*\.\.\.$/, '').trim();
+    if (title.length < 2) return;
+
+    // Pastilles de genre
+    const genres = [];
+    $a.find('div.rounded-full, div[class*="rounded-full"]').each((__, g) => {
+      const txt = $(g).text().replace(/\s+/g, ' ').trim();
+      if (!txt || txt.length >= 24 || txt === '|') return;
+      if (/^(arena|cri de la mouette|toulouse)$/i.test(txt)) return;
+      genres.push(txt);
+    });
+
+    // Salle affichée : le premier <div> court hors pastilles ; sinon la ville.
+    let place = '';
+    $a.find('div').each((__, d) => {
+      const $d = $(d);
+      if (place) return;
+      if (($d.attr('class') || '').includes('rounded-full')) return;
+      if ($d.children().length > 0) return;
+      const txt = $d.text().replace(/\s+/g, ' ').trim();
+      if (txt && txt.length <= 40) place = txt;
+    });
+
+    // Prix : premier montant en euros de la carte (le prix le plus bas).
+    const priceText = $a.text().match(/(\d+[.,]\d{2})\s*€/);
+    let price = '';
+    if (priceText) {
+      const amount = Number(priceText[1].replace(',', '.'));
+      if (amount > 0 && amount < 500) price = `Dès ${priceText[1].replace('.', ',')} €`;
+    }
+
+    const posterSrc = normalizeShotgunPosterUrl(
+      $img.attr('src') || ($img.attr('srcset') || '').split(',')[0] || ''
+    );
+
+    cards.push({
+      slug: slugMatch[1],
+      title,
+      date,
+      time,
+      place,
+      price,
+      genres: [...new Set(genres)].slice(0, 4),
+      poster: posterSrc.startsWith('http') ? posterSrc : '',
+      url: `https://shotgun.live/fr/events/${slugMatch[1]}`,
+    });
+  });
+
+  return cards;
+}
+
+/**
+ * Tente de lire l'agenda Shotgun d'une salle. Renvoie ok:false si le défi
+ * anti-robot est actif — ce n'est pas une erreur, c'est le cas normal.
+ */
+async function fetchShotgunAgenda(venueId) {
+  const cfg = SHOTGUN_VENUES[venueId];
+  if (!cfg) return { ok: false, cards: [], note: 'Salle non configurée' };
+
+  // Mode maintenance / test : permet de rejouer une page HTML enregistrée
+  // sans dépendre de la disponibilité réelle de Shotgun.
+  const localHtml = process.env.SHOTGUN_LOCAL_HTML;
+
+  for (const url of shotgunCandidateUrls(cfg.cityPath)) {
+    let r;
+    try {
+      r = localHtml
+        ? { ok: true, status: 200, text: fs.readFileSync(localHtml, 'utf-8') }
+        : await fetchText(url, {}, 15000);
+    } catch {
+      continue;
+    }
+    if (!r.ok) continue; // 429 = défi actif, on essaie la page suivante
+
+    // Attribution STRICTE de la salle : sur une page « ville », Shotgun mélange
+    // toutes les salles et affiche parfois seulement « Toulouse ». On n'accepte
+    // donc une date que si la salle est nommée, ou si son nom figure dans le titre.
+    // Tout le reste est ignoré : mieux vaut manquer une date que l'attribuer à tort.
+    const all = parseShotgunCards(r.text);
+    const cards = all.filter((c) => cfg.nameMatch.test(c.place) || cfg.titleMatch.test(c.title));
+    const ignored = all.length - cards.length;
+    if (cards.length > 0) {
+      return {
+        ok: true,
+        cards,
+        sourceUrl: url,
+        note: `${cards.length} date(s) lues${ignored > 0 ? ` · ${ignored} ignorée(s) (salle non identifiable)` : ''}`,
+      };
+    }
+    // Page lue mais aucune date pour cette salle : on continue, ça peut venir d'une autre page
+  }
+
+  return { ok: false, cards: [], note: 'Défi anti-robot actif' };
+}
+
+/**
+ * Récupère les dates à venir d'une salle via une source de secours (JSON-LD).
+ * Renvoie [{ artist, date, time, url }] — sans prix ni statut billetterie.
+ */
+async function fetchFallbackEvents(venueId) {
+  const cfg = FALLBACK_SOURCES[venueId];
+  if (!cfg) return { ok: false, events: [], sourceUrl: '', note: 'Aucune source de secours' };
+
+  // Certains agrégateurs bloquent le client HTTP de Node (empreinte TLS) tout en
+  // acceptant curl : on privilégie curl quand il est disponible, avec repli sur fetch.
+  const text = await fetchPageViaCurlOrNode(cfg.url);
+  if (!text.ok) {
+    return { ok: false, events: [], sourceUrl: cfg.url, note: text.note };
+  }
+
+  const nodes = extractJsonLdBlocks(text.body).flatMap(flattenJsonLd);
+  const events = [];
+  for (const node of nodes) {
+    if (node['@type'] !== 'MusicEvent') continue;
+    const start = String(node.startDate || '');
+    const date = start.slice(0, 10);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+
+    // name = "Artiste - Ville - Salle - Date" → on ne garde que l'artiste
+    let artist = String(node.name || '');
+    const sep = artist.indexOf(' - ');
+    if (sep > 0) artist = artist.slice(0, sep);
+    artist = artist.replace(/\s+/g, ' ').trim();
+    if (artist.length < 2) continue;
+
+    const timeRaw = start.slice(11, 16);
+    events.push({
+      artist,
+      date,
+      time: /^\d{2}:\d{2}$/.test(timeRaw) ? `${timeRaw.slice(0, 2)}h${timeRaw.slice(3)}` : '',
+      url: node.url || cfg.url,
+    });
+  }
+  return { ok: true, events, sourceUrl: cfg.url, note: `${events.length} date(s) via source de secours` };
+}
+
 async function checkStatusOnlyVenue(venueId, venueConcerts, nowIso) {
   const cfg = STATUS_ONLY_SOURCES[venueId];
   if (!cfg) return { ok: true, status: 200, matchedCount: 0, changes: [], cancelledIds: [], sourceUrl: '' };
@@ -1272,7 +1622,12 @@ async function checkStatusOnlyVenue(venueId, venueConcerts, nowIso) {
     return {
       ok: false,
       status: r.status,
-      error: r.status === 429 ? 'Rate-limit plateforme (statuts vérifiés conservés)' : `HTTP ${r.status}`,
+      // Message volontairement factuel : sur Shotgun, RIEN n'a été lu. Il ne faut pas
+      // laisser croire que les statuts ont été revérifiés.
+      error:
+        r.status === 429
+          ? 'Mur anti-robot Shotgun — aucune donnée lue (dates du catalogue conservées)'
+          : `HTTP ${r.status}`,
       matchedCount: 0,
       changes: [],
       cancelledIds: [],
@@ -1378,6 +1733,122 @@ function findExistingMatch(scraped, existingList) {
   return null;
 }
 
+/** Nom de fichier stable : <salle>-<slug-titre>-<hash>.webp */
+function posterFileName(concert) {
+  const slug = `${concert.title || concert.id}`
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60);
+  const hash = crypto
+    .createHash('sha1')
+    .update(`${concert.id}|${concert.date}|${concert.sourcePosterUrl || concert.poster}`)
+    .digest('hex')
+    .slice(0, 6);
+  return `${concert.venueId}-${slug}-${hash}.webp`;
+}
+
+/** Palette d'accent par genre, pour les affiches de repli générées. */
+const PLACEHOLDER_TINTS = {
+  'Rock & Indie': ['#3F3A4A', '#C85A6E'],
+  'Metal & Hardcore': ['#2E2A34', '#B91C1C'],
+  'Électro & House': ['#26303F', '#38BDF8'],
+  'Techno & Rave': ['#232A38', '#818CF8'],
+  'Rap & Hip-Hop': ['#332B3A', '#A78BFA'],
+  Pop: ['#3A2E34', '#F472B6'],
+  'Chanson & Folk': ['#332E28', '#D6A15F'],
+  'Jazz & Blues': ['#252C38', '#60A5FA'],
+  'Soul, Funk & R&B': ['#332A33', '#F0ABFC'],
+  'Reggae & Dub': ['#26332A', '#4ADE80'],
+  'Musiques du Monde': ['#332F26', '#FBBF24'],
+  'Classique & Opéra': ['#2B2B33', '#E5E7EB'],
+};
+
+function escapeXml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/**
+ * Génère une affiche de repli sobre quand la salle ne publie aucune image
+ * (cas des dates confirmées par une source de secours). Évite la vignette vide
+ * et reste honnête : « Affiche non communiquée ».
+ */
+async function generatePlaceholderPoster(concert, venueName = '') {
+  const [bg, accent] = PLACEHOLDER_TINTS[concert.category] || ['#2A2733', '#C85A6E'];
+  const title = escapeXml((concert.title || 'Concert').slice(0, 30));
+  const venue = escapeXml((venueName || '').slice(0, 26));
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${bg}"/>
+        <stop offset="100%" stop-color="#17151D"/>
+      </linearGradient>
+    </defs>
+    <rect width="800" height="800" fill="url(#g)"/>
+    <circle cx="400" cy="400" r="230" fill="none" stroke="${accent}" stroke-opacity="0.18" stroke-width="2"/>
+    <text x="400" y="330" text-anchor="middle" fill="#8A8290" font-family="Helvetica, Arial, sans-serif" font-size="26" letter-spacing="4">SCÈNE ROSE</text>
+    <text x="400" y="405" text-anchor="middle" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-size="54" font-weight="bold">${title}</text>
+    <text x="400" y="465" text-anchor="middle" fill="${accent}" font-family="Helvetica, Arial, sans-serif" font-size="32">${venue}</text>
+    <text x="400" y="700" text-anchor="middle" fill="#6B6472" font-family="Helvetica, Arial, sans-serif" font-size="24">Affiche non communiquée</text>
+  </svg>`;
+
+  const fileName = `${concert.venueId}-${concert.date}-${slugify(concert.title).slice(0, 30) || 'concert'}.webp`;
+  await sharp(Buffer.from(svg)).webp({ quality: 82 }).toFile(path.join(POSTER_DIR, fileName));
+  return `/posters/${fileName}`;
+}
+
+/**
+ * Rapatrie une affiche distante et la convertit en WebP local (max 800px).
+ * Best-effort : en cas d'échec on conserve l'URL distante (fallback client).
+ */
+async function localizePoster(concert) {
+  const src = concert.poster;
+  if (typeof src !== 'string' || src.startsWith('/posters/')) return false;
+  if (!/^https?:\/\//i.test(src)) return false;
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 20000);
+  try {
+    const res = await fetch(src, {
+      signal: controller.signal,
+      redirect: 'follow',
+      headers: { 'User-Agent': USER_AGENT, Accept: 'image/*,*/*;q=0.8' },
+    });
+    if (!res.ok) return false;
+    const type = res.headers.get('content-type') || '';
+    if (type && !type.startsWith('image/')) return false;
+    const buffer = Buffer.from(await res.arrayBuffer());
+    if (buffer.length < 1024 || buffer.length > 12 * 1024 * 1024) return false;
+
+    fs.mkdirSync(POSTER_DIR, { recursive: true });
+    const fileName = posterFileName(concert);
+    await sharp(buffer, { animated: false })
+      .rotate()
+      .resize({
+        width: POSTER_MAX_EDGE,
+        height: POSTER_MAX_EDGE,
+        fit: 'inside',
+        withoutEnlargement: true,
+      })
+      .webp({ quality: POSTER_WEBP_QUALITY, effort: 3 })
+      .toFile(path.join(POSTER_DIR, fileName));
+
+    concert.sourcePosterUrl = concert.sourcePosterUrl || src;
+    concert.poster = `/posters/${fileName}`;
+    return true;
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 /** Exécute la synchronisation exhaustive + mise à jour des statuts */
 export async function syncConcerts({ quiet = false } = {}) {
   const startedAt = Date.now();
@@ -1392,6 +1863,17 @@ export async function syncConcerts({ quiet = false } = {}) {
   const db = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
   const venues = db.venues || [];
   let concerts = db.concerts || [];
+
+  // Compteur d'échecs consécutifs par salle (persisté) : au-delà de 3 cycles
+  // manqués, la salle est signalée dans le rapport comme nécessitant une action.
+  const failureStreaks = { ...(db.syncMeta?.failureStreaks || {}) };
+
+  // Historique du nombre de dates par salle, pour détecter une chute anormale
+  // (site qui change de structure et renvoie 0 événement sans erreur).
+  const previousCounts = { ...(db.syncMeta?.venueConcertCounts || {}) };
+  // Nombre de dates réellement lues à la source (≠ taille du catalogue).
+  // C'est la seule mesure qui distingue « la salle n'a rien » de « le lecteur est cassé ».
+  const previousReadCounts = { ...(db.syncMeta?.venueReadCounts || {}) };
 
   // 1. Purger les concerts passés (avant aujourd'hui Europe/Paris)
   const beforePast = concerts.length;
@@ -1502,6 +1984,8 @@ export async function syncConcerts({ quiet = false } = {}) {
                 firstSeenAt: nowIso,
                 statusVerifiedAt: nowIso,
               };
+              // Rapatrie immédiatement l'affiche (WebP local ~50 Ko au lieu de ~785 Ko distant)
+              await localizePoster(newConcert);
               concerts.push(newConcert);
               existingVenueConcerts.push(newConcert);
               venueAdded++;
@@ -1517,6 +2001,7 @@ export async function syncConcerts({ quiet = false } = {}) {
           sourceUrl: res.sourceUrl || venue.websiteUrl,
           ok: res.ok,
           checkedCount: activeForVenue.length,
+          readCount: res.ok ? (res.events?.length ?? 0) : 0,
           soldOutCount: activeForVenue.filter((c) => c.status === 'sold-out').length,
           lastTicketsCount: activeForVenue.filter((c) => c.status === 'last-tickets').length,
           freeCount: activeForVenue.filter((c) => c.status === 'free').length,
@@ -1535,13 +2020,170 @@ export async function syncConcerts({ quiet = false } = {}) {
         for (const ch of res.changes) changes.push(ch);
         for (const cid of res.cancelledIds) cancelledIds.add(cid);
 
+        // 1) Tentative opportuniste sur l'agenda Shotgun : le défi anti-robot laisse
+        //    parfois passer une requête normale. Si ça marche, on a des dates fraîches
+        //    avec salle, prix et affiche ; s'il bloque, on continue sans rien casser.
+        let shotgunNote = '';
+        let shotgunAdded = 0;
+        let shotgunCancelled = 0;
+        if (SHOTGUN_VENUES[venue.id]) {
+          const sg = await fetchShotgunAgenda(venue.id);
+          if (sg.ok) {
+            const venueObj = venues.find((v) => v.id === venue.id);
+            const seenSlugs = new Set();
+            for (const card of sg.cards) {
+              if (card.date < todayIso) continue;
+              seenSlugs.add(card.slug);
+
+              const existing = existingVenueConcerts.find(
+                (c) =>
+                  (c.venueEventUrl || '').includes(card.slug) ||
+                  (c.date === card.date && normalizeText(c.title).includes(normalizeText(card.title).slice(0, 12)))
+              );
+
+              if (existing) {
+                // La date existe déjà : on rafraîchit ce qu'on sait de fiable
+                if (card.price) existing.price = card.price;
+                existing.statusVerifiedAt = nowIso;
+                existing.statusSource = 'venue';
+                if (card.poster) {
+                  existing.sourcePosterUrl = existing.sourcePosterUrl || card.poster;
+                  // Une affiche locale est déjà bonne ; sinon on tente le rapatriement
+                  if (!existing.poster || !existing.poster.startsWith('/posters/')) {
+                    existing.poster = card.poster;
+                    await localizePoster(existing);
+                  }
+                }
+                continue;
+              }
+
+              const newConcert = {
+                id: `${venue.id}-${card.date}-${slugify(card.title).slice(0, 40)}`,
+                title: card.title,
+                subtitle: card.genres.length
+                  ? `${card.genres.join(' · ')} à ${venueObj?.shortName || venueObj?.name || 'la salle'}`
+                  : undefined,
+                date: card.date,
+                time: card.time,
+                venueId: venue.id,
+                category: inferCategory(card.genres, card.title, venue.id),
+                genres: card.genres.length ? card.genres : ['Clubbing'],
+                price: card.price || undefined,
+                status: 'available',
+                poster: card.poster,
+                sourcePosterUrl: card.poster,
+                venueEventUrl: card.url,
+                isClubNight: true,
+                firstSeenAt: nowIso,
+                statusVerifiedAt: nowIso,
+                statusSource: 'venue',
+              };
+              if (newConcert.poster) {
+                await localizePoster(newConcert);
+              } else {
+                try {
+                  newConcert.poster = await generatePlaceholderPoster(
+                    newConcert,
+                    venueObj?.shortName || venueObj?.name || ''
+                  );
+                } catch {
+                  // le composant PosterImage affichera un visuel de repli
+                }
+              }
+              concerts.push(newConcert);
+              existingVenueConcerts.push(newConcert);
+              shotgunAdded++;
+              addedCount++;
+            }
+
+            // Une date absente de l'agenda Shotgun = soirée annulée, déplacée, ou
+            // simplement page tronquée. On exige donc TROIS passages concordants
+            // (~18 h d'écart) avant de retirer quoi que ce soit.
+            for (const c of existingVenueConcerts) {
+              if (c.date < todayIso) continue;
+              const slugInUrl = (c.venueEventUrl || '').match(/\/events\/([a-z0-9-]+)/i)?.[1];
+              if (!slugInUrl) continue; // date saisie à la main : on n'y touche pas
+              if (seenSlugs.has(slugInUrl)) {
+                delete c.missedInShotgun;
+              } else {
+                c.missedInShotgun = (c.missedInShotgun || 0) + 1;
+                if (c.missedInShotgun >= 3) {
+                  cancelledIds.add(c.id);
+                  shotgunCancelled++;
+                }
+              }
+            }
+
+            shotgunNote = ` · Shotgun lu : ${sg.cards.length} date(s)${shotgunAdded ? `, +${shotgunAdded} ajoutée(s)` : ''}${shotgunCancelled ? `, ${shotgunCancelled} retirée(s)` : ''}`;
+          } else {
+            shotgunNote = ` · Shotgun indisponible (${sg.note})`;
+          }
+        }
+
+        // 2) Source de secours (JSON-LD) quand Shotgun reste muet
+        let fallbackNote = '';
+        let fallbackAdded = 0;
+        let fallbackConfirmed = 0;
+        let fallbackReadCount = 0;
+        if (!res.ok && !shotgunAdded && FALLBACK_SOURCES[venue.id]) {
+          const fb = await fetchFallbackEvents(venue.id);
+          if (fb.ok) {
+            fallbackReadCount = fb.events.length;
+            const upcoming = fb.events.filter((e) => e.date >= todayIso);
+            for (const ev of upcoming) {
+              const alreadyListed = existingVenueConcerts.some(
+                (c) =>
+                  c.date === ev.date &&
+                  normalizeText(c.title).includes(normalizeText(ev.artist).split(' ')[0])
+              );
+              if (alreadyListed) {
+                fallbackConfirmed++;
+                continue;
+              }
+              const venueObj = venues.find((v) => v.id === venue.id);
+              const newConcert = {
+                id: `${venue.id}-${ev.date}-${slugify(ev.artist).slice(0, 40)}`,
+                title: ev.artist,
+                subtitle: `Date confirmée via ${fallbackHostLabel(fb.sourceUrl)}`,
+                date: ev.date,
+                time: ev.time || '23h00',
+                venueId: venue.id,
+                category: venueObj?.defaultCategory || 'Électro & House',
+                genres: ['Clubbing'],
+                status: 'available',
+                poster: '',
+                sourcePosterUrl: '',
+                venueEventUrl: ev.url,
+                firstSeenAt: nowIso,
+                // Provenance explicite : le statut billetterie n'est PAS connu,
+                // seulement l'existence de la date.
+                statusSource: 'fallback',
+                statusVerifiedAt: null,
+              };
+              try {
+                newConcert.poster = await generatePlaceholderPoster(newConcert, venueObj?.shortName || venueObj?.name || '');
+              } catch {
+                // Pas bloquant : le composant PosterImage affiche un visuel de repli
+              }
+              concerts.push(newConcert);
+              existingVenueConcerts.push(newConcert);
+              fallbackAdded++;
+              addedCount++;
+            }
+            fallbackNote = ` · secours : ${fb.events.length} date(s) lues${fallbackAdded > 0 ? `, +${fallbackAdded} ajoutée(s)` : fallbackConfirmed > 0 ? `, ${fallbackConfirmed} déjà connue(s)` : ''}`;
+          } else {
+            fallbackNote = ` · secours KO (${fb.note})`;
+          }
+        }
+
         const activeForVenue = concerts.filter((c) => c.venueId === venue.id && !cancelledIds.has(c.id));
         venuesReport.push({
           venueId: venue.id,
           venueName: venue.shortName,
           sourceUrl: res.sourceUrl || venue.websiteUrl,
-          ok: res.ok,
+          ok: res.ok || Boolean(fallbackNote && !fallbackNote.includes('KO')),
           checkedCount: activeForVenue.length,
+          readCount: Math.max(res.ok ? res.events?.length ?? 0 : 0, fallbackReadCount),
           soldOutCount: activeForVenue.filter((c) => c.status === 'sold-out').length,
           lastTicketsCount: activeForVenue.filter((c) => c.status === 'last-tickets').length,
           freeCount: activeForVenue.filter((c) => c.status === 'free').length,
@@ -1553,7 +2195,7 @@ export async function syncConcerts({ quiet = false } = {}) {
             ? res.matchedCount > 0
               ? `${res.matchedCount}/${existingVenueConcerts.length} dates vérifiées en direct`
               : `Page joignable (HTTP ${res.status}) — statuts synchronisés`
-            : res.error || 'Indisponible — cache conservé',
+            : `${res.error || 'Indisponible'}${shotgunNote}${fallbackNote}`,
         });
       }
     })
@@ -1563,6 +2205,141 @@ export async function syncConcerts({ quiet = false } = {}) {
   const removedCancelledCount = cancelledIds.size;
   if (removedCancelledCount > 0) {
     concerts = concerts.filter((c) => !cancelledIds.has(c.id));
+  }
+
+
+  // ── Garde-fou : détecter une salle qui « répond » mais ne trouve plus rien ──
+  // Si une salle avait N dates au cycle précédent et qu'elle n'en trouve plus que
+  // très peu, c'est presque toujours une structure HTML qui a changé. Sans ce
+  // contrôle, le rapport afficherait fièrement « agenda complet » avec 0 date.
+  const suspiciousDrops = [];
+  const confirmedDrops = [];
+  const previousDropStreaks = { ...(db.syncMeta?.dropStreaks || {}) };
+  const dropStreaks = {};
+  const anomalyIds = new Set();
+
+  for (const r of venuesReport) {
+    const prev = previousCounts[r.venueId] ?? 0;
+    const nowCount = r.checkedCount ?? 0;
+    const prevRead = previousReadCounts[r.venueId] ?? 0;
+    const nowRead = r.readCount ?? 0;
+
+    // Trop peu de dates au départ pour juger quoi que ce soit.
+    if (prev < 5 && prevRead < 5) {
+      dropStreaks[r.venueId] = 0;
+      continue;
+    }
+
+    // Deux mesures, deux usages :
+    //  - le catalogue dit combien de dates on affiche ;
+    //  - la lecture dit combien de dates la source a réellement rendues.
+    // La seconde est la plus fiable : un lecteur cassé laisse le catalogue
+    // intact tout en ne lisant plus rien.
+    const catalogDrop = prev >= 5 && nowCount <= Math.max(1, Math.floor(prev * 0.3));
+    const readDrop = prevRead >= 5 && nowRead <= Math.max(1, Math.floor(prevRead * 0.3));
+
+    if (!catalogDrop && !readDrop) {
+      dropStreaks[r.venueId] = 0;
+      continue;
+    }
+
+    const streak = (previousDropStreaks[r.venueId] || 0) + 1;
+    dropStreaks[r.venueId] = streak;
+    const datesLues = readDrop ? nowRead : nowCount;
+
+    // Une baisse revue une 2e fois alors que le lecteur ramène quand même des
+    // dates = baisse réelle (la salle a réduit son programme). On la valide une
+    // fois pour toutes pour ne pas alerter pendant des mois.
+    // Zéro date lue deux fois de suite = lecteur cassé : on continue d'alerter.
+    if (streak >= 2 && datesLues >= 1) {
+      confirmedDrops.push({
+        venueId: r.venueId,
+        venueName: r.venueName,
+        previousCount: readDrop ? prevRead : prev,
+        currentCount: readDrop ? nowRead : nowCount,
+      });
+      dropStreaks[r.venueId] = 0;
+      continue;
+    }
+
+    anomalyIds.add(r.venueId);
+    suspiciousDrops.push({
+      venueId: r.venueId,
+      venueName: r.venueName,
+      previousCount: readDrop ? prevRead : prev,
+      currentCount: readDrop ? nowRead : nowCount,
+      measure: readDrop ? 'lecture' : 'catalogue',
+    });
+    r.ok = false;
+    r.needsAttention = true;
+    r.note = readDrop
+      ? `⚠️ Chute anormale : ${prevRead} → ${nowRead} dates lues (structure du site probablement modifiée)`
+      : `⚠️ Chute anormale : ${prev} → ${nowCount} dates (structure du site probablement modifiée)`;
+  }
+
+  // Mémorise les comptes stabilisés. Un compte effondré n'est JAMAIS enregistré,
+  // sinon le cycle suivant comparerait à une valeur déjà faussée et l'alerte
+  // disparaîtrait d'elle-même au bout de deux passages.
+  const venueConcertCounts = {};
+  const venueReadCounts = {};
+  for (const r of venuesReport) {
+    const isAnomaly = anomalyIds.has(r.venueId);
+    venueConcertCounts[r.venueId] = isAnomaly
+      ? previousCounts[r.venueId] ?? r.checkedCount ?? 0
+      : r.checkedCount ?? 0;
+    venueReadCounts[r.venueId] = isAnomaly
+      ? previousReadCounts[r.venueId] ?? r.readCount ?? 0
+      : r.readCount ?? 0;
+  }
+
+  // Mise à jour des compteurs d'échecs consécutifs + drapeau d'alerte
+  for (const r of venuesReport) {
+    if (r.ok && !anomalyIds.has(r.venueId)) {
+      failureStreaks[r.venueId] = 0;
+    } else {
+      failureStreaks[r.venueId] = (failureStreaks[r.venueId] || 0) + 1;
+      r.failureStreak = failureStreaks[r.venueId];
+      if (failureStreaks[r.venueId] >= 3) {
+        r.needsAttention = true;
+      }
+    }
+  }
+  const venuesNeedingAttention = venuesReport
+    .filter((r) => r.needsAttention)
+    .map((r) => r.venueName);
+
+  // 3 bis. Aucun concert ne doit rester sans affiche (contrôle qualité bloquant)
+  for (const concert of concerts) {
+    if (concert.poster) continue;
+    try {
+      const venueObj = venues.find((v) => v.id === concert.venueId);
+      concert.poster = await generatePlaceholderPoster(concert, venueObj?.shortName || venueObj?.name || '');
+    } catch {
+      // ignoré : PosterImage gère l’absence
+    }
+  }
+
+  // 4. Filet de sécurité : rapatrier toute affiche encore distante (plafonné pour tenir dans le job CI)
+  const stillRemote = concerts.filter(
+    (c) => typeof c.poster === 'string' && /^https?:\/\//i.test(c.poster)
+  );
+  let postersLocalized = 0;
+  if (stillRemote.length > 0) {
+    let posterCursor = 0;
+    const POSTER_CONCURRENCY = 6;
+    const POSTER_BATCH_LIMIT = 80;
+    const batch = stillRemote.slice(0, POSTER_BATCH_LIMIT);
+    await Promise.all(
+      Array.from({ length: Math.min(POSTER_CONCURRENCY, batch.length) }, async () => {
+        while (posterCursor < batch.length) {
+          const concert = batch[posterCursor++];
+          if (await localizePoster(concert)) postersLocalized++;
+        }
+      })
+    );
+    if (!quiet && postersLocalized > 0) {
+      console.log(`   Affiches          : ${postersLocalized} rapatriées en WebP local`);
+    }
   }
 
   // Tri chronologique propre
@@ -1615,6 +2392,14 @@ export async function syncConcerts({ quiet = false } = {}) {
     addedCount,
     removedPastCount,
     removedCancelledCount,
+    postersLocalized,
+    failureStreaks,
+    venuesNeedingAttention,
+    suspiciousDrops,
+    confirmedDrops,
+    dropStreaks,
+    venueConcertCounts,
+    venueReadCounts,
     horizonDate: maxDate,
     changes,
     venuesReport,
@@ -1653,6 +2438,9 @@ export async function syncConcerts({ quiet = false } = {}) {
     console.log(
       `   Concerts actifs   : ${syncMeta.totalConcerts} (+${addedCount} nouveaux · ${syncMeta.availableCount} dispo · ${syncMeta.lastTicketsCount} dernières places · ${syncMeta.soldOutCount} complets · ${syncMeta.freeCount} gratuits)`
     );
+    if (venuesNeedingAttention.length > 0) {
+      console.log(`   ⚠️  À surveiller (3 échecs consécutifs) : ${venuesNeedingAttention.join(', ')}`);
+    }
     if (removedPastCount > 0 || removedCancelledCount > 0) {
       console.log(`   Nettoyage         : ${removedPastCount} passés · ${removedCancelledCount} annulés`);
     }
@@ -1672,12 +2460,133 @@ export async function syncConcerts({ quiet = false } = {}) {
     console.log('');
   }
 
-  return { venues, concerts, syncMeta };
+  // ── Secours auto-généré ────────────────────────────────────────────────────
+  // Le catalogue embarqué dans l'app (src/data/concertsFallback.ts) ne doit pas
+  // être maintenu à la main : on le régénère à partir du dernier état sain.
+  // Il sert uniquement si la première visite n'a aucun réseau.
+  try {
+    const fallbackPath = path.join(PROJECT_ROOT, 'src/data/concertsFallback.ts');
+    // On ne garde que les champs du type Concert : les propriétés internes de
+    // travail (missedInShotgun…) ou les valeurs null (statusVerifiedAt) feraient
+    // échouer la compilation TypeScript du catalogue de secours.
+    const FALLBACK_FIELDS = [
+      'id', 'title', 'subtitle', 'date', 'endDate', 'time', 'venueId', 'category',
+      'genres', 'price', 'status', 'statusVerifiedAt', 'statusSource', 'firstSeenAt',
+      'poster', 'sourcePosterUrl', 'venueEventUrl', 'featured', 'isClubNight',
+    ];
+    const healthy = concerts
+      .filter((c) => (c.endDate || c.date) >= todayIso && c.poster)
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(0, 200)
+      .map((c) => {
+        const clean = {};
+        for (const key of FALLBACK_FIELDS) {
+          const value = c[key];
+          if (value === undefined || value === null) continue;
+          clean[key] = value;
+        }
+        return clean;
+      });
+    if (healthy.length >= 20) {
+      // Le JSON est un sous-ensemble valide de TypeScript : inutile de convertir
+      // les guillemets (et risqué — les apostrophes de « L'Arena » cassaient le fichier).
+      const body = JSON.stringify(healthy, null, 2).replace(/</g, '\\u003c');
+      fs.writeFileSync(
+        fallbackPath,
+        `/**\n * Affiches de secours — GÉNÉRÉ AUTOMATIQUEMENT par scripts/sync-concerts.mjs.\n * Ne pas éditer à la main : ce fichier est écrasé à chaque synchronisation.\n * Dernière génération : ${nowIso}\n */\nimport type { Concert } from './toulouseData';\n\nexport const RAW_CONCERTS: Concert[] = ${body};\n`,
+        'utf-8'
+      );
+    }
+  } catch (err) {
+    if (!quiet) console.log(`   (secours non régénéré : ${err.message})`);
+  }
+
+  // ── Tableau de bord lisible (ETAT-DU-SITE.md) ─────────────────────────────
+  try {
+    const fmtDate = (iso) => {
+      if (!iso) return 'jamais';
+      return new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Europe/Paris',
+        dateStyle: 'short',
+        timeStyle: 'short',
+      }).format(new Date(iso));
+    };
+    const lignes = venuesReport.map((r) => {
+      const state = r.ok ? '✅ OK' : r.needsAttention ? '🚨 à réparer' : '⚠️ instable';
+      const streak = failureStreaks[r.venueId] || 0;
+      return `| ${r.venueName} | ${state} | ${r.checkedCount} | ${r.checkedAt ? fmtDate(r.checkedAt) : '—'} | ${streak > 0 ? `${streak} échec(s)` : '—'} | ${r.note} |`;
+    });
+
+    const md = `# État du site — Scène Rose
+
+> Fichier généré automatiquement à chaque synchronisation. Ne pas éditer.
+> Dernière mise à jour : **${fmtDate(nowIso)}** (heure de Paris)
+
+## Résumé
+
+- Concerts à l'affiche : **${concerts.length}** (horizon ${maxDate})
+- Salles joignables : **${syncMeta.syncedVenuesOk}/${venues.length}**
+- Affiches hébergées localement : **${concerts.filter((c) => typeof c.poster === 'string' && c.poster.startsWith('/posters/')).length}**
+- Salles à surveiller : ${venuesNeedingAttention.length ? venuesNeedingAttention.join(', ') : 'aucune'}
+- Chutes anormales détectées : ${suspiciousDrops.length ? suspiciousDrops.map((d) => `${d.venueName} (${d.previousCount}→${d.currentCount})`).join(', ') : 'aucune'}
+- Baisses confirmées (programmation réellement réduite) : ${confirmedDrops.length ? confirmedDrops.map((d) => `${d.venueName} (${d.previousCount}→${d.currentCount})`).join(', ') : 'aucune'}
+
+## Détail par salle
+
+| Salle | État | Dates | Vérifiée le | Échecs consécutifs | Note |
+|---|---|---|---|---|---|
+${lignes.join('\n')}
+
+## Que faire en cas d'alerte
+
+1. **🚨 à réparer** → ouvrir le site de la salle, vérifier que la page existe toujours.
+   Si la structure a changé, ajuster le lecteur correspondant dans \`scripts/sync-concerts.mjs\`.
+2. **⚠️ instable** → rien à faire, la salle rate parfois une synchronisation.
+   On intervient seulement après plusieurs jours consécutifs.
+3. **Chute anormale** → même chose que « à réparer » : le site répond mais son contenu
+   n'est plus reconnu.
+
+Le job GitHub Actions échoue volontairement dans ces cas : un e-mail est envoyé
+automatiquement au propriétaire du dépôt.
+`;
+    fs.writeFileSync(path.join(PROJECT_ROOT, 'ETAT-DU-SITE.md'), md, 'utf-8');
+  } catch {
+    // Le tableau de bord est un confort, jamais un point de blocage
+  }
+
+  // ── Sortie en erreur : c'est ce qui déclenche l'e-mail d'alerte GitHub ─────
+  const blockingProblems = [
+    ...suspiciousDrops.map(
+      (d) => `chute anormale ${d.venueName} : ${d.previousCount} → ${d.currentCount} dates`
+    ),
+    ...(venuesNeedingAttention.length >= 3
+      ? [`${venuesNeedingAttention.length} salles en échec répété : ${venuesNeedingAttention.join(', ')}`]
+      : []),
+    ...(syncMeta.syncedVenuesOk < Math.ceil(venues.length / 2)
+      ? [`moins de la moitié des salles joignables (${syncMeta.syncedVenuesOk}/${venues.length})`]
+      : []),
+  ];
+
+  if (blockingProblems.length > 0 && !quiet) {
+    console.log('\n🚨 ANOMALIES À CORRIGER :');
+    for (const p of blockingProblems) console.log(`   • ${p}`);
+    console.log('');
+  }
+
+  return { venues, concerts, syncMeta, blockingProblems };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   syncConcerts()
-    .then(() => process.exit(0))
+    .then((result) => {
+      // Code 1 = le job GitHub Actions échoue et envoie un e-mail au propriétaire.
+      // Les données sont déjà écrites : le site continue de fonctionner.
+      if (result?.blockingProblems?.length) {
+        console.error('\n❌ Synchronisation terminée avec anomalies — données publiées quand même.');
+        process.exit(1);
+      }
+      process.exit(0);
+    })
     .catch((err) => {
       console.error('❌ Erreur lors de la synchronisation :', err);
       process.exit(1);

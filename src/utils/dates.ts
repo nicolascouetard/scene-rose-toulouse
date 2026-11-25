@@ -403,3 +403,14 @@ export function downloadConcertIcs(concert: Concert, venue: Venue) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+/**
+ * Nombre de jours entiers écoulés depuis un instant ISO (fuseau de Paris).
+ * Utilisé pour signaler un agenda qui n'est plus actualisé.
+ */
+export function daysSince(iso?: string): number | null {
+  if (!iso) return null;
+  const then = new Date(iso).getTime();
+  if (Number.isNaN(then)) return null;
+  return Math.floor((Date.now() - then) / 86_400_000);
+}

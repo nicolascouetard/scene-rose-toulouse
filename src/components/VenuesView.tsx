@@ -7,6 +7,7 @@ import {
   Users,
 } from 'lucide-react';
 import type { Concert, SyncMeta, Venue } from '../data/toulouseData';
+import { PosterImage } from './PosterImage';
 import { formatSyncTime } from '../utils/dates';
 
 interface VenuesViewProps {
@@ -134,16 +135,12 @@ export function VenuesView({
                         className="shrink-0 w-[68px] text-left group"
                       >
                         <div className="w-[68px] h-[68px] rounded-xl overflow-hidden bg-[#211E27] border border-white/[0.08]">
-                          <img
-                            src={c.poster}
+                          <PosterImage
+                            concert={c}
                             alt={c.title}
-                            loading="lazy"
-                            onError={(e) => {
-                              const target = e.currentTarget;
-                              if (target.src !== c.sourcePosterUrl) {
-                                target.src = c.sourcePosterUrl;
-                              }
-                            }}
+                            decorative
+                            width={68}
+                            height={68}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                           />
                         </div>

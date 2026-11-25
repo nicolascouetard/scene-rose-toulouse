@@ -314,10 +314,12 @@ export function StreamingLinksRow({ artistName, onNotify }: StreamingLinksRowPro
             target="_blank"
             rel="noopener noreferrer"
             onClick={s.onClick}
+            aria-label={`Écouter ${query} sur ${s.name} (nouvel onglet)`}
             className={`flex-1 min-w-[96px] py-2 px-2.5 rounded-xl border text-[11.5px] font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition-all ${s.cls}`}
           >
-            <Icon className="w-3.5 h-3.5 shrink-0" />
+            <Icon className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
             <span className="truncate">{s.name}</span>
+            <span className="sr-only"> (nouvel onglet)</span>
           </a>
         );
       })}

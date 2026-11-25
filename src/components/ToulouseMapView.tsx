@@ -18,6 +18,7 @@ import {
 } from '../data/toulouseData';
 import { formatShortDate, matchesPeriod } from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
+import { PosterImage } from './PosterImage';
 
 interface ToulouseMapViewProps {
   venues: Venue[];
@@ -500,14 +501,12 @@ export function ToulouseMapView({
                     className="shrink-0 w-[108px] md:w-auto text-left group"
                   >
                     <div className="relative w-[108px] md:w-full h-[72px] rounded-xl overflow-hidden bg-[#211E27] border border-white/[0.08]">
-                      <img
-                        src={c.poster}
+                      <PosterImage
+                        concert={c}
                         alt={c.title}
-                        loading="lazy"
-                        onError={(e) => {
-                          const t = e.currentTarget;
-                          if (t.src !== c.sourcePosterUrl) t.src = c.sourcePosterUrl;
-                        }}
+                        decorative
+                        width={108}
+                        height={72}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                       />
                       <span className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-black/75 text-[9.5px] font-semibold text-white">

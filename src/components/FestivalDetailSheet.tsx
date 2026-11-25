@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   BellPlus,
   Calendar,
@@ -23,6 +23,7 @@ import {
   type Festival,
 } from '../data/festivalsData';
 import { useSwipeDownToClose } from '../hooks/useSwipeDownToClose';
+import { useDialogA11y } from '../hooks/useDialogA11y';
 import { normalizeSearchText } from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
 import { StreamingLinksRow } from './StreamingLinksRow';
@@ -78,6 +79,8 @@ export function FestivalDetailSheet({
   const { scrollRef, sheetStyle, backdropOpacity, handlers } = useSwipeDownToClose({
     onClose,
   });
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(Boolean(festival), dialogRef);
 
   useEffect(() => {
     if (!festival) {
@@ -154,6 +157,10 @@ export function FestivalDetailSheet({
         onClick={onClose}
       >
         <div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="festival-sheet-title"
           className="relative w-full max-w-[440px] md:max-w-xl max-h-[92dvh] md:max-h-[88dvh] rounded-t-3xl md:rounded-3xl bg-[#131117] border-t border-x md:border border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
           style={sheetStyle}
           onClick={(e) => e.stopPropagation()}
@@ -202,7 +209,7 @@ export function FestivalDetailSheet({
                 </span>
               </div>
 
-              <h2 className="mt-3 font-display text-2xl font-extrabold text-white leading-tight">
+              <h2 id="festival-sheet-title" className="mt-3 font-display text-2xl font-extrabold text-white leading-tight">
                 {festival.name}
               </h2>
               <p className="mt-1.5 text-sm text-[#BDB5AC] leading-relaxed">

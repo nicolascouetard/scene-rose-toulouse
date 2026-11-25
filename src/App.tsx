@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Bell,
   Building2,
@@ -24,11 +24,11 @@ import {
   X,
 } from 'lucide-react';
 import {
-  CONCERTS as BUNDLED_CONCERTS,
   GENRE_CATEGORIES,
   TODAY_ISO,
   VENUE_GEO,
   VENUES as BUNDLED_VENUES,
+  loadBundledConcerts,
   type Concert,
   type GenreCategory,
   type SyncMeta,
@@ -41,6 +41,7 @@ import {
   type Festival,
 } from './data/festivalsData';
 import {
+  daysSince,
   daysUntilConcert,
   formatDayHeader,
   formatMonthChip,
@@ -64,14 +65,76 @@ import { VenuesView } from './components/VenuesView';
 import { FavoritesView } from './components/FavoritesView';
 import { SyncStatusSheet } from './components/SyncStatusSheet';
 import { AdvancedFiltersSheet } from './components/AdvancedFiltersSheet';
-import { ToulouseMapView } from './components/ToulouseMapView';
+
+// ── Code-splitting : la carte (Leaflet ≈ 150 Ko) et les feuilles lourdes
+//    ne sont téléchargées qu'à la première utilisation.
+const ToulouseMapView = lazy(() =>
+  import('./components/ToulouseMapView').then((m) => ({ default: m.ToulouseMapView }))
+);
 import { FestivalsView } from './components/FestivalsView';
-import { FestivalDetailSheet } from './components/FestivalDetailSheet';
+const FestivalDetailSheet = lazy(() =>
+  import('./components/FestivalDetailSheet').then((m) => ({ default: m.FestivalDetailSheet }))
+);
 import { AboutRgpdSheet } from './components/AboutRgpdSheet';
-import {
-  CalendarPickerSheet,
-  type CalendarSelection,
-} from './components/CalendarPickerSheet';
+const CalendarPickerSheet = lazy(() =>
+  import('./components/CalendarPickerSheet').then((m) => ({ default: m.CalendarPickerSheet }))
+);
+import type { CalendarSelection } from './components/CalendarPickerSheet';
+
+// ── Prefetch : charge le chunk au survol / focus du bouton, avant même le clic
+const chunkLoaders = {
+  map: () => import('./components/ToulouseMapView'),
+  festivalSheet: () => import('./components/FestivalDetailSheet'),
+  calendar: () => import('./components/CalendarPickerSheet'),
+} as const;
+const prefetched = new Set<keyof typeof chunkLoaders>();
+
+function prefetchChunk(key: keyof typeof chunkLoaders) {
+  if (prefetched.has(key)) return;
+  prefetched.add(key);
+  void chunkLoaders[key]();
+}
+
+/** Squelette de chargement : évite le décalage de mise en page (CLS) à l'hydratation */
+function AgendaSkeleton() {
+  return (
+    <div className="space-y-5 pt-1" aria-hidden="true">
+      {[0, 1, 2].map((section) => (
+        <section key={section}>
+          <div className="px-4 md:px-6 mb-2">
+            <div className="h-3 w-32 rounded bg-white/[0.07] animate-pulse" />
+          </div>
+          <div className="px-4 md:px-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
+            {[0, 1, 2, 3].map((card) => (
+              <div
+                key={card}
+                className="rounded-2xl overflow-hidden bg-[#16141A] border border-white/[0.06]"
+              >
+                <div className="aspect-[4/4.4] w-full bg-[#1E1B24] animate-pulse" />
+                <div className="p-2.5 space-y-2">
+                  <div className="h-3 w-3/4 rounded bg-white/[0.07] animate-pulse" />
+                  <div className="h-2.5 w-1/2 rounded bg-white/[0.05] animate-pulse" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+/** Fallback discret pendant le chargement d'un chunk lazy */
+function ChunkFallback({ label }: { label: string }) {
+  return (
+    <div className="flex items-center justify-center py-24 text-[13px] text-[#8A8290]">
+      <span className="inline-flex items-center gap-2">
+        <RefreshCw className="w-4 h-4 animate-spin" aria-hidden="true" />
+        {label}
+      </span>
+    </div>
+  );
+}
 
 type Tab = 'agenda' | 'festivals' | 'map' | 'venues' | 'favorites';
 
@@ -95,7 +158,9 @@ const FAV_ALERT_EMAIL_KEY = 'scene_rose_fav_alert_email_v1';
 
 export function App() {
   const [venues, setVenues] = useState<Venue[]>(BUNDLED_VENUES);
-  const [concerts, setConcerts] = useState<Concert[]>(BUNDLED_CONCERTS);
+  // Le catalogue de secours est chargé en dynamic import (chunk séparé, ~80 Ko non bloquants)
+  const [concerts, setConcerts] = useState<Concert[]>([]);
+  const [isHydrating, setIsHydrating] = useState(true);
   const [selectedFestival, setSelectedFestival] = useState<Festival | null>(null);
   const [favoriteFestivals, setFavoriteFestivals] = useState<string[]>(() => {
     try {
@@ -371,17 +436,47 @@ export function App() {
             if (Array.isArray(data.venues) && data.venues.length > 0) setVenues(data.venues);
             setConcerts(data.concerts);
             if (data.syncMeta) setSyncMeta(data.syncMeta);
+            setIsHydrating(false);
             return;
           }
         } catch {
           // Try next source
         }
       }
+
+      // Aucune source joignable (première visite hors-ligne) : on charge le
+      // catalogue de secours, dans un chunk séparé chargé à la demande.
+      try {
+        const fallback = await loadBundledConcerts();
+        if (!cancelled && fallback.length > 0) setConcerts(fallback);
+      } catch {
+        // Rien à afficher : l'UI gère l'état vide
+      } finally {
+        if (!cancelled) setIsHydrating(false);
+      }
     };
     loadSyncedData();
     return () => {
       cancelled = true;
     };
+  }, []);
+
+  // Un agenda qui n'a pas bougé depuis 3 jours est un agenda qui a un problème :
+  // on le dit à l'utilisateur plutôt que de laisser croire que tout est à jour.
+  const staleDays = useMemo(() => daysSince(syncMeta?.lastSyncedAt), [syncMeta]);
+
+  // Préchargement opportuniste des chunks secondaires une fois la page interactive
+  useEffect(() => {
+    const idle = (cb: () => void) => {
+      const ric = (window as unknown as { requestIdleCallback?: (fn: () => void) => void })
+        .requestIdleCallback;
+      if (typeof ric === 'function') ric(cb);
+      else window.setTimeout(cb, 2200);
+    };
+    idle(() => {
+      prefetchChunk('festivalSheet');
+      prefetchChunk('calendar');
+    });
   }, []);
 
   const showToast = (msg: string) => {
@@ -833,6 +928,9 @@ export function App() {
 
               <button
                 type="button"
+                onMouseEnter={() => prefetchChunk('map')}
+                onFocus={() => prefetchChunk('map')}
+                onTouchStart={() => prefetchChunk('map')}
                 onClick={() => {
                   setActiveTab('map');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1054,10 +1152,31 @@ export function App() {
           </div>
         </header>
 
+        {/* Lien d'évitement (visible uniquement au focus clavier) */}
+        <a href="#contenu-principal" className="sr-skip-link">
+          Aller au contenu principal
+        </a>
+
         {/* Main Scrollable Area */}
-        <main className="flex-1 pb-24 md:pb-12">
+        <main id="contenu-principal" tabIndex={-1} className="flex-1 pb-24 md:pb-12">
           {activeTab === 'agenda' && (
             <>
+              {/* Bandeau d'honnêteté : l'agenda n'est plus rafraîchi depuis trop longtemps */}
+              {staleDays !== null && staleDays >= 3 && (
+                <div className="px-4 md:px-6 pt-3">
+                  <div
+                    role="status"
+                    className="flex items-start gap-2 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2.5 text-[12px] leading-snug text-amber-200"
+                  >
+                    <WifiOff className="w-3.5 h-3.5 mt-0.5 shrink-0" aria-hidden="true" />
+                    <span>
+                      Agenda non actualisé depuis <strong>{staleDays} jours</strong>. Les dates
+                      affichées restent celles de la dernière synchronisation réussie.
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Search & Filter Toolbar (scrolls cleanly with content; 1-row Search+Period on lg+, wrapping chips on PC) */}
               <div className="pt-3 pb-3 border-b border-white/[0.06] bg-[#110F15]/60 space-y-2.5">
                 <div className="px-4 md:px-6 flex flex-col lg:flex-row lg:items-center gap-2.5">
@@ -1336,7 +1455,9 @@ export function App() {
               </div>
 
               {/* Empty state */}
-              {groupedByDate.length === 0 ? (
+              {isHydrating && groupedByDate.length === 0 ? (
+                <AgendaSkeleton />
+              ) : groupedByDate.length === 0 ? (
                 <div className="px-6 py-16 text-center">
                   <p className="font-display text-base font-bold text-white">
                     Aucun concert trouvé
@@ -1461,12 +1582,14 @@ export function App() {
           )}
 
           {activeTab === 'map' && (
-            <ToulouseMapView
-              venues={venues}
-              concerts={concerts}
-              onFilterByVenue={handleSelectVenueFromAnywhere}
-              onSelectConcert={setSelectedConcert}
-            />
+            <Suspense fallback={<ChunkFallback label="Chargement de la carte…" />}>
+              <ToulouseMapView
+                venues={venues}
+                concerts={concerts}
+                onFilterByVenue={handleSelectVenueFromAnywhere}
+                onSelectConcert={setSelectedConcert}
+              />
+            </Suspense>
           )}
 
           {activeTab === 'venues' && (
@@ -1564,6 +1687,7 @@ export function App() {
 
             <button
               type="button"
+              onTouchStart={() => prefetchChunk('map')}
               onClick={() => {
                 setActiveTab('map');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1635,27 +1759,35 @@ export function App() {
         />
 
         {/* Festival Detail Modal / Bottom Sheet */}
-        <FestivalDetailSheet
-          festival={selectedFestival}
-          isFavorite={selectedFestival ? favoriteFestivals.includes(selectedFestival.id) : false}
-          favoriteArtists={favoriteArtists}
-          onClose={() => setSelectedFestival(null)}
-          onToggleFavorite={toggleFavoriteFestival}
-          onToggleFavoriteArtist={toggleFavoriteArtist}
-          onNotify={showToast}
-        />
+        {selectedFestival && (
+          <Suspense fallback={null}>
+            <FestivalDetailSheet
+              festival={selectedFestival}
+              isFavorite={favoriteFestivals.includes(selectedFestival.id)}
+              favoriteArtists={favoriteArtists}
+              onClose={() => setSelectedFestival(null)}
+              onToggleFavorite={toggleFavoriteFestival}
+              onToggleFavoriteArtist={toggleFavoriteArtist}
+              onNotify={showToast}
+            />
+          </Suspense>
+        )}
 
         {/* Interactive Calendar Date/Range Picker Sheet */}
-        <CalendarPickerSheet
-          open={calendarOpen}
-          concerts={nonDateFilteredConcerts}
-          selection={calendarSelection}
-          onApply={(next) => {
-            setCalendarSelection(next);
-            if (next) setPeriod('all');
-          }}
-          onClose={() => setCalendarOpen(false)}
-        />
+        {(calendarOpen || calendarSelection) && (
+          <Suspense fallback={null}>
+            <CalendarPickerSheet
+              open={calendarOpen}
+              concerts={nonDateFilteredConcerts}
+              selection={calendarSelection}
+              onApply={(next) => {
+                setCalendarSelection(next);
+                if (next) setPeriod('all');
+              }}
+              onClose={() => setCalendarOpen(false)}
+            />
+          </Suspense>
+        )}
 
         {/* Advanced Filters Sheet */}
         <AdvancedFiltersSheet
@@ -1713,8 +1845,14 @@ export function App() {
         />
 
         {/* Toast notification */}
+        <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+          {toast || ''}
+        </div>
         {toast && (
-          <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[55] px-4 py-2 rounded-full bg-[#221F2A] border border-white/15 shadow-xl text-xs font-semibold text-white animate-fade-in">
+          <div
+            aria-hidden="true"
+            className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[55] px-4 py-2 rounded-full bg-[#221F2A] border border-white/15 shadow-xl text-xs font-semibold text-white animate-fade-in"
+          >
             {toast}
           </div>
         )}

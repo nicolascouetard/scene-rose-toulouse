@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Calendar as CalendarIcon,
   ChevronLeft,
@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { TODAY_ISO, type Concert } from '../data/toulouseData';
 import { useSwipeDownToClose } from '../hooks/useSwipeDownToClose';
+import { useDialogA11y } from '../hooks/useDialogA11y';
 import { formatShortDate } from '../utils/dates';
 
 export interface CalendarSelection {
@@ -100,6 +101,8 @@ export function CalendarPickerSheet({
   const { scrollRef, sheetStyle, backdropOpacity, handlers } = useSwipeDownToClose({
     onClose,
   });
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(open, dialogRef);
 
   // Synchronise le brouillon à chaque ouverture
   useEffect(() => {
@@ -267,6 +270,10 @@ export function CalendarPickerSheet({
       onClick={onClose}
     >
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Choisir une date ou une période"
         className="relative w-full max-w-[440px] md:max-w-md max-h-[90dvh] rounded-t-3xl md:rounded-3xl bg-[#141219] border-t border-x md:border border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
         style={sheetStyle}
         onClick={(e) => e.stopPropagation()}

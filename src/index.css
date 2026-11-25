@@ -115,3 +115,51 @@
 .sr-pin-pulse {
   animation: pinPulse 1.9s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
+
+/* ── Accessibilité : respect de la préférence système « réduire les animations » ──
+   Indispensable pour les personnes sensibles au mouvement (troubles vestibulaires),
+   et requis par les critères WCAG 2.3.3 / 2.2.2. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .sr-pin-pulse {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .leaflet-zoom-animated {
+    transition: none !important;
+  }
+}
+
+/* Focus clavier visible et cohérent avec la charte Rose Capitole.
+   `:focus-visible` évite d'afficher l'anneau au clic souris/tactile. */
+:where(a, button, [role='button'], input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #DA7083;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Saut de navigation : premier élément focusable de la page */
+.sr-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 10px 16px;
+  background: #C85A6E;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0 0 12px 0;
+}
+
+.sr-skip-link:focus {
+  left: 0;
+}

@@ -1,8 +1,13 @@
 // Scène Rose — Service Worker PWA (consultation hors-ligne dans le métro toulousain)
-const CACHE_VERSION = 'scene-rose-v9';
+const CACHE_VERSION = 'scene-rose-v14';
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 const POSTER_CACHE = `${CACHE_VERSION}-posters`;
+const FONT_CACHE = `${CACHE_VERSION}-fonts`;
+
+// Plafond du cache d'affiches : 468 affiches ≈ 17 Mo, sous le quota navigateur,
+// mais on borne pour éviter l'éviction du shell sur les petits appareils.
+const POSTER_CACHE_LIMIT = 220;
 
 const SHELL_ASSETS = [
   '/',
@@ -10,7 +15,19 @@ const SHELL_ASSETS = [
   '/manifest.webmanifest?v=rose3',
   '/icons/icon-192.png?v=rose3',
   '/icons/icon-512.png?v=rose3',
+  '/fonts/fonts.css',
 ];
+
+/** Évince les entrées les plus anciennes d'un cache (FIFO) au-delà de `limit`. */
+async function trimCache(cacheName, limit) {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  if (keys.length <= limit) return;
+  const excess = keys.length - limit;
+  for (let i = 0; i < excess; i++) {
+    await cache.delete(keys[i]);
+  }
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -79,11 +96,33 @@ self.addEventListener('fetch', (event) => {
             cached ||
             fetch(request)
               .then((res) => {
-                if (res.ok) cache.put(request, res.clone());
+                if (res.ok) {
+                  cache.put(request, res.clone()).then(() => {
+                    trimCache(POSTER_CACHE, POSTER_CACHE_LIMIT).catch(() => {});
+                  });
+                }
                 return res;
               })
               .catch(() => new Response('', { status: 404 }))
         )
+      )
+    );
+    return;
+  }
+
+  // Polices locales (/fonts/*.woff2) : Cache-First, elles sont immuables
+  if (url.origin === self.location.origin && url.pathname.startsWith('/fonts/')) {
+    event.respondWith(
+      caches.match(request).then(
+        (cached) =>
+          cached ||
+          fetch(request).then((res) => {
+            if (res.ok) {
+              const clone = res.clone();
+              caches.open(FONT_CACHE).then((c) => c.put(request, clone));
+            }
+            return res;
+          })
       )
     );
     return;

@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { sceneRoseJsonLdPlugin } from './scripts/vite-plugin-jsonld.js';
 
 const SYNC_SLOTS_PARIS = [
   { hour: 6, minute: 0, label: '06h00' },
@@ -96,7 +97,7 @@ function sceneRoseSyncPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), sceneRoseSyncPlugin()],
+  plugins: [react(), tailwindcss(), sceneRoseSyncPlugin(), sceneRoseJsonLdPlugin()],
   server: {
     host: '0.0.0.0',
     port: 5173,

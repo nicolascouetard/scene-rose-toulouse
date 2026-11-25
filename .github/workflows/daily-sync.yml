@@ -31,13 +31,19 @@ jobs:
       - name: Synchroniser les 17 salles toulousaines (dates & statuts Complet/Dispo)
         run: npm run sync
 
+      - name: Rapatrier & compresser les nouvelles affiches (WebP 800px)
+        run: npm run posters
+
+      - name: Contrôle qualité des données (affiches, genres, dates)
+        run: npm run check:data
+
       - name: Publier les données mises à jour si modifiées
         run: |
           git config user.name "scene-rose-bot"
           git config user.email "bot@scene-rose.local"
-          git add public/data/concerts.json
+          git add public/data/concerts.json public/posters
           if ! git diff --cached --quiet; then
-            git commit -m "chore(sync): mise à jour auto des concerts & statuts ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git commit -m "chore(sync): concerts, statuts & affiches ($(date -u +'%Y-%m-%d %H:%M UTC'))"
             git pull --rebase --autostash origin main || true
             git push
           else

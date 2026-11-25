@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   BellPlus,
   Calendar,
@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import type { Concert, Venue } from '../data/toulouseData';
 import { useSwipeDownToClose } from '../hooks/useSwipeDownToClose';
+import { useDialogA11y } from '../hooks/useDialogA11y';
 import {
   downloadConcertIcs,
   extractListenArtists,
@@ -25,6 +26,7 @@ import {
   normalizeSearchText,
 } from '../utils/dates';
 import { RoutePickerSheet } from './RoutePickerSheet';
+import { PosterImage } from './PosterImage';
 import { StreamingLinksRow } from './StreamingLinksRow';
 
 interface ConcertDetailSheetProps {
@@ -56,6 +58,8 @@ export function ConcertDetailSheet({
   const { scrollRef, sheetStyle, backdropOpacity, handlers } = useSwipeDownToClose({
     onClose,
   });
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useDialogA11y(Boolean(concert), dialogRef);
 
   useEffect(() => {
     setSelectedArtistIdx(0);
@@ -151,6 +155,10 @@ export function ConcertDetailSheet({
         onClick={onClose}
       >
         <div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="concert-sheet-title"
           className="relative w-full max-w-[440px] md:max-w-xl max-h-[92dvh] md:max-h-[88dvh] rounded-t-3xl md:rounded-3xl bg-[#131117] border-t border-x md:border border-white/12 shadow-2xl flex flex-col overflow-hidden animate-sheet-up"
           style={sheetStyle}
           onClick={(e) => e.stopPropagation()}
@@ -178,15 +186,11 @@ export function ConcertDetailSheet({
           <div ref={scrollRef} className="overflow-y-auto no-scrollbar pb-28">
             {/* Hero Poster */}
             <div className="relative w-full aspect-[16/11] bg-[#1C1922] overflow-hidden">
-              <img
-                src={concert.poster}
-                alt={`Affiche ${concert.title}`}
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (target.src !== concert.sourcePosterUrl) {
-                    target.src = concert.sourcePosterUrl;
-                  }
-                }}
+              <PosterImage
+                concert={concert}
+                loading="eager"
+                width={640}
+                height={440}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#131117] via-transparent to-black/35" />
@@ -226,7 +230,7 @@ export function ConcertDetailSheet({
                 ))}
               </div>
 
-              <h2 className="font-display text-xl font-extrabold leading-tight text-white">
+              <h2 id="concert-sheet-title" className="font-display text-xl font-extrabold leading-tight text-white">
                 {concert.title}
               </h2>
 
@@ -448,9 +452,12 @@ export function ConcertDetailSheet({
           >
             <X className="w-5 h-5" />
           </button>
-          <img
-            src={concert.poster}
+          <PosterImage
+            concert={concert}
             alt={`Affiche complète ${concert.title}`}
+            loading="eager"
+            width={800}
+            height={800}
             className="max-w-full max-h-[86dvh] rounded-2xl object-contain shadow-2xl"
           />
         </div>

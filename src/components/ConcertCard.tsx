@@ -1,5 +1,6 @@
 import { Clock, ExternalLink, Heart, MapPin, Moon, Sparkles } from 'lucide-react';
 import type { Concert, Venue } from '../data/toulouseData';
+import { PosterImage } from './PosterImage';
 import { formatShortDate, isRecentlyAdded } from '../utils/dates';
 
 interface ConcertCardProps {
@@ -10,6 +11,51 @@ interface ConcertCardProps {
   showDateBadge?: boolean;
   onToggleFavorite: (id: string) => void;
   onSelect: (concert: Concert) => void;
+}
+
+/**
+ * Un statut billetterie n'est fiable que si la salle a répondu à une synchro récente.
+ * Seuil volontairement haut (7 jours) : une simple synchro manquée (site en
+ * maintenance un jour) ne doit pas polluer toutes les cartes. Au-delà, la salle
+ * échoue de façon répétée et l'information devient réellement incertaine.
+ */
+const STALE_STATUS_MS = 7 * 24 * 60 * 60 * 1000;
+
+/**
+ * Origine du statut billetterie :
+ *  - 'fallback' : la date a été confirmée par une source externe, mais la salle
+ *    n'a jamais communiqué de statut (Complet / Dernières places) → inconnu.
+ *  - undefined  : statut collecté normalement auprès de la salle.
+ */
+function isStatusUnknown(concert: Pick<Concert, 'statusSource'>) {
+  return concert.statusSource === 'fallback';
+}
+
+function isStatusStale(statusVerifiedAt?: string) {
+  if (!statusVerifiedAt) return true;
+  const verified = new Date(statusVerifiedAt).getTime();
+  if (Number.isNaN(verified)) return true;
+  return Date.now() - verified > STALE_STATUS_MS;
+}
+
+function StaleStatusBadge({ unknown = false }: { unknown?: boolean }) {
+  return (
+    <span
+      title={
+        unknown
+          ? "Date confirmée, mais cette salle ne communique pas son statut billetterie : vérifie sur le site de la salle."
+          : "La salle ne répond plus aux synchronisations : le statut billetterie date de plus d'une semaine."
+      }
+      aria-label={
+        unknown
+          ? 'Statut billetterie inconnu pour cette salle'
+          : 'Statut billetterie non vérifié depuis plus d’une semaine'
+      }
+      className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-black/60 backdrop-blur-md border border-white/25 text-[10px] font-bold text-amber-200"
+    >
+      ?
+    </span>
+  );
 }
 
 function StatusPill({ status }: { status: Concert['status'] }) {
@@ -63,16 +109,10 @@ export function ConcertCard({
         className="group relative flex flex-col rounded-2xl overflow-hidden bg-[#16141A] border border-white/[0.08] active:scale-[0.98] transition-all cursor-pointer"
       >
         <div className="relative aspect-[4/4.4] w-full overflow-hidden bg-[#1E1B24]">
-          <img
-            src={concert.poster}
-            alt={`Affiche ${concert.title}`}
-            loading="lazy"
-            onError={(e) => {
-              const target = e.currentTarget;
-              if (target.src !== concert.sourcePosterUrl) {
-                target.src = concert.sourcePosterUrl;
-              }
-            }}
+          <PosterImage
+            concert={concert}
+            width={600}
+            height={660}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#16141A] via-transparent to-black/30" />
@@ -85,6 +125,9 @@ export function ConcertCard({
                 </span>
               )}
               <StatusPill status={concert.status} />
+              {(isStatusUnknown(concert) || isStatusStale(concert.statusVerifiedAt)) && (
+                <StaleStatusBadge unknown={isStatusUnknown(concert)} />
+              )}
               {isNew && concert.status === 'available' && (
                 <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-violet-600/90 text-[9.5px] font-bold uppercase tracking-wide text-white shadow-sm">
                   <Sparkles className="w-2.5 h-2.5" />
@@ -171,20 +214,17 @@ export function ConcertCard({
     >
       {/* Poster */}
       <div className="relative shrink-0 w-[96px] h-[116px] rounded-xl overflow-hidden bg-[#211E27] border border-white/[0.06]">
-        <img
-          src={concert.poster}
-          alt={`Affiche ${concert.title}`}
-          loading="lazy"
-          onError={(e) => {
-            const target = e.currentTarget;
-            if (target.src !== concert.sourcePosterUrl) {
-              target.src = concert.sourcePosterUrl;
-            }
-          }}
+        <PosterImage
+          concert={concert}
+          width={192}
+          height={232}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-1.5 left-1.5 flex flex-col gap-1">
           <StatusPill status={concert.status} />
+          {(isStatusUnknown(concert) || isStatusStale(concert.statusVerifiedAt)) && (
+            <StaleStatusBadge unknown={isStatusUnknown(concert)} />
+          )}
           {isNew && concert.status === 'available' && (
             <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-violet-600/90 text-[9px] font-bold uppercase tracking-wide text-white shadow-sm">
               <Sparkles className="w-2.5 h-2.5" />
